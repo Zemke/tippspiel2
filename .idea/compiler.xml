@@ -8,11 +8,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="spring-5-mvc" />
         <module name="spring-boot-kotlin-example" />
+        <module name="tippspiel2-ember" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="spring-5-mvc" target="1.8" />
       <module name="spring-boot-kotlin-example" target="1.8" />
+      <module name="tippspiel2" target="1.6" />
+      <module name="tippspiel2-ember" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>

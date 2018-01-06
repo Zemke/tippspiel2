@@ -1,4 +1,4 @@
-package com.example
+package com.github.zemke.tippspiel2
 
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
