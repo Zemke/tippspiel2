@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(SpringRunner::class)
 @SpringBootTest
-class SpringBootKotlinExampleApplicationTests {
+class SpringBootTippspiel2ApplicationTests {
 
 	@Test
 	fun contextLoads() {
