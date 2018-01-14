@@ -125,18 +125,18 @@ buildNumber.properties
 #start of ember gitignore
 
 # compiled output
-/dist
-/tmp
+tippspiel2-ember/dist/
+tippspiel2-ember/tmp/
 
 # dependencies
-/node_modules
-/bower_components
+tippspiel2-ember/node_modules/
+tippspiel2-ember/bower_components/
 
 # misc
-/.sass-cache
-/connect.lock
-/coverage/*
-/libpeerconnection.log
+tippspiel2-ember/.sass-cache
+tippspiel2-ember/connect.lock
+tippspiel2-ember/coverage/*
+tippspiel2-ember/libpeerconnection.log
 npm-debug.log*
 yarn-error.log
 testem.log
