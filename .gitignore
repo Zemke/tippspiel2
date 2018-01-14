@@ -121,3 +121,27 @@ buildNumber.properties
 !/.mvn/wrapper/maven-wrapper.jar
 
 # End of https://www.gitignore.io/api/maven,intellij,jetbrains
+
+#start of ember gitignore
+
+# compiled output
+/dist
+/tmp
+
+# dependencies
+/node_modules
+/bower_components
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage/*
+/libpeerconnection.log
+npm-debug.log*
+yarn-error.log
+testem.log
+
+# ember-try
+.node_modules.ember-try/
+bower.json.ember-try
+package.json.ember-try
