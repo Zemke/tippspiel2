@@ -18,4 +18,6 @@ The successor of [Zemke/tippspiel](https://github.com/Zemke/tippspiel) developed
 * See bets by user
 * See bets by game
 * football-data.org API
-
+* Bet on champion
+* Simultaneous betting communities
+* Simultaneous competitions 
