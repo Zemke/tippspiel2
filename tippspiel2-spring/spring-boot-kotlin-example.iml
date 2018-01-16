@@ -17,8 +17,8 @@
       <configuration version="3" platform="JVM 1.6" useProjectSettings="false">
         <compilerSettings />
         <compilerArguments>
-          <option name="languageVersion" value="1.0" />
-          <option name="apiVersion" value="1.0" />
+          <option name="languageVersion" value="1.2" />
+          <option name="apiVersion" value="1.2" />
           <option name="pluginOptions">
             <array />
           </option>
@@ -88,8 +88,8 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-web:4.3.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:4.3.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:4.3.3.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.0.3" level="project" />
-    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-runtime:1.0.3" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.2.10" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains:annotations:13.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.h2database:h2:1.4.192" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-thymeleaf:1.4.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.thymeleaf:thymeleaf-spring4:3.0.0.RELEASE" level="project" />
