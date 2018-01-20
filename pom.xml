@@ -20,6 +20,11 @@
         <module>tippspiel2-ember</module>
     </modules>
 
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
     <name>Tippspiel</name>
     <description>
         Tippspiel 2 is a betting game initially developed for the World Ccup 2018 in Russia.
