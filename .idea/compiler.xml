@@ -6,16 +6,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="spring-5-mvc" />
-        <module name="spring-boot-kotlin-example" />
+        <module name="tippspiel2" />
         <module name="tippspiel2-ember" />
+        <module name="tippspiel2-spring" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="spring-5-mvc" target="1.8" />
-      <module name="spring-boot-kotlin-example" target="1.8" />
-      <module name="tippspiel2" target="1.6" />
-      <module name="tippspiel2-ember" target="1.6" />
+      <module name="tippspiel2" target="1.8" />
+      <module name="tippspiel2-ember" target="1.8" />
+      <module name="tippspiel2-spring" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

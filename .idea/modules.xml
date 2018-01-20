@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/tippspiel2-spring/spring-5-mvc.iml" filepath="$PROJECT_DIR$/tippspiel2-spring/spring-5-mvc.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tippspiel2-spring/spring-boot-kotlin-example.iml" filepath="$PROJECT_DIR$/tippspiel2-spring/spring-boot-kotlin-example.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/tippspiel2.iml" filepath="$PROJECT_DIR$/.idea/tippspiel2.iml" />
       <module fileurl="file://$PROJECT_DIR$/tippspiel2-ember/tippspiel2-ember.iml" filepath="$PROJECT_DIR$/tippspiel2-ember/tippspiel2-ember.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tippspiel2-spring/tippspiel2-spring.iml" filepath="$PROJECT_DIR$/tippspiel2-spring/tippspiel2-spring.iml" />
     </modules>
   </component>
 </project>
