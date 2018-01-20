@@ -132,9 +132,9 @@
 						<plugin>jpa</plugin>
 					</compilerPlugins>
 
-					<!--<pluginOptions>-->
-						<!--<option>no-arg:annotation=com.your.Annotation</option>-->
-					<!--</pluginOptions>-->
+					<pluginOptions>
+						<option>no-arg:annotation=com.github.zemke.tippspiel2.view.util.DataTransferObject</option>
+					</pluginOptions>
 				</configuration>
 				<dependencies>
 					<dependency>
