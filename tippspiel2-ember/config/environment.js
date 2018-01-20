@@ -18,12 +18,11 @@ module.exports = function(environment) {
     },
 
     APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
     }
   };
 
   if (environment === 'development') {
+    ENV.APP.host = 'http://localhost:8080';
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -44,6 +43,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    EVN.APP.host = 'http://localhost:4200';
     // here you can enable a production-specific feature
   }
 
