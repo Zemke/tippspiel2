@@ -1,11 +1,10 @@
 package com.github.zemke.tippspiel2.view.controller
 
-import com.github.zemke.tippspiel2.security.JwtAuthenticationRequest
-import com.github.zemke.tippspiel2.security.JwtTokenUtil
-import com.github.zemke.tippspiel2.security.JwtUser
-import com.github.zemke.tippspiel2.service.JwtAuthenticationResponse
+import com.github.zemke.tippspiel2.core.authentication.AuthenticatedUser
+import com.github.zemke.tippspiel2.service.JsonWebTokenService
+import com.github.zemke.tippspiel2.view.model.AuthenticationRequestDto
+import com.github.zemke.tippspiel2.view.model.JsonWebTokenDto
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.ResponseEntity
 import org.springframework.mobile.device.Device
 import org.springframework.security.authentication.AuthenticationManager
@@ -13,56 +12,54 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.AuthenticationException
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.core.userdetails.UserDetailsService
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RestController
 import javax.servlet.http.HttpServletRequest
 
 @RestController
 @RequestMapping("/api/auth")
-class AuthRestController(@Autowired private val jwtTokenUtil: JwtTokenUtil,
+class AuthRestController(@Autowired private val jsonWebTokenService: JsonWebTokenService,
                          @Autowired private val authenticationManager: AuthenticationManager,
-                         @Autowired private val userDetailsService: UserDetailsService,
-                         @Value("\${jwt.header}") private val tokenHeader: String) {
+                         @Autowired private val userDetailsService: UserDetailsService) {
 
     @GetMapping("")
-    fun getAuthenticatedUser(request: HttpServletRequest): JwtUser {
-        val token = request.getHeader(tokenHeader).substring(7)
-        val username = jwtTokenUtil.getUsernameFromToken(token)
-        return userDetailsService.loadUserByUsername(username) as JwtUser
+    fun getAuthenticatedUser(request: HttpServletRequest): AuthenticatedUser {
+        val username = jsonWebTokenService.getUsernameFromToken(jsonWebTokenService.extractToken(request))
+        return (userDetailsService.loadUserByUsername(username) as AuthenticatedUser)
     }
 
     @PostMapping("")
     @Throws(AuthenticationException::class)
-    fun createAuthenticationToken(@RequestBody authenticationRequest: JwtAuthenticationRequest, device: Device): ResponseEntity<*> {
-
-        // Perform the security
+    fun createAuthenticationToken(
+            @RequestBody authenticationRequestDto: AuthenticationRequestDto, device: Device): ResponseEntity<JsonWebTokenDto> {
         val authentication = authenticationManager.authenticate(
                 UsernamePasswordAuthenticationToken(
-                        authenticationRequest.username,
-                        authenticationRequest.password
+                        authenticationRequestDto.username,
+                        authenticationRequestDto.password
                 )
         )
+
         SecurityContextHolder.getContext().authentication = authentication
 
-        // Reload password post-security so we can generate token
-        val userDetails = userDetailsService.loadUserByUsername(authenticationRequest.username)
-        val token = jwtTokenUtil.generateToken(userDetails, device)
+        val userDetails = userDetailsService.loadUserByUsername(authenticationRequestDto.username)
+        val token = jsonWebTokenService.generateToken(userDetails, device)
 
-        // Return the token
-        return ResponseEntity.ok<Any>(JwtAuthenticationResponse(token))
+        return ResponseEntity.ok(JsonWebTokenDto(token))
     }
 
     @GetMapping("/refresh")
-    fun refreshAndGetAuthenticationToken(request: HttpServletRequest): ResponseEntity<*> {
-        val authToken = request.getHeader(tokenHeader)
-        val token = authToken.substring(7)
-        val username = jwtTokenUtil.getUsernameFromToken(token)
-        val user = userDetailsService.loadUserByUsername(username) as JwtUser
+    fun refreshAndGetAuthenticationToken(request: HttpServletRequest): ResponseEntity<JsonWebTokenDto?> {
+        val token = jsonWebTokenService.extractToken(request)
+        val user = userDetailsService.loadUserByUsername(jsonWebTokenService.getUsernameFromToken(token)) as AuthenticatedUser
 
-        return if (jwtTokenUtil.canTokenBeRefreshed(token, user.lastPasswordResetDate!!)!!) {
-            val refreshedToken = jwtTokenUtil.refreshToken(token)
-            ResponseEntity.ok<Any>(JwtAuthenticationResponse(refreshedToken))
-        } else {
-            ResponseEntity.badRequest().body<Any>(null)
+        return when {
+            jsonWebTokenService.canTokenBeRefreshed(token, user.lastPasswordResetDate!!) ->
+                ResponseEntity.ok(JsonWebTokenDto(jsonWebTokenService.refreshToken(token)))
+            else ->
+                ResponseEntity.badRequest().body(null)
         }
     }
 }

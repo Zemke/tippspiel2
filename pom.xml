@@ -2,34 +2,28 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.4.1.RELEASE</version>
         <relativePath/>
     </parent>
-
     <groupId>com.github.zemke.tippspiel2</groupId>
     <artifactId>tippspiel2</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-
     <modules>
         <module>tippspiel2-spring</module>
         <module>tippspiel2-ember</module>
     </modules>
-
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
-
     <name>Tippspiel</name>
     <description>
         Tippspiel 2 is a betting game initially developed for the World Ccup 2018 in Russia.
     </description>
-
     <developers>
         <developer>
             <name>Florian Zemke</name>
@@ -40,14 +34,11 @@
             <email>soenke.martens@yahoo.de</email>
         </developer>
     </developers>
-
     <issueManagement>
         <system>GitHub Issues</system>
         <url>https://github.com/Zemke/tippspiel2/issues</url>
     </issueManagement>
-
     <inceptionYear>2018</inceptionYear>
-
     <licenses>
         <license>
             <name>MIT License</name>
@@ -55,11 +46,9 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-
     <scm>
         <url>https://github.com/Zemke/tippspiel</url>
         <connection>scm:git:git://github.com/Zemke/tippspiel.git</connection>
         <developerConnection>scm:git:git@github.com:Zemke/tippspiel.git</developerConnection>
     </scm>
-
 </project>

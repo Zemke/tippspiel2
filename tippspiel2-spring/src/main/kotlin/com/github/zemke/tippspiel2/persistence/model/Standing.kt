@@ -1,4 +1,4 @@
-package com.github.zemke.tippspiel2.entity
+package com.github.zemke.tippspiel2.persistence.model
 
 import javax.persistence.Entity
 import javax.persistence.Id

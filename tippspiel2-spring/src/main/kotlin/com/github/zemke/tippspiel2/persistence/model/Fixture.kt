@@ -1,6 +1,6 @@
-package com.github.zemke.tippspiel2.entity
+package com.github.zemke.tippspiel2.persistence.model
 
-import com.github.zemke.tippspiel2.entity.enumeration.FixtureStatus
+import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
 import java.sql.Timestamp
 import javax.persistence.*
 

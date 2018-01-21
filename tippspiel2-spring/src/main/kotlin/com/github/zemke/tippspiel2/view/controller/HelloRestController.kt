@@ -12,7 +12,6 @@ import java.util.*
 @RequestMapping("/api/hellos")
 class HelloRestController() {
 
-    @CrossOrigin(origins = arrayOf("http://localhost:4200"))
     @GetMapping("")
     fun helloKotlinJson(): ResponseEntity<List<HelloDto>> {
         return ResponseEntity.ok(Collections.singletonList(HelloDto("world")));

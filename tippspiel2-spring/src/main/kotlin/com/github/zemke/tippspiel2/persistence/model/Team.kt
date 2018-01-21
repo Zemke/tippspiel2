@@ -1,7 +1,6 @@
-package com.github.zemke.tippspiel2.entity
+package com.github.zemke.tippspiel2.persistence.model
 
 import org.hibernate.validator.constraints.NotBlank
-import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.Id
 import javax.persistence.ManyToOne

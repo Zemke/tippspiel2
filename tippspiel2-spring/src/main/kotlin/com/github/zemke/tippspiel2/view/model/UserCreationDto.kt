@@ -3,8 +3,10 @@ package com.github.zemke.tippspiel2.view.model
 import com.github.zemke.tippspiel2.view.util.DataTransferObject
 
 @DataTransferObject
-data class AuthenticationRequestDto(
+data class UserCreationDto(
 
-        val username: String,
+        val firstName: String,
+        val lastName: String,
+        val email: String,
         val password: String
 )

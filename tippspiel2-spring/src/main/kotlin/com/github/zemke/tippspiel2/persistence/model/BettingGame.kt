@@ -1,4 +1,4 @@
-package com.github.zemke.tippspiel2.entity
+package com.github.zemke.tippspiel2.persistence.model
 
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.validator.constraints.NotBlank

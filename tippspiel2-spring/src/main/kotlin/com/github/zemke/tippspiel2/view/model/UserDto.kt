@@ -1,6 +1,6 @@
 package com.github.zemke.tippspiel2.view.model
 
-import com.github.zemke.tippspiel2.entity.User
+import com.github.zemke.tippspiel2.persistence.model.User
 import com.github.zemke.tippspiel2.view.util.DataTransferObject
 
 @DataTransferObject

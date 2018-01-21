@@ -1,4 +1,4 @@
-package com.github.zemke.tippspiel2.entity.embeddable
+package com.github.zemke.tippspiel2.persistence.model.embeddable
 
 import org.hibernate.validator.constraints.NotBlank
 import javax.persistence.Embeddable

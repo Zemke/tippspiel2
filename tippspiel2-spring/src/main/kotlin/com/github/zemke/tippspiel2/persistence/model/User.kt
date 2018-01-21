@@ -1,6 +1,6 @@
-package com.github.zemke.tippspiel2.entity
+package com.github.zemke.tippspiel2.persistence.model
 
-import com.github.zemke.tippspiel2.entity.embeddable.FullName
+import com.github.zemke.tippspiel2.persistence.model.embeddable.FullName
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.validator.constraints.Email
 import java.sql.Timestamp

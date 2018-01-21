@@ -1,4 +1,4 @@
-package com.github.zemke.tippspiel2.entity.enumeration
+package com.github.zemke.tippspiel2.persistence.model.enumeration
 
 /**
  * [https://www.football-data.org/blog](https://www.football-data.org/blog)

@@ -24,7 +24,6 @@
               <option value="plugin:org.jetbrains.kotlin.noarg:annotation=javax.persistence.Entity" />
               <option value="plugin:org.jetbrains.kotlin.noarg:annotation=javax.persistence.Embeddable" />
               <option value="plugin:org.jetbrains.kotlin.noarg:annotation=javax.persistence.MappedSuperclass" />
-              <option value="plugin:org.jetbrains.kotlin.noarg:annotation=com.github.zemke.tippspiel2.view.util.DataTransferObject" />
             </array>
           </option>
           <option name="pluginClasspaths">

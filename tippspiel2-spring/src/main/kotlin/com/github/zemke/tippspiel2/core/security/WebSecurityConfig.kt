@@ -1,5 +1,7 @@
-package com.github.zemke.tippspiel2.security
+package com.github.zemke.tippspiel2.core.security
 
+import com.github.zemke.tippspiel2.core.authentication.Http401JwtAuthenticationEntryPoint
+import com.github.zemke.tippspiel2.core.filter.AuthenticationFilter
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -18,13 +20,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-open class WebSecurityConfig : WebSecurityConfigurerAdapter() {
-
-    @Autowired
-    private val unauthorizedHandler: JwtAuthenticationEntryPoint? = null
-
-    @Autowired
-    private val userDetailsService: UserDetailsService? = null
+open class WebSecurityConfig(
+        @Autowired private val http401JwtAuthenticationEntryPoint: Http401JwtAuthenticationEntryPoint,
+        @Autowired private val userDetailsService: UserDetailsService
+) : WebSecurityConfigurerAdapter() {
 
     @Autowired
     @Throws(Exception::class)
@@ -41,51 +40,38 @@ open class WebSecurityConfig : WebSecurityConfigurerAdapter() {
 
     @Bean
     @Throws(Exception::class)
-    open fun authenticationTokenFilterBean(): JwtAuthenticationTokenFilter {
-        return JwtAuthenticationTokenFilter()
+    open fun authenticationTokenFilterBean(): AuthenticationFilter {
+        return AuthenticationFilter()
     }
 
     @Throws(Exception::class)
     override fun configure(httpSecurity: HttpSecurity) {
         httpSecurity
-                // we don't need CSRF because our token is invulnerable
                 .csrf().disable()
-
-                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-
-                // don't create session
+                .exceptionHandling().authenticationEntryPoint(http401JwtAuthenticationEntryPoint).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-
                 .authorizeRequests()
-                //.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-
-                // allow anonymous resource requests
+                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers(
                         HttpMethod.GET,
                         "/",
-                        "/*.html",
                         "/favicon.ico",
                         "/**/*.html",
                         "/**/*.css",
                         "/**/*.js"
                 ).permitAll()
-
-                // Un-secure H2 Database
                 .antMatchers("/h2-console/**/**").permitAll()
-
-                .antMatchers("/api/auth/**").permitAll()
-                .antMatchers("/api/users/**").permitAll()
+                .antMatchers("/api/auth").permitAll()
+                .antMatchers("/api/users").permitAll()
                 .antMatchers("/api/hellos/**").permitAll()
                 .anyRequest().authenticated()
 
-        // Custom JWT based security filter
         httpSecurity
                 .addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter::class.java)
 
-        // disable page caching
         httpSecurity
                 .headers()
-                .frameOptions().sameOrigin()  // required to set for H2 else H2 Console will be blank.
+                .frameOptions().sameOrigin()
                 .cacheControl()
     }
 }

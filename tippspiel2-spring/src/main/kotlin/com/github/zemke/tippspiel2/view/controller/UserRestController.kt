@@ -1,9 +1,9 @@
 package com.github.zemke.tippspiel2.view.controller
 
 import com.github.zemke.tippspiel2.service.UserService
-import com.github.zemke.tippspiel2.view.model.AuthenticationRequestDto
+import com.github.zemke.tippspiel2.view.exception.NotFoundException
+import com.github.zemke.tippspiel2.view.model.UserCreationDto
 import com.github.zemke.tippspiel2.view.model.UserDto
-import javassist.NotFoundException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -16,8 +16,9 @@ class UserRestController(
 ) {
 
     @PostMapping("")
-    fun createUser(@RequestBody userDto: AuthenticationRequestDto): ResponseEntity<UserDto> {
-        val persistedUser = userService.addUser(userDto.firstName, userDto.lastName, userDto.email, userDto.password)
+    fun createUser(@RequestBody userCreationDto: UserCreationDto): ResponseEntity<UserDto> {
+        val persistedUser = userService.addUser(userCreationDto.firstName, userCreationDto.lastName,
+                userCreationDto.email, userCreationDto.password)
         return ResponseEntity.created(URI.create("/api/users/${persistedUser.id}")).body(UserDto.toDto(persistedUser))
     }
 
