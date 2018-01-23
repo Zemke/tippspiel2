@@ -135,6 +135,7 @@ class JsonWebTokenService(
                 .setAudience(audience)
                 .setIssuedAt(createdDate)
                 .setExpiration(expirationDate)
+                .setHeaderParam("typ", "JWT")
                 .signWith(SignatureAlgorithm.HS512, secret)
                 .compact()
     }
