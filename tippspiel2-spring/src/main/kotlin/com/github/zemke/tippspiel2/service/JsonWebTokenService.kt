@@ -1,12 +1,13 @@
 package com.github.zemke.tippspiel2.service
 
 import com.github.zemke.tippspiel2.core.authentication.AuthenticatedUser
+import com.github.zemke.tippspiel2.core.properties.AuthenticationProperties
 import com.github.zemke.tippspiel2.view.exception.UnauthorizedException
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import io.jsonwebtoken.impl.DefaultClock
-import org.springframework.beans.factory.annotation.Value
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.mobile.device.Device
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.stereotype.Component
@@ -16,9 +17,7 @@ import javax.servlet.http.HttpServletRequest
 
 @Component
 class JsonWebTokenService(
-        @Value("\${jwt.secret}") private val secret: String,
-        @Value("\${jwt.header}") private val header: String,
-        @Value("\${jwt.expiration}") private val expiration: Long
+        @Autowired() private val authenticationProperties: AuthenticationProperties
 ) {
 
     companion object {
@@ -37,7 +36,7 @@ class JsonWebTokenService(
 
     @Throws(UnauthorizedException::class)
     fun extractToken(request: HttpServletRequest): String {
-        return request.getHeader(header)?.substring(7) ?: throw UnauthorizedException()
+        return request.getHeader(authenticationProperties.jwt.header)?.substring(7) ?: throw UnauthorizedException()
     }
 
     fun validateToken(token: String, userDetails: UserDetails): Boolean {
@@ -70,7 +69,7 @@ class JsonWebTokenService(
 
         return Jwts.builder()
                 .setClaims(claims)
-                .signWith(SignatureAlgorithm.HS512, secret)
+                .signWith(SignatureAlgorithm.HS512, authenticationProperties.jwt.secret)
                 .compact()
     }
 
@@ -97,7 +96,7 @@ class JsonWebTokenService(
 
     private fun getAllClaimsFromToken(token: String): Claims {
         return Jwts.parser()
-                .setSigningKey(secret)
+                .setSigningKey(authenticationProperties.jwt.secret)
                 .parseClaimsJws(token)
                 .body
     }
@@ -136,11 +135,11 @@ class JsonWebTokenService(
                 .setIssuedAt(createdDate)
                 .setExpiration(expirationDate)
                 .setHeaderParam("typ", "JWT")
-                .signWith(SignatureAlgorithm.HS512, secret)
+                .signWith(SignatureAlgorithm.HS512, authenticationProperties.jwt.secret)
                 .compact()
     }
 
     private fun calculateExpirationDate(createdDate: Date): Date {
-        return Date(createdDate.time + expiration * 1000)
+        return Date(createdDate.time + authenticationProperties.jwt.expiration * 1000)
     }
 }
