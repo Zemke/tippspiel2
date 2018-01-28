@@ -3,7 +3,7 @@ INSERT INTO "user" (
   FIRST_NAME,
   LAST_NAME,
   EMAIL,
-  "PASSWORD",
+  PASSWORD,
   LAST_PASSWORD_RESET
 )
 VALUES (
@@ -12,7 +12,7 @@ VALUES (
   'Zemke',
   'Florian.Zemke@btc-ag.com',
   '$2a$10$NBVm8mNMr87fbRRJGz3XJu971Ro24Mwg2SB8zVUxh0IZp6xnz30GW',
-  sysdate
+  CURRENT_TIMESTAMP
 );
 
 
