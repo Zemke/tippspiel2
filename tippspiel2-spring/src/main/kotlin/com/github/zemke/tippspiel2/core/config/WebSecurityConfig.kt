@@ -1,4 +1,4 @@
-package com.github.zemke.tippspiel2.core.security
+package com.github.zemke.tippspiel2.core.config
 
 import com.github.zemke.tippspiel2.core.authentication.Http401JwtAuthenticationEntryPoint
 import com.github.zemke.tippspiel2.core.filter.AuthenticationFilter
