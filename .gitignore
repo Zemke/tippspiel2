@@ -145,3 +145,10 @@ testem.log
 .node_modules.ember-try/
 bower.json.ember-try
 package.json.ember-try
+
+gitignore.io end
+#####################
+custom additions start
+
+.idea/
+*.iml
