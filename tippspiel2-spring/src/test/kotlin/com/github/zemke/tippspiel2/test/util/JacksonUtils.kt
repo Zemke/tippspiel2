@@ -5,6 +5,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.mock.http.MockHttpInputMessage
 import org.springframework.mock.http.MockHttpOutputMessage
 import java.io.IOException
+import java.io.InputStream
 
 
 object JacksonUtils {
@@ -19,7 +20,12 @@ object JacksonUtils {
 
     @Throws(IOException::class, IllegalArgumentException::class)
     internal inline fun <reified T : Any> fromJson(json: String): T {
-        val mockHttpInputMessage = MockHttpInputMessage(json.toByteArray())
+        return fromJson(json.byteInputStream())
+    }
+
+    @Throws(IOException::class, IllegalArgumentException::class)
+    internal inline fun <reified T : Any> fromJson(json: InputStream): T {
+        val mockHttpInputMessage = MockHttpInputMessage(json)
         val mappingJackson2HttpMessageConverter = MappingJackson2HttpMessageConverter()
 
         if (!mappingJackson2HttpMessageConverter.canRead(T::class.java, MediaType.APPLICATION_JSON)) {

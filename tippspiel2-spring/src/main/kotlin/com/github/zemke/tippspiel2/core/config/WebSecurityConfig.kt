@@ -64,6 +64,7 @@ open class WebSecurityConfig(
                 .antMatchers("/api/auth").permitAll()
                 .antMatchers("/api/users").permitAll()
                 .antMatchers("/api/hellos/**").permitAll()
+                .antMatchers("/api/competitions/**").permitAll()
                 .anyRequest().authenticated()
 
         httpSecurity
