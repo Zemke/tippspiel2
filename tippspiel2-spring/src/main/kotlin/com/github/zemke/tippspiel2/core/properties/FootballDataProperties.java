@@ -19,6 +19,11 @@ public class FootballDataProperties {
      */
     private String apiTokenHeader = "X-Auth-Token";
 
+    /**
+     * The endpoint to run requests against i.e. {@code https://www.football-data.org/v1/}.
+     */
+    private String endpoint;
+
     public String getApiToken() {
         return apiToken;
     }
@@ -33,5 +38,13 @@ public class FootballDataProperties {
 
     public void setApiTokenHeader(String apiTokenHeader) {
         this.apiTokenHeader = apiTokenHeader;
+    }
+
+    public String getEndpoint() {
+        return endpoint;
+    }
+
+    public void setEndpoint(String endpoint) {
+        this.endpoint = endpoint;
     }
 }

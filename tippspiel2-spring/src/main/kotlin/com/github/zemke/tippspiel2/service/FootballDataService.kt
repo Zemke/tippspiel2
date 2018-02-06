@@ -16,6 +16,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestTemplate
 import javax.annotation.PostConstruct
+import javax.sql.DataSource
 
 
 @Service
@@ -23,6 +24,7 @@ open class FootballDataService {
 
     @Autowired private lateinit var footballDataProperties: FootballDataProperties
     private lateinit var restTemplate: RestTemplate
+
 
     @PostConstruct
     fun postConstruct() {
