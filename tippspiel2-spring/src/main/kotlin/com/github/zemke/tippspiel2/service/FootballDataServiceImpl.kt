@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.github.zemke.tippspiel2.core.profile.Prod
 import com.github.zemke.tippspiel2.core.properties.FootballDataProperties
 import com.github.zemke.tippspiel2.view.model.FootballDataCompetitionDto
+import com.github.zemke.tippspiel2.view.model.FootballDataFixtureWrappedListDto
+import com.github.zemke.tippspiel2.view.model.FootballDataTeamWrappedListDto
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.devtools.remote.client.HttpHeaderInterceptor
 import org.springframework.boot.web.client.RestTemplateBuilder
@@ -24,7 +26,6 @@ open class FootballDataServiceImpl : FootballDataService {
     @Autowired private lateinit var footballDataProperties: FootballDataProperties
     private lateinit var restTemplate: RestTemplate
 
-
     @PostConstruct
     fun postConstruct() {
         restTemplate = RestTemplateBuilder()
@@ -42,8 +43,15 @@ open class FootballDataServiceImpl : FootballDataService {
                 .build()
     }
 
-    override fun requestCompetition(competitionId: Long): FootballDataCompetitionDto {
-        return restTemplate.getForObject(
-                "${footballDataProperties.endpoint}/competitions/$competitionId", FootballDataCompetitionDto::class.java)
-    }
+    override fun requestCompetition(competitionId: Long): FootballDataCompetitionDto =
+            fireQuery("/competitions/$competitionId")
+
+    override fun requestFixtures(competitionId: Long): FootballDataFixtureWrappedListDto =
+            fireQuery("/competitions/$competitionId/fixtures")
+
+    override fun requestTeams(competitionId: Long): FootballDataTeamWrappedListDto =
+            fireQuery("/competitions/$competitionId/teams")
+
+    private inline fun <reified T : Any> fireQuery(absoluteApiPath: String): T =
+            restTemplate.getForObject("${footballDataProperties.endpoint}$absoluteApiPath", T::class.java)
 }

@@ -1,0 +1,65 @@
+{
+  "_links": {
+    "self": {
+      "href": "http://api.football-data.org/v1/competitions/467/fixtures"
+    },
+    "competition": {
+      "href": "http://api.football-data.org/v1/competitions/467"
+    }
+  },
+  "count": 2,
+  "fixtures": [
+    {
+      "_links": {
+        "self": {
+          "href": "http://api.football-data.org/v1/fixtures/165069"
+        },
+        "competition": {
+          "href": "http://api.football-data.org/v1/competitions/467"
+        },
+        "homeTeam": {
+        },
+        "href": "http://api.football-data.org/v1/teams/808",
+        "awayTeam": {
+          "href": "http://api.football-data.org/v1/teams/801"
+        }
+      },
+      "date": "2018-06-14T15:00:00Z",
+      "status": "TIMED",
+      "matchday": 1,
+      "homeTeamName": "Russia",
+      "awayTeamName": "Saudi Arabia",
+      "result": {
+        "goalsHomeTeam": null,
+        "goalsAwayTeam": null
+      },
+      "odds": null
+    },
+    {
+      "_links": {
+        "self": {
+          "href": "http://api.football-data.org/v1/fixtures/165084"
+        },
+        "competition": {
+          "href": "http://api.football-data.org/v1/competitions/467"
+        },
+        "homeTeam": {
+          "href": "http://api.football-data.org/v1/teams/825"
+        },
+        "awayTeam": {
+          "href": "http://api.football-data.org/v1/teams/758"
+        }
+      },
+      "date": "2018-06-15T12:00:00Z",
+      "status": "TIMED",
+      "matchday": 1,
+      "homeTeamName": "Egypt",
+      "awayTeamName": "Uruguay",
+      "result": {
+        "goalsHomeTeam": null,
+        "goalsAwayTeam": null
+      },
+      "odds": null
+    }
+  ]
+}
