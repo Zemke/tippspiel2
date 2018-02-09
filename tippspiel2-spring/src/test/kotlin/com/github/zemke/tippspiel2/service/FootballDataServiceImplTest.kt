@@ -53,7 +53,7 @@ class FootballDataServiceImplTest {
 
         Assert.assertEquals(
                 footballDataServiceImpl.requestCompetition(1),
-                FootballDataCompetitionDto(467, "World Cup 2018 Russia", "WC", "2018", 1, 8, 32, 64, "2018-01-10T14:10:08Z"))
+                FootballDataCompetitionDto(467, "World Cup 2018 Russia", "WC", "2018", 1, 8, 32, 64, JacksonUtils.toDate("2018-01-10T14:10:08Z")))
     }
 
     @Test
@@ -63,7 +63,7 @@ class FootballDataServiceImplTest {
         Assert.assertEquals(
                 footballDataServiceImpl.requestFixtures(1),
                 FootballDataFixtureWrappedListDto(2, listOf(Resource(FootballDataFixtureDto(
-                        date = "2018-06-14T15:00:00Z",
+                        date = JacksonUtils.toDate("2018-06-14T15:00:00Z"),
                         status = "TIMED",
                         matchday = 1,
                         homeTeamName = "Russia",
@@ -71,7 +71,7 @@ class FootballDataServiceImplTest {
                         result = FootballDataFixtureResultDto(null, null),
                         odds = null
                 )), Resource(FootballDataFixtureDto(
-                        date = "2018-06-15T12:00:00Z",
+                        date = JacksonUtils.toDate("2018-06-15T12:00:00Z"),
                         status = "TIMED",
                         matchday = 1,
                         homeTeamName = "Egypt",

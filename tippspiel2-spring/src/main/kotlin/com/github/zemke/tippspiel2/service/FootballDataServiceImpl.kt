@@ -16,6 +16,7 @@ import org.springframework.http.MediaType
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestTemplate
+import java.text.SimpleDateFormat
 import javax.annotation.PostConstruct
 
 
@@ -37,6 +38,7 @@ open class FootballDataServiceImpl : FootballDataService {
                             objectMapper = with(ObjectMapper()) {
                                 configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
                                 registerModule(Jackson2HalModule())
+                                setDateFormat(SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Zw'"))
                             }
                             this
                         })

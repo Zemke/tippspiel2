@@ -5,6 +5,7 @@ import com.github.zemke.tippspiel2.view.model.FootballDataCompetitionDto
 import com.github.zemke.tippspiel2.view.model.FootballDataFixtureWrappedListDto
 import com.github.zemke.tippspiel2.view.model.FootballDataTeamWrappedListDto
 import org.springframework.stereotype.Service
+import java.util.*
 
 @Dev
 @Service
@@ -26,7 +27,7 @@ class FootballDataServiceMock : FootballDataService {
                 numberOfMatchdays = 8,
                 numberOfTeams = 32,
                 numberOfGames = 64,
-                lastUpdated = "2018-01-10T14:10:08Z"
+                lastUpdated = GregorianCalendar(2018, 0, 10, 15, 10, 8).time
         )
     }
 
