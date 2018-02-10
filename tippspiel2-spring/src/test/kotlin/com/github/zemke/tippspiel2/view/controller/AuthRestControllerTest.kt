@@ -9,6 +9,7 @@ import com.github.zemke.tippspiel2.view.model.AuthenticationRequestDto
 import com.github.zemke.tippspiel2.view.model.JsonWebTokenDto
 import io.jsonwebtoken.lang.Assert
 import org.junit.Before
+import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest

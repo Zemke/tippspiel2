@@ -22,13 +22,13 @@ data class FixtureDto(
     companion object {
 
         fun map(fixture: Fixture): FixtureDto = FixtureDto(
-                fixture.id,
+                fixture.id!!,
                 fixture.date,
                 fixture.status,
                 fixture.matchday,
-                fixture.odds,
-                fixture.goalsHomeTeam,
-                fixture.goalsAwayTeam,
+                fixture.odds!!,
+                fixture.goalsHomeTeam!!,
+                fixture.goalsAwayTeam!!,
                 TeamDto.map(fixture.homeTeam),
                 TeamDto.map(fixture.awayTeam),
                 CompetitionDto.map(fixture.competition)

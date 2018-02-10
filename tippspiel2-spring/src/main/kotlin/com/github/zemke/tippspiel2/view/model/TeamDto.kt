@@ -7,7 +7,7 @@ import com.github.zemke.tippspiel2.view.util.DataTransferObject
 data class TeamDto(
         val id: Long,
         val name: String,
-        val squadMarketValue: String,
+        val squadMarketValue: String?,
         val competition: CompetitionDto
 ) {
 

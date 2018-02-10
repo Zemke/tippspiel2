@@ -1,6 +1,7 @@
 package com.github.zemke.tippspiel2.service
 
 import com.github.zemke.tippspiel2.core.properties.FootballDataProperties
+import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
 import com.github.zemke.tippspiel2.test.util.JacksonUtils
 import com.github.zemke.tippspiel2.view.model.FootballDataCompetitionDto
 import com.github.zemke.tippspiel2.view.model.FootballDataFixtureDto
@@ -64,7 +65,7 @@ class FootballDataServiceImplTest {
                 footballDataServiceImpl.requestFixtures(1),
                 FootballDataFixtureWrappedListDto(2, listOf(Resource(FootballDataFixtureDto(
                         date = JacksonUtils.toDate("2018-06-14T15:00:00Z"),
-                        status = "TIMED",
+                        status = FixtureStatus.TIMED,
                         matchday = 1,
                         homeTeamName = "Russia",
                         awayTeamName = "Saudi Arabia",
@@ -72,7 +73,7 @@ class FootballDataServiceImplTest {
                         odds = null
                 )), Resource(FootballDataFixtureDto(
                         date = JacksonUtils.toDate("2018-06-15T12:00:00Z"),
-                        status = "TIMED",
+                        status = FixtureStatus.TIMED,
                         matchday = 1,
                         homeTeamName = "Egypt",
                         awayTeamName = "Uruguay",

@@ -20,11 +20,11 @@ data class FootballDataFixtureWrappedListDto(
 @DataTransferObject
 data class FootballDataFixtureDto(
         @JsonProperty("date") var date: Date?,
-        @JsonProperty("status") var status: String?,
-        @JsonProperty("matchday") var matchday: Int?,
-        @JsonProperty("homeTeamName") var homeTeamName: String?,
-        @JsonProperty("awayTeamName") var awayTeamName: String?,
-        @JsonProperty("result") var result: FootballDataFixtureResultDto?,
+        @JsonProperty("status") var status: FixtureStatus,
+        @JsonProperty("matchday") var matchday: Int,
+        @JsonProperty("homeTeamName") var homeTeamName: String,
+        @JsonProperty("awayTeamName") var awayTeamName: String,
+        @JsonProperty("result") var result: FootballDataFixtureResultDto,
         @JsonProperty("odds") var odds: Double?
 ) {
     companion object {
@@ -32,11 +32,11 @@ data class FootballDataFixtureDto(
         fun map(resource: Resource<FootballDataFixtureDto>, teams: List<Team>, competition: Competition): Fixture = Fixture(
                 FootballDataUtils.extractId(resource.id),
                 Timestamp(resource.content.date?.time!!),
-                FixtureStatus.valueOf(resource.content.status!!),
-                resource.content.matchday!!,
-                resource.content.odds!!,
-                resource.content.result!!.goalsHomeTeam!!,
-                resource.content.result!!.goalsAwayTeam!!,
+                resource.content.status,
+                resource.content.matchday,
+                resource.content.odds,
+                resource.content.result.goalsHomeTeam,
+                resource.content.result.goalsAwayTeam,
                 teams.find { it.id == FootballDataUtils.extractId(resource.getLink("homeTeam")) }!!,
                 teams.find { it.id == FootballDataUtils.extractId(resource.getLink("awayTeam")) }!!,
                 competition

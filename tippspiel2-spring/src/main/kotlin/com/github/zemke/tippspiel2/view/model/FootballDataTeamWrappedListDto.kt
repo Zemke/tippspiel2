@@ -15,7 +15,7 @@ data class FootballDataTeamWrappedListDto(
 
 @DataTransferObject
 data class FootballDataTeamDto(
-        @JsonProperty("name") var name: String?,
+        @JsonProperty("name") var name: String,
         @JsonProperty("code") var code: String?,
         @JsonProperty("shortName") var shortName: String?,
         @JsonProperty("squadMarketValue") var squadMarketValue: String?,
@@ -26,8 +26,8 @@ data class FootballDataTeamDto(
 
         fun map(teamResourceDto: Resource<FootballDataTeamDto>, competition: Competition): Team = Team(
                 FootballDataUtils.extractId(teamResourceDto.id),
-                teamResourceDto.content.name!!,
-                teamResourceDto.content.squadMarketValue!!,
+                teamResourceDto.content.name,
+                teamResourceDto.content.squadMarketValue,
                 competition
         )
     }
