@@ -24,4 +24,8 @@ class UserService(
     fun getUser(id: Long): User? {
         return userRepository.findOne(id)
     }
+
+    fun findUsers(users: List<Long>): List<User> {
+        return userRepository.findAll(users)
+    }
 }
