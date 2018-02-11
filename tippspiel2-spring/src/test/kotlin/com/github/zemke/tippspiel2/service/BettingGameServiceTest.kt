@@ -3,6 +3,7 @@ package com.github.zemke.tippspiel2.service
 import com.github.zemke.tippspiel2.persistence.model.BettingGame
 import com.github.zemke.tippspiel2.persistence.model.Community
 import com.github.zemke.tippspiel2.persistence.model.Competition
+import com.github.zemke.tippspiel2.persistence.model.Standing
 import com.github.zemke.tippspiel2.test.util.EmbeddedPostgresDataJpaTest
 import com.github.zemke.tippspiel2.test.util.JacksonUtils
 import com.github.zemke.tippspiel2.test.util.PersistenceUtils
@@ -12,6 +13,7 @@ import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager
 import org.springframework.context.annotation.Import
+import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.test.context.junit4.SpringRunner
 import java.sql.Timestamp
 
@@ -26,12 +28,18 @@ open class BettingGameServiceTest {
     @Autowired
     private lateinit var testEntityManager: TestEntityManager
 
+    @Autowired
+    private lateinit var jdbcTemplate: JdbcTemplate
+
     @Test
-    fun testSave() {
+    fun testCreateBettingGame() {
         val community = Community(
                 id = null,
                 name = "Mah friends",
-                users = listOf(PersistenceUtils.createUser(testEntityManager)),
+                users = listOf(
+                        PersistenceUtils.createUser(testEntityManager),
+                        PersistenceUtils.createUser(testEntityManager, "2")
+                ),
                 created = null,
                 modified = null
         )
@@ -58,11 +66,43 @@ open class BettingGameServiceTest {
                 created = null
         )
 
-        bettingGameService.save(bettingGame)
+        bettingGameService.createBettingGame(bettingGame)
 
         Assert.assertEquals(
                 bettingGame,
-                testEntityManager.entityManager.createQuery("select bg from BettingGame bg", BettingGame::class.java).singleResult
+                testEntityManager.entityManager.createQuery("select bg from BettingGame bg", BettingGame::class.java).singleResult)
+
+
+        val standings = with(testEntityManager.entityManager.createQuery("select s from Standing s where s.bettingGame = :bettingGame", Standing::class.java)) {
+            setParameter("bettingGame", bettingGame)
+            resultList
+        }
+
+        Assert.assertEquals(standings.size, 2)
+
+        Assert.assertEquals(
+                listOf(Standing(
+                        id = standings[0].id,
+                        points = 0,
+                        exactBets = 0,
+                        goalDifferenceBets = 0,
+                        winnerBets = 0,
+                        wrongBets = 0,
+                        missedBets = 0,
+                        user = community.users[0],
+                        bettingGame = bettingGame
+                ), Standing(
+                        id = standings[1].id,
+                        points = 0,
+                        exactBets = 0,
+                        goalDifferenceBets = 0,
+                        winnerBets = 0,
+                        wrongBets = 0,
+                        missedBets = 0,
+                        user = community.users[1],
+                        bettingGame = bettingGame
+                )),
+                standings
         )
     }
 }

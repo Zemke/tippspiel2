@@ -1,6 +1,7 @@
 package com.github.zemke.tippspiel2.persistence.model
 
 import javax.persistence.Entity
+import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.ManyToOne
 import javax.validation.constraints.Min
@@ -9,7 +10,7 @@ import javax.validation.constraints.NotNull
 @Entity
 data class Standing(
 
-        @Id val id: Long,
+        @Id @GeneratedValue val id: Long?,
         @Min(0) @NotNull val points: Int = 0,
         @Min(0) @NotNull val exactBets: Int = 0,
         @Min(0) @NotNull val goalDifferenceBets: Int = 0,

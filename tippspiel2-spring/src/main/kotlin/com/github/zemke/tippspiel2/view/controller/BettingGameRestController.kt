@@ -38,6 +38,6 @@ class BettingGameRestController {
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(BettingGameDto.toDto(bettingGameService.save(bettingGame)))
+                .body(BettingGameDto.toDto(bettingGameService.createBettingGame(bettingGame)))
     }
 }
