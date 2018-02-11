@@ -3,6 +3,7 @@ package com.github.zemke.tippspiel2.service
 import com.github.zemke.tippspiel2.persistence.model.Community
 import com.github.zemke.tippspiel2.persistence.model.User
 import com.github.zemke.tippspiel2.test.util.EmbeddedPostgresDataJpaTest
+import com.github.zemke.tippspiel2.test.util.PersistenceUtils
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -27,7 +28,7 @@ open class CommunityServiceTest {
         val community = Community(
                 id = null,
                 name = "World Cup",
-                users = listOf(testEntityManager.find(User::class.java, 1L)),
+                users = listOf(PersistenceUtils.createUser(testEntityManager)),
                 created = null,
                 modified = null
         )
