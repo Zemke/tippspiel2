@@ -21,7 +21,7 @@ data class FootballDataCompetitionDto(
 
     companion object {
 
-        fun map(dto: FootballDataCompetitionDto): Competition = Competition(
+        fun fromDto(dto: FootballDataCompetitionDto): Competition = Competition(
                 id = dto.id,
                 caption = dto.caption,
                 league = dto.league,

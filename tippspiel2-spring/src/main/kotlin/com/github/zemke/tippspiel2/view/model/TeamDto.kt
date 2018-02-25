@@ -13,11 +13,11 @@ data class TeamDto(
 
     companion object {
 
-        fun map(team: Team): TeamDto = TeamDto(
+        fun toDto(team: Team): TeamDto = TeamDto(
                 team.id,
                 team.name,
                 team.squadMarketValue,
-                CompetitionDto.map(team.competition)
+                CompetitionDto.toDto(team.competition)
         )
     }
 }

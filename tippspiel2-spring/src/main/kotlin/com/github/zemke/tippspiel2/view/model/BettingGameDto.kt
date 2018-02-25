@@ -17,7 +17,7 @@ data class BettingGameDto(
                 id = bettingGame.id!!,
                 name = bettingGame.name,
                 community = CommunityDto.toDto(bettingGame.community),
-                competition = CompetitionDto.map(bettingGame.competition),
+                competition = CompetitionDto.toDto(bettingGame.competition),
                 created = bettingGame.created!!
         )
     }

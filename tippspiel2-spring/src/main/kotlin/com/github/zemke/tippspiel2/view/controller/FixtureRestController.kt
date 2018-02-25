@@ -27,10 +27,10 @@ class FixtureRestController(
         val fixtureWrappedListDto = footballDataService.requestFixtures(competitionId)
         val teamWrappedListDto = footballDataService.requestTeams(competitionId)
 
-        val competition = FootballDataCompetitionDto.map(competitionDto)
-        val teams = teamWrappedListDto.teams.map { FootballDataTeamDto.map(it, competition) }
-        val fixtures = fixtureWrappedListDto.fixtures.map { FootballDataFixtureDto.map(it, teams, competition) }
+        val competition = FootballDataCompetitionDto.fromDto(competitionDto)
+        val teams = teamWrappedListDto.teams.map { FootballDataTeamDto.fromDto(it, competition) }
+        val fixtures = fixtureWrappedListDto.fixtures.map { FootballDataFixtureDto.fromDto(it, teams, competition) }
 
-        return ResponseEntity.status(HttpStatus.CREATED).body((fixtureService.saveMany(fixtures).map { FixtureDto.map(it) }))
+        return ResponseEntity.status(HttpStatus.CREATED).body((fixtureService.saveMany(fixtures).map { FixtureDto.toDto(it) }))
     }
 }

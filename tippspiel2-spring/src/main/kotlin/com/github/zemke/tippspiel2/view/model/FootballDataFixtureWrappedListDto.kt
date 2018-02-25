@@ -31,7 +31,7 @@ data class FootballDataFixtureDto(
 ) {
     companion object {
 
-        fun map(dto: FootballDataFixtureDto, teams: List<Team>, competition: Competition): Fixture = Fixture(
+        fun fromDto(dto: FootballDataFixtureDto, teams: List<Team>, competition: Competition): Fixture = Fixture(
                 id = dto.id,
                 date = Timestamp(dto.date?.time!!),
                 status = dto.status,

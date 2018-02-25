@@ -19,7 +19,7 @@ data class CompetitionDto(
 
     companion object {
 
-        fun map(competition: Competition): CompetitionDto = CompetitionDto(
+        fun toDto(competition: Competition): CompetitionDto = CompetitionDto(
                 competition.id,
                 competition.caption,
                 competition.league,
