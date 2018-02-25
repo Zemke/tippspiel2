@@ -22,16 +22,15 @@ data class FootballDataCompetitionDto(
     companion object {
 
         fun map(dto: FootballDataCompetitionDto): Competition = Competition(
-                dto.id,
-                dto.caption,
-                dto.league,
-                dto.year,
-                dto.currentMatchday,
-                dto.numberOfMatchdays,
-                dto.numberOfTeams,
-                dto.numberOfGames,
-                Timestamp(dto.lastUpdated.time)
+                id = dto.id,
+                caption = dto.caption,
+                league = dto.league,
+                year = dto.year,
+                currentMatchday = dto.currentMatchday,
+                numberOfMatchdays = dto.numberOfMatchdays,
+                numberOfTeams = dto.numberOfTeams,
+                numberOfGames = dto.numberOfGames,
+                lastUpdated = Timestamp(dto.lastUpdated.time)
         )
-
     }
 }

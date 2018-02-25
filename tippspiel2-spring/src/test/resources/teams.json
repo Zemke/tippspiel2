@@ -1,49 +1,19 @@
 {
-  "_links": {
-    "self": {
-      "href": "http://api.football-data.org/v1/competitions/467/teams"
-    },
-    "competition": {
-      "href": "http://api.football-data.org/v1/competitions/467"
-    }
-  },
-  "count": 2,
-  "teams": [
-    {
-      "_links": {
-        "self": {
-          "href": "http://api.football-data.org/v1/teams/808"
-        },
-        "fixtures": {
-          "href": "http://api.football-data.org/v1/teams/808/fixtures"
-        },
-        "players": {
-          "href": "http://api.football-data.org/v1/teams/808/players"
-        }
+   "count": 2,
+   "teams": [
+      {
+         "name": "Russia",
+         "squadMarketValue": null,
+         "id": 808,
+         "crestUrl": "https://upload.wikimedia.org/wikipedia/en/f/f3/Flag_of_Russia.svg",
+         "shortName": null
       },
-      "name": "Russia",
-      "code": "RUS",
-      "shortName": null,
-      "squadMarketValue": null,
-      "crestUrl": "https://upload.wikimedia.org/wikipedia/en/f/f3/Flag_of_Russia.svg"
-    },
-    {
-      "_links": {
-        "self": {
-          "href": "http://api.football-data.org/v1/teams/801"
-        },
-        "fixtures": {
-          "href": "http://api.football-data.org/v1/teams/801/fixtures"
-        },
-        "players": {
-          "href": "http://api.football-data.org/v1/teams/801/players"
-        }
-      },
-      "name": "Saudi Arabia",
-      "code": null,
-      "shortName": null,
-      "squadMarketValue": null,
-      "crestUrl": null
-    }
-  ]
+      {
+         "crestUrl": null,
+         "shortName": null,
+         "id": 801,
+         "squadMarketValue": null,
+         "name": "Saudi Arabia"
+      }
+   ]
 }

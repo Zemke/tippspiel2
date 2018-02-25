@@ -19,7 +19,6 @@ import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import org.mockito.Spy
 import org.mockito.runners.MockitoJUnitRunner
-import org.springframework.hateoas.Resource
 import org.springframework.web.client.RestTemplate
 
 @RunWith(MockitoJUnitRunner::class)
@@ -63,23 +62,31 @@ class FootballDataServiceImplTest {
 
         Assert.assertEquals(
                 footballDataServiceImpl.requestFixtures(1),
-                FootballDataFixtureWrappedListDto(2, listOf(Resource(FootballDataFixtureDto(
+                FootballDataFixtureWrappedListDto(2, listOf(FootballDataFixtureDto(
                         date = JacksonUtils.toDate("2018-06-14T15:00:00Z"),
-                        status = FixtureStatus.TIMED,
                         matchday = 1,
+                        competitionId = 467,
+                        status = FixtureStatus.TIMED,
+                        odds = null,
+                        id = 165069,
                         homeTeamName = "Russia",
                         awayTeamName = "Saudi Arabia",
-                        result = FootballDataFixtureResultDto(null, null),
-                        odds = null
-                )), Resource(FootballDataFixtureDto(
+                        awayTeamId = 801,
+                        homeTeamId = 808,
+                        result = FootballDataFixtureResultDto(null, null)
+                ), FootballDataFixtureDto(
+                        homeTeamId = 825,
                         date = JacksonUtils.toDate("2018-06-15T12:00:00Z"),
-                        status = FixtureStatus.TIMED,
                         matchday = 1,
+                        competitionId = 467,
+                        id = 165084,
+                        odds = null,
+                        status = FixtureStatus.TIMED,
                         homeTeamName = "Egypt",
                         awayTeamName = "Uruguay",
-                        result = FootballDataFixtureResultDto(null, null),
-                        odds = null
-                )))))
+                        awayTeamId = 758,
+                        result = FootballDataFixtureResultDto(null, null)
+                ))))
     }
 
     @Test
@@ -90,19 +97,19 @@ class FootballDataServiceImplTest {
 
         Assert.assertEquals(
                 footballDataServiceImpl.requestTeams(1),
-                FootballDataTeamWrappedListDto(2, listOf(Resource(FootballDataTeamDto(
+                FootballDataTeamWrappedListDto(2, listOf(FootballDataTeamDto(
                         name = "Russia",
-                        code = "RUS",
-                        shortName = null,
                         squadMarketValue = null,
-                        crestUrl = "https://upload.wikimedia.org/wikipedia/en/f/f3/Flag_of_Russia.svg"
-                )), Resource(FootballDataTeamDto(
-                        name = "Saudi Arabia",
-                        code = null,
+                        id = 808,
+                        crestUrl = "https://upload.wikimedia.org/wikipedia/en/f/f3/Flag_of_Russia.svg",
+                        shortName = null
+                ), FootballDataTeamDto(
+                        crestUrl = null,
                         shortName = null,
+                        id = 801,
                         squadMarketValue = null,
-                        crestUrl = null
-                )))))
+                        name = "Saudi Arabia"
+                ))))
     }
 
     private inline fun <reified T : Any> mockRequestResponse(responseFile: String) {

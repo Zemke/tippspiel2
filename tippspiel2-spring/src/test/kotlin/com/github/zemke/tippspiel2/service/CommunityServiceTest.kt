@@ -1,7 +1,6 @@
 package com.github.zemke.tippspiel2.service
 
 import com.github.zemke.tippspiel2.persistence.model.Community
-import com.github.zemke.tippspiel2.persistence.model.User
 import com.github.zemke.tippspiel2.test.util.EmbeddedPostgresDataJpaTest
 import com.github.zemke.tippspiel2.test.util.PersistenceUtils
 import org.junit.Assert

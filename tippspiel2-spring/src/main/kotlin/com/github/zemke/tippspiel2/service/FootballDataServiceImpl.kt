@@ -10,8 +10,6 @@ import com.github.zemke.tippspiel2.view.model.FootballDataTeamWrappedListDto
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.devtools.remote.client.HttpHeaderInterceptor
 import org.springframework.boot.web.client.RestTemplateBuilder
-import org.springframework.hateoas.MediaTypes
-import org.springframework.hateoas.hal.Jackson2HalModule
 import org.springframework.http.MediaType
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
 import org.springframework.stereotype.Service
@@ -31,13 +29,15 @@ open class FootballDataServiceImpl : FootballDataService {
     fun postConstruct() {
         restTemplate = RestTemplateBuilder()
                 .interceptors(
-                        listOf(HttpHeaderInterceptor(footballDataProperties.apiTokenHeader, footballDataProperties.apiToken)))
+                        listOf(
+                                HttpHeaderInterceptor(footballDataProperties.apiTokenHeader, footballDataProperties.apiToken),
+                                HttpHeaderInterceptor("X-Response-Control", "minified")
+                        ))
                 .messageConverters(
                         with(MappingJackson2HttpMessageConverter()) {
-                            supportedMediaTypes = listOf(MediaTypes.HAL_JSON, MediaType.APPLICATION_JSON)
+                            supportedMediaTypes = listOf(MediaType.APPLICATION_JSON)
                             objectMapper = with(ObjectMapper()) {
                                 configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-                                registerModule(Jackson2HalModule())
                                 setDateFormat(SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Zw'"))
                             }
                             this
