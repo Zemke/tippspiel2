@@ -13,4 +13,6 @@ class FixtureService(
     fun saveMany(fixtures: List<Fixture>): MutableList<Fixture> {
         return fixtureRepository.save(fixtures)
     }
+
+    fun getById(fixtureId: Long): Fixture? = fixtureRepository.findOne(fixtureId)
 }

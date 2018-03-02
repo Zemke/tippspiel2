@@ -4,6 +4,7 @@ import org.hibernate.annotations.UpdateTimestamp
 import org.hibernate.validator.constraints.Range
 import java.sql.Timestamp
 import javax.persistence.Entity
+import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.ManyToOne
 import javax.validation.constraints.NotNull
@@ -11,7 +12,7 @@ import javax.validation.constraints.NotNull
 @Entity
 data class Bet(
 
-        @Id val id: Long,
+        @Id @GeneratedValue val id: Long?,
         @Range(min = 0, max = 20) val goalsHomeTeamBet: Int,
         @Range(min = 0, max = 20) val goalsAwayTeamBet: Int,
         @ManyToOne(optional = false) val fixture: Fixture,

@@ -28,4 +28,6 @@ class UserService(
     fun findUsers(users: List<Long>): List<User> {
         return userRepository.findAll(users)
     }
+
+    fun findUserByEmail(email: String): User? = userRepository.findByEmail(email)
 }
