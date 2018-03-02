@@ -45,7 +45,7 @@ open class BetServiceTest {
                 bettingGame = bettingGame
         )
 
-        val actualBetEntity = betService.save(unmanagedBetEntity)
+        val actualBetEntity = betService.save(unmanagedBetEntity.copy())
         val expectedBetEntity = unmanagedBetEntity.copy(id = actualBetEntity!!.id)
 
         Assert.assertEquals(actualBetEntity, expectedBetEntity)
