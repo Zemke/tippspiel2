@@ -10,7 +10,7 @@ class FixtureService(
         @Autowired private var fixtureRepository: FixtureRepository
 ) {
 
-    fun saveMany(fixtures: List<Fixture>): MutableList<Fixture> {
+    fun saveMany(fixtures: List<Fixture>): List<Fixture> {
         return fixtureRepository.save(fixtures)
     }
 
