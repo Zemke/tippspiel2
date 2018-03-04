@@ -24,16 +24,12 @@ open class BetServiceTest {
 
     @Test
     fun testSave() {
-        val competition = testEntityManager.persistAndFlush(PersistenceUtils.instantiateCompetition())
+        val user = PersistenceUtils.createUser(testEntityManager)
+        val bettingGame = PersistenceUtils.createBettingGame(testEntityManager, listOf(user))
         testEntityManager.persistAndFlush(PersistenceUtils.instantiateTeam())
         testEntityManager.persistAndFlush(PersistenceUtils.instantiateTeam()
                 .copy(id = 2))
         val fixture = testEntityManager.persistFlushFind(PersistenceUtils.instantiateFixture())
-        val user = PersistenceUtils.createUser(testEntityManager)
-        val community = testEntityManager.persistFlushFind(PersistenceUtils.instantiateCommunity()
-                .copy(users = listOf(user)))
-        val bettingGame = testEntityManager.persistFlushFind(PersistenceUtils.instantiateBettingGame()
-                .copy(competition = competition, community = community))
 
         val unmanagedBetEntity = Bet(
                 id = null,

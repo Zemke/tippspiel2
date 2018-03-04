@@ -1,5 +1,6 @@
 package com.github.zemke.tippspiel2.test.util
 
+import com.github.zemke.tippspiel2.persistence.model.Bet
 import com.github.zemke.tippspiel2.persistence.model.BettingGame
 import com.github.zemke.tippspiel2.persistence.model.Community
 import com.github.zemke.tippspiel2.persistence.model.Competition
@@ -16,10 +17,15 @@ import java.util.*
 object PersistenceUtils {
 
     /**
-     * Create a John Doe with his attributes appended with {@code appendToAttribute} to distinguish multiple John Does. :)
+     * Create a John Doe with his attributes appended with `appendToAttribute` to distinguish multiple John Does. :)
      */
     fun createUser(testEntityManager: TestEntityManager, appendToAttribute: String = "1"): User =
             testEntityManager.persist(instantiateUser(appendToAttribute))
+
+    fun createBettingGame(testEntityManager: TestEntityManager, communityUsers: List<User>): BettingGame =
+            testEntityManager.persistAndFlush(instantiateBettingGame().copy(
+                    competition = testEntityManager.persistAndFlush(instantiateCompetition()),
+                    community = testEntityManager.persistAndFlush(instantiateCommunity().copy(users = communityUsers))))
 
     private fun instantiateUser(appendToAttribute: String = "1"): User =
             User(
@@ -78,6 +84,17 @@ object PersistenceUtils {
                     competition = instantiateCompetition(),
                     community = instantiateCommunity(),
                     created = now()
+            )
+
+    fun instantiateBet(): Bet =
+            Bet(
+                    id = null,
+                    user = instantiateUser(),
+                    modified = now(),
+                    bettingGame = instantiateBettingGame(),
+                    goalsHomeTeamBet = 1,
+                    goalsAwayTeamBet = 1,
+                    fixture = instantiateFixture()
             )
 
     fun now() = Timestamp(Date().time)
