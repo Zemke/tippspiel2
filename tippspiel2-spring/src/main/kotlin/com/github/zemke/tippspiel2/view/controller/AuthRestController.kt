@@ -6,7 +6,6 @@ import com.github.zemke.tippspiel2.view.model.AuthenticationRequestDto
 import com.github.zemke.tippspiel2.view.model.JsonWebTokenDto
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
-import org.springframework.mobile.device.Device
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.AuthenticationException
@@ -34,7 +33,7 @@ class AuthRestController(@Autowired private val jsonWebTokenService: JsonWebToke
     @PostMapping("")
     @Throws(AuthenticationException::class)
     fun createAuthenticationToken(
-            @RequestBody authenticationRequestDto: AuthenticationRequestDto, device: Device): ResponseEntity<JsonWebTokenDto> {
+            @RequestBody authenticationRequestDto: AuthenticationRequestDto): ResponseEntity<JsonWebTokenDto> {
         val authentication = authenticationManager.authenticate(
                 UsernamePasswordAuthenticationToken(
                         authenticationRequestDto.username,
@@ -45,7 +44,7 @@ class AuthRestController(@Autowired private val jsonWebTokenService: JsonWebToke
         SecurityContextHolder.getContext().authentication = authentication
 
         val userDetails = userDetailsService.loadUserByUsername(authenticationRequestDto.username)
-        val token = jsonWebTokenService.generateToken(userDetails, device)
+        val token = jsonWebTokenService.generateToken(userDetails)
 
         return ResponseEntity.ok(JsonWebTokenDto(token))
     }

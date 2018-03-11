@@ -8,7 +8,6 @@ import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import io.jsonwebtoken.impl.DefaultClock
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.mobile.device.Device
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.stereotype.Component
 import java.util.*
@@ -49,9 +48,9 @@ class JsonWebTokenService(
                 && !isCreatedBeforeLastPasswordReset(created, user.lastPasswordResetDate))
     }
 
-    fun generateToken(userDetails: UserDetails, device: Device): String {
+    fun generateToken(userDetails: UserDetails): String {
         val claims = HashMap<String, Any>()
-        return doGenerateToken(claims, userDetails.username, generateAudience(device))
+        return doGenerateToken(claims, userDetails.username)
     }
 
     fun canTokenBeRefreshed(token: String, lastPasswordReset: Date): Boolean {
@@ -110,28 +109,18 @@ class JsonWebTokenService(
         return lastPasswordReset != null && created.before(lastPasswordReset)
     }
 
-    private fun generateAudience(device: Device): String {
-        return when {
-            device.isNormal -> AUDIENCE_WEB
-            device.isTablet -> AUDIENCE_TABLET
-            device.isMobile -> AUDIENCE_MOBILE
-            else -> AUDIENCE_UNKNOWN
-        }
-    }
-
     private fun ignoreTokenExpiration(token: String): Boolean {
         val audience = getAudienceFromToken(token)
         return AUDIENCE_TABLET == audience || AUDIENCE_MOBILE == audience
     }
 
-    private fun doGenerateToken(claims: Map<String, Any>, subject: String, audience: String): String {
+    private fun doGenerateToken(claims: Map<String, Any>, subject: String): String {
         val createdDate = clock.now()
         val expirationDate = calculateExpirationDate(createdDate)
 
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(subject)
-                .setAudience(audience)
                 .setIssuedAt(createdDate)
                 .setExpiration(expirationDate)
                 .setHeaderParam("typ", "JWT")

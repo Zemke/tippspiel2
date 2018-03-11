@@ -10,7 +10,7 @@ open class ChampionBetService(
         @Autowired private var championBetRepository: ChampionBetRepository
 ) {
 
-    fun find(championBetId: Long): ChampionBet = championBetRepository.findOne(championBetId)
+    fun find(championBetId: Long): ChampionBet = championBetRepository.getOne(championBetId)
 
     fun saveChampionBet(championBet: ChampionBet): ChampionBet = championBetRepository.save(championBet)
 }

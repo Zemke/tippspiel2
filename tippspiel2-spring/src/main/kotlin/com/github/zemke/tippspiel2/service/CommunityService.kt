@@ -11,5 +11,5 @@ class CommunityService(
 ) {
 
     fun save(community: Community): Community = communityRepository.save(community)
-    fun find(communityId: Long): Community = communityRepository.findOne(communityId)
+    fun find(communityId: Long): Community = communityRepository.getOne(communityId)
 }

@@ -1,6 +1,6 @@
 package com.github.zemke.tippspiel2.core.properties;
 
-import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
+import com.zaxxer.hikari.HikariConfig;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Primary
-@ConfigurationProperties("spring.datasource")
-public class EmbeddedDataSourceProperties extends DataSourceProperties {
+@ConfigurationProperties("spring.datasource.hikari")
+public class EmbeddedDataSourceProperties extends HikariConfig {
 
     /**
      * Location of embedded database.

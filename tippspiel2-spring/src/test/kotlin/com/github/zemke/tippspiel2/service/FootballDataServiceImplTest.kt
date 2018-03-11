@@ -10,15 +10,13 @@ import com.github.zemke.tippspiel2.view.model.FootballDataFixtureWrappedListDto
 import com.github.zemke.tippspiel2.view.model.FootballDataTeamDto
 import com.github.zemke.tippspiel2.view.model.FootballDataTeamWrappedListDto
 import org.junit.Assert
-import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito
-import org.mockito.MockitoAnnotations
 import org.mockito.Spy
-import org.mockito.runners.MockitoJUnitRunner
+import org.mockito.junit.MockitoJUnitRunner
 import org.springframework.web.client.RestTemplate
 
 @RunWith(MockitoJUnitRunner::class)
@@ -33,19 +31,6 @@ class FootballDataServiceImplTest {
     @InjectMocks
     @Spy
     private lateinit var footballDataServiceImpl: FootballDataServiceImpl
-
-    @Before
-    fun before() {
-        MockitoAnnotations.initMocks(this)
-
-        Mockito
-                .`when`(footballDataProperties.apiToken)
-                .thenReturn("mockApiToken")
-
-        Mockito
-                .`when`(footballDataProperties.apiTokenHeader)
-                .thenReturn("mockApiTokenHeader")
-    }
 
     @Test
     fun testRequestCompetition() {

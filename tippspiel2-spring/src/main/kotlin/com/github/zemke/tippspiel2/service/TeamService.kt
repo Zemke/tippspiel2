@@ -10,7 +10,7 @@ open class TeamService(
         @Autowired private var teamRepository: TeamRepository
 ) {
 
-    fun find(teamId: Long): Team = teamRepository.findOne(teamId)
+    fun find(teamId: Long): Team = teamRepository.getOne(teamId)
 
     fun createTeam(team: Team): Team = teamRepository.save(team)
 }

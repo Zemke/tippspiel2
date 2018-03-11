@@ -2,15 +2,14 @@ package com.github.zemke.tippspiel2.persistence.model
 
 import com.github.zemke.tippspiel2.persistence.model.embeddable.FullName
 import org.hibernate.annotations.CreationTimestamp
-import org.hibernate.validator.constraints.Email
 import java.sql.Timestamp
-import javax.persistence.CascadeType
 import javax.persistence.Embedded
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.ManyToMany
 import javax.persistence.Table
+import javax.validation.constraints.Email
 import javax.validation.constraints.NotNull
 import javax.validation.constraints.Size
 

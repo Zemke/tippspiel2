@@ -11,8 +11,8 @@ class FixtureService(
 ) {
 
     fun saveMany(fixtures: List<Fixture>): List<Fixture> {
-        return fixtureRepository.save(fixtures)
+        return fixtureRepository.saveAll(fixtures)
     }
 
-    fun getById(fixtureId: Long): Fixture? = fixtureRepository.findOne(fixtureId)
+    fun getById(fixtureId: Long): Fixture? = fixtureRepository.findById(fixtureId).orElse(null)
 }

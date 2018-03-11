@@ -2,16 +2,16 @@ package com.github.zemke.tippspiel2.core.config
 
 import com.github.zemke.tippspiel2.core.profile.Dev
 import com.github.zemke.tippspiel2.core.properties.EmbeddedDataSourceProperties
+import com.zaxxer.hikari.HikariDataSource
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder
 import org.springframework.boot.context.properties.ConfigurationProperties
+import org.springframework.boot.jdbc.DataSourceBuilder
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Primary
 import ru.yandex.qatools.embed.postgresql.EmbeddedPostgres
 import java.net.URI
 import java.nio.file.Paths
-import javax.sql.DataSource
 
 @Configuration
 open class DataSourceConfig {
@@ -20,18 +20,19 @@ open class DataSourceConfig {
     private lateinit var embeddedDataSourceProperties: EmbeddedDataSourceProperties
 
     @Bean
-    @ConfigurationProperties("spring.datasource")
+    @ConfigurationProperties("spring.datasource.hikari")
     @Primary
     @Dev
-    open fun embeddedPostgresDatabaseDataSource(): DataSource {
+    open fun embeddedPostgresDatabaseDataSource(): HikariDataSource {
         startEmbeddedPostgresDatabase()
         return DataSourceBuilder
                 .create()
+                .type(HikariDataSource::class.java)
                 .build();
     }
 
     private fun startEmbeddedPostgresDatabase() {
-        val uri = URI.create(embeddedDataSourceProperties.url.substring(5))
+        val uri = URI.create(embeddedDataSourceProperties.jdbcUrl.substring(5))
         EmbeddedPostgres { "9.1.0-1" }
                 .start(EmbeddedPostgres.cachedRuntimeConfig(
                         Paths.get(embeddedDataSourceProperties.embeddedDirectory)),

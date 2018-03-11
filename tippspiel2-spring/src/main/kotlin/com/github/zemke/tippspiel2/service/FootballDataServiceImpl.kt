@@ -17,7 +17,6 @@ import org.springframework.web.client.RestTemplate
 import java.text.SimpleDateFormat
 import javax.annotation.PostConstruct
 
-
 @Prod
 @Service
 open class FootballDataServiceImpl : FootballDataService {
@@ -54,6 +53,7 @@ open class FootballDataServiceImpl : FootballDataService {
     override fun requestTeams(competitionId: Long): FootballDataTeamWrappedListDto =
             fireQuery("/competitions/$competitionId/teams")
 
+    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     private inline fun <reified T : Any> fireQuery(absoluteApiPath: String): T =
             restTemplate.getForObject("${footballDataProperties.endpoint}$absoluteApiPath", T::class.java)
 }

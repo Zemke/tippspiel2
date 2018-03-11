@@ -1,10 +1,10 @@
 package com.github.zemke.tippspiel2.persistence.model
 
-import org.hibernate.validator.constraints.NotBlank
 import javax.persistence.CascadeType
 import javax.persistence.Entity
 import javax.persistence.Id
 import javax.persistence.ManyToOne
+import javax.validation.constraints.NotBlank
 
 @Entity
 data class Team(

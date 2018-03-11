@@ -22,11 +22,11 @@ class UserService(
     }
 
     fun getUser(id: Long): User? {
-        return userRepository.findOne(id)
+        return userRepository.getOne(id)
     }
 
     fun findUsers(users: List<Long>): List<User> {
-        return userRepository.findAll(users)
+        return userRepository.findAllById(users)
     }
 
     fun findUserByEmail(email: String): User? = userRepository.findByEmail(email)

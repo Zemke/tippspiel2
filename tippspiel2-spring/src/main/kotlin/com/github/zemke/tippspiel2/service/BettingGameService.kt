@@ -14,12 +14,12 @@ open class BettingGameService(
         @Autowired private var standingRepository: StandingRepository
 ) {
 
-    fun find(bettingGameId: Long): BettingGame = bettingGameRepository.findOne(bettingGameId)
+    fun find(bettingGameId: Long): BettingGame = bettingGameRepository.getOne(bettingGameId)
 
     @Transactional
     open fun createBettingGame(bettingGame: BettingGame): BettingGame {
         bettingGameRepository.save(bettingGame)
-        standingRepository.save(bettingGame.community.users.map {
+        standingRepository.saveAll(bettingGame.community.users.map {
             Standing(
                     id = null,
                     points = 0,
