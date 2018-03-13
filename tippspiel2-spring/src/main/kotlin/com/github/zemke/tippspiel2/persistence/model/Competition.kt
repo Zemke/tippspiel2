@@ -23,5 +23,9 @@ data class Competition(
         @Min(1) val numberOfMatchdays: Int,
         @Min(2) val numberOfTeams: Int,
         @Min(1) val numberOfGames: Int,
-        @NotNull val lastUpdated: Timestamp
+        @NotNull val lastUpdated: Timestamp,
+        /**
+         * Currently only one competition can be played at a time.
+         */
+        var current: Boolean = false
 )

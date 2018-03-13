@@ -9,5 +9,8 @@ import org.springframework.stereotype.Service
 class CompetitionService(
         @Autowired private var competitionRepository: CompetitionRepository
 ) {
+
     fun find(competitionId: Long): Competition = competitionRepository.getOne(competitionId)
+
+    fun findByCurrentTrue(): Competition? = competitionRepository.findByCurrentTrue()
 }

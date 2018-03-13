@@ -24,6 +24,11 @@ public class FootballDataProperties {
      */
     private String endpoint;
 
+    /**
+     * Milliseconds between polling of endpoint.
+     */
+    private Long fixedDelay = 60000L;
+
     public String getApiToken() {
         return apiToken;
     }
@@ -46,5 +51,13 @@ public class FootballDataProperties {
 
     public void setEndpoint(String endpoint) {
         this.endpoint = endpoint;
+    }
+
+    public Long getFixedDelay() {
+        return fixedDelay;
+    }
+
+    public void setFixedDelay(Long fixedDelay) {
+        this.fixedDelay = fixedDelay;
     }
 }
