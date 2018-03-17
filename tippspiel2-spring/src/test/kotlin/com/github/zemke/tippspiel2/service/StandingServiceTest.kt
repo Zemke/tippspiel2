@@ -3,6 +3,7 @@ package com.github.zemke.tippspiel2.service
 import com.github.zemke.tippspiel2.persistence.model.Competition
 import com.github.zemke.tippspiel2.persistence.model.Standing
 import com.github.zemke.tippspiel2.persistence.model.Team
+import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
 import com.github.zemke.tippspiel2.test.util.EmbeddedPostgresDataJpaTest
 import com.github.zemke.tippspiel2.test.util.PersistenceUtils
 import org.junit.Assert
@@ -38,19 +39,22 @@ open class StandingServiceTest {
                         goalsHomeTeam = 2,
                         goalsAwayTeam = 0,
                         homeTeam = teams[0],
-                        awayTeam = teams[1])),
+                        awayTeam = teams[1],
+                        status = FixtureStatus.FINISHED)),
                 testEntityManager.persistAndFlush(PersistenceUtils.instantiateFixture().copy(
                         competition = bettingGame.competition,
                         goalsHomeTeam = 2,
                         goalsAwayTeam = 1,
                         homeTeam = teams[2],
-                        awayTeam = teams[3])),
+                        awayTeam = teams[3],
+                        status = FixtureStatus.FINISHED)),
                 testEntityManager.persistAndFlush(PersistenceUtils.instantiateFixture().copy(
                         competition = bettingGame.competition,
                         goalsHomeTeam = 1,
                         goalsAwayTeam = 1,
                         homeTeam = teams[4],
-                        awayTeam = teams[5]))
+                        awayTeam = teams[5],
+                        status = FixtureStatus.FINISHED))
         )
 
         val bets = listOf(
@@ -101,7 +105,7 @@ open class StandingServiceTest {
                 testEntityManager.persistAndFlush(Standing(id = null, user = user1, bettingGame = bettingGame)),
                 testEntityManager.persistAndFlush(Standing(id = null, user = user2, bettingGame = bettingGame)))
 
-        val standingsActual = standingService.updateStandings()
+        val standingsActual = standingService.updateStandings(bettingGame.competition)
 
         Assert.assertEquals(
                 listOf(

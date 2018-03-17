@@ -43,7 +43,8 @@ object PersistenceUtils {
                     numberOfGames = 1,
                     numberOfMatchdays = 1,
                     numberOfTeams = 1,
-                    year = "2018"
+                    year = "2018",
+                    current = true
             )
 
     fun instantiateTeam(): Team =

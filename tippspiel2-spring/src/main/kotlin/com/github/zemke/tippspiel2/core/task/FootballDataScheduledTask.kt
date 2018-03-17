@@ -33,8 +33,8 @@ open class FootballDataScheduledTask {
     @Scheduled(fixedDelayString = "\${tippspiel2.football-data.fixed-delay}")
     @Transactional
     open fun exec() {
-        val competition = competitionService.findByCurrentTrue()
-        val fixturesToUpdate = fixtureService.findFixturesByCompetitionAndManualFalse(competition!!)
+        val competition = competitionService.findByCurrentTrue() ?: return
+        val fixturesToUpdate = fixtureService.findFixturesByCompetitionAndManualFalse(competition)
         val teamsToBeAffectedByUpdate = fixturesToUpdate.fold(arrayListOf()) { acc: ArrayList<Team>, fixture: Fixture ->
             with(acc) { addAll(listOf(fixture.homeTeam, fixture.awayTeam)); this }
         }
@@ -45,7 +45,7 @@ open class FootballDataScheduledTask {
 
         if (fixturesToSave.isNotEmpty()) {
             fixtureService.saveMany(fixturesToSave)
-            standingService.updateStandings()
+            standingService.updateStandings(competition)
         }
     }
 }

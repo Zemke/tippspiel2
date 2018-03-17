@@ -1,6 +1,8 @@
 package com.github.zemke.tippspiel2.service
 
+import com.github.zemke.tippspiel2.persistence.model.Competition
 import com.github.zemke.tippspiel2.persistence.model.Standing
+import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
 import com.github.zemke.tippspiel2.persistence.repository.BetRepository
 import com.github.zemke.tippspiel2.persistence.repository.FixtureRepository
 import com.github.zemke.tippspiel2.persistence.repository.StandingRepository
@@ -16,7 +18,7 @@ open class StandingService(
 ) {
 
     /**
-     * Full calc of standings.
+     * Full calc of standings based on bets for given competition and [FixtureStatus.FINISHED] fixtures.
      *
      * There've been a few considerations regarding the reliability of the fixtures
      * which led to the following requirements:
@@ -27,21 +29,15 @@ open class StandingService(
      *
      * So this made me end up to just do a full re-calc every time.
      * There's probably no way to make it more reliably.
-     *
-     * TODO Do it per competition.
      */
     @Transactional
-    open fun updateStandings(): List<Standing> {
-        val bets = betRepository.findAll()
+    open fun updateStandings(competition: Competition): List<Standing> {
+        val bets = betRepository.findByCompetitionAndFixtureStatus(competition, FixtureStatus.FINISHED)
         val standings = standingRepository.findAll()
 
         bets.forEach {
             val standingOfUser = standings.find { standing -> standing.user == it.user }
-
-            if (standingOfUser == null) {
-                // TODO Logging.
-                return@forEach
-            }
+                    ?: return@forEach
 
             val pointsForBet = calcPoints(
                     it.goalsHomeTeamBet, it.goalsAwayTeamBet,
