@@ -19,7 +19,7 @@ import org.mockito.Spy
 import org.mockito.junit.MockitoJUnitRunner
 import org.springframework.web.client.RestTemplate
 
-@RunWith(MockitoJUnitRunner::class)
+@RunWith(MockitoJUnitRunner.StrictStubs::class)
 class FootballDataServiceImplTest {
 
     @Mock
@@ -78,7 +78,7 @@ class FootballDataServiceImplTest {
     fun testRequestTeams() {
         mockRequestResponse<FootballDataTeamWrappedListDto>("teams.json")
 
-        footballDataServiceImpl.requestTeams(1);
+        footballDataServiceImpl.requestTeams(1)
 
         Assert.assertEquals(
                 footballDataServiceImpl.requestTeams(1),

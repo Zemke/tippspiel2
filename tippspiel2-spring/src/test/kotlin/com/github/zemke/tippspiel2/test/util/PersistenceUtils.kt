@@ -27,7 +27,7 @@ object PersistenceUtils {
                     competition = testEntityManager.persistAndFlush(instantiateCompetition()),
                     community = testEntityManager.persistAndFlush(instantiateCommunity().copy(users = communityUsers))))
 
-    private fun instantiateUser(appendToAttribute: String = "1"): User =
+    fun instantiateUser(appendToAttribute: String = "1"): User =
             User(
                     fullName = FullName("Jon$appendToAttribute", "Doe$appendToAttribute"),
                     email = "jon@doe.com$appendToAttribute",
