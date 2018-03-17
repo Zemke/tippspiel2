@@ -10,5 +10,5 @@ open class BetService(
         @Autowired private var betRepository: BetRepository
 ) {
 
-    fun save(bet: Bet): Bet? = betRepository.save(bet)
+    fun save(bet: Bet): Bet = betRepository.save(bet)
 }

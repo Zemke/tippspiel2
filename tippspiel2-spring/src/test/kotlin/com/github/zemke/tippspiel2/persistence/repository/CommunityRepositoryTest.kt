@@ -1,6 +1,7 @@
-package com.github.zemke.tippspiel2.service
+package com.github.zemke.tippspiel2.persistence.repository
 
 import com.github.zemke.tippspiel2.persistence.model.Community
+import com.github.zemke.tippspiel2.persistence.repository.CommunityRepository
 import com.github.zemke.tippspiel2.test.util.EmbeddedPostgresDataJpaTest
 import com.github.zemke.tippspiel2.test.util.PersistenceUtils
 import org.junit.Assert
@@ -8,16 +9,14 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager
-import org.springframework.context.annotation.Import
 import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(SpringRunner::class)
 @EmbeddedPostgresDataJpaTest
-@Import(CommunityService::class)
-open class CommunityServiceTest {
+open class CommunityRepositoryTest {
 
     @Autowired
-    private lateinit var communityService: CommunityService
+    private lateinit var communityRepository: CommunityRepository
 
     @Autowired
     private lateinit var testEntityManager: TestEntityManager
@@ -32,7 +31,7 @@ open class CommunityServiceTest {
                 modified = null
         )
 
-        communityService.save(community)
+        communityRepository.save(community)
 
         Assert.assertEquals(
                 community,

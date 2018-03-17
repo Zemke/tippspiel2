@@ -1,4 +1,4 @@
-package com.github.zemke.tippspiel2.service
+package com.github.zemke.tippspiel2.persistence.repository
 
 import com.github.zemke.tippspiel2.persistence.model.Bet
 import com.github.zemke.tippspiel2.test.util.EmbeddedPostgresDataJpaTest
@@ -8,16 +8,14 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager
-import org.springframework.context.annotation.Import
 import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(SpringRunner::class)
 @EmbeddedPostgresDataJpaTest
-@Import(BetService::class)
-open class BetServiceTest {
+open class BetRepositoryTest {
 
     @Autowired
-    private lateinit var betService: BetService
+    private lateinit var betRepository: BetRepository
 
     @Autowired
     private lateinit var testEntityManager: TestEntityManager
@@ -41,8 +39,8 @@ open class BetServiceTest {
                 bettingGame = bettingGame
         )
 
-        val actualBetEntity = betService.save(unmanagedBetEntity.copy())
-        val expectedBetEntity = unmanagedBetEntity.copy(id = actualBetEntity!!.id)
+        val actualBetEntity = betRepository.save(unmanagedBetEntity.copy())
+        val expectedBetEntity = unmanagedBetEntity.copy(id = actualBetEntity.id)
 
         Assert.assertEquals(actualBetEntity, expectedBetEntity)
     }

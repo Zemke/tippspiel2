@@ -1,4 +1,4 @@
-package com.github.zemke.tippspiel2.service
+package com.github.zemke.tippspiel2.persistence.repository
 
 import com.github.zemke.tippspiel2.persistence.model.Competition
 import com.github.zemke.tippspiel2.persistence.model.Fixture
@@ -11,24 +11,22 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager
-import org.springframework.context.annotation.Import
 import org.springframework.test.context.junit4.SpringRunner
 import java.sql.Timestamp
 import java.util.*
 
 @RunWith(SpringRunner::class)
 @EmbeddedPostgresDataJpaTest
-@Import(FixtureService::class)
-open class FixtureServiceTest {
+open class FixtureRepositoryTest {
 
     @Autowired
-    private lateinit var fixtureService: FixtureService
+    private lateinit var fixtureRepository: FixtureRepository
 
     @Autowired
     private lateinit var testEntityManager: TestEntityManager
 
     @Test
-    fun testSaveMany() {
+    fun testSaveAll() {
         val competition = Competition(
                 id = 1,
                 caption = "World Cup 2018 Russia",
@@ -84,8 +82,8 @@ open class FixtureServiceTest {
                         ),
                         competition = competition)
         )
+        fixtureRepository.saveAll(fixturesToPersist)
 
-        fixtureService.saveMany(fixturesToPersist)
         val persistedFixtures = testEntityManager.entityManager.createQuery("select f from Fixture f", Fixture::class.java).resultList
         Assert.assertArrayEquals(fixturesToPersist.toTypedArray(), persistedFixtures.toTypedArray())
     }

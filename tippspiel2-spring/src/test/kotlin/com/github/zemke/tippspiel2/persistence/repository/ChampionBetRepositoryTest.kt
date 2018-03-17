@@ -1,31 +1,27 @@
-package com.github.zemke.tippspiel2.service
+package com.github.zemke.tippspiel2.persistence.repository
 
 import com.github.zemke.tippspiel2.persistence.model.ChampionBet
 import com.github.zemke.tippspiel2.test.util.EmbeddedPostgresDataJpaTest
 import com.github.zemke.tippspiel2.test.util.PersistenceUtils
 import org.junit.Assert
 import org.junit.Test
-
-import org.junit.Assert.*
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager
-import org.springframework.context.annotation.Import
 import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(SpringRunner::class)
 @EmbeddedPostgresDataJpaTest
-@Import(ChampionBetService::class)
-open class ChampionBetServiceTest {
+open class ChampionBetRepositoryTest {
 
     @Autowired
-    private lateinit var championBetService: ChampionBetService
+    private lateinit var championBetRepository: ChampionBetRepository
 
     @Autowired
     private lateinit var testEntityManager: TestEntityManager
 
     @Test
-    fun testSaveChampionBet() {
+    fun testSave() {
         val user = PersistenceUtils.createUser(testEntityManager)
         val community = testEntityManager.persistAndFlush(PersistenceUtils.instantiateCommunity()
                 .copy(users = listOf(user)))
@@ -43,7 +39,7 @@ open class ChampionBetServiceTest {
                 user = user
         )
 
-        val actualEntity = championBetService.saveChampionBet(unmanagedEntity.copy())
+        val actualEntity = championBetRepository.save(unmanagedEntity.copy())
         val expectedEntity = unmanagedEntity.copy(id = actualEntity.id)
 
         Assert.assertEquals(actualEntity, expectedEntity)
