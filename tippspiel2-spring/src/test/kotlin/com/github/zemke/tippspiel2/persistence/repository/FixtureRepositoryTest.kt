@@ -82,9 +82,10 @@ open class FixtureRepositoryTest {
                         ),
                         competition = competition)
         )
-        fixtureRepository.saveAll(fixturesToPersist)
 
+        val managedFixturesToPersist = fixtureRepository.saveAll(fixturesToPersist)
         val persistedFixtures = testEntityManager.entityManager.createQuery("select f from Fixture f", Fixture::class.java).resultList
-        Assert.assertArrayEquals(fixturesToPersist.toTypedArray(), persistedFixtures.toTypedArray())
+
+        Assert.assertArrayEquals(managedFixturesToPersist.toTypedArray(), persistedFixtures.toTypedArray())
     }
 }
