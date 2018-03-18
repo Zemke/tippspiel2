@@ -29,6 +29,7 @@ data class FootballDataFixtureDto(
         @JsonProperty("awayTeamId") var awayTeamId: Long,
         @JsonProperty("competitionId") var competitionId: Long
 ) {
+
     companion object {
 
         fun fromDto(dto: FootballDataFixtureDto, teams: List<Team>, competition: Competition): Fixture = Fixture(
@@ -43,6 +44,21 @@ data class FootballDataFixtureDto(
                 awayTeam = teams.find { it.id == dto.awayTeamId }!!,
                 competition = competition
         )
+
+        fun toDto(fixture: Fixture): FootballDataFixtureDto =
+                FootballDataFixtureDto(
+                        id = fixture.id!!,
+                        homeTeamName = fixture.homeTeam.name,
+                        awayTeamName = fixture.awayTeam.name,
+                        result = FootballDataFixtureResultDto(fixture.goalsHomeTeam, fixture.goalsAwayTeam),
+                        matchday = fixture.matchday,
+                        status = fixture.status,
+                        date = fixture.date,
+                        odds = fixture.odds,
+                        homeTeamId = fixture.homeTeam.id,
+                        awayTeamId = fixture.awayTeam.id,
+                        competitionId = fixture.competition.id
+                )
     }
 }
 
