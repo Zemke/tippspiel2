@@ -7,6 +7,10 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('standings');
+  this.route('games');
+  this.route('sign-up');
+  this.route('sign-in');
 });
 
 export default Router;

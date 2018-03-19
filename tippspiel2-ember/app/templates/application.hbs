@@ -1,5 +1,42 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      {{#link-to "index" class="navbar-item"}}
+        <strong>Tippspiel2</strong>
+      {{/link-to}}
 
-{{outlet}}
+      <div class="navbar-burger">
+        {{#link-to "standings"}}
+          Standings
+        {{/link-to}}
+        {{#link-to "games"}}
+          Games
+        {{/link-to}}
+      </div>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start">
+        {{#link-to "standings" class="navbar-item"}}
+          Standings
+        {{/link-to}}
+        {{#link-to "games" class="navbar-item"}}
+          Games
+        {{/link-to}}
+      </div>
+      <div class="navbar-end">
+        {{#link-to "sign-up" class="navbar-item"}}
+          Sign Up
+        {{/link-to}}
+        {{#link-to "sign-in" class="navbar-item"}}
+          Sign In
+        {{/link-to}}
+        <a class="navbar-item small-caps">
+          de/en
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  {{outlet}}
+</div>
