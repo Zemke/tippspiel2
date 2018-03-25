@@ -9,3 +9,11 @@
     My first website with <strong>Bulma</strong>!
   </p>
 </section>
+
+{{model}}
+
+<ul>
+  {{#each model as |hello|}}
+    <li>{{hello.hello}}</li>
+  {{/each}}
+</ul>
