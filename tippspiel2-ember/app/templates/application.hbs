@@ -27,8 +27,8 @@
         {{#link-to "sign-in" class="navbar-item"}}
           Sign In
         {{/link-to}}
-        <a class="navbar-item small-caps">
-          de/en
+        <a class="navbar-item small-caps" {{action 'toggleLocale'}}>
+          <span class="{{if localeIsEnUs "has-text-weight-bold"}}">en</span>/<span class="{{unless localeIsEnUs "has-text-weight-bold"}}">de</span>
         </a>
       </div>
     </div>
