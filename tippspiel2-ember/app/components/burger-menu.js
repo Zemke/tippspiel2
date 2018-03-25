@@ -1,4 +1,9 @@
-$(document).ready(() => {
+import Component from '@ember/component';
+
+export default Component.extend({
+  dataTarget: 'navMenu',
+  attributeBindings: ["data-target"],
+  didRender() {
     const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
     if ($navbarBurgers.length < 1) {
@@ -22,4 +27,4 @@ $(document).ready(() => {
       });
     });
   }
-);
+});
