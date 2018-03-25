@@ -17,6 +17,7 @@ import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
+import org.springframework.web.cors.CorsConfiguration
 
 @Configuration
 @EnableWebSecurity
@@ -54,6 +55,7 @@ open class WebSecurityConfig(
     override fun configure(httpSecurity: HttpSecurity) {
         httpSecurity
                 .csrf().disable()
+                .cors().configurationSource { CorsConfiguration().applyPermitDefaultValues() }.and()
                 .exceptionHandling().authenticationEntryPoint(http401JwtAuthenticationEntryPoint).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
