@@ -1,5 +1,56 @@
 <section class="section">
-  <h1 class="title">Sign Up</h1>
+  <div class="columns is-desktop">
+    <div class="column is-half">
+      <h1 class="title">Sign Up</h1>
+      <form>
+        <div class="field field-body">
+          <div class="field">
+            <div class="control has-icons-left">
+              {{input type="text" class="input" placeholder="First name" value=(mut (get model 'firstName'))}}
+              <span class="icon is-small is-left">
+              <i class="fa fa-user-o"></i>
+            </span>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control has-icons-left is-expanded">
+              {{input type="text" class="input" placeholder="Last name" value=(mut (get model 'lastName'))}}
+              <span class="icon">
+              <i class="fa fa-user"></i>
+            </span>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control has-icons-left">
+            {{input type="email" class="input" placeholder="Email" value=(mut (get model 'email'))}}
+            <span class="icon">
+              <i class="fa fa-envelope"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control has-icons-left">
+            {{input type="password" class="input" placeholder="Password" value=(mut (get model 'password'))}}
+            <span class="icon">
+              <i class="fa fa-unlock"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control has-icons-left">
+            {{input type="password" class="input" placeholder="Password confirmation" value=(mut (get model 'passwordConfirm'))}}
+            <span class="icon">
+              <i class="fa fa-lock"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <button class="button is-primary">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </section>
-
-{{outlet}}
