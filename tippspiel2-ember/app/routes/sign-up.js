@@ -3,6 +3,6 @@ import {getOwner} from '@ember/application';
 
 export default Route.extend({
   model() {
-    return {firstName: 'Joe'};
+    return this.store.createRecord('user');
   }
 });
