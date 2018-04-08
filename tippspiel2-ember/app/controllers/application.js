@@ -5,9 +5,10 @@ export default Controller.extend({
   intl: inject(),
   init() {
     this._super(...arguments);
-    this.set('currentLocale', this.get('intl').get('locale')[0])
+    this.set('currentLocale', this.get('intl').get('locale')[0]);
+    iziToast.settings({position: 'topRight'});
   },
-  localeIsEnUs: function() {
+  localeIsEnUs: function () {
     return this.get('currentLocale') === 'en-us';
   }.property('currentLocale'),
   actions: {
