@@ -57,7 +57,9 @@
         </div>
         <div class="field">
           <div class="control">
-            <button class="button is-primary" disabled={{v-get model 'isInvalid'}} {{action 'submit'}}>Submit</button>
+            {{#submit-button model=model}}
+              Sign Up
+            {{/submit-button}}
           </div>
         </div>
       </form>
