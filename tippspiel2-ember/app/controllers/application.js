@@ -1,4 +1,5 @@
 import Controller from '@ember/controller';
+import {computed} from '@ember/object';
 import {inject} from '@ember/service';
 
 export default Controller.extend({
@@ -8,9 +9,9 @@ export default Controller.extend({
     this.set('currentLocale', this.get('intl').get('locale')[0]);
     iziToast.settings({position: 'topRight'});
   },
-  localeIsEnUs: function () {
+  localeIsEnUs: computed('currentLocale', function () {
     return this.get('currentLocale') === 'en-us';
-  }.property('currentLocale'),
+  }),
   actions: {
     toggleLocale() {
       try {
