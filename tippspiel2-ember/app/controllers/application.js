@@ -4,14 +4,7 @@ import {inject} from '@ember/service';
 
 export default Controller.extend({
   intl: inject(),
-  init() {
-    this._super(...arguments);
-    this.set('currentLocale', this.get('intl').get('locale')[0]);
-    iziToast.settings({position: 'topRight'});
-  },
-  localeIsEnUs: computed('currentLocale', function () {
-    return this.get('currentLocale') === 'en-us';
-  }),
+  auth: inject(),
   actions: {
     toggleLocale() {
       try {
@@ -19,7 +12,11 @@ export default Controller.extend({
       } catch (e) {
         this.get('intl').setLocale(['en-us'])
       }
-      this.set('currentLocale', this.get('intl').get('locale')[0]);
+      this.set('localeIsEnUs', this.get('intl').get('locale')[0] === 'en-us');
+    },
+    signOut() {
+      this.get('auth').signOut();
+      iziToast.success({message: "You’ve been signed out."});
     }
   },
 });

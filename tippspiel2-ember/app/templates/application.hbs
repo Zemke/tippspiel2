@@ -22,14 +22,18 @@
         {{/link-to}}
       </div>
       <div class="navbar-end">
-        {{#link-to "sign-up" class="navbar-item"}}
-          Sign Up
-        {{/link-to}}
-        {{#link-to "sign-in" class="navbar-item"}}
-          Sign In
-        {{/link-to}}
+        {{#if auth.authenticated}}
+          <a class="navbar-item" {{action 'signOut'}}>Sign Out</a>
+        {{else}}
+          {{#link-to "sign-up" class="navbar-item"}}
+            Sign Up
+          {{/link-to}}
+          {{#link-to "sign-in" class="navbar-item"}}
+            Sign In
+          {{/link-to}}
+        {{/if}}
         <a class="navbar-item small-caps" {{action 'toggleLocale'}}>
-          <span class="{{unless localeIsEnUs "has-text-weight-bold"}}">de</span>/<span class="{{if localeIsEnUs "has-text-weight-bold"}}">en</span>
+          <span class="{{unless model.localeIsEnUs "has-text-weight-bold"}}">de</span>/<span class="{{if model.localeIsEnUs "has-text-weight-bold"}}">en</span>
         </a>
       </div>
     </div>
@@ -37,4 +41,6 @@
 </nav>
 <div class="container">
   {{outlet}}
+  authenticated{{auth.authenticated}}<br>
+  localeIsEnUs{{model.localeIsEnUs}}<br>
 </div>
