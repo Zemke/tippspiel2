@@ -18,7 +18,7 @@ class  UserDetailsServiceImpl(@Autowired private val userRepository: UserReposit
         val user = userRepository.findByEmail(username)
 
         return when (user) {
-            null -> throw UsernameNotFoundException("No user found with username $username.")
+            null -> throw UsernameNotFoundException("No user found with email $username.")
             else -> AuthenticatedUser.create(user)
         }
     }

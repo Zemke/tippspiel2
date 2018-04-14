@@ -59,7 +59,7 @@ class AuthRestControllerTest {
                 .andDo {
                     val token = JacksonUtils.fromJson<JsonWebTokenDto>(it!!.response.contentAsString).token
                     Assert.isTrue(jsonWebTokenService.validateToken(token, AuthenticatedUser.create(user!!)))
-                    Assert.isTrue(jsonWebTokenService.getUsernameFromToken(token) == user.email)
+                    Assert.isTrue(jsonWebTokenService.getSubjectFromToken(token) == user.email)
                 }
 
     }

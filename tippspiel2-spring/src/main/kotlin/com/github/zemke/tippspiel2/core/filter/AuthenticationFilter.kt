@@ -25,7 +25,7 @@ class AuthenticationFilter : OncePerRequestFilter() {
     override fun doFilterInternal(request: HttpServletRequest, response: HttpServletResponse, chain: FilterChain) {
         try {
             val token = jsonWebTokenService.extractToken(request)
-            val username: String = jsonWebTokenService.getUsernameFromToken(token)
+            val username: String = jsonWebTokenService.getSubjectFromToken(token)
 
             if (SecurityContextHolder.getContext().authentication == null) {
                 val userDetails = this.userDetailsService.loadUserByUsername(username) // TODO Store data in token to avoid extra DB call.

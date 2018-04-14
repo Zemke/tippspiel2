@@ -21,12 +21,6 @@ class JsonWebTokenService(
 
     companion object {
 
-//        internal const val CLAIM_KEY_USERNAME = "sub"
-//        internal const val CLAIM_KEY_AUDIENCE = "aud"
-//        internal const val CLAIM_KEY_CREATED = "iat"
-
-        internal const val AUDIENCE_UNKNOWN = "unknown"
-        internal const val AUDIENCE_WEB = "web"
         internal const val AUDIENCE_MOBILE = "mobile"
         internal const val AUDIENCE_TABLET = "tablet"
     }
@@ -40,10 +34,10 @@ class JsonWebTokenService(
 
     fun validateToken(token: String, userDetails: UserDetails): Boolean {
         val user = userDetails as AuthenticatedUser
-        val username = getUsernameFromToken(token)
+        val email = getSubjectFromToken(token)
         val created = getIssuedAtDateFromToken(token)
         //final Date expiration = getExpirationDateFromToken(token);
-        return (username == user.username
+        return (email == user.username
                 && !isTokenExpired(token)
                 && !isCreatedBeforeLastPasswordReset(created, user.lastPasswordResetDate))
     }
@@ -72,7 +66,7 @@ class JsonWebTokenService(
                 .compact()
     }
 
-    fun getUsernameFromToken(token: String): String {
+    fun getSubjectFromToken(token: String): String {
         return getClaimFromToken(token, Function { it.subject })
     }
 

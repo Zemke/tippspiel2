@@ -26,8 +26,8 @@ class AuthRestController(@Autowired private val jsonWebTokenService: JsonWebToke
 
     @GetMapping("")
     fun getAuthenticatedUser(request: HttpServletRequest): AuthenticatedUser {
-        val username = jsonWebTokenService.getUsernameFromToken(jsonWebTokenService.extractToken(request))
-        return (userDetailsService.loadUserByUsername(username) as AuthenticatedUser)
+        val email = jsonWebTokenService.getSubjectFromToken(jsonWebTokenService.extractToken(request))
+        return (userDetailsService.loadUserByUsername(email) as AuthenticatedUser)
     }
 
     @PostMapping("")
@@ -36,14 +36,14 @@ class AuthRestController(@Autowired private val jsonWebTokenService: JsonWebToke
             @RequestBody authenticationRequestDto: AuthenticationRequestDto): ResponseEntity<JsonWebTokenDto> {
         val authentication = authenticationManager.authenticate(
                 UsernamePasswordAuthenticationToken(
-                        authenticationRequestDto.username,
+                        authenticationRequestDto.email,
                         authenticationRequestDto.password
                 )
         )
 
         SecurityContextHolder.getContext().authentication = authentication
 
-        val userDetails = userDetailsService.loadUserByUsername(authenticationRequestDto.username)
+        val userDetails = userDetailsService.loadUserByUsername(authenticationRequestDto.email)
         val token = jsonWebTokenService.generateToken(userDetails)
 
         return ResponseEntity.ok(JsonWebTokenDto(token))
@@ -52,7 +52,7 @@ class AuthRestController(@Autowired private val jsonWebTokenService: JsonWebToke
     @GetMapping("/refresh")
     fun refreshAndGetAuthenticationToken(request: HttpServletRequest): ResponseEntity<JsonWebTokenDto?> {
         val token = jsonWebTokenService.extractToken(request)
-        val user = userDetailsService.loadUserByUsername(jsonWebTokenService.getUsernameFromToken(token)) as AuthenticatedUser
+        val user = userDetailsService.loadUserByUsername(jsonWebTokenService.getSubjectFromToken(token)) as AuthenticatedUser
 
         return when {
             jsonWebTokenService.canTokenBeRefreshed(token, user.lastPasswordResetDate!!) ->
