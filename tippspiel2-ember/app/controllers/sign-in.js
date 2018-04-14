@@ -8,10 +8,11 @@ export default Controller.extend({
           iziToast.success({message: 'You’re signed in.'});
           this.transitionToRoute('index');
         })
-        .catch(reason => {
-          iziToast.error({message: 'Apparently something went wrong.'});
-          console.log(reason);
-          // TODO Design REST errors the way Ember can handle them.
+        .catch(res => {
+          const message = res.status === 401
+            ? 'Invalid credentials.'
+            : 'An unknown error occurred.';
+          iziToast.error({message});
         })
     }
   }
