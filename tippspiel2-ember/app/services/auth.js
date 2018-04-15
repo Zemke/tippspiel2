@@ -2,16 +2,27 @@ import Service from '@ember/service';
 
 export default Service.extend({
   authenticated: null,
+  user: null,
   init() {
     this._super(...arguments);
-    this.set('authenticated', localStorage.getItem('auth-token') != null);
-  },
-  signOut() {
-    this.set('authenticated', false);
-    localStorage.removeItem('auth-token');
+
+    const authToken = localStorage.getItem('auth-token');
+    if (authToken != null) {
+      this.set('authenticated', true);
+      this.set('user', this.get('parseTokenPayload')(authToken));
+    }
   },
   signIn(authToken) {
     localStorage.setItem('auth-token', authToken);
     this.set('authenticated', true);
+    this.set('user', this.get('parseTokenPayload')(authToken));
+  },
+  signOut() {
+    localStorage.removeItem('auth-token');
+    this.set('authenticated', false);
+    this.set('user', null);
+  },
+  parseTokenPayload(authToken) {
+    return JSON.parse(atob(authToken.split('.')[1]));
   }
 });

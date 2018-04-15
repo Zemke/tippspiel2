@@ -11,6 +11,7 @@ Router.map(function() {
   this.route('games');
   this.route('sign-up');
   this.route('sign-in');
+  this.route('me');
 });
 
 export default Router;
