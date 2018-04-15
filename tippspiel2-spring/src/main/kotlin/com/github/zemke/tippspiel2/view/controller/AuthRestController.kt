@@ -44,7 +44,7 @@ class AuthRestController(@Autowired private val jsonWebTokenService: JsonWebToke
         SecurityContextHolder.getContext().authentication = authentication
 
         val userDetails = userDetailsService.loadUserByUsername(authenticationRequestDto.email)
-        val token = jsonWebTokenService.generateToken(userDetails)
+        val token = jsonWebTokenService.generateToken(userDetails as AuthenticatedUser)
 
         return ResponseEntity.ok(JsonWebTokenDto(token))
     }

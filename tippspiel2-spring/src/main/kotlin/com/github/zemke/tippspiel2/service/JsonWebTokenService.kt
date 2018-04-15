@@ -42,9 +42,12 @@ class JsonWebTokenService(
                 && !isCreatedBeforeLastPasswordReset(created, user.lastPasswordResetDate))
     }
 
-    fun generateToken(userDetails: UserDetails): String {
-        val claims = HashMap<String, Any>()
-        return doGenerateToken(claims, userDetails.username)
+    fun generateToken(authenticatedUser: AuthenticatedUser): String {
+        val claims = mapOf<String, Any>(
+                Pair("firstName", authenticatedUser.firstName),
+                Pair("lastName", authenticatedUser.lastName),
+                Pair("email", authenticatedUser.email))
+        return doGenerateToken(claims, authenticatedUser.username)
     }
 
     fun canTokenBeRefreshed(token: String, lastPasswordReset: Date): Boolean {
