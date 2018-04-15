@@ -8,11 +8,15 @@ export default Controller.extend({
   actions: {
     toggleLocale() {
       try {
-        this.get('intl').setLocale([this.get('intl').get('locale')[0] === 'de' ? 'en-us' : 'de'])
+        const newLocale = this.get('intl').get('locale')[0] === 'de' ? 'en-us' : 'de';
+        this.get('intl').setLocale([newLocale]);
+        localStorage.setItem('locale', newLocale);
+        this.set('localeIsEnUs', newLocale === 'en-us');
       } catch (e) {
-        this.get('intl').setLocale(['en-us'])
+        this.get('intl').setLocale(['en-us']);
+        localStorage.setItem('locale', 'en-us');
+        this.set('localeIsEnUs', true);
       }
-      this.set('localeIsEnUs', this.get('intl').get('locale')[0] === 'en-us');
     },
     signOut() {
       this.get('auth').signOut();

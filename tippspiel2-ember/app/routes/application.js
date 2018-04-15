@@ -15,6 +15,14 @@ export default Route.extend({
   },
   beforeModel() {
     iziToast.settings({position: 'topRight'});
-    this.get('intl').setLocale(['en-us']);
+
+    try {
+      const locale = localStorage.getItem('locale') || 'en-us';
+      this.get('intl').setLocale([locale]);
+      localStorage.setItem('locale', locale);
+    } catch (e) {
+      this.get('intl').setLocale(['en-us']);
+      localStorage.setItem('locale', 'en-us');
+    }
   }
 });
