@@ -12,6 +12,7 @@ import org.springframework.security.core.AuthenticationException
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -49,13 +50,12 @@ class AuthRestController(@Autowired private val jsonWebTokenService: JsonWebToke
         return ResponseEntity.ok(JsonWebTokenDto(token))
     }
 
-    @GetMapping("/refresh")
-    fun refreshAndGetAuthenticationToken(request: HttpServletRequest): ResponseEntity<JsonWebTokenDto?> {
-        val token = jsonWebTokenService.extractToken(request)
+    @GetMapping("/{token}")
+    fun refreshAndGetAuthenticationToken(@PathVariable("token") token: String): ResponseEntity<JsonWebTokenDto?> {
         val user = userDetailsService.loadUserByUsername(jsonWebTokenService.getSubjectFromToken(token)) as AuthenticatedUser
 
         return when {
-            jsonWebTokenService.canTokenBeRefreshed(token, user.lastPasswordResetDate!!) ->
+            jsonWebTokenService.canTokenBeRefreshed(token, user.lastPasswordResetDate) ->
                 ResponseEntity.ok(JsonWebTokenDto(jsonWebTokenService.refreshToken(token)))
             else ->
                 ResponseEntity.badRequest().body(null)

@@ -50,7 +50,7 @@ class JsonWebTokenService(
         return doGenerateToken(claims, authenticatedUser.username)
     }
 
-    fun canTokenBeRefreshed(token: String, lastPasswordReset: Date): Boolean {
+    fun canTokenBeRefreshed(token: String, lastPasswordReset: Date?): Boolean {
         val created = getIssuedAtDateFromToken(token)
         return !isCreatedBeforeLastPasswordReset(created, lastPasswordReset) && (!isTokenExpired(token) || ignoreTokenExpiration(token))
     }
