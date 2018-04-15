@@ -23,7 +23,16 @@ data class User(
         @Column(unique = true) @NotNull @Email val email: String,
         @Size(min = 60, max = 60) val password: String,
         @NotNull @CreationTimestamp val lastPasswordReset: Timestamp?,
-        @ManyToMany(mappedBy = "users") val communities: List<Community>
+        @ManyToMany(mappedBy = "users") val communities: List<Community>,
+        @ManyToMany val roles: List<Role>
 ) {
-    constructor(fullName: FullName, email: String, password: String) : this(null, fullName, email, password, null, emptyList())
+    constructor(fullName: FullName, email: String, password: String, roles: List<Role>) :
+            this(
+                    id = null,
+                    fullName = fullName,
+                    email = email,
+                    password = password,
+                    lastPasswordReset = null,
+                    communities = emptyList(),
+                    roles = roles)
 }

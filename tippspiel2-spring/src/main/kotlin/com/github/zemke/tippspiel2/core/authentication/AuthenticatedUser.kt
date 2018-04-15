@@ -1,5 +1,6 @@
 package com.github.zemke.tippspiel2.core.authentication
 
+import com.github.zemke.tippspiel2.persistence.model.Role
 import com.github.zemke.tippspiel2.persistence.model.User
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
@@ -8,18 +9,19 @@ import java.util.*
 
 class AuthenticatedUser(
         val id: Long, val firstName: String, val lastName: String,
-        val email: String, val plainPassword: String, val lastPasswordResetDate: Date?) : UserDetails {
+        val email: String, val plainPassword: String, val lastPasswordResetDate: Date?,
+        val roles: List<Role>) : UserDetails {
 
     companion object {
 
         fun create(user: User): AuthenticatedUser {
             return AuthenticatedUser(user.id!!, user.fullName.firstName, user.fullName.lastName, user.email,
-                    user.password, user.lastPasswordReset)
+                    user.password, user.lastPasswordReset, user.roles)
         }
     }
 
     override fun getAuthorities(): Collection<GrantedAuthority> {
-        return listOf<GrantedAuthority>(SimpleGrantedAuthority("USER"))
+        return listOf<GrantedAuthority>(*roles.map { SimpleGrantedAuthority(it.name.name) }.toTypedArray())
     }
 
     override fun isEnabled(): Boolean = true

@@ -31,7 +31,8 @@ object PersistenceUtils {
             User(
                     fullName = FullName("Jon$appendToAttribute", "Doe$appendToAttribute"),
                     email = "jon@doe.com$appendToAttribute",
-                    password = "jondoe$appendToAttribute")
+                    password = "jondoe$appendToAttribute",
+                    roles = emptyList())
 
     fun instantiateCompetition(): Competition =
             Competition(
