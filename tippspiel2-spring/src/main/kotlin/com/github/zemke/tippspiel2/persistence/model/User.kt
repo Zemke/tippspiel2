@@ -6,6 +6,7 @@ import java.sql.Timestamp
 import javax.persistence.Column
 import javax.persistence.Embedded
 import javax.persistence.Entity
+import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.ManyToMany
@@ -24,7 +25,7 @@ data class User(
         @Size(min = 60, max = 60) val password: String,
         @NotNull @CreationTimestamp val lastPasswordReset: Timestamp?,
         @ManyToMany(mappedBy = "users") val communities: List<Community>,
-        @ManyToMany val roles: List<Role>
+        @ManyToMany(fetch = FetchType.EAGER) val roles: List<Role>
 ) {
     constructor(fullName: FullName, email: String, password: String, roles: List<Role>) :
             this(

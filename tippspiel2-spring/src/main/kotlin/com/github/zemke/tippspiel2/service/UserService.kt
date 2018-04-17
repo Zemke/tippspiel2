@@ -18,7 +18,7 @@ class UserService(
 ) {
 
 
-    fun addUser(firstName: String, lastName: String, email: String, plainPassword: String, roles: List<UserRole> = listOf(UserRole.USER)): User {
+    fun addUser(firstName: String, lastName: String, email: String, plainPassword: String, roles: List<UserRole> = listOf(UserRole.ROLE_USER)): User {
         return userRepository.save(User(
                 FullName(firstName, lastName), email,
                 BCrypt.hashpw(plainPassword, authenticationProperties.bcryptSalt),
