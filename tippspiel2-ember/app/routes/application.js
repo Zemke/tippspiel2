@@ -17,7 +17,7 @@ export default Route.extend({
     iziToast.settings({position: 'topRight'});
 
     if (this.get('auth').token != null) {
-      this.get('store').queryRecord('auth', this.get('auth').token)
+      this.get('store').findRecord('auth', this.get('auth').token)
         .then(res => this.get('auth').signIn(res.id))
         .catch(() => this.get('auth').signOut());
     }
