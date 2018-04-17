@@ -56,7 +56,7 @@ class FixtureRestController(
             request: HttpServletRequest): ResponseEntity<Bet> {
         val fixture = fixtureService.getById(fixtureId) ?: throw NotFoundException("Fixture with id $fixtureId not found.")
         val user = userService.findUserByEmail(
-                jsonWebTokenService.getSubjectFromToken(jsonWebTokenService.extractToken(request)))
+                jsonWebTokenService.getSubjectFromToken(jsonWebTokenService.assertToken(request)))
         val bettingGame = bettingGameService.find(betCreationDto.bettingGame)
         val bet = BetCreationDto.fromDto(betCreationDto, fixture, user!!, bettingGame, Timestamp(Date().time))
         return ResponseEntity.status(HttpStatus.CREATED).body(betService.save(bet))

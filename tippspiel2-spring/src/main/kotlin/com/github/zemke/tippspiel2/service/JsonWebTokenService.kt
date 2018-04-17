@@ -28,7 +28,7 @@ class JsonWebTokenService(
     private val clock = DefaultClock.INSTANCE
 
     @Throws(UnauthorizedException::class)
-    fun extractToken(request: HttpServletRequest): String {
+    fun assertToken(request: HttpServletRequest): String {
         return request.getHeader(authenticationProperties.jwt.header)?.substring(7) ?: throw UnauthorizedException()
     }
 

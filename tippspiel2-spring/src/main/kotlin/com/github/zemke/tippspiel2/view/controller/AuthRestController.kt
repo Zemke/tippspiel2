@@ -27,7 +27,7 @@ class AuthRestController(@Autowired private val jsonWebTokenService: JsonWebToke
 
     @GetMapping("")
     fun getAuthenticatedUser(request: HttpServletRequest): AuthenticatedUser {
-        val email = jsonWebTokenService.getSubjectFromToken(jsonWebTokenService.extractToken(request))
+        val email = jsonWebTokenService.getSubjectFromToken(jsonWebTokenService.assertToken(request))
         return (userDetailsService.loadUserByUsername(email) as AuthenticatedUser)
     }
 

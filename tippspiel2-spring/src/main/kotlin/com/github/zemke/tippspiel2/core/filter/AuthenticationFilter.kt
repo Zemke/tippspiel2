@@ -24,20 +24,22 @@ class AuthenticationFilter : OncePerRequestFilter() {
     @Throws(ServletException::class, IOException::class)
     override fun doFilterInternal(request: HttpServletRequest, response: HttpServletResponse, chain: FilterChain) {
         try {
-            val token = jsonWebTokenService.extractToken(request)
-            val username: String = jsonWebTokenService.getSubjectFromToken(token)
+            val authToken = jsonWebTokenService.assertToken(request)
+            val username = jsonWebTokenService.getSubjectFromToken(authToken)
 
             if (SecurityContextHolder.getContext().authentication == null) {
-                val userDetails = this.userDetailsService.loadUserByUsername(username) // TODO Store data in token to avoid extra DB call.
+                val userDetails = this.userDetailsService.loadUserByUsername(username)
 
-                if (jsonWebTokenService.validateToken(token, userDetails)) {
-                    val authentication = UsernamePasswordAuthenticationToken(userDetails, null, userDetails.authorities)
+                if (jsonWebTokenService.validateToken(authToken, userDetails)) {
+                    val authentication = UsernamePasswordAuthenticationToken(
+                            userDetails, null, userDetails.authorities)
                     authentication.details = WebAuthenticationDetailsSource().buildDetails(request)
                     SecurityContextHolder.getContext().authentication = authentication
                 }
             }
-        } finally {
-            return chain.doFilter(request, response)
+        } catch (ignored: Exception) {
         }
+
+        chain.doFilter(request, response)
     }
 }

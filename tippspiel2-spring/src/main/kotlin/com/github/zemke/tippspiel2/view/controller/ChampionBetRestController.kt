@@ -31,7 +31,7 @@ class ChampionBetRestController(
             @RequestBody championBetCreationDto: ChampionBetCreationDto,
             request: HttpServletRequest): ResponseEntity<ChampionBetDto> {
         val user = userService.findUserByEmail(
-                jsonWebTokenService.getSubjectFromToken(jsonWebTokenService.extractToken(request)))
+                jsonWebTokenService.getSubjectFromToken(jsonWebTokenService.assertToken(request)))
 
         val championBet = ChampionBetCreationDto.fromDto(
                 bettingGameService.find(championBetCreationDto.bettingGame),
