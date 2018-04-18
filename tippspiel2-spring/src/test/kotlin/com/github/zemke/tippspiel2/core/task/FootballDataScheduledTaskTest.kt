@@ -1,6 +1,5 @@
 package com.github.zemke.tippspiel2.core.task
 
-import com.github.zemke.tippspiel2.persistence.model.Competition
 import com.github.zemke.tippspiel2.persistence.model.Fixture
 import com.github.zemke.tippspiel2.persistence.model.Standing
 import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
@@ -44,13 +43,12 @@ class FootballDataScheduledTaskTest {
         val currentCompetition = PersistenceUtils.instantiateCompetition()
 
         Mockito
-                .`when`(competitionService.findByCurrentTrue())
-                .thenReturn(currentCompetition)
+                .doReturn(currentCompetition)
+                .`when`(competitionService).findByCurrentTrue()
 
         var fixturesToAnswer = mutableListOf<Fixture>()
         Mockito
-                .`when`(fixtureService.findFixturesByCompetitionAndManualFalse(Mockito.any(Competition::class.java)))
-                .thenAnswer {
+                .doAnswer {
                     fixturesToAnswer = mutableListOf(
                             PersistenceUtils.instantiateFixture().copy(id = 1, competition = currentCompetition),
                             PersistenceUtils.instantiateFixture().copy(id = 2, competition = currentCompetition),
@@ -59,6 +57,7 @@ class FootballDataScheduledTaskTest {
                     fixturesToAnswer.add(fixturesToAnswer[0].copy(id = 4, homeTeam = fixturesToAnswer[2].awayTeam))
                     fixturesToAnswer
                 }
+                .`when`(fixtureService).findFixturesByCompetitionAndManualFalse(currentCompetition)
 
         var fixturesToAnswerFromApi = mutableListOf<Fixture>()
         Mockito
@@ -74,16 +73,16 @@ class FootballDataScheduledTaskTest {
                 }
 
         Mockito
-                .`when`(fixtureService.saveMany(Mockito.anyList()))
-                .thenAnswer {
-                    Assert.assertArrayEquals(
-                            fixturesToAnswerFromApi.toTypedArray(),
-                            (it.getArgument(0) as List<Fixture>).toTypedArray())
+                .doAnswer {
+                    val fixturesPassedToMethod = it.getArgument<List<Fixture>>(0)
+                    Assert.assertEquals(fixturesToAnswerFromApi, fixturesPassedToMethod)
+                    fixturesPassedToMethod
                 }
+                .`when`(fixtureService).saveMany(Mockito.anyList<Fixture>())
 
         Mockito
-                .`when`(standingService.updateStandings(Mockito.any(Competition::class.java)))
-                .thenAnswer({ Mockito.anyList<Standing>() })
+                .doAnswer({ emptyList<Standing>() })
+                .`when`(standingService).updateStandings(currentCompetition)
 
         footballDataScheduledTask.exec()
     }
