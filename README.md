@@ -1,6 +1,26 @@
-# Tippspiel 2
+# Tippspiel2
 
-The successor of [Zemke/tippspiel](https://github.com/Zemke/tippspiel) developed by [@Ribosom](https://github.com/Ribosom) and [@Zemke](https://github.com/Zemke).
+The epic successor of [Zemke/tippspiel](https://github.com/Zemke/tippspiel).
+
+## Install
+
+The project is comprised of two parts that need to be installed independently.
+
+### `tippspiel2-spring`
+
+Within the `tippspiel2-spring` module:
+
+```sh
+mvn clean install && mvn spring-boot:run
+```
+
+### `tippspiel2-ember`
+
+Within the `tippspiel2-ember` module:
+
+```sh
+yarn && yarn start
+```
 
 ## Technologies
 
@@ -20,4 +40,4 @@ The successor of [Zemke/tippspiel](https://github.com/Zemke/tippspiel) developed
 * football-data.org API
 * Bet on champion
 * Simultaneous betting communities
-* Simultaneous competitions 
+* ~~Simultaneous competitions~~ 

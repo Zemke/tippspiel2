@@ -21,16 +21,12 @@
     </properties>
     <name>Tippspiel</name>
     <description>
-        Tippspiel 2 is a betting game initially developed for the World Cup 2018 in Russia.
+        Tippspiel2 is a betting game initially developed for the World Cup 2018 in Russia.
     </description>
     <developers>
         <developer>
             <name>Florian Zemke</name>
             <email>flzemke@gmail.com</email>
-        </developer>
-        <developer>
-            <name>Sönke Martens</name>
-            <email>soenke.martens@yahoo.de</email>
         </developer>
     </developers>
     <issueManagement>
