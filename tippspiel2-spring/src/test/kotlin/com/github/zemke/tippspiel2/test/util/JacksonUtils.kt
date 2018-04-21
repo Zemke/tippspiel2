@@ -4,7 +4,6 @@ import org.springframework.http.MediaType
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
 import org.springframework.mock.http.MockHttpInputMessage
 import org.springframework.mock.http.MockHttpOutputMessage
-import sun.util.resources.cldr.gsw.TimeZoneNames_gsw
 import java.io.IOException
 import java.io.InputStream
 import java.text.SimpleDateFormat
