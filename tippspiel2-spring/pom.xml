@@ -109,13 +109,12 @@
                 </executions>
                 <configuration>
                     <compilerPlugins>
+                        <plugin>jpa</plugin>
                         <plugin>no-arg</plugin>
+                        <plugin>spring</plugin>
                     </compilerPlugins>
                     <pluginOptions>
                         <option>no-arg:annotation=com.github.zemke.tippspiel2.view.util.DataTransferObject</option>
-                        <option>no-arg:annotation=javax.persistence.Entity</option>
-                        <option>no-arg:annotation=javax.persistence.Embeddable</option>
-                        <option>no-arg:annotation=javax.persistence.MappedSuperclass</option>
                     </pluginOptions>
                 </configuration>
                 <dependencies>
