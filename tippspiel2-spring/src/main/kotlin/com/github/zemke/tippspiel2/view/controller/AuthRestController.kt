@@ -2,14 +2,13 @@ package com.github.zemke.tippspiel2.view.controller
 
 import com.github.zemke.tippspiel2.core.authentication.AuthenticatedUser
 import com.github.zemke.tippspiel2.service.JsonWebTokenService
+import com.github.zemke.tippspiel2.service.UserService
 import com.github.zemke.tippspiel2.view.model.AuthenticationRequestDto
 import com.github.zemke.tippspiel2.view.model.JsonWebTokenDto
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.security.authentication.AuthenticationManager
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.AuthenticationException
-import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -22,7 +21,7 @@ import javax.servlet.http.HttpServletRequest
 @RestController
 @RequestMapping("/api/auth")
 class AuthRestController(@Autowired private val jsonWebTokenService: JsonWebTokenService,
-                         @Autowired private val authenticationManager: AuthenticationManager,
+                         @Autowired private val userService: UserService,
                          @Autowired private val userDetailsService: UserDetailsService) {
 
     @GetMapping("")
@@ -35,19 +34,10 @@ class AuthRestController(@Autowired private val jsonWebTokenService: JsonWebToke
     @Throws(AuthenticationException::class)
     fun createAuthenticationToken(
             @RequestBody authenticationRequestDto: AuthenticationRequestDto): ResponseEntity<JsonWebTokenDto> {
-        val authentication = authenticationManager.authenticate(
-                UsernamePasswordAuthenticationToken(
-                        authenticationRequestDto.email,
-                        authenticationRequestDto.password
-                )
-        )
-
-        SecurityContextHolder.getContext().authentication = authentication
-
-        val userDetails = userDetailsService.loadUserByUsername(authenticationRequestDto.email)
-        val token = jsonWebTokenService.generateToken(userDetails as AuthenticatedUser)
-
-        return ResponseEntity.ok(JsonWebTokenDto(token))
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(JsonWebTokenDto(userService.authenticate(
+                        authenticationRequestDto.email, authenticationRequestDto.password)))
     }
 
     @GetMapping("/{token}")

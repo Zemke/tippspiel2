@@ -21,4 +21,5 @@ export default Model.extend(Validations, {
   lastName: attr('string'),
   email: attr('string'),
   password: attr('string'),
+  token: attr('string'),
 });
