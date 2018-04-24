@@ -1,2 +1,6 @@
 hello:
   world: 'Hello, World!'
+me:
+  community:
+    title: 'Create a Community'
+    subtitle: 'A group of users who can then in conjunction with a competition form a betting game.'

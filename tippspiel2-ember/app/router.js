@@ -12,6 +12,10 @@ Router.map(function() {
   this.route('sign-up');
   this.route('sign-in');
   this.route('me');
+
+  this.route('communities', function() {
+    this.route('new');
+  });
 });
 
 export default Router;

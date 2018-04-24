@@ -3,9 +3,18 @@
     {{auth.user.firstName}} {{auth.user.lastName}}
   </h1>
 
-  <p>
-    User Control Panel goes here.
-  </p>
+  <div class="tile is-ancestor">
+    <div class="tile is-parent">
+      {{#link-to 'communities.new' class="tile is-child notification is-danger"}}
+        <p class="title">
+          {{t 'me.community.title'}}
+        </p>
+        <p class="subtitle">
+          {{t 'me.community.subtitle'}}
+        </p>
+      {{/link-to}}
+    </div>
+  </div>
 </section>
 
 {{outlet}}
