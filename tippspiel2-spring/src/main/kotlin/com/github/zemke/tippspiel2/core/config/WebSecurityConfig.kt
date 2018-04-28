@@ -68,10 +68,8 @@ open class WebSecurityConfig(
                         "/**/*.css",
                         "/**/*.js"
                 ).permitAll()
-                .antMatchers("/api/auth").permitAll()
-                .antMatchers("/api/users").permitAll()
                 .antMatchers("/api/hellos/**").hasRole("ADMIN")
-                .antMatchers("/api/competitions/**").permitAll()
+                .antMatchers("/api/**").permitAll()
                 .anyRequest().authenticated()
 
         httpSecurity

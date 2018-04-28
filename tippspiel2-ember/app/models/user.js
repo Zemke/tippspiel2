@@ -1,3 +1,4 @@
+import DS from 'ember-data';
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 import {buildValidations, validator} from 'ember-cp-validations';
@@ -22,4 +23,5 @@ export default Model.extend(Validations, {
   email: attr('string'),
   password: attr('string'),
   token: attr('string'),
+  communities: DS.hasMany('community'),
 });

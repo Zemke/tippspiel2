@@ -50,4 +50,8 @@ class UserService(
         return jsonWebTokenService.generateToken(
                 userDetailsService.loadUserByUsername(email) as AuthenticatedUser)
     }
+
+    fun findAllUsers(): List<User> {
+        return userRepository.findAll()
+    }
 }

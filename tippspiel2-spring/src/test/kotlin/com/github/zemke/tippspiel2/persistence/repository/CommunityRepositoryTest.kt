@@ -25,9 +25,7 @@ open class CommunityRepositoryTest {
         val community = Community(
                 id = null,
                 name = "World Cup",
-                users = listOf(PersistenceUtils.createUser(testEntityManager)),
-                created = null,
-                modified = null
+                users = listOf(PersistenceUtils.createUser(testEntityManager))
         )
 
         communityRepository.save(community)

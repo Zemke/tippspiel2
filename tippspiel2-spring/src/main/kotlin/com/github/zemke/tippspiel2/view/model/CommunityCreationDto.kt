@@ -16,9 +16,7 @@ data class CommunityCreationDto(
         fun fromDto(dto: CommunityCreationDto, users: List<User>): Community = Community(
                 id = null,
                 name = dto.name,
-                users = users,
-                created = null,
-                modified = null
+                users = users
         )
     }
 }

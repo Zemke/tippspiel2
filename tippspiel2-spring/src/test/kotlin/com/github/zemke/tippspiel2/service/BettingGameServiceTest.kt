@@ -35,9 +35,7 @@ open class BettingGameServiceTest {
                 users = listOf(
                         PersistenceUtils.createUser(testEntityManager),
                         PersistenceUtils.createUser(testEntityManager, "2")
-                ),
-                created = null,
-                modified = null
+                )
         )
         val competition = Competition(
                 id = 1,

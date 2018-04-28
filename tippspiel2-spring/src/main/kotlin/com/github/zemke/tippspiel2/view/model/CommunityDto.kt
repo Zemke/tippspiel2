@@ -19,8 +19,8 @@ data class CommunityDto(
         fun toDto(community: Community): CommunityDto = CommunityDto(
                 id = community.id!!,
                 name = community.name,
-                created = community.created!!,
-                modified = community.modified!!,
+                created = Date(community.created.time),
+                modified = Date(community.modified.time),
                 users = community.users.map { UserDto.toDto(it) }
         )
     }

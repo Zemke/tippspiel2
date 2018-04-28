@@ -40,4 +40,9 @@ class UserRestController(
             else -> ResponseEntity.ok(UserDto.toDto(userService.getUser(id)!!))
         }
     }
+
+    @GetMapping("")
+    fun readUsers(): ResponseEntity<List<UserDto>> {
+        return ResponseEntity.ok(userService.findAllUsers().map { UserDto.toDto(it) })
+    }
 }
