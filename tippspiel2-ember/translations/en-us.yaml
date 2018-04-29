@@ -6,3 +6,12 @@ me:
     subtitle: 'A group of users who can then in conjunction with a competition form a betting game.'
     new:
       addUser: 'Add a user to the community'
+  competition:
+    title: 'Load a Competition'
+    subtitle: 'From an external API load a competition along with its fixtures and teams to then be able to start aan actual betting game with a community.'
+    new:
+      id:
+        placeholder: 'Enter ID'
+        info: 'The ID can be derived from football-data.org. It’s meant to be looked up manually and is then used to undertake external API requests.'
+      header: 'Load a Competition'
+      submit: 'Load Competition'

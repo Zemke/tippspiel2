@@ -16,6 +16,10 @@ Router.map(function() {
   this.route('communities', function() {
     this.route('new');
   });
+
+  this.route('competitions', function() {
+    this.route('new');
+  });
 });
 
 export default Router;
