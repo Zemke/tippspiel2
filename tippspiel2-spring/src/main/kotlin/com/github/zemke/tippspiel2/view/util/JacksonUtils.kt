@@ -1,4 +1,4 @@
-package com.github.zemke.tippspiel2.test.util
+package com.github.zemke.tippspiel2.view.util
 
 import org.springframework.http.MediaType
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter

@@ -5,8 +5,8 @@ import com.github.zemke.tippspiel2.persistence.model.Community
 import com.github.zemke.tippspiel2.persistence.model.Competition
 import com.github.zemke.tippspiel2.persistence.model.Standing
 import com.github.zemke.tippspiel2.test.util.EmbeddedPostgresDataJpaTest
-import com.github.zemke.tippspiel2.test.util.JacksonUtils
 import com.github.zemke.tippspiel2.test.util.PersistenceUtils
+import com.github.zemke.tippspiel2.view.util.JacksonUtils
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith

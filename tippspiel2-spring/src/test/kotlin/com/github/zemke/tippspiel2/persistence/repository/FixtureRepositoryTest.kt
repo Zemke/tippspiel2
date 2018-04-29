@@ -5,7 +5,7 @@ import com.github.zemke.tippspiel2.persistence.model.Fixture
 import com.github.zemke.tippspiel2.persistence.model.Team
 import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
 import com.github.zemke.tippspiel2.test.util.EmbeddedPostgresDataJpaTest
-import com.github.zemke.tippspiel2.test.util.JacksonUtils
+import com.github.zemke.tippspiel2.view.util.JacksonUtils
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith

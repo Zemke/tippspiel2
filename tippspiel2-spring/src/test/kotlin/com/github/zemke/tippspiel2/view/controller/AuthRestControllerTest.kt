@@ -5,9 +5,9 @@ import com.github.zemke.tippspiel2.core.authentication.AuthenticatedUser
 import com.github.zemke.tippspiel2.service.JsonWebTokenService
 import com.github.zemke.tippspiel2.service.UserService
 import com.github.zemke.tippspiel2.test.util.IntegrationTest
-import com.github.zemke.tippspiel2.test.util.JacksonUtils
 import com.github.zemke.tippspiel2.view.model.AuthenticationRequestDto
 import com.github.zemke.tippspiel2.view.model.JsonWebTokenDto
+import com.github.zemke.tippspiel2.view.util.JacksonUtils
 import io.jsonwebtoken.lang.Assert
 import org.junit.Before
 import org.junit.Test

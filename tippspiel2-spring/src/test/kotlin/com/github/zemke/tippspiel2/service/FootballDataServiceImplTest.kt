@@ -2,13 +2,13 @@ package com.github.zemke.tippspiel2.service
 
 import com.github.zemke.tippspiel2.core.properties.FootballDataProperties
 import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
-import com.github.zemke.tippspiel2.test.util.JacksonUtils
 import com.github.zemke.tippspiel2.view.model.FootballDataCompetitionDto
 import com.github.zemke.tippspiel2.view.model.FootballDataFixtureDto
 import com.github.zemke.tippspiel2.view.model.FootballDataFixtureResultDto
 import com.github.zemke.tippspiel2.view.model.FootballDataFixtureWrappedListDto
 import com.github.zemke.tippspiel2.view.model.FootballDataTeamDto
 import com.github.zemke.tippspiel2.view.model.FootballDataTeamWrappedListDto
+import com.github.zemke.tippspiel2.view.util.JacksonUtils
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
