@@ -1,0 +1,1029 @@
+{
+   "fixtures" : [
+      {
+         "homeTeamId" : 808,
+         "homeTeamName" : "Russia",
+         "awayTeamName" : "Saudi Arabia",
+         "competitionId" : 467,
+         "date" : "2018-06-14T15:00:00Z",
+         "awayTeamId" : 801,
+         "id" : 165069,
+         "odds" : null,
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "status" : "TIMED",
+         "matchday" : 1
+      },
+      {
+         "matchday" : 1,
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "status" : "TIMED",
+         "odds" : null,
+         "id" : 165084,
+         "awayTeamId" : 758,
+         "date" : "2018-06-15T12:00:00Z",
+         "awayTeamName" : "Uruguay",
+         "competitionId" : 467,
+         "homeTeamName" : "Egypt",
+         "homeTeamId" : 825
+      },
+      {
+         "odds" : null,
+         "matchday" : 1,
+         "status" : "TIMED",
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "awayTeamId" : 840,
+         "id" : 165083,
+         "date" : "2018-06-15T15:00:00Z",
+         "awayTeamName" : "Iran",
+         "competitionId" : 467,
+         "homeTeamId" : 815,
+         "homeTeamName" : "Morocco"
+      },
+      {
+         "odds" : null,
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "status" : "TIMED",
+         "matchday" : 1,
+         "awayTeamId" : 760,
+         "id" : 165076,
+         "date" : "2018-06-15T18:00:00Z",
+         "homeTeamId" : 765,
+         "homeTeamName" : "Portugal",
+         "competitionId" : 467,
+         "awayTeamName" : "Spain"
+      },
+      {
+         "date" : "2018-06-16T10:00:00Z",
+         "homeTeamId" : 773,
+         "homeTeamName" : "France",
+         "awayTeamName" : "Australia",
+         "competitionId" : 467,
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "status" : "TIMED",
+         "matchday" : 1,
+         "odds" : null,
+         "id" : 165072,
+         "awayTeamId" : 779
+      },
+      {
+         "homeTeamId" : 762,
+         "homeTeamName" : "Argentina",
+         "competitionId" : 467,
+         "awayTeamName" : "Iceland",
+         "date" : "2018-06-16T13:00:00Z",
+         "awayTeamId" : 1066,
+         "id" : 165073,
+         "odds" : null,
+         "status" : "TIMED",
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "matchday" : 1
+      },
+      {
+         "date" : "2018-06-16T16:00:00Z",
+         "homeTeamName" : "Peru",
+         "homeTeamId" : 832,
+         "awayTeamName" : "Denmark",
+         "competitionId" : 467,
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "status" : "TIMED",
+         "matchday" : 1,
+         "odds" : null,
+         "id" : 165071,
+         "awayTeamId" : 782
+      },
+      {
+         "matchday" : 1,
+         "status" : "TIMED",
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "odds" : null,
+         "id" : 165074,
+         "awayTeamId" : 776,
+         "date" : "2018-06-16T19:00:00Z",
+         "awayTeamName" : "Nigeria",
+         "competitionId" : 467,
+         "homeTeamId" : 799,
+         "homeTeamName" : "Croatia"
+      },
+      {
+         "odds" : null,
+         "matchday" : 1,
+         "status" : "TIMED",
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "awayTeamId" : 780,
+         "id" : 165075,
+         "date" : "2018-06-17T12:00:00Z",
+         "awayTeamName" : "Serbia",
+         "competitionId" : 467,
+         "homeTeamName" : "Costa Rica",
+         "homeTeamId" : 793
+      },
+      {
+         "date" : "2018-06-17T15:00:00Z",
+         "homeTeamId" : 759,
+         "homeTeamName" : "Germany",
+         "competitionId" : 467,
+         "awayTeamName" : "Mexico",
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "status" : "TIMED",
+         "matchday" : 1,
+         "odds" : null,
+         "id" : 165082,
+         "awayTeamId" : 769
+      },
+      {
+         "date" : "2018-06-17T18:00:00Z",
+         "awayTeamName" : "Switzerland",
+         "competitionId" : 467,
+         "homeTeamId" : 764,
+         "homeTeamName" : "Brazil",
+         "matchday" : 1,
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "status" : "TIMED",
+         "odds" : null,
+         "id" : 165070,
+         "awayTeamId" : 788
+      },
+      {
+         "matchday" : 1,
+         "status" : "TIMED",
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "odds" : null,
+         "id" : 165081,
+         "awayTeamId" : 772,
+         "date" : "2018-06-18T12:00:00Z",
+         "awayTeamName" : "Korea Republic",
+         "competitionId" : 467,
+         "homeTeamName" : "Sweden",
+         "homeTeamId" : 792
+      },
+      {
+         "awayTeamName" : "Panama",
+         "competitionId" : 467,
+         "homeTeamName" : "Belgium",
+         "homeTeamId" : 805,
+         "date" : "2018-06-18T15:00:00Z",
+         "id" : 165077,
+         "awayTeamId" : 1836,
+         "matchday" : 1,
+         "status" : "TIMED",
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "odds" : null
+      },
+      {
+         "date" : "2018-06-18T18:00:00Z",
+         "awayTeamName" : "England",
+         "competitionId" : 467,
+         "homeTeamId" : 802,
+         "homeTeamName" : "Tunisia",
+         "matchday" : 1,
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "status" : "TIMED",
+         "odds" : null,
+         "id" : 165078,
+         "awayTeamId" : 770
+      },
+      {
+         "awayTeamId" : 804,
+         "id" : 165079,
+         "odds" : null,
+         "matchday" : 1,
+         "status" : "TIMED",
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "awayTeamName" : "Senegal",
+         "competitionId" : 467,
+         "homeTeamName" : "Poland",
+         "homeTeamId" : 794,
+         "date" : "2018-06-19T12:00:00Z"
+      },
+      {
+         "matchday" : 1,
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "status" : "TIMED",
+         "odds" : null,
+         "id" : 165080,
+         "awayTeamId" : 766,
+         "date" : "2018-06-19T15:00:00Z",
+         "awayTeamName" : "Japan",
+         "competitionId" : 467,
+         "homeTeamId" : 818,
+         "homeTeamName" : "Colombia"
+      },
+      {
+         "homeTeamId" : 808,
+         "homeTeamName" : "Russia",
+         "awayTeamName" : "Egypt",
+         "competitionId" : 467,
+         "date" : "2018-06-19T18:00:00Z",
+         "id" : 165100,
+         "awayTeamId" : 825,
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "status" : "TIMED",
+         "matchday" : 2,
+         "odds" : null
+      },
+      {
+         "date" : "2018-06-20T12:00:00Z",
+         "competitionId" : 467,
+         "awayTeamName" : "Morocco",
+         "homeTeamName" : "Portugal",
+         "homeTeamId" : 765,
+         "odds" : null,
+         "matchday" : 2,
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "status" : "TIMED",
+         "awayTeamId" : 815,
+         "id" : 165087
+      },
+      {
+         "date" : "2018-06-20T15:00:00Z",
+         "homeTeamName" : "Uruguay",
+         "homeTeamId" : 758,
+         "awayTeamName" : "Saudi Arabia",
+         "competitionId" : 467,
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "status" : "TIMED",
+         "matchday" : 2,
+         "odds" : null,
+         "id" : 165086,
+         "awayTeamId" : 801
+      },
+      {
+         "id" : 165085,
+         "awayTeamId" : 760,
+         "matchday" : 2,
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "status" : "TIMED",
+         "odds" : null,
+         "awayTeamName" : "Spain",
+         "competitionId" : 467,
+         "homeTeamId" : 840,
+         "homeTeamName" : "Iran",
+         "date" : "2018-06-20T18:00:00Z"
+      },
+      {
+         "date" : "2018-06-21T12:00:00Z",
+         "competitionId" : 467,
+         "awayTeamName" : "Peru",
+         "homeTeamName" : "France",
+         "homeTeamId" : 773,
+         "odds" : null,
+         "matchday" : 2,
+         "status" : "TIMED",
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "awayTeamId" : 832,
+         "id" : 165096
+      },
+      {
+         "id" : 165099,
+         "awayTeamId" : 779,
+         "status" : "TIMED",
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "matchday" : 2,
+         "odds" : null,
+         "homeTeamId" : 782,
+         "homeTeamName" : "Denmark",
+         "competitionId" : 467,
+         "awayTeamName" : "Australia",
+         "date" : "2018-06-21T15:00:00Z"
+      },
+      {
+         "awayTeamName" : "Croatia",
+         "competitionId" : 467,
+         "homeTeamId" : 762,
+         "homeTeamName" : "Argentina",
+         "date" : "2018-06-21T18:00:00Z",
+         "id" : 165094,
+         "awayTeamId" : 799,
+         "matchday" : 2,
+         "status" : "TIMED",
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "odds" : null
+      },
+      {
+         "id" : 165092,
+         "awayTeamId" : 793,
+         "matchday" : 2,
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "status" : "TIMED",
+         "odds" : null,
+         "competitionId" : 467,
+         "awayTeamName" : "Costa Rica",
+         "homeTeamId" : 764,
+         "homeTeamName" : "Brazil",
+         "date" : "2018-06-22T12:00:00Z"
+      },
+      {
+         "date" : "2018-06-22T15:00:00Z",
+         "competitionId" : 467,
+         "awayTeamName" : "Iceland",
+         "homeTeamName" : "Nigeria",
+         "homeTeamId" : 776,
+         "odds" : null,
+         "matchday" : 2,
+         "status" : "TIMED",
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "awayTeamId" : 1066,
+         "id" : 165098
+      },
+      {
+         "homeTeamId" : 780,
+         "homeTeamName" : "Serbia",
+         "competitionId" : 467,
+         "awayTeamName" : "Switzerland",
+         "date" : "2018-06-22T18:00:00Z",
+         "awayTeamId" : 788,
+         "id" : 165091,
+         "odds" : null,
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "status" : "TIMED",
+         "matchday" : 2
+      },
+      {
+         "date" : "2018-06-23T12:00:00Z",
+         "competitionId" : 467,
+         "awayTeamName" : "Tunisia",
+         "homeTeamName" : "Belgium",
+         "homeTeamId" : 805,
+         "matchday" : 2,
+         "status" : "TIMED",
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "odds" : null,
+         "id" : 165088,
+         "awayTeamId" : 802
+      },
+      {
+         "date" : "2018-06-23T15:00:00Z",
+         "competitionId" : 467,
+         "awayTeamName" : "Sweden",
+         "homeTeamId" : 759,
+         "homeTeamName" : "Germany",
+         "odds" : null,
+         "matchday" : 2,
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "status" : "TIMED",
+         "awayTeamId" : 792,
+         "id" : 165090
+      },
+      {
+         "awayTeamId" : 769,
+         "id" : 165089,
+         "odds" : null,
+         "status" : "TIMED",
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "matchday" : 2,
+         "homeTeamId" : 772,
+         "homeTeamName" : "Korea Republic",
+         "competitionId" : 467,
+         "awayTeamName" : "Mexico",
+         "date" : "2018-06-23T18:00:00Z"
+      },
+      {
+         "competitionId" : 467,
+         "awayTeamName" : "Panama",
+         "homeTeamName" : "England",
+         "homeTeamId" : 770,
+         "date" : "2018-06-24T12:00:00Z",
+         "id" : 165093,
+         "awayTeamId" : 1836,
+         "matchday" : 2,
+         "status" : "TIMED",
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "odds" : null
+      },
+      {
+         "date" : "2018-06-24T15:00:00Z",
+         "awayTeamName" : "Senegal",
+         "competitionId" : 467,
+         "homeTeamName" : "Japan",
+         "homeTeamId" : 766,
+         "odds" : null,
+         "matchday" : 2,
+         "status" : "TIMED",
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "awayTeamId" : 804,
+         "id" : 165095
+      },
+      {
+         "awayTeamId" : 818,
+         "id" : 165097,
+         "odds" : null,
+         "matchday" : 2,
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "status" : "TIMED",
+         "awayTeamName" : "Colombia",
+         "competitionId" : 467,
+         "homeTeamId" : 794,
+         "homeTeamName" : "Poland",
+         "date" : "2018-06-24T18:00:00Z"
+      },
+      {
+         "odds" : null,
+         "status" : "TIMED",
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "matchday" : 3,
+         "awayTeamId" : 825,
+         "id" : 165111,
+         "date" : "2018-06-25T14:00:00Z",
+         "homeTeamId" : 801,
+         "homeTeamName" : "Saudi Arabia",
+         "awayTeamName" : "Egypt",
+         "competitionId" : 467
+      },
+      {
+         "odds" : null,
+         "status" : "TIMED",
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "matchday" : 3,
+         "awayTeamId" : 808,
+         "id" : 165101,
+         "date" : "2018-06-25T14:00:00Z",
+         "homeTeamName" : "Uruguay",
+         "homeTeamId" : 758,
+         "awayTeamName" : "Russia",
+         "competitionId" : 467
+      },
+      {
+         "competitionId" : 467,
+         "awayTeamName" : "Portugal",
+         "homeTeamName" : "Iran",
+         "homeTeamId" : 840,
+         "date" : "2018-06-25T18:00:00Z",
+         "awayTeamId" : 765,
+         "id" : 165112,
+         "odds" : null,
+         "matchday" : 3,
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "status" : "TIMED"
+      },
+      {
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "status" : "TIMED",
+         "matchday" : 3,
+         "odds" : null,
+         "id" : 165109,
+         "awayTeamId" : 815,
+         "date" : "2018-06-25T18:00:00Z",
+         "homeTeamId" : 760,
+         "homeTeamName" : "Spain",
+         "awayTeamName" : "Morocco",
+         "competitionId" : 467
+      },
+      {
+         "competitionId" : 467,
+         "awayTeamName" : "France",
+         "homeTeamId" : 782,
+         "homeTeamName" : "Denmark",
+         "date" : "2018-06-26T14:00:00Z",
+         "id" : 165113,
+         "awayTeamId" : 773,
+         "matchday" : 3,
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "status" : "TIMED",
+         "odds" : null
+      },
+      {
+         "awayTeamId" : 832,
+         "id" : 165107,
+         "odds" : null,
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "status" : "TIMED",
+         "matchday" : 3,
+         "homeTeamId" : 779,
+         "homeTeamName" : "Australia",
+         "competitionId" : 467,
+         "awayTeamName" : "Peru",
+         "date" : "2018-06-26T14:00:00Z"
+      },
+      {
+         "awayTeamId" : 762,
+         "id" : 165115,
+         "odds" : null,
+         "status" : "TIMED",
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "matchday" : 3,
+         "homeTeamName" : "Nigeria",
+         "homeTeamId" : 776,
+         "competitionId" : 467,
+         "awayTeamName" : "Argentina",
+         "date" : "2018-06-26T18:00:00Z"
+      },
+      {
+         "odds" : null,
+         "matchday" : 3,
+         "status" : "TIMED",
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "awayTeamId" : 799,
+         "id" : 165114,
+         "date" : "2018-06-26T18:00:00Z",
+         "competitionId" : 467,
+         "awayTeamName" : "Croatia",
+         "homeTeamName" : "Iceland",
+         "homeTeamId" : 1066
+      },
+      {
+         "awayTeamId" : 792,
+         "id" : 165102,
+         "odds" : null,
+         "matchday" : 3,
+         "status" : "TIMED",
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "competitionId" : 467,
+         "awayTeamName" : "Sweden",
+         "homeTeamName" : "Mexico",
+         "homeTeamId" : 769,
+         "date" : "2018-06-27T14:00:00Z"
+      },
+      {
+         "odds" : null,
+         "status" : "TIMED",
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "matchday" : 3,
+         "awayTeamId" : 759,
+         "id" : 165106,
+         "date" : "2018-06-27T14:00:00Z",
+         "homeTeamName" : "Korea Republic",
+         "homeTeamId" : 772,
+         "awayTeamName" : "Germany",
+         "competitionId" : 467
+      },
+      {
+         "date" : "2018-06-27T18:00:00Z",
+         "competitionId" : 467,
+         "awayTeamName" : "Brazil",
+         "homeTeamName" : "Serbia",
+         "homeTeamId" : 780,
+         "matchday" : 3,
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "status" : "TIMED",
+         "odds" : null,
+         "id" : 165116,
+         "awayTeamId" : 764
+      },
+      {
+         "date" : "2018-06-27T18:00:00Z",
+         "homeTeamName" : "Switzerland",
+         "homeTeamId" : 788,
+         "competitionId" : 467,
+         "awayTeamName" : "Costa Rica",
+         "odds" : null,
+         "status" : "TIMED",
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "matchday" : 3,
+         "awayTeamId" : 793,
+         "id" : 165108
+      },
+      {
+         "id" : 165104,
+         "awayTeamId" : 794,
+         "matchday" : 3,
+         "status" : "TIMED",
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "odds" : null,
+         "competitionId" : 467,
+         "awayTeamName" : "Poland",
+         "homeTeamId" : 766,
+         "homeTeamName" : "Japan",
+         "date" : "2018-06-28T14:00:00Z"
+      },
+      {
+         "date" : "2018-06-28T14:00:00Z",
+         "competitionId" : 467,
+         "awayTeamName" : "Colombia",
+         "homeTeamName" : "Senegal",
+         "homeTeamId" : 804,
+         "odds" : null,
+         "matchday" : 3,
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "status" : "TIMED",
+         "awayTeamId" : 818,
+         "id" : 165103
+      },
+      {
+         "awayTeamName" : "Tunisia",
+         "competitionId" : 467,
+         "homeTeamId" : 1836,
+         "homeTeamName" : "Panama",
+         "date" : "2018-06-28T18:00:00Z",
+         "awayTeamId" : 802,
+         "id" : 165110,
+         "odds" : null,
+         "matchday" : 3,
+         "status" : "TIMED",
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         }
+      },
+      {
+         "awayTeamId" : 805,
+         "id" : 165105,
+         "odds" : null,
+         "status" : "TIMED",
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "matchday" : 3,
+         "homeTeamId" : 770,
+         "homeTeamName" : "England",
+         "awayTeamName" : "Belgium",
+         "competitionId" : 467,
+         "date" : "2018-06-28T18:00:00Z"
+      },
+      {
+         "status" : "SCHEDULED",
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "matchday" : 4,
+         "odds" : null,
+         "id" : 165119,
+         "awayTeamId" : 757,
+         "date" : "2018-06-30T14:00:00Z",
+         "homeTeamName" : "",
+         "homeTeamId" : 757,
+         "awayTeamName" : "",
+         "competitionId" : 467
+      },
+      {
+         "id" : 165123,
+         "awayTeamId" : 757,
+         "matchday" : 4,
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "status" : "SCHEDULED",
+         "odds" : null,
+         "competitionId" : 467,
+         "awayTeamName" : "",
+         "homeTeamId" : 757,
+         "homeTeamName" : "",
+         "date" : "2018-06-30T18:00:00Z"
+      },
+      {
+         "competitionId" : 467,
+         "awayTeamName" : "",
+         "homeTeamId" : 757,
+         "homeTeamName" : "",
+         "date" : "2018-07-01T14:00:00Z",
+         "id" : 165122,
+         "awayTeamId" : 757,
+         "matchday" : 4,
+         "status" : "SCHEDULED",
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "odds" : null
+      },
+      {
+         "date" : "2018-07-01T18:00:00Z",
+         "homeTeamId" : 757,
+         "homeTeamName" : "",
+         "competitionId" : 467,
+         "awayTeamName" : "",
+         "odds" : null,
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "status" : "SCHEDULED",
+         "matchday" : 4,
+         "awayTeamId" : 757,
+         "id" : 165121
+      },
+      {
+         "odds" : null,
+         "matchday" : 4,
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "status" : "SCHEDULED",
+         "awayTeamId" : 757,
+         "id" : 165118,
+         "date" : "2018-07-02T14:00:00Z",
+         "awayTeamName" : "",
+         "competitionId" : 467,
+         "homeTeamName" : "",
+         "homeTeamId" : 757
+      },
+      {
+         "awayTeamId" : 757,
+         "id" : 165120,
+         "odds" : null,
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "status" : "SCHEDULED",
+         "matchday" : 4,
+         "homeTeamName" : "",
+         "homeTeamId" : 757,
+         "competitionId" : 467,
+         "awayTeamName" : "",
+         "date" : "2018-07-02T18:00:00Z"
+      },
+      {
+         "date" : "2018-07-03T14:00:00Z",
+         "homeTeamName" : "",
+         "homeTeamId" : 757,
+         "awayTeamName" : "",
+         "competitionId" : 467,
+         "status" : "SCHEDULED",
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "matchday" : 4,
+         "odds" : null,
+         "id" : 165117,
+         "awayTeamId" : 757
+      },
+      {
+         "id" : 165124,
+         "awayTeamId" : 757,
+         "matchday" : 4,
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "status" : "SCHEDULED",
+         "odds" : null,
+         "competitionId" : 467,
+         "awayTeamName" : "",
+         "homeTeamId" : 757,
+         "homeTeamName" : "",
+         "date" : "2018-07-03T18:00:00Z"
+      },
+      {
+         "odds" : null,
+         "status" : "SCHEDULED",
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "matchday" : 5,
+         "awayTeamId" : 757,
+         "id" : 165127,
+         "date" : "2018-07-06T14:00:00Z",
+         "homeTeamId" : 757,
+         "homeTeamName" : "",
+         "awayTeamName" : "",
+         "competitionId" : 467
+      },
+      {
+         "date" : "2018-07-06T18:00:00Z",
+         "homeTeamName" : "",
+         "homeTeamId" : 757,
+         "awayTeamName" : "",
+         "competitionId" : 467,
+         "status" : "SCHEDULED",
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "matchday" : 5,
+         "odds" : null,
+         "id" : 165126,
+         "awayTeamId" : 757
+      },
+      {
+         "date" : "2018-07-07T14:00:00Z",
+         "homeTeamName" : "",
+         "homeTeamId" : 757,
+         "competitionId" : 467,
+         "awayTeamName" : "",
+         "odds" : null,
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "status" : "SCHEDULED",
+         "matchday" : 5,
+         "awayTeamId" : 757,
+         "id" : 165125
+      },
+      {
+         "date" : "2018-07-07T18:00:00Z",
+         "homeTeamName" : "",
+         "homeTeamId" : 757,
+         "awayTeamName" : "",
+         "competitionId" : 467,
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "status" : "SCHEDULED",
+         "matchday" : 5,
+         "odds" : null,
+         "id" : 165128,
+         "awayTeamId" : 757
+      },
+      {
+         "awayTeamName" : "",
+         "competitionId" : 467,
+         "homeTeamId" : 757,
+         "homeTeamName" : "",
+         "date" : "2018-07-10T18:00:00Z",
+         "id" : 165130,
+         "awayTeamId" : 757,
+         "matchday" : 6,
+         "status" : "SCHEDULED",
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "odds" : null
+      },
+      {
+         "result" : {
+            "goalsAwayTeam" : null,
+            "goalsHomeTeam" : null
+         },
+         "status" : "SCHEDULED",
+         "matchday" : 6,
+         "odds" : null,
+         "id" : 165129,
+         "awayTeamId" : 757,
+         "date" : "2018-07-11T18:00:00Z",
+         "homeTeamId" : 757,
+         "homeTeamName" : "",
+         "awayTeamName" : "",
+         "competitionId" : 467
+      },
+      {
+         "awayTeamId" : 757,
+         "id" : 165131,
+         "odds" : null,
+         "matchday" : 7,
+         "status" : "SCHEDULED",
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "competitionId" : 467,
+         "awayTeamName" : "",
+         "homeTeamName" : "",
+         "homeTeamId" : 757,
+         "date" : "2018-07-14T14:00:00Z"
+      },
+      {
+         "awayTeamId" : 757,
+         "id" : 165132,
+         "odds" : null,
+         "status" : "SCHEDULED",
+         "result" : {
+            "goalsHomeTeam" : null,
+            "goalsAwayTeam" : null
+         },
+         "matchday" : 8,
+         "homeTeamName" : "",
+         "homeTeamId" : 757,
+         "awayTeamName" : "",
+         "competitionId" : 467,
+         "date" : "2018-07-15T15:00:00Z"
+      }
+   ],
+   "count" : 64
+}

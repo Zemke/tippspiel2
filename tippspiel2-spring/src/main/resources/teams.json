@@ -1,0 +1,229 @@
+{
+   "count" : 32,
+   "teams" : [
+      {
+         "crestUrl" : "https://upload.wikimedia.org/wikipedia/en/f/f3/Flag_of_Russia.svg",
+         "shortName" : null,
+         "id" : 808,
+         "squadMarketValue" : null,
+         "name" : "Russia"
+      },
+      {
+         "squadMarketValue" : null,
+         "name" : "Saudi Arabia",
+         "shortName" : null,
+         "id" : 801,
+         "crestUrl" : null
+      },
+      {
+         "squadMarketValue" : null,
+         "name" : "Egypt",
+         "crestUrl" : null,
+         "shortName" : null,
+         "id" : 825
+      },
+      {
+         "crestUrl" : null,
+         "id" : 758,
+         "shortName" : null,
+         "squadMarketValue" : null,
+         "name" : "Uruguay"
+      },
+      {
+         "name" : "Morocco",
+         "squadMarketValue" : null,
+         "id" : 815,
+         "shortName" : null,
+         "crestUrl" : null
+      },
+      {
+         "id" : 840,
+         "shortName" : "Iran",
+         "crestUrl" : null,
+         "name" : "Iran",
+         "squadMarketValue" : null
+      },
+      {
+         "name" : "Portugal",
+         "squadMarketValue" : null,
+         "crestUrl" : "https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg",
+         "id" : 765,
+         "shortName" : null
+      },
+      {
+         "shortName" : null,
+         "id" : 760,
+         "crestUrl" : "https://upload.wikimedia.org/wikipedia/en/9/9a/Flag_of_Spain.svg",
+         "squadMarketValue" : null,
+         "name" : "Spain"
+      },
+      {
+         "name" : "France",
+         "squadMarketValue" : null,
+         "crestUrl" : "https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg",
+         "shortName" : null,
+         "id" : 773
+      },
+      {
+         "squadMarketValue" : null,
+         "name" : "Australia",
+         "crestUrl" : null,
+         "id" : 779,
+         "shortName" : null
+      },
+      {
+         "squadMarketValue" : null,
+         "name" : "Argentina",
+         "crestUrl" : null,
+         "id" : 762,
+         "shortName" : null
+      },
+      {
+         "squadMarketValue" : null,
+         "name" : "Iceland",
+         "crestUrl" : "https://upload.wikimedia.org/wikipedia/commons/c/ce/Flag_of_Iceland.svg",
+         "shortName" : null,
+         "id" : 1066
+      },
+      {
+         "name" : "Peru",
+         "squadMarketValue" : null,
+         "shortName" : "Peru",
+         "id" : 832,
+         "crestUrl" : null
+      },
+      {
+         "name" : "Denmark",
+         "squadMarketValue" : null,
+         "crestUrl" : null,
+         "shortName" : null,
+         "id" : 782
+      },
+      {
+         "crestUrl" : "https://upload.wikimedia.org/wikipedia/commons/1/1b/Flag_of_Croatia.svg",
+         "id" : 799,
+         "shortName" : null,
+         "squadMarketValue" : null,
+         "name" : "Croatia"
+      },
+      {
+         "name" : "Nigeria",
+         "squadMarketValue" : null,
+         "id" : 776,
+         "shortName" : null,
+         "crestUrl" : null
+      },
+      {
+         "name" : "Costa Rica",
+         "squadMarketValue" : null,
+         "shortName" : null,
+         "id" : 793,
+         "crestUrl" : null
+      },
+      {
+         "shortName" : null,
+         "id" : 780,
+         "crestUrl" : null,
+         "squadMarketValue" : null,
+         "name" : "Serbia"
+      },
+      {
+         "name" : "Germany",
+         "squadMarketValue" : null,
+         "crestUrl" : "https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg",
+         "shortName" : null,
+         "id" : 759
+      },
+      {
+         "crestUrl" : null,
+         "shortName" : null,
+         "id" : 769,
+         "name" : "Mexico",
+         "squadMarketValue" : null
+      },
+      {
+         "crestUrl" : null,
+         "shortName" : null,
+         "id" : 764,
+         "squadMarketValue" : null,
+         "name" : "Brazil"
+      },
+      {
+         "squadMarketValue" : null,
+         "name" : "Switzerland",
+         "crestUrl" : "https://upload.wikimedia.org/wikipedia/commons/0/08/Flag_of_Switzerland_(Pantone).svg",
+         "shortName" : null,
+         "id" : 788
+      },
+      {
+         "name" : "Sweden",
+         "squadMarketValue" : null,
+         "shortName" : null,
+         "id" : 792,
+         "crestUrl" : "https://upload.wikimedia.org/wikipedia/en/4/4c/Flag_of_Sweden.svg"
+      },
+      {
+         "crestUrl" : null,
+         "id" : 772,
+         "shortName" : null,
+         "squadMarketValue" : null,
+         "name" : "Korea Republic"
+      },
+      {
+         "squadMarketValue" : null,
+         "name" : "Belgium",
+         "crestUrl" : "https://upload.wikimedia.org/wikipedia/commons/6/65/Flag_of_Belgium.svg",
+         "id" : 805,
+         "shortName" : null
+      },
+      {
+         "crestUrl" : null,
+         "shortName" : "Panama",
+         "id" : 1836,
+         "name" : "Panama",
+         "squadMarketValue" : null
+      },
+      {
+         "id" : 802,
+         "shortName" : null,
+         "crestUrl" : null,
+         "name" : "Tunisia",
+         "squadMarketValue" : null
+      },
+      {
+         "name" : "England",
+         "squadMarketValue" : null,
+         "crestUrl" : "https://upload.wikimedia.org/wikipedia/en/b/be/Flag_of_England.svg",
+         "shortName" : null,
+         "id" : 770
+      },
+      {
+         "squadMarketValue" : null,
+         "name" : "Poland",
+         "crestUrl" : "https://upload.wikimedia.org/wikipedia/en/1/12/Flag_of_Poland.svg",
+         "shortName" : null,
+         "id" : 794
+      },
+      {
+         "name" : "Senegal",
+         "squadMarketValue" : null,
+         "crestUrl" : null,
+         "id" : 804,
+         "shortName" : null
+      },
+      {
+         "shortName" : null,
+         "id" : 818,
+         "crestUrl" : null,
+         "squadMarketValue" : null,
+         "name" : "Colombia"
+      },
+      {
+         "crestUrl" : null,
+         "id" : 766,
+         "shortName" : null,
+         "name" : "Japan",
+         "squadMarketValue" : null
+      }
+   ]
+}
