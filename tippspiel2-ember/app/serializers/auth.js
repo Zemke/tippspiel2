@@ -1,5 +1,5 @@
-import DS from 'ember-data';
+import ApplicationJSONSerializer from './application';
 
-export default DS.JSONSerializer.extend({
+export default ApplicationJSONSerializer.extend({
   primaryKey: 'token',
 });
