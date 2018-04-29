@@ -4,3 +4,5 @@ me:
   community:
     title: 'Create a Community'
     subtitle: 'A group of users who can then in conjunction with a competition form a betting game.'
+    new:
+      addUser: 'Add a user to the community'

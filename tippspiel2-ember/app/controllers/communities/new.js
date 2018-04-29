@@ -1,4 +1,5 @@
 import Controller from '@ember/controller';
+import {computed} from '@ember/object';
 
 export default Controller.extend({
   actions: {
@@ -9,16 +10,23 @@ export default Controller.extend({
           this.transitionToRoute('me');
         })
         .catch(res => {
-          debugger;
-          // TODO Assertion Failed: You can no longer pass a modelClass as the first argument to store._buildInternalModel. Pass modelName instead.
           iziToast.error({message: 'An unknown error occurred.'});
         });
     },
-    addUser(userId) {
-      this.get('model.community.users').pushObject(this.get('model.users').find(u => u.id === userId));
+    addUser(event) {
+      this.get('model.community.users').pushObject(
+        this.get('model.users').find(u => u.id === event.target.value));
+      event.target.value = '';
     },
     removeUser(user) {
       this.get('model.community.users').removeObject(user);
     }
-  }
+  },
+  usersInCommunity: computed('model.community.users.[]', function () {
+    return this.get('model.community.users').sortBy('lastName', 'firstName')
+  }),
+  usersNotInCommunity: computed('model.community.users.[]', function () {
+    const usersInCommunity = this.get('model.community.users').toArray();
+    return this.get('model.users').filter(u => usersInCommunity.indexOf(u) === -1);
+  })
 });
