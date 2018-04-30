@@ -1,9 +1,11 @@
 package com.github.zemke.tippspiel2.view.controller
 
 import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
+import com.github.zemke.tippspiel2.service.CompetitionService
 import com.github.zemke.tippspiel2.service.FixtureService
 import com.github.zemke.tippspiel2.service.FootballDataService
 import com.github.zemke.tippspiel2.service.NULL_TEAM_ID
+import com.github.zemke.tippspiel2.view.exception.NotFoundException
 import com.github.zemke.tippspiel2.view.model.CompetitionCreationDto
 import com.github.zemke.tippspiel2.view.model.CompetitionDto
 import com.github.zemke.tippspiel2.view.model.FootballDataCompetitionDto
@@ -12,6 +14,7 @@ import com.github.zemke.tippspiel2.view.model.FootballDataTeamDto
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api/competitions")
 class CompetitionRestController(
         @Autowired private val footballDataService: FootballDataService,
+        @Autowired private val competitionService: CompetitionService,
         @Autowired private val fixtureService: FixtureService
 ) {
 
@@ -40,5 +44,11 @@ class CompetitionRestController(
         fixtureService.saveMany(fixtures)
 
         return ResponseEntity.status(HttpStatus.CREATED).body(CompetitionDto.toDto(competition))
+    }
+
+    @GetMapping("/current")
+    fun readCurrentCompetition(): ResponseEntity<CompetitionDto> {
+        val currentCompetition = competitionService.findByCurrentTrue() ?: throw NotFoundException("There is currently no competition.")
+        return ResponseEntity.ok(CompetitionDto.toDto(currentCompetition))
     }
 }

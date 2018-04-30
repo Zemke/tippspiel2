@@ -20,6 +20,10 @@ Router.map(function() {
   this.route('competitions', function() {
     this.route('new');
   });
+
+  this.route('betting-games', function() {
+    this.route('new');
+  });
 });
 
 export default Router;
