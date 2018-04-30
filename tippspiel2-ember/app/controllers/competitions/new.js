@@ -9,7 +9,6 @@ export default Controller.extend({
           this.transitionToRoute('me');
         })
         .catch(res => {
-           // TODO "Assertion Failed: 'competition:1212' was saved to the server, but the response returned the new id '467'. The store cannot assign a new id to a record that already has an id."
           iziToast.error({message: 'An unknown error occurred.'});
         });
     }
