@@ -2,25 +2,13 @@
 
 The epic successor of [Zemke/tippspiel](https://github.com/Zemke/tippspiel).
 
-## Install
-
-The project is comprised of two parts that need to be installed independently.
-
-### `tippspiel2-spring`
-
-Within the `tippspiel2-spring` module:
+## Run
 
 ```sh
-mvn clean install && mvn spring-boot:run
+mvn clean install && mvn spring-boot:run -pl tippspiel2-spring
 ```
 
-### `tippspiel2-ember`
-
-Within the `tippspiel2-ember` module:
-
-```sh
-yarn && yarn start
-```
+[http://localhost:8080/](http://localhost:8080/)
 
 ## Technologies
 
