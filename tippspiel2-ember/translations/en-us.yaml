@@ -18,7 +18,10 @@ me:
   bettingGame:
     title: 'Start Off a Betting Game'
     subtitle: 'Create an actual betting game by combining a competition with a community.'
-#    new:
+    new:
+      currentCompetition: 'Current competition'
+      setCommunity: 'Pick a community'
+      submit: 'Create Betting Game'
 #      id:
 #        placeholder: 'Enter ID'
 #        info: 'The ID can be derived from football-data.org. It’s meant to be looked up manually and is then used to undertake external API requests.'

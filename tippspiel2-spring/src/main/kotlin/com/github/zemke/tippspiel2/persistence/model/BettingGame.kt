@@ -2,6 +2,7 @@ package com.github.zemke.tippspiel2.persistence.model
 
 import org.hibernate.annotations.CreationTimestamp
 import java.sql.Timestamp
+import java.util.*
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -17,5 +18,5 @@ data class BettingGame(
         @Column(unique = true) @NotBlank val name: String,
         @ManyToOne(optional = false) val community: Community,
         @ManyToOne(optional = false) val competition: Competition,
-        @CreationTimestamp @NotNull val created: Timestamp?
+        @CreationTimestamp @NotNull val created: Timestamp = Timestamp.from(Date().toInstant())
 )

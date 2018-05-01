@@ -3,11 +3,13 @@ package com.github.zemke.tippspiel2.view.model
 import com.github.zemke.tippspiel2.persistence.model.BettingGame
 import com.github.zemke.tippspiel2.persistence.model.Community
 import com.github.zemke.tippspiel2.persistence.model.Competition
+import com.github.zemke.tippspiel2.view.util.DataTransferObject
 
+@DataTransferObject
 data class BettingGameCreationDto(
         val name: String,
-        val communityId: Long,
-        val competitionId: Long
+        val community: Long,
+        val competition: Long
 ) {
 
     companion object {
@@ -16,8 +18,7 @@ data class BettingGameCreationDto(
                 id = null,
                 name = dto.name,
                 community = community,
-                competition = competition,
-                created = null
+                competition = competition
         )
     }
 }

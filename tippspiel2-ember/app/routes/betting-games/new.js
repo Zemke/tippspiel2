@@ -4,6 +4,7 @@ import RSVP from 'rsvp';
 export default Route.extend({
   model(params, transition) {
     return RSVP.hash({
+      bettingGame: this.store.createRecord('betting-game'),
       communities: this.store.findAll('community'),
       currentCompetition: this.store.queryRecord('competition', {})
         .catch(err => {
@@ -12,6 +13,9 @@ export default Route.extend({
             transition.abort();
           }
         })
+    }).then(res => {
+      res.bettingGame.set('competition', res.currentCompetition);
+      return res;
     });
   }
 });

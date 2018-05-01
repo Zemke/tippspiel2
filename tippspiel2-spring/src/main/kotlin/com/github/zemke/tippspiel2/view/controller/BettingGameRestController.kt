@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -26,9 +27,9 @@ class BettingGameRestController {
     private lateinit var bettingGameService: BettingGameService
 
     @PostMapping("")
-    fun createBettingGame(communityCreationDto: BettingGameCreationDto): ResponseEntity<BettingGameDto> {
-        val community = communityService.find(communityCreationDto.communityId)
-        val competition = competitionService.find(communityCreationDto.competitionId)
+    fun createBettingGame(@RequestBody communityCreationDto: BettingGameCreationDto): ResponseEntity<BettingGameDto> {
+        val community = communityService.find(communityCreationDto.community)
+        val competition = competitionService.find(communityCreationDto.competition)
 
         val bettingGame = BettingGameCreationDto.fromDto(
                 dto = communityCreationDto,

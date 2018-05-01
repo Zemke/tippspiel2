@@ -56,8 +56,7 @@ open class BettingGameServiceTest {
                 id = null,
                 name = "Tipprunde",
                 community = community,
-                competition = competition,
-                created = null
+                competition = competition
         )
 
         bettingGameService.createBettingGame(bettingGame)
