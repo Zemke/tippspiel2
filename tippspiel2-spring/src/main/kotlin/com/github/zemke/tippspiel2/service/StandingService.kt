@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service
 import javax.transaction.Transactional
 
 @Service
-open class StandingService(
+class StandingService(
         @Autowired private val standingRepository: StandingRepository,
         @Autowired private val betRepository: BetRepository,
         @Autowired private val fixtureRepository: FixtureRepository
@@ -31,7 +31,7 @@ open class StandingService(
      * There's probably no way to make it more reliably.
      */
     @Transactional
-    open fun updateStandings(competition: Competition): List<Standing> {
+    fun updateStandings(competition: Competition): List<Standing> {
         val bets = betRepository.findByCompetitionAndFixtureStatus(competition, FixtureStatus.FINISHED)
         val standings = standingRepository.findAll()
 

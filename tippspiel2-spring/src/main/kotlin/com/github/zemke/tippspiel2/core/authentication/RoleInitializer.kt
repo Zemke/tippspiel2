@@ -10,7 +10,7 @@ import org.springframework.context.event.ContextRefreshedEvent
 import org.springframework.stereotype.Component
 
 @Component
-open class RoleInitializer : ApplicationListener<ContextRefreshedEvent> {
+class RoleInitializer : ApplicationListener<ContextRefreshedEvent> {
 
     @Autowired
     private lateinit var roleRepository: RoleRepository

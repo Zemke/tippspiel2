@@ -55,7 +55,7 @@ class AuthRestControllerTest {
         this.mockMvc.perform(post("/api/auth/")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestPayload))
-                .andExpect(status().isOk)
+                .andExpect(status().isCreated)
                 .andDo {
                     val token = JacksonUtils.fromJson<JsonWebTokenDto>(it.response.contentAsString).token
                     Assert.isTrue(jsonWebTokenService.validateToken(token, AuthenticatedUser.create(user)))

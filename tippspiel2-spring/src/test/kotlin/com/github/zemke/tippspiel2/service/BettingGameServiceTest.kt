@@ -19,7 +19,7 @@ import java.sql.Timestamp
 @RunWith(SpringRunner::class)
 @EmbeddedPostgresDataJpaTest
 @Import(BettingGameService::class)
-open class BettingGameServiceTest {
+class BettingGameServiceTest {
 
     @Autowired
     private lateinit var bettingGameService: BettingGameService

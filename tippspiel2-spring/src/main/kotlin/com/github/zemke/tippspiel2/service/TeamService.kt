@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-open class TeamService(
+class TeamService(
         @Autowired private var teamRepository: TeamRepository
 ) {
 

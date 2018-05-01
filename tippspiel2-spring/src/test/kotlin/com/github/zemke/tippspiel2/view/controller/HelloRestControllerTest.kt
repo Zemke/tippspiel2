@@ -27,7 +27,7 @@ import org.springframework.web.context.WebApplicationContext
 @WebAppConfiguration
 @ContextConfiguration(classes = [WebSecurityConfig::class])
 @IntegrationTest
-open class HelloRestControllerTest {
+class HelloRestControllerTest {
 
     @Autowired
     private lateinit var webApplicationContext: WebApplicationContext

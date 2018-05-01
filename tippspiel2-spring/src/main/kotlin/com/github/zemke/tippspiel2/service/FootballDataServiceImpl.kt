@@ -19,7 +19,7 @@ import javax.annotation.PostConstruct
 
 @Prod
 @Service
-open class FootballDataServiceImpl : FootballDataService {
+class FootballDataServiceImpl : FootballDataService {
 
     @Autowired private lateinit var footballDataProperties: FootballDataProperties
     private lateinit var restTemplate: RestTemplate

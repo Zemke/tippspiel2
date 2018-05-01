@@ -14,7 +14,7 @@ import java.net.URI
 import java.nio.file.Paths
 
 @Configuration
-open class DataSourceConfig {
+class DataSourceConfig {
 
     @Autowired
     private lateinit var embeddedDataSourceProperties: EmbeddedDataSourceProperties
@@ -23,12 +23,12 @@ open class DataSourceConfig {
     @ConfigurationProperties("spring.datasource.hikari")
     @Primary
     @Dev
-    open fun embeddedPostgresDatabaseDataSource(): HikariDataSource {
+    fun embeddedPostgresDatabaseDataSource(): HikariDataSource {
         startEmbeddedPostgresDatabase()
         return DataSourceBuilder
                 .create()
                 .type(HikariDataSource::class.java)
-                .build();
+                .build()
     }
 
     private fun startEmbeddedPostgresDatabase() {

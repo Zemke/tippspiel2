@@ -17,7 +17,7 @@ import java.util.*
 
 @RunWith(SpringRunner::class)
 @EmbeddedPostgresDataJpaTest
-open class FixtureRepositoryTest {
+class FixtureRepositoryTest {
 
     @Autowired
     private lateinit var fixtureRepository: FixtureRepository

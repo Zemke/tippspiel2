@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(SpringRunner::class)
 @EmbeddedPostgresDataJpaTest
-open class CommunityRepositoryTest {
+class CommunityRepositoryTest {
 
     @Autowired
     private lateinit var communityRepository: CommunityRepository

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service
 import javax.transaction.Transactional
 
 @Service
-open class BettingGameService(
+class BettingGameService(
         @Autowired private var bettingGameRepository: BettingGameRepository,
         @Autowired private var standingRepository: StandingRepository
 ) {
@@ -17,7 +17,7 @@ open class BettingGameService(
     fun find(bettingGameId: Long): BettingGame = bettingGameRepository.getOne(bettingGameId)
 
     @Transactional
-    open fun createBettingGame(bettingGame: BettingGame): BettingGame {
+    fun createBettingGame(bettingGame: BettingGame): BettingGame {
         bettingGameRepository.save(bettingGame)
         standingRepository.saveAll(bettingGame.community.users.map {
             Standing(

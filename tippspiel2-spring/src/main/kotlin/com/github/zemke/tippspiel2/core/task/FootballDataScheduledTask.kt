@@ -7,14 +7,13 @@ import com.github.zemke.tippspiel2.service.FixtureService
 import com.github.zemke.tippspiel2.service.FootballDataService
 import com.github.zemke.tippspiel2.service.StandingService
 import com.github.zemke.tippspiel2.view.model.FootballDataFixtureDto
-import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Component
 import javax.transaction.Transactional
 
 @Component
-open class FootballDataScheduledTask {
+class FootballDataScheduledTask {
 
     @Autowired
     private lateinit var footballDataService: FootballDataService
@@ -28,11 +27,9 @@ open class FootballDataScheduledTask {
     @Autowired
     private lateinit var standingService: StandingService
 
-    private val logger = LoggerFactory.getLogger(FootballDataScheduledTask::class.java)
-
     @Scheduled(fixedDelayString = "\${tippspiel2.football-data.fixed-delay}")
     @Transactional
-    open fun exec() {
+    fun exec() {
         val competition = competitionService.findByCurrentTrue() ?: return
         val fixturesToUpdate = fixtureService.findFixturesByCompetitionAndManualFalse(competition)
         val teamsToBeAffectedByUpdate = fixturesToUpdate.fold(arrayListOf()) { acc: ArrayList<Team>, fixture: Fixture ->

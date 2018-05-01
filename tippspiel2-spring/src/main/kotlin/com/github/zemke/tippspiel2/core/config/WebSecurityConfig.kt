@@ -22,7 +22,7 @@ import org.springframework.web.cors.CorsConfiguration
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-open class WebSecurityConfig(
+class WebSecurityConfig(
         @Autowired private val http401JwtAuthenticationEntryPoint: Http401JwtAuthenticationEntryPoint,
         @Autowired private val userDetailsService: UserDetailsService
 ) : WebSecurityConfigurerAdapter() {
@@ -41,13 +41,13 @@ open class WebSecurityConfig(
     }
 
     @Bean
-    open fun passwordEncoder(): PasswordEncoder {
+    fun passwordEncoder(): PasswordEncoder {
         return BCryptPasswordEncoder()
     }
 
     @Bean
     @Throws(Exception::class)
-    open fun authenticationTokenFilterBean(): AuthenticationFilter {
+    fun authenticationTokenFilterBean(): AuthenticationFilter {
         return AuthenticationFilter()
     }
 
