@@ -43,16 +43,6 @@
                             <arguments>build</arguments>
                         </configuration>
                     </execution>
-                    <execution>
-                        <id>ember test</id>
-                        <goals>
-                            <goal>yarn</goal>
-                        </goals>
-                        <configuration>
-                            <arguments>test</arguments>
-                        </configuration>
-                        <phase>test</phase>
-                    </execution>
                 </executions>
                 <configuration>
                     <workingDirectory>src/main/webapp</workingDirectory>
