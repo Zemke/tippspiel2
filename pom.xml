@@ -46,6 +46,7 @@
         <url>https://github.com/Zemke/tippspiel</url>
         <connection>scm:git:git://github.com/Zemke/tippspiel.git</connection>
         <developerConnection>scm:git:git@github.com:Zemke/tippspiel.git</developerConnection>
+        <tag>HEAD</tag>
     </scm>
     <build>
         <plugins>
