@@ -29,7 +29,7 @@ class CompetitionRestController(
 ) {
 
     @PostMapping("")
-    fun createFixtures(@RequestBody competitionCreationDto: CompetitionCreationDto): ResponseEntity<CompetitionDto>? {
+    fun createCompetition(@RequestBody competitionCreationDto: CompetitionCreationDto): ResponseEntity<CompetitionDto>? {
         val competitionDto = footballDataService.requestCompetition(competitionCreationDto.id)
         val fixtureWrappedListDto = footballDataService.requestFixtures(competitionCreationDto.id)
         val teamWrappedListDto = footballDataService.requestTeams(competitionCreationDto.id)
