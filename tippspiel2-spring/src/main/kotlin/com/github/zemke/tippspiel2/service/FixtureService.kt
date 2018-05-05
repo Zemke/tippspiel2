@@ -17,4 +17,7 @@ class FixtureService(
 
     fun findFixturesByCompetitionAndManualFalse(competition: Competition): List<Fixture> =
             fixtureRepository.findFixturesByCompetitionAndManualFalse(competition)
+
+    fun findFixturesByCompetition(competition: Competition) =
+            fixtureRepository.findFixturesByCompetition(competition)
 }

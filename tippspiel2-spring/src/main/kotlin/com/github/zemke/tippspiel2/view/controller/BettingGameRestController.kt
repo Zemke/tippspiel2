@@ -3,6 +3,7 @@ package com.github.zemke.tippspiel2.view.controller
 import com.github.zemke.tippspiel2.service.BettingGameService
 import com.github.zemke.tippspiel2.service.CommunityService
 import com.github.zemke.tippspiel2.service.CompetitionService
+import com.github.zemke.tippspiel2.view.exception.BadRequestException
 import com.github.zemke.tippspiel2.view.model.BettingGameCreationDto
 import com.github.zemke.tippspiel2.view.model.BettingGameDto
 import org.springframework.beans.factory.annotation.Autowired
@@ -29,7 +30,7 @@ class BettingGameRestController {
     @PostMapping("")
     fun createBettingGame(@RequestBody communityCreationDto: BettingGameCreationDto): ResponseEntity<BettingGameDto> {
         val community = communityService.find(communityCreationDto.community)
-        val competition = competitionService.find(communityCreationDto.competition)
+        val competition = competitionService.find(communityCreationDto.competition).orElseThrow { throw BadRequestException() }
 
         val bettingGame = BettingGameCreationDto.fromDto(
                 dto = communityCreationDto,
