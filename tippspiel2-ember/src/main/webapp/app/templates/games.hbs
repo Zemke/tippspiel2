@@ -1,5 +1,46 @@
 <section class="section">
   <h1 class="title">Games</h1>
+
+  <div class="columns is-multiline">
+    {{#each model as |fixture|}}
+      <div class="column is-one-third-tablet is-one-quarter-fullhd">
+        <div class="card">
+          <div class="card-content">
+            <div class="title">
+              <div class="nowrap">
+                {{fixture.homeTeam.name}}
+                <span class="has-text-grey">{{fixture.goalsHomeTeam}}</span>
+              </div>
+              <div class="nowrap">
+                {{fixture.awayTeam.name}}
+                <span class="has-text-grey">{{fixture.goalsAwayTeam}}</span>
+              </div>
+            </div>
+            <div class="subtitle nowrap">
+              {{date-format fixture.date "dddd, MMM D, HH:mm"}}
+            </div>
+            <div>
+              <form>
+                <div class="columns is-mobile is-gapless">
+                  <div class="column">
+                    <input class="input has-text-centered is-small" type="text" placeholder="BRA">
+                  </div>&nbsp;
+                  <div class="column">
+                    <input class="input has-text-centered is-small" type="text" placeholder="BRA">
+                  </div>&nbsp;
+                  <div class="column">
+                    {{#submit-button class="is-small"}}
+                      Submit
+                    {{/submit-button}}
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
 </section>
 
 {{outlet}}

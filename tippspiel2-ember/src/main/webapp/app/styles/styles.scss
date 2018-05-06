@@ -1,0 +1,19 @@
+.small-caps {
+  font-variant: small-caps
+}
+
+.iziToast-wrapper.iziToast-wrapper-topRight {
+  margin-top: 50px
+}
+
+.iziToast {
+  font-family: inherit
+}
+
+.nowrap {
+  white-space: nowrap
+}
+
+.ember-view.is-small > button {
+  @extend .is-small;
+}
