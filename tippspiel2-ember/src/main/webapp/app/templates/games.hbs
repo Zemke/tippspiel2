@@ -17,7 +17,12 @@
               </div>
             </div>
             <div class="subtitle nowrap">
-              {{date-format fixture.date "dddd, MMM D, HH:mm"}}
+              <span class="is-hidden-tablet-only">
+                {{date-format fixture.date "dddd, MMM D, HH:mm"}}
+              </span>
+              <span class="is-hidden-mobile is-hidden-mobile is-hidden-desktop">
+                {{date-format fixture.date "ddd, MMM D, HH:mm"}}
+              </span>
             </div>
             <div>
               <form>
