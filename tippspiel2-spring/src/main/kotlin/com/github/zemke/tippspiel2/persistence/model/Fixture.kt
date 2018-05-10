@@ -6,14 +6,13 @@ import javax.persistence.CascadeType
 import javax.persistence.Entity
 import javax.persistence.EnumType
 import javax.persistence.Enumerated
-import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.ManyToOne
 
 @Entity
 data class Fixture(
 
-        @Id @GeneratedValue var id: Long?,
+        @Id var id: Long?,
         var date: Timestamp,
         @Enumerated(EnumType.STRING) var status: FixtureStatus,
         var matchday: Int,

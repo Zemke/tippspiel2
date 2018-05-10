@@ -16,7 +16,7 @@ export default DS.Model.extend(Validations, {
   goalsHomeTeamBet: DS.attr('number'),
   goalsAwayTeamBet: DS.attr('number'),
   fixture: DS.belongsTo('fixture'),
-  user: DS.hasOne('user'),
+  user: DS.belongsTo('user'),
   bettingGame: DS.belongsTo('betting-game'),
   modified: DS.attr('Date'),
 });

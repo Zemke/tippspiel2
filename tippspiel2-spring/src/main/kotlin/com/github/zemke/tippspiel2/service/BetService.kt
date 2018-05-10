@@ -11,4 +11,7 @@ class BetService(
 ) {
 
     fun save(bet: Bet): Bet = betRepository.save(bet)
+
+    fun findAll() =
+            betRepository.findAll()
 }
