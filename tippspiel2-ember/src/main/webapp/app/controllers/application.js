@@ -19,8 +19,8 @@ export default Controller.extend({
       }
     },
     signOut() {
-      this.get('auth').signOut();
-      iziToast.success({message: "You’ve been signed out."});
+      this.get('auth').wipeToken();
+      window.location.href = '/'
     }
   },
 });

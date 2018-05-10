@@ -22,7 +22,7 @@
         {{/link-to}}
       </div>
       <div class="navbar-end">
-        {{#if auth.authenticated}}
+        {{#if auth.user}}
           {{#link-to "me" class="navbar-item"}}
             {{auth.user.firstName}}
           {{/link-to}}

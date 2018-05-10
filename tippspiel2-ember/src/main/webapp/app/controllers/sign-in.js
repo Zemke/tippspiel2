@@ -7,9 +7,8 @@ export default Controller.extend({
     submit() {
       this.model.save()
         .then(res => {
-          iziToast.success({message: 'You’re signed in.'});
-          this.get('auth').signIn(res.get('id'));
-          this.transitionToRoute('index');
+          this.get('auth').storeToken(res.get('id'));
+          window.location.href = '/';
         })
         .catch(res => {
           const message = res.status === 401

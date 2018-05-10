@@ -7,9 +7,8 @@ export default Controller.extend({
     submit() {
       this.model.save()
         .then(res => {
-          iziToast.success({message: 'You’ve successfully signed up.'});
-          this.get('auth').signIn(res.get('token'));
-          this.transitionToRoute('index');
+          this.get('auth').storeToken(res.get('token'));
+          window.location.href = '/';
         })
         .catch(res =>
           iziToast.error({message: 'An unknown error occurred.'}))

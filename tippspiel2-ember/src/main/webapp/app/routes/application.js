@@ -16,12 +16,6 @@ export default Route.extend({
   beforeModel() {
     iziToast.settings({position: 'topRight'});
 
-    if (this.get('auth').token != null) {
-      this.get('store').findRecord('auth', this.get('auth').token)
-        .then(res => this.get('auth').signIn(res.id))
-        .catch(() => this.get('auth').signOut());
-    }
-
     try {
       const locale = localStorage.getItem('locale') || 'en-us';
       this.get('intl').setLocale([locale]);

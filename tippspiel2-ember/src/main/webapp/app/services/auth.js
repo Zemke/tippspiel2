@@ -1,32 +1,38 @@
-import Service from '@ember/service';
+import Service, {inject} from '@ember/service';
+import DS from 'ember-data';
+import {computed} from '@ember/object';
 
 export default Service.extend({
-  authenticated: null,
-  user: null,
-  token: null,
-  init() {
-    this._super(...arguments);
+  store: inject(),
+  user: computed(function () {
+    return DS.PromiseObject.create({
+      promise: new Promise((resolve, reject) => {
+        const token = this.getToken();
+        if (token == null) return reject();
 
-    const authToken = localStorage.getItem('auth-token');
-    if (authToken != null) {
-      this.set('token', authToken);
-      this.set('authenticated', true);
-      this.set('user', this.get('parseTokenPayload')(authToken));
-    }
+        this.get('store').findRecord('auth', token)
+          .then(res => {
+            this.storeToken(res.id);
+            resolve(this.parseTokenPayload(res.id));
+          })
+          .catch(() => {
+            this.wipeToken();
+            reject();
+          });
+      })
+
+    });
+  }),
+  storeToken(token) {
+    localStorage.setItem('auth-token', token);
   },
-  signIn(authToken) {
-    localStorage.setItem('auth-token', authToken);
-    this.set('token', authToken);
-    this.set('authenticated', true);
-    this.set('user', this.get('parseTokenPayload')(authToken));
-  },
-  signOut() {
+  wipeToken() {
     localStorage.removeItem('auth-token');
-    this.set('token', null);
-    this.set('authenticated', false);
-    this.set('user', null);
   },
-  parseTokenPayload(authToken) {
-    return JSON.parse(atob(authToken.split('.')[1]));
+  getToken() {
+    return localStorage.getItem('auth-token');
+  },
+  parseTokenPayload(token) {
+    return JSON.parse(atob(token.split('.')[1]));
   }
 });
