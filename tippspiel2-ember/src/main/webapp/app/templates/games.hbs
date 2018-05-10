@@ -3,7 +3,7 @@
 
   <div class="columns is-multiline">
     {{#each model as |fixture|}}
-      <div class="column is-one-third-tablet is-one-quarter-fullhd">
+      <div class="column is-one-third-tablet is-one-quarter-widescreen">
         <div class="card">
           <div class="card-content">
             <div class="title">
@@ -17,10 +17,10 @@
               </div>
             </div>
             <div class="subtitle nowrap">
-              <span class="is-hidden-tablet-only">
+              <span class="is-hidden-tablet-only is-hidden-widescreen-only">
                 {{date-format fixture.date "dddd, MMM D, HH:mm"}}
               </span>
-              <span class="is-hidden-mobile is-hidden-mobile is-hidden-desktop">
+              <span class="is-hidden-mobile is-hidden-desktop-only is-hidden-fullhd">
                 {{date-format fixture.date "ddd, MMM D, HH:mm"}}
               </span>
             </div>
