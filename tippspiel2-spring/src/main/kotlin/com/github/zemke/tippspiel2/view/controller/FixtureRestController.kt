@@ -3,7 +3,6 @@ package com.github.zemke.tippspiel2.view.controller
 import com.github.zemke.tippspiel2.persistence.model.Bet
 import com.github.zemke.tippspiel2.service.BetService
 import com.github.zemke.tippspiel2.service.BettingGameService
-import com.github.zemke.tippspiel2.service.CompetitionService
 import com.github.zemke.tippspiel2.service.FixtureService
 import com.github.zemke.tippspiel2.service.JsonWebTokenService
 import com.github.zemke.tippspiel2.service.UserService
@@ -31,16 +30,14 @@ class FixtureRestController(
         @Autowired private val jsonWebTokenService: JsonWebTokenService,
         @Autowired private val userService: UserService,
         @Autowired private val bettingGameService: BettingGameService,
-        @Autowired private val betService: BetService,
-        @Autowired private val competitionService: CompetitionService
+        @Autowired private val betService: BetService
 ) {
 
     @GetMapping("")
-    fun getFixtures(@RequestParam("competition") competitionId: Long): ResponseEntity<List<FixtureDto>> {
-        val competition = competitionService.find(competitionId).orElseThrow { throw NotFoundException() }
-        val fixtures = fixtureService.findFixturesByCompetition(competition)
-        return ResponseEntity.ok(fixtures.map { FixtureDto.toDto(it) })
-    }
+    fun getFixtures(@RequestParam("competition") competitionId: Long?): ResponseEntity<List<FixtureDto>> =
+            ResponseEntity.ok(fixtureService.findAll()
+                    .filter { competitionId == null || it.competition.id == competitionId }
+                    .map { FixtureDto.toDto(it) })
 
     @PostMapping("/{fixtureId}/bets")
     fun createBetOnFixture(

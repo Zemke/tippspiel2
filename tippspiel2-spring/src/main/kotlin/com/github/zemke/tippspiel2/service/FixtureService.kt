@@ -20,4 +20,7 @@ class FixtureService(
 
     fun findFixturesByCompetition(competition: Competition) =
             fixtureRepository.findFixturesByCompetition(competition)
+
+    fun findAll() =
+            fixtureRepository.findAll()
 }
