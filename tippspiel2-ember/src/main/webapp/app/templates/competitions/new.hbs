@@ -1,30 +1,28 @@
-<section class="section">
-  <div class="columns is-desktop">
-    <div class="column is-half">
-      <h1 class="title">{{t 'me.competition.new.header'}}</h1>
-      <form>
-        <div class="field">
-          <div class="control has-icons-left">
-            {{input type="text"
-                    placeholder="Enter ID"
-                    class='input'
-                    value=(mut (get model 'id'))}}
-            <span class="icon">
+<div class="columns is-desktop">
+  <div class="column is-half">
+    <h1 class="title">{{t 'me.competition.new.header'}}</h1>
+    <form>
+      <div class="field">
+        <div class="control has-icons-left">
+          {{input type="text"
+                  placeholder="Enter ID"
+                  class='input'
+                  value=(mut (get model 'id'))}}
+          <span class="icon">
               <i class="fa fa-chevron-right"></i>
             </span>
-          </div>
-          <p class="help">
-            {{t 'me.competition.new.id.info'}}
-          </p>
         </div>
-        <div class="field">
-          <div class="control">
-            {{#submit-button model=model submit=(action 'submit')}}
-              {{t 'me.competition.new.submit'}}
-            {{/submit-button}}
-          </div>
+        <p class="help">
+          {{t 'me.competition.new.id.info'}}
+        </p>
+      </div>
+      <div class="field">
+        <div class="control">
+          {{#submit-button model=model submit=(action 'submit')}}
+            {{t 'me.competition.new.submit'}}
+          {{/submit-button}}
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
-</section>
+</div>

@@ -1,36 +1,34 @@
-<section class="section">
-  <div class="columns is-desktop">
-    <div class="column is-half">
-      <h1 class="title">Sign In</h1>
-      <form>
-        <div class="field">
-          <div class="control has-icons-left">
-            {{input type="email" placeholder="Email"
-                    class=(concat 'input ' (if (v-get model 'email' 'isInvalid') 'is-danger'))
-                    value=(mut (get model 'email'))}}
-            <span class="icon">
+<div class="columns is-desktop">
+  <div class="column is-half">
+    <h1 class="title">Sign In</h1>
+    <form>
+      <div class="field">
+        <div class="control has-icons-left">
+          {{input type="email" placeholder="Email"
+                  class=(concat 'input ' (if (v-get model 'email' 'isInvalid') 'is-danger'))
+                  value=(mut (get model 'email'))}}
+          <span class="icon">
               <i class="fa fa-envelope"></i>
             </span>
-          </div>
         </div>
-        <div class="field">
-          <div class="control has-icons-left">
-            {{input type="password" placeholder="Password"
-                    class=(concat 'input ' (if (v-get model 'password' 'isInvalid') 'is-danger'))
-                    value=(mut (get model 'password'))}}
-            <span class="icon">
+      </div>
+      <div class="field">
+        <div class="control has-icons-left">
+          {{input type="password" placeholder="Password"
+                  class=(concat 'input ' (if (v-get model 'password' 'isInvalid') 'is-danger'))
+                  value=(mut (get model 'password'))}}
+          <span class="icon">
               <i class="fa fa-unlock"></i>
             </span>
-          </div>
         </div>
-        <div class="field">
-          <div class="control">
-            {{#submit-button model=model submit=(action 'submit')}}
-              Sign In
-            {{/submit-button}}
-          </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          {{#submit-button model=model submit=(action 'submit')}}
+            Sign In
+          {{/submit-button}}
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
-</section>
+</div>

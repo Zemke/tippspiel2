@@ -1,61 +1,59 @@
-<section class="section">
-  <h1 class="title">
-    {{t 'me.bettingGame.title'}}
-  </h1>
-  <p class="subtitle">
-    {{t 'me.bettingGame.subtitle'}}
-  </p>
+<h1 class="title">
+  {{t 'me.bettingGame.title'}}
+</h1>
+<p class="subtitle">
+  {{t 'me.bettingGame.subtitle'}}
+</p>
 
-  <div class="columns is-desktop">
-    <div class="column">
-      <p>
-        <button class="is-static button is-danger is-outlined">
-          {{model.currentCompetition.caption}}
-        </button>
-      </p>
-    </div>
+<div class="columns is-desktop">
+  <div class="column">
+    <p>
+      <button class="is-static button is-danger is-outlined">
+        {{model.currentCompetition.caption}}
+      </button>
+    </p>
   </div>
-  <div class="columns is-desktop">
-    <div class="column is-half">
-      <form>
-        <div class="field">
-          <div class="control has-icons-left">
-            {{input type="text"
-                    placeholder="Betting game name"
-                    class=(concat 'input ' (if (v-get model 'bettingGame' 'name' 'isInvalid') 'is-danger'))
-                    value=(mut (get model.bettingGame 'name'))}}
-            <span class="icon">
+</div>
+<div class="columns is-desktop">
+  <div class="column is-half">
+    <form>
+      <div class="field">
+        <div class="control has-icons-left">
+          {{input type="text"
+                  placeholder="Betting game name"
+                  class=(concat 'input ' (if (v-get model 'bettingGame' 'name' 'isInvalid') 'is-danger'))
+                  value=(mut (get model.bettingGame 'name'))}}
+          <span class="icon">
               <i class="fa fa-align-left"></i>
             </span>
-          </div>
         </div>
-        <div class="field">
-          <div class="control has-icons-left">
-            <div class="select">
-              <select onchange={{action "setCommunity" value="target.value"}}>
-                <option value="" disabled selected>
-                  {{t 'me.bettingGame.new.setCommunity'}}
+      </div>
+      <div class="field">
+        <div class="control has-icons-left">
+          <div class="select">
+            <select onchange={{action "setCommunity" value="target.value"}}>
+              <option value="" disabled selected>
+                {{t 'me.bettingGame.new.setCommunity'}}
+              </option>
+              {{#each model.communities as |communities|}}
+                <option value={{communities.id}}>
+                  {{communities.name}}
                 </option>
-                {{#each model.communities as |communities|}}
-                  <option value={{communities.id}}>
-                    {{communities.name}}
-                  </option>
-                {{/each}}
-              </select>
-            </div>
-            <div class="icon is-small is-left">
-              <i class="fa fa-users"></i>
-            </div>
+              {{/each}}
+            </select>
+          </div>
+          <div class="icon is-small is-left">
+            <i class="fa fa-users"></i>
           </div>
         </div>
-        <div class="field">
-          <div class="control">
-            {{#submit-button model=model.bettingGame submit=(action 'submit')}}
-              {{t 'me.bettingGame.new.submit'}}
-            {{/submit-button}}
-          </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          {{#submit-button model=model.bettingGame submit=(action 'submit')}}
+            {{t 'me.bettingGame.new.submit'}}
+          {{/submit-button}}
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
-</section>
+</div>

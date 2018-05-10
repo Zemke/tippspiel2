@@ -1,68 +1,66 @@
-<section class="section">
-  <div class="columns is-desktop">
-    <div class="column is-half">
-      <h1 class="title">Sign Up</h1>
-      <form>
-        <div class="field field-body">
-          <div class="field">
-            <div class="control has-icons-left">
-              {{input type="text" placeholder="First name"
-                      class=(concat 'input ' (if (v-get model 'firstName' 'isInvalid') 'is-danger'))
-                      value=(mut (get model 'firstName'))}}
-              <span class="icon is-small is-left">
+<div class="columns is-desktop">
+  <div class="column is-half">
+    <h1 class="title">Sign Up</h1>
+    <form>
+      <div class="field field-body">
+        <div class="field">
+          <div class="control has-icons-left">
+            {{input type="text" placeholder="First name"
+                    class=(concat 'input ' (if (v-get model 'firstName' 'isInvalid') 'is-danger'))
+                    value=(mut (get model 'firstName'))}}
+            <span class="icon is-small is-left">
               <i class="fa fa-user-o"></i>
             </span>
-            </div>
           </div>
-          <div class="field">
-            <div class="control has-icons-left is-expanded">
-              {{input type="text" placeholder="Last name"
-                      class=(concat 'input ' (if (v-get model 'lastName' 'isInvalid') 'is-danger'))
-                      value=(mut (get model 'lastName'))}}
-              <span class="icon">
+        </div>
+        <div class="field">
+          <div class="control has-icons-left is-expanded">
+            {{input type="text" placeholder="Last name"
+                    class=(concat 'input ' (if (v-get model 'lastName' 'isInvalid') 'is-danger'))
+                    value=(mut (get model 'lastName'))}}
+            <span class="icon">
               <i class="fa fa-user"></i>
             </span>
-            </div>
           </div>
         </div>
-        <div class="field">
-          <div class="control has-icons-left">
-            {{input type="email" placeholder="Email"
-                    class=(concat 'input ' (if (v-get model 'email' 'isInvalid') 'is-danger'))
-                    value=(mut (get model 'email'))}}
-            <span class="icon">
+      </div>
+      <div class="field">
+        <div class="control has-icons-left">
+          {{input type="email" placeholder="Email"
+                  class=(concat 'input ' (if (v-get model 'email' 'isInvalid') 'is-danger'))
+                  value=(mut (get model 'email'))}}
+          <span class="icon">
               <i class="fa fa-envelope"></i>
             </span>
-          </div>
         </div>
-        <div class="field">
-          <div class="control has-icons-left">
-            {{input type="password" placeholder="Password"
-                    class=(concat 'input ' (if (v-get model 'password' 'isInvalid') 'is-danger'))
-                    value=(mut (get model 'password'))}}
-            <span class="icon">
+      </div>
+      <div class="field">
+        <div class="control has-icons-left">
+          {{input type="password" placeholder="Password"
+                  class=(concat 'input ' (if (v-get model 'password' 'isInvalid') 'is-danger'))
+                  value=(mut (get model 'password'))}}
+          <span class="icon">
               <i class="fa fa-unlock"></i>
             </span>
-          </div>
         </div>
-        <div class="field">
-          <div class="control has-icons-left">
-            {{input type="password" placeholder="Password confirmation"
-                    class=(concat 'input ' (if (v-get model 'passwordConfirmation' 'isInvalid') 'is-danger'))
-                    value=(mut (get model 'passwordConfirmation'))}}
-            <span class="icon">
+      </div>
+      <div class="field">
+        <div class="control has-icons-left">
+          {{input type="password" placeholder="Password confirmation"
+                  class=(concat 'input ' (if (v-get model 'passwordConfirmation' 'isInvalid') 'is-danger'))
+                  value=(mut (get model 'passwordConfirmation'))}}
+          <span class="icon">
               <i class="fa fa-lock"></i>
             </span>
-          </div>
         </div>
-        <div class="field">
-          <div class="control">
-            {{#submit-button model=model submit=(action 'submit')}}
-              Sign Up
-            {{/submit-button}}
-          </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          {{#submit-button model=model submit=(action 'submit')}}
+            Sign Up
+          {{/submit-button}}
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
-</section>
+</div>
