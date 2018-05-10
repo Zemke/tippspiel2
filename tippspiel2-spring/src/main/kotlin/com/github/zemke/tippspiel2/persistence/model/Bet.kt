@@ -3,6 +3,7 @@ package com.github.zemke.tippspiel2.persistence.model
 import org.hibernate.annotations.UpdateTimestamp
 import org.hibernate.validator.constraints.Range
 import java.sql.Timestamp
+import java.util.*
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
@@ -18,5 +19,5 @@ data class Bet(
         @ManyToOne(optional = false) val fixture: Fixture,
         @ManyToOne(optional = false) val user: User,
         @ManyToOne(optional = false) val bettingGame: BettingGame,
-        @UpdateTimestamp @NotNull val modified: Timestamp
+        @UpdateTimestamp @NotNull val modified: Timestamp = Timestamp.from(Date().toInstant())
 )
