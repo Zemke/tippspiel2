@@ -1,10 +1,12 @@
 package com.github.zemke.tippspiel2.core.authentication
 
 import com.github.zemke.tippspiel2.core.profile.Dev
+import com.github.zemke.tippspiel2.persistence.model.Bet
 import com.github.zemke.tippspiel2.persistence.model.BettingGame
 import com.github.zemke.tippspiel2.persistence.model.Community
 import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
 import com.github.zemke.tippspiel2.persistence.model.enumeration.UserRole
+import com.github.zemke.tippspiel2.service.BetService
 import com.github.zemke.tippspiel2.service.BettingGameService
 import com.github.zemke.tippspiel2.service.CommunityService
 import com.github.zemke.tippspiel2.service.FixtureService
@@ -42,13 +44,16 @@ class DatabaseInitializer : ApplicationListener<ContextRefreshedEvent> {
     @Autowired
     private lateinit var bettingGameService: BettingGameService
 
+    @Autowired
+    private lateinit var betService: BetService
+
     private val COMPETITION_ID = 467L
 
     override fun onApplicationEvent(event: ContextRefreshedEvent?) {
         val userRole = listOf(UserRole.ROLE_USER)
         roleService.initRoles()
 
-        userService.addUser("Florian", "Zemke", "fz@fz.fz", "fz", UserRole.values().asList())
+        val florianZemke = userService.addUser("Florian", "Zemke", "fz@fz.fz", "fz", UserRole.values().asList())
         userService.addUser("Sönke", "Martens", "sm@sm.sm", "sm", userRole)
         userService.addUser("Carsten", "Krüwel", "ck@ck.ck", "ck", userRole)
         userService.addUser("Torsten", "Abels", "ta@ta.ta", "ta", userRole)
@@ -67,7 +72,15 @@ class DatabaseInitializer : ApplicationListener<ContextRefreshedEvent> {
                 .map { FootballDataFixtureDto.fromDto(it, teams, competition) }
 
         fixtureService.saveMany(fixtures)
-        bettingGameService.createBettingGame(
+        val bettingGame = bettingGameService.createBettingGame(
                 BettingGame(id = null, name = "Schokolade", community = community, competition = competition))
+
+        betService.save(Bet(
+                id = null,
+                bettingGame = bettingGame,
+                fixture = fixtures[0],
+                goalsAwayTeamBet = 3,
+                goalsHomeTeamBet = 1,
+                user = florianZemke))
     }
 }
