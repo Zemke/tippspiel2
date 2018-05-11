@@ -8,7 +8,7 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('standings');
-  this.route('games');
+  this.route('bets');
   this.route('sign-up');
   this.route('sign-in');
   this.route('me');
