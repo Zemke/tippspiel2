@@ -19,12 +19,6 @@ class JsonWebTokenService(
         @Autowired() private val authenticationProperties: AuthenticationProperties
 ) {
 
-    companion object {
-
-        internal const val AUDIENCE_MOBILE = "mobile"
-        internal const val AUDIENCE_TABLET = "tablet"
-    }
-
     private val clock = DefaultClock.INSTANCE
 
     @Throws(UnauthorizedException::class)
@@ -53,7 +47,7 @@ class JsonWebTokenService(
 
     fun canTokenBeRefreshed(token: String, lastPasswordReset: Date?): Boolean {
         val created = getIssuedAtDateFromToken(token)
-        return !isCreatedBeforeLastPasswordReset(created, lastPasswordReset) && (!isTokenExpired(token) || ignoreTokenExpiration(token))
+        return !isCreatedBeforeLastPasswordReset(created, lastPasswordReset) && !isTokenExpired(token)
     }
 
     fun refreshToken(token: String): String {
@@ -82,10 +76,6 @@ class JsonWebTokenService(
         return getClaimFromToken(token, Function { it.expiration })
     }
 
-    private fun getAudienceFromToken(token: String): String {
-        return getClaimFromToken(token, Function { it.audience })
-    }
-
     private fun <T> getClaimFromToken(token: String, claimsResolver: Function<Claims, T>): T {
         val claims = getAllClaimsFromToken(token)
         return claimsResolver.apply(claims)
@@ -105,11 +95,6 @@ class JsonWebTokenService(
 
     private fun isCreatedBeforeLastPasswordReset(created: Date, lastPasswordReset: Date?): Boolean {
         return lastPasswordReset != null && created.before(lastPasswordReset)
-    }
-
-    private fun ignoreTokenExpiration(token: String): Boolean {
-        val audience = getAudienceFromToken(token)
-        return AUDIENCE_TABLET == audience || AUDIENCE_MOBILE == audience
     }
 
     private fun doGenerateToken(claims: Map<String, Any>, subject: String): String {
