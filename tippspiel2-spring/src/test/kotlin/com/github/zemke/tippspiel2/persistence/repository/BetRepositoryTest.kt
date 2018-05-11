@@ -25,10 +25,9 @@ class BetRepositoryTest {
     fun testSave() {
         val user = PersistenceUtils.createUser(testEntityManager)
         val bettingGame = PersistenceUtils.createBettingGame(testEntityManager, listOf(user))
-        testEntityManager.persistAndFlush(PersistenceUtils.instantiateTeam())
-        testEntityManager.persistAndFlush(PersistenceUtils.instantiateTeam()
-                .copy(id = 2))
-        val fixture = testEntityManager.persistFlushFind(PersistenceUtils.instantiateFixture())
+        val homeTeam = testEntityManager.persistAndFlush(PersistenceUtils.instantiateTeam())
+        val awayTeam = testEntityManager.persistAndFlush(PersistenceUtils.instantiateTeam().copy(id = 2))
+        val fixture = testEntityManager.persistFlushFind(PersistenceUtils.instantiateFixture().copy(homeTeam = homeTeam, awayTeam = awayTeam))
 
         val unmanagedBetEntity = Bet(
                 id = null,

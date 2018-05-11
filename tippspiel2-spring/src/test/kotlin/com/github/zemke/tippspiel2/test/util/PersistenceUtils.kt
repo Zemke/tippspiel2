@@ -50,7 +50,7 @@ object PersistenceUtils {
 
     fun instantiateTeam(): Team =
             Team(
-                    id = 1,
+                    id = (100..999).random(),
                     competition = instantiateCompetition(),
                     name = "1",
                     squadMarketValue = null
@@ -58,7 +58,7 @@ object PersistenceUtils {
 
     fun instantiateFixture(): Fixture =
             Fixture(
-                    id = null,
+                    id = (100..999).random(),
                     date = now(),
                     status = FixtureStatus.TIMED,
                     awayTeam = instantiateTeam(),
@@ -100,4 +100,7 @@ object PersistenceUtils {
             )
 
     fun now() = Timestamp(Date().time)
+
+    private fun ClosedRange<Int>.random() =
+            (Random().nextInt(endInclusive - start) + start).toLong()
 }

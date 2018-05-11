@@ -94,6 +94,18 @@ class FootballDataServiceImplTest {
                         id = 801,
                         squadMarketValue = null,
                         name = "Saudi Arabia"
+                ), FootballDataTeamDto(
+                        crestUrl = null,
+                        shortName = null,
+                        id = 825,
+                        squadMarketValue = null,
+                        name = "Egypt"
+                ), FootballDataTeamDto(
+                        crestUrl = null,
+                        shortName = null,
+                        id = 758,
+                        squadMarketValue = null,
+                        name = "Uruguay"
                 ))))
     }
 

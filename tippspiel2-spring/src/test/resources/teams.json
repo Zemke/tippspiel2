@@ -14,6 +14,20 @@
          "id": 801,
          "squadMarketValue": null,
          "name": "Saudi Arabia"
+      },
+      {
+         "squadMarketValue" : null,
+         "name" : "Egypt",
+         "crestUrl" : null,
+         "shortName" : null,
+         "id" : 825
+      },
+      {
+         "crestUrl" : null,
+         "id" : 758,
+         "shortName" : null,
+         "squadMarketValue" : null,
+         "name" : "Uruguay"
       }
    ]
 }
