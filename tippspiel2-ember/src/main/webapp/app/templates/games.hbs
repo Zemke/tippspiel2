@@ -7,11 +7,11 @@
         <div class="card-content">
           <div class="title">
             <div class="nowrap">
-              {{bet.fixture.homeTeam.name}}
+              {{t (concat 'team.name.' bet.fixture.homeTeam.id)}}
               <span class="has-text-grey">{{bet.fixture.goalsHomeTeam}}</span>
             </div>
             <div class="nowrap">
-              {{bet.fixture.awayTeam.name}}
+              {{t (concat 'team.name.' bet.fixture.awayTeam.id)}}
               <span class="has-text-grey">{{bet.fixture.goalsAwayTeam}}</span>
             </div>
           </div>
@@ -27,13 +27,13 @@
             <form>
               <div class="columns is-mobile is-gapless">
                 <div class="column">
-                  {{input type="text" placeholder="GER"
+                  {{input type="text" placeholder=(t (concat 'team.short.' bet.fixture.homeTeam.id))
                           pattern="[0-9]*" inputmode="numeric"
                           class=(concat 'has-text-centered is-small input ' (if (v-get bet 'goalsHomeTeamBet' 'isInvalid') 'is-danger') (if bet.hasDirtyAttributes ' is-warning'))
                           value=(mut (get bet 'goalsHomeTeamBet'))}}
                 </div>&nbsp;
                 <div class="column">
-                  {{input type="text" placeholder="BRA"
+                  {{input type="text" placeholder=(t (concat 'team.short.' bet.fixture.awayTeam.id))
                           pattern="[0-9]*" inputmode="numeric"
                           class=(concat 'has-text-centered is-small input ' (if (v-get bet 'goalsAwayTeamBet' 'isInvalid') 'is-danger' (if bet.hasDirtyAttributes ' is-warning')))
                           value=(mut (get bet 'goalsAwayTeamBet'))}}
