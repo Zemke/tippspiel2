@@ -17,8 +17,9 @@ export default RESTAdapter.extend({
       : payload;
   },
   headers: computed(function () {
-    return this.get('auth').token != null
-      ? {Authorization: 'Bearer ' + this.get('auth').token}
+    const token = this.get('auth').getToken();
+    return token != null
+      ? {Authorization: 'Bearer ' + token}
       : {};
   }).volatile()
 });
