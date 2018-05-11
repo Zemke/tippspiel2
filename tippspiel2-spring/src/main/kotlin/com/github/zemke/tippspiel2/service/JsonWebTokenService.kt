@@ -68,6 +68,10 @@ class JsonWebTokenService(
         return getClaimFromToken(token, Function { it.subject })
     }
 
+    fun getIdFromToken(token: String): Long {
+        return getClaimFromToken<Int>(token, Function { it["id"] as Int }).toLong()
+    }
+
     private fun getIssuedAtDateFromToken(token: String): Date {
         return getClaimFromToken(token, Function { it.issuedAt })
     }

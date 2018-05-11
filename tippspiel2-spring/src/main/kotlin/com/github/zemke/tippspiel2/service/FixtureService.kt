@@ -13,7 +13,7 @@ class FixtureService(
 
     fun saveMany(fixtures: List<Fixture>): List<Fixture> = fixtureRepository.saveAll(fixtures)
 
-    fun getById(fixtureId: Long): Fixture? = fixtureRepository.findById(fixtureId).orElse(null)
+    fun getById(fixtureId: Long): Fixture = fixtureRepository.getOne(fixtureId)
 
     fun findFixturesByCompetitionAndManualFalse(competition: Competition): List<Fixture> =
             fixtureRepository.findFixturesByCompetitionAndManualFalse(competition)
