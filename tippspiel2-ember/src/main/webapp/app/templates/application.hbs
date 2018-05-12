@@ -1,9 +1,18 @@
 <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
   <div class="container">
     <div class="navbar-brand">
-      {{#link-to "index" class="navbar-item"}}
-        <strong>Tippspiel2</strong>
-      {{/link-to}}
+      <div class="select is-primary">
+        <select onchange={{action "changeBettingGame" value="target.value"}}>
+          <option value={{bettingGame.currentBettingGame.id}} selected>
+            {{bettingGame.currentBettingGame.name}}
+          </option>
+          {{#each otherBettingGames as |otherBettingGame|}}
+            <option value={{otherBettingGame.id}}>
+              {{otherBettingGame.name}}
+            </option>
+          {{/each}}
+        </select>
+      </div>
       {{#burger-menu class="navbar-burger" data-target="navMenu"}}
         <span></span>
         <span></span>

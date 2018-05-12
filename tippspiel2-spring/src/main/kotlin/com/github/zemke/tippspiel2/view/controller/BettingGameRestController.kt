@@ -9,6 +9,7 @@ import com.github.zemke.tippspiel2.view.model.BettingGameDto
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -42,4 +43,8 @@ class BettingGameRestController {
                 .status(HttpStatus.CREATED)
                 .body(BettingGameDto.toDto(bettingGameService.createBettingGame(bettingGame)))
     }
+
+    @GetMapping("")
+    fun readBettingGames(): ResponseEntity<List<BettingGameDto>> =
+            ResponseEntity.ok(bettingGameService.findAll().map { BettingGameDto.fromDto(it) })
 }

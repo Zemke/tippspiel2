@@ -20,5 +20,13 @@ data class BettingGameDto(
                 competition = CompetitionDto.toDto(bettingGame.competition),
                 created = bettingGame.created
         )
+
+        fun fromDto(bettingGame: BettingGame): BettingGameDto = BettingGameDto(
+                id = bettingGame.id!!,
+                competition = CompetitionDto.toDto(bettingGame.competition),
+                community = CommunityDto.toDto(bettingGame.community),
+                name = bettingGame.name,
+                created = bettingGame.created
+        )
     }
 }

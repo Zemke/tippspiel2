@@ -5,12 +5,12 @@ import RSVP from 'rsvp';
 
 export default Route.extend({
   intl: inject(),
-  auth: inject(),
   model() {
     return RSVP.hash({
       localeIsEnUs: computed(() =>  {
         return this.get('intl').get('locale')[0] === 'en-us';
       }),
+      bettingGames: this.get('store').findAll('betting-game')
     })
   },
   beforeModel() {

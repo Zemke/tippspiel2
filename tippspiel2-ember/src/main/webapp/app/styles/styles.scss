@@ -17,3 +17,7 @@
 .ember-view.is-small > button {
   @extend .is-small;
 }
+
+.navbar-brand > .select {
+  margin: auto 12px;
+}

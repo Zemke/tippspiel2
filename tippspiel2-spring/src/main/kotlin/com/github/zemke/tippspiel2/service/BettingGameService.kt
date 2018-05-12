@@ -35,4 +35,6 @@ class BettingGameService(
 
         return bettingGame
     }
+
+    fun findAll(): List<BettingGame> = bettingGameRepository.findAll()
 }

@@ -1,3 +1,4 @@
+import DS from 'ember-data';
 import Controller from '@ember/controller';
 import {computed} from '@ember/object';
 import {inject} from '@ember/service';
@@ -5,6 +6,7 @@ import {inject} from '@ember/service';
 export default Controller.extend({
   intl: inject(),
   auth: inject(),
+  bettingGame: inject(),
   actions: {
     toggleLocale() {
       try {
@@ -18,9 +20,20 @@ export default Controller.extend({
         this.set('localeIsEnUs', true);
       }
     },
+    changeBettingGame(selectedBettingGameId) {
+      this.get('bettingGame').setCurrentBettingGame(
+        this.get('model.bettingGames').findBy('id', selectedBettingGameId).get('id'));
+      window.location.href = '/'
+    },
     signOut() {
       this.get('auth').wipeToken();
       window.location.href = '/'
     }
   },
+  otherBettingGames: computed('bettingGame.currentBettingGame', function () {
+    return DS.PromiseArray.create({
+      promise: this.get('bettingGame.currentBettingGame').then(currentBettingGame =>
+        this.get('model.bettingGames').filter(bG => bG.get('id') !== currentBettingGame.get('id')))
+    });
+  })
 });
