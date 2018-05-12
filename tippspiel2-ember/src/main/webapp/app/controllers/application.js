@@ -2,6 +2,7 @@ import DS from 'ember-data';
 import Controller from '@ember/controller';
 import {computed} from '@ember/object';
 import {inject} from '@ember/service';
+import RSVP from 'rsvp';
 
 export default Controller.extend({
   intl: inject(),
@@ -30,10 +31,18 @@ export default Controller.extend({
       window.location.href = '/'
     }
   },
-  otherBettingGames: computed('bettingGame.currentBettingGame', function () {
+  otherBettingGames: computed('bettingGame.currentBettingGame', 'model.bettingGames', function () {
     return DS.PromiseArray.create({
-      promise: this.get('bettingGame.currentBettingGame').then(currentBettingGame =>
-        this.get('model.bettingGames').filter(bG => bG.get('id') !== currentBettingGame.get('id')))
+      promise: RSVP.hash({
+        currentBettingGame: this.get('bettingGame.currentBettingGame'),
+        bettingGames: this.get('model.bettingGames'),
+        user: this.get('auth.user'),
+      }).then((hash) =>
+        this.get('bettingGame').bettingGamesWithUser(hash.bettingGames, hash.user)
+          .filter(bG => bG.get('id') !== hash.currentBettingGame.get('id')))
     });
+  }),
+  isOnlyOneBettingGame: computed('otherBettingGames', function () {
+    return DS.PromiseObject.create({promise: this.get('otherBettingGames').then(res => res.length === 0)});
   })
 });

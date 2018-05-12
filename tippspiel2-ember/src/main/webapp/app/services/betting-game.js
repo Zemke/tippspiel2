@@ -10,18 +10,18 @@ export default Service.extend({
       promise: this.get('auth.user')
         .then(authenticatedUser =>
           this.get('store').findAll('betting-game')
-            .then(allBettingGames => allBettingGames
-              .filter(bG => bG.get('community.users')
-                .mapBy('id')
-                .includes(authenticatedUser.id.toString())))
+            .then(allBettingGames =>
+              this.bettingGamesWithUser(allBettingGames, authenticatedUser))
             .then(bettingGamesWithUser => {
+              if (!bettingGamesWithUser.length) return null;
               const bettingGameIdFromStorage = this.getCurrentBettingGame();
               const bettingGame =
                 (bettingGameIdFromStorage && bettingGamesWithUser.findBy('id', bettingGameIdFromStorage))
-                || bettingGamesWithUser.objectAt(0);
+                || (bettingGamesWithUser.objectAt(0));
               this.setCurrentBettingGame(bettingGame.get('id'));
               return bettingGame;
             }))
+        .catch(() => null)
     });
   }),
   setCurrentBettingGame(currentBettingGameId) {
@@ -29,6 +29,12 @@ export default Service.extend({
   },
   getCurrentBettingGame() {
     return localStorage.getItem('betting-game');
+  },
+  bettingGamesWithUser(bettingGames, user) {
+    return bettingGames
+      .filter(bG => bG.get('community.users')
+        .mapBy('id')
+        .includes(user.id.toString()));
   }
 });
 
