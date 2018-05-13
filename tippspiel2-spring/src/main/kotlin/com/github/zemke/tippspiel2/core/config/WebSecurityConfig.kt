@@ -55,7 +55,13 @@ class WebSecurityConfig(
     override fun configure(httpSecurity: HttpSecurity) {
         httpSecurity
                 .csrf().disable()
-                .cors().configurationSource { CorsConfiguration().applyPermitDefaultValues() }.and()
+                .cors().configurationSource {
+                    with(CorsConfiguration()) {
+                        applyPermitDefaultValues()
+                        addAllowedMethod(HttpMethod.PUT)
+                        this
+                    }
+                }.and()
                 .exceptionHandling().authenticationEntryPoint(http401JwtAuthenticationEntryPoint).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()

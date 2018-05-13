@@ -6,6 +6,7 @@ import com.github.zemke.tippspiel2.service.FixtureService
 import com.github.zemke.tippspiel2.service.JsonWebTokenService
 import com.github.zemke.tippspiel2.service.UserService
 import com.github.zemke.tippspiel2.view.exception.ForbiddenException
+import com.github.zemke.tippspiel2.view.exception.NotFoundException
 import com.github.zemke.tippspiel2.view.model.BetCreationDto
 import com.github.zemke.tippspiel2.view.model.BetDto
 import org.springframework.beans.factory.annotation.Autowired
@@ -46,6 +47,16 @@ class BetRestController {
                     .filter { user == null || user == it.user.id }
                     .filter { bettingGame == null || bettingGame == it.bettingGame.id }
                     .map { BetDto.toDto(it) })
+
+    @PutMapping("/{betId}")
+    fun updateBet(@PathVariable("betId") betId: Long, @RequestBody betCreationDto: BetCreationDto,
+                  request: HttpServletRequest): ResponseEntity<BetDto> {
+        val bet = betService.find(betId).orElseThrow({ throw NotFoundException() })
+        if (jsonWebTokenService.getIdFromToken(jsonWebTokenService.assertToken(request)) != bet.user.id) throw ForbiddenException()
+        bet.goalsHomeTeamBet = betCreationDto.goalsHomeTeamBet
+        bet.goalsAwayTeamBet = betCreationDto.goalsAwayTeamBet
+        return ResponseEntity.ok(BetDto.toDto(betService.save(bet)))
+    }
 
     @PostMapping("")
     fun saveBet(@RequestBody betCreationDto: BetCreationDto, request: HttpServletRequest): ResponseEntity<BetDto> {
