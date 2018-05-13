@@ -20,6 +20,7 @@
     "@ember-decorators/babel-transforms": "^2.0.0",
     "broccoli-asset-rev": "^2.4.5",
     "bulma": "^0.7.1",
+    "bulma-badge": "^1.0.1",
     "ember-ajax": "^3.1.0",
     "ember-cli": "^3.1.4",
     "ember-cli-app-version": "^3.2.0",

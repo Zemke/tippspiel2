@@ -1633,6 +1633,10 @@ builtins@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/builtins/-/builtins-1.0.3.tgz#cb94faeb61c8696451db36534e1422f94f0aee88"
 
+bulma-badge@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/bulma-badge/-/bulma-badge-1.0.1.tgz#855a6b4b8213a67201b4bc40bbc1ce1186674618"
+
 bulma@^0.7.1:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.7.1.tgz#73c2e3b2930c90cc272029cbd19918b493fca486"

@@ -6,7 +6,8 @@ module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
     sassOptions: {
       includePaths: [
-        'node_modules/bulma'
+        'node_modules/bulma',
+        'node_modules/bulma-badge/dist',
       ],
       extension: 'sass'
     }

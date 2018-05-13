@@ -3,53 +3,8 @@
 <div class="columns is-multiline">
   {{#each model as |bet|}}
     <div class="column is-one-third-tablet is-one-quarter-widescreen">
-      <div class="card">
-        <div class="card-content">
-          <div class="title">
-            <div class="nowrap">
-              {{t (concat 'team.name.' bet.fixture.homeTeam.id)}}
-              <span class="has-text-grey">{{bet.fixture.goalsHomeTeam}}</span>
-            </div>
-            <div class="nowrap">
-              {{t (concat 'team.name.' bet.fixture.awayTeam.id)}}
-              <span class="has-text-grey">{{bet.fixture.goalsAwayTeam}}</span>
-            </div>
-          </div>
-          <div class="subtitle nowrap">
-            <span class="is-hidden-tablet-only is-hidden-widescreen-only">
-              {{date-format bet.fixture.date "dddd, MMM D, HH:mm"}}
-            </span>
-            <span class="is-hidden-mobile is-hidden-desktop-only is-hidden-fullhd">
-              {{date-format bet.fixture.date "ddd, MMM D, HH:mm"}}
-            </span>
-          </div>
-          <div>
-            <form>
-              <div class="columns is-mobile is-gapless">
-                <div class="column">
-                  {{input type="text" placeholder=(t (concat 'team.short.' bet.fixture.homeTeam.id))
-                          pattern="[0-9]*" inputmode="numeric"
-                          disabled=(get fixtureBetsDisabled bet.fixture.id)
-                          class=(concat 'has-text-centered is-small input ' (if (v-get bet 'goalsHomeTeamBet' 'isInvalid') 'is-danger') (if bet.hasDirtyAttributes ' is-warning'))
-                          value=(mut (get bet 'goalsHomeTeamBet'))}}
-                </div>&nbsp;
-                <div class="column">
-                  {{input type="text" placeholder=(t (concat 'team.short.' bet.fixture.awayTeam.id))
-                          pattern="[0-9]*" inputmode="numeric"
-                          disabled=(get fixtureBetsDisabled bet.fixture.id)
-                          class=(concat 'has-text-centered is-small input ' (if (v-get bet 'goalsAwayTeamBet' 'isInvalid') 'is-danger' (if bet.hasDirtyAttributes ' is-warning')))
-                          value=(mut (get bet 'goalsAwayTeamBet'))}}
-                </div>&nbsp;
-                <div class="column">
-                  {{#submit-button model=bet submit=(action 'submit' bet) class="is-small"}}
-                    Submit
-                  {{/submit-button}}
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+      {{#bet-card bet=bet }}
+      {{/bet-card}}
     </div>
   {{/each}}
 </div>
