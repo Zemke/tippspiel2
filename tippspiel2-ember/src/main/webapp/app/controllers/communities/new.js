@@ -1,17 +1,17 @@
 import Controller from '@ember/controller';
 import {computed} from '@ember/object';
+import {inject} from '@ember/service';
 
 export default Controller.extend({
+  resHandler: inject(),
   actions: {
     submit() {
       this.model.community.save()
         .then(res => {
-          iziToast.success({message: 'The community has been created.'});
+          this.get('resHandler').handleSuccess('The community has been created.');
           this.transitionToRoute('me');
         })
-        .catch(res => {
-          iziToast.error({message: 'An unknown error occurred.'});
-        });
+        .catch(this.get('resHandler').handleError);
     },
     addUser(event) {
       this.get('model.community.users').pushObject(

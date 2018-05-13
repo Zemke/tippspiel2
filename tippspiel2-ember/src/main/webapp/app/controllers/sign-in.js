@@ -3,6 +3,7 @@ import {inject} from '@ember/service';
 
 export default Controller.extend({
   auth: inject(),
+  resHandler: inject(),
   actions: {
     submit() {
       this.model.save()
@@ -10,12 +11,7 @@ export default Controller.extend({
           this.get('auth').storeToken(res.get('id'));
           window.location.href = '/';
         })
-        .catch(res => {
-          const message = res.status === 401
-            ? 'Invalid credentials.'
-            : 'An unknown error occurred.';
-          iziToast.error({message});
-        })
+        .catch(this.get('resHandler').handleError);
     }
   }
 });

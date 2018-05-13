@@ -1,13 +1,15 @@
 import Component from '@ember/component';
 import {computed} from '@ember/object';
 import {later} from '@ember/runloop';
+import {inject} from '@ember/service';
 
 export default Component.extend({
+  resHandler: inject(),
   actions: {
     submit(bet) {
       bet.save()
-        .then(res => iziToast.success({message: 'Bet saved.'}))
-        .catch(res => iziToast.error({message: 'An unknown error occurred.'}));
+        .then(res => this.get('resHandler').handleSuccess('Bet saved.'))
+        .catch(this.get('resHandler').handleError);
     }
   },
   disabled: computed(function () {

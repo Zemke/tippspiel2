@@ -3,6 +3,7 @@ import {inject} from '@ember/service';
 
 export default Controller.extend({
   auth: inject(),
+  resHandler: inject(),
   actions: {
     submit() {
       this.model.save()
@@ -10,8 +11,7 @@ export default Controller.extend({
           this.get('auth').storeToken(res.get('token'));
           window.location.href = '/';
         })
-        .catch(res =>
-          iziToast.error({message: 'An unknown error occurred.'}))
+        .catch(this.get('resHandler').handleError)
     }
   }
 });

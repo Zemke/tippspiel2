@@ -1,16 +1,16 @@
 import Controller from '@ember/controller';
+import {inject} from '@ember/service';
 
 export default Controller.extend({
+  resHandler: inject(),
   actions: {
     submit() {
       this.model.bettingGame.save()
         .then(res => {
-          iziToast.success({message: 'The betting game has been created.'});
+          this.get('resHandler').handleSuccess('The betting game has been created.');
           this.transitionToRoute('me');
         })
-        .catch(res => {
-          iziToast.error({message: 'An unknown error occurred.'});
-        });
+        .catch(this.get('resHandler').handleError);
     },
     setCommunity(selectedCommunityId) {
       this.set(
