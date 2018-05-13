@@ -1,6 +1,5 @@
 package com.github.zemke.tippspiel2.view.controller
 
-import com.github.zemke.tippspiel2.persistence.model.Bet
 import com.github.zemke.tippspiel2.service.BetService
 import com.github.zemke.tippspiel2.service.BettingGameService
 import com.github.zemke.tippspiel2.service.FixtureService
@@ -13,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -47,7 +48,7 @@ class BetRestController {
                     .map { BetDto.toDto(it) })
 
     @PostMapping("")
-    fun saveBet(@RequestBody betCreationDto: BetCreationDto, request: HttpServletRequest): ResponseEntity<Bet> {
+    fun saveBet(@RequestBody betCreationDto: BetCreationDto, request: HttpServletRequest): ResponseEntity<BetDto> {
         if (jsonWebTokenService.getIdFromToken(jsonWebTokenService.assertToken(request)) != betCreationDto.user) {
             throw ForbiddenException()
         }
@@ -57,6 +58,6 @@ class BetRestController {
                 fixture = fixtureService.getById(betCreationDto.fixture),
                 bettingGame = bettingGameService.find(betCreationDto.bettingGame),
                 user = userService.getUser(betCreationDto.user)!!)
-        return ResponseEntity.status(HttpStatus.CREATED).body(betService.save(bet))
+        return ResponseEntity.status(HttpStatus.CREATED).body(BetDto.toDto(betService.save(bet)))
     }
 }
