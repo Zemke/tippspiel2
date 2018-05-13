@@ -24,7 +24,7 @@ export default Controller.extend({
     changeBettingGame(selectedBettingGameId) {
       this.get('bettingGame').setCurrentBettingGame(
         this.get('model.bettingGames').findBy('id', selectedBettingGameId).get('id'));
-      window.location.href = '/'
+      location.reload();
     },
     signOut() {
       this.get('auth').wipeToken();
