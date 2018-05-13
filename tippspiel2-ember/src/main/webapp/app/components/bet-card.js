@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import {computed} from '@ember/object';
+import {later} from '@ember/runloop';
 
 export default Component.extend({
   actions: {
@@ -9,10 +10,9 @@ export default Component.extend({
         .catch(res => iziToast.error({message: 'An unknown error occurred.'}));
     }
   },
-  disabled: computed('bet.fixture.status', function () {
-    const status = this.get('bet.fixture.status');
-    return status !== 'SCHEDULED' && status !== 'TIMED';
-  }),
+  disabled: computed(function () {
+    later(() => this.set('disabled', true), this.get('bet.fixture.date') - Date.now());
+  }).volatile(),
   evaluatable: computed('bet.fixture.status', function () {
     return this.get('bet.fixture.status') === 'FINISHED';
   })

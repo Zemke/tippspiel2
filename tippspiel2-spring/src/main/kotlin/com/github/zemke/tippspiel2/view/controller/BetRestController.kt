@@ -1,10 +1,12 @@
 package com.github.zemke.tippspiel2.view.controller
 
+import com.github.zemke.tippspiel2.persistence.model.Fixture
 import com.github.zemke.tippspiel2.service.BetService
 import com.github.zemke.tippspiel2.service.BettingGameService
 import com.github.zemke.tippspiel2.service.FixtureService
 import com.github.zemke.tippspiel2.service.JsonWebTokenService
 import com.github.zemke.tippspiel2.service.UserService
+import com.github.zemke.tippspiel2.view.exception.BadRequestException
 import com.github.zemke.tippspiel2.view.exception.ForbiddenException
 import com.github.zemke.tippspiel2.view.exception.NotFoundException
 import com.github.zemke.tippspiel2.view.model.BetCreationDto
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
+import java.util.*
 import javax.servlet.http.HttpServletRequest
 
 @RestController
@@ -52,6 +55,7 @@ class BetRestController {
     fun updateBet(@PathVariable("betId") betId: Long, @RequestBody betCreationDto: BetCreationDto,
                   request: HttpServletRequest): ResponseEntity<BetDto> {
         val bet = betService.find(betId).orElseThrow({ throw NotFoundException() })
+        assertBetDeadline(bet.fixture)
         if (jsonWebTokenService.getIdFromToken(jsonWebTokenService.assertToken(request)) != bet.user.id) throw ForbiddenException()
         bet.goalsHomeTeamBet = betCreationDto.goalsHomeTeamBet
         bet.goalsAwayTeamBet = betCreationDto.goalsAwayTeamBet
@@ -64,11 +68,19 @@ class BetRestController {
             throw ForbiddenException()
         }
 
+        val fixture = fixtureService.getById(betCreationDto.fixture)
+        assertBetDeadline(fixture)
+
         val bet = BetCreationDto.fromDto(
                 dto = betCreationDto,
-                fixture = fixtureService.getById(betCreationDto.fixture),
+                fixture = fixture,
                 bettingGame = bettingGameService.find(betCreationDto.bettingGame),
                 user = userService.getUser(betCreationDto.user)!!)
         return ResponseEntity.status(HttpStatus.CREATED).body(BetDto.toDto(betService.save(bet)))
+    }
+
+    @Throws(BadRequestException::class)
+    private fun assertBetDeadline(fixture: Fixture) {
+        if (fixture.date <= Date()) throw BadRequestException("Too late to bet.")
     }
 }
