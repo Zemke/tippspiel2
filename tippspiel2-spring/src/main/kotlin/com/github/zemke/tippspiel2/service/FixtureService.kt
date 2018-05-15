@@ -5,6 +5,7 @@ import com.github.zemke.tippspiel2.persistence.model.Fixture
 import com.github.zemke.tippspiel2.persistence.repository.FixtureRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import java.util.*
 
 @Service
 class FixtureService(
@@ -13,7 +14,7 @@ class FixtureService(
 
     fun saveMany(fixtures: List<Fixture>): List<Fixture> = fixtureRepository.saveAll(fixtures)
 
-    fun getById(fixtureId: Long): Fixture = fixtureRepository.getOne(fixtureId)
+    fun getById(fixtureId: Long): Optional<Fixture> = fixtureRepository.findById(fixtureId)
 
     fun findFixturesByCompetitionAndManualFalse(competition: Competition): List<Fixture> =
             fixtureRepository.findFixturesByCompetitionAndManualFalse(competition)

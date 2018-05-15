@@ -1,0 +1,18 @@
+<h1 class="title">
+  {{t (concat 'team.name.' model.fixture.homeTeam.id)}} <span class="has-text-grey">{{model.fixture.goalsHomeTeam}}</span><br>
+  {{t (concat 'team.name.' model.fixture.awayTeam.id)}} <span class="has-text-grey">{{model.fixture.goalsAwayTeam}}</span>
+</h1>
+<p class="subtitle">
+  {{date-format model.fixture.date "dddd, MMMM D, HH:mm"}}
+</p>
+
+<div class="columns is-multiline">
+  {{#each model.bets as |bet|}}
+    <div class="column is-one-third-tablet is-one-quarter-widescreen">
+      {{#bet-card bet=bet hideGame=true}}
+      {{/bet-card}}
+    </div>
+  {{/each}}
+</div>
+
+{{outlet}}

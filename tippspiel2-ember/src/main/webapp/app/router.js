@@ -28,6 +28,10 @@ Router.map(function() {
   this.route('users', function() {
     this.route('bets', {path: '/:user_id/bets'});
   });
+
+  this.route('fixtures', function() {
+    this.route('bets', {path: '/:fixture_id/bets'});
+  });
 });
 
 export default Router;

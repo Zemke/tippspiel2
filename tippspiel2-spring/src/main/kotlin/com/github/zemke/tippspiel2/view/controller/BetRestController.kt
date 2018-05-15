@@ -46,7 +46,8 @@ class BetRestController {
     private lateinit var userService: UserService
 
     @GetMapping("")
-    fun getBets(@RequestParam user: Long?, @RequestParam bettingGame: Long?, request: HttpServletRequest): ResponseEntity<List<BetDto>> {
+    fun getBets(@RequestParam user: Long?, @RequestParam bettingGame: Long?, @RequestParam fixture: Long?,
+                request: HttpServletRequest): ResponseEntity<List<BetDto>> {
         val token = jsonWebTokenService.assertToken(request)
         val authenticatedUserId = if (token != null) jsonWebTokenService.getIdFromToken(token) else null
 
@@ -54,6 +55,7 @@ class BetRestController {
                 .filter { user == null || user == it.user.id }
                 .filter { bettingGame == null || bettingGame == it.bettingGame.id }
                 .filter { bettingGame == null || bettingGame == it.bettingGame.id }
+                .filter { fixture == null || fixture == it.fixture.id }
                 .filter { it.user.id == authenticatedUserId || !isBettingStillAllowed(it.fixture.date) }
                 .map { BetDto.toDto(it) })
     }
@@ -77,7 +79,7 @@ class BetRestController {
             throw ForbiddenException()
         }
 
-        val fixture = fixtureService.getById(betCreationDto.fixture)
+        val fixture = fixtureService.getById(betCreationDto.fixture).orElseThrow { throw BadRequestException("There is no such fixture.") }
         if (!isBettingStillAllowed(fixture.date)) throw BadRequestException("Too late to bet.")
 
         val bet = BetCreationDto.fromDto(

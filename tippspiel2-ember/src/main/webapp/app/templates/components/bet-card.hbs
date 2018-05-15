@@ -1,23 +1,35 @@
 <div class="card">
   <div class="card-content">
-    <div class="title">
-      <div class="nowrap">
-        {{t (concat 'team.name.' bet.fixture.homeTeam.id)}}
-        <span class="has-text-grey">{{bet.fixture.goalsHomeTeam}}</span>
+    {{#unless hideGame}}
+      <div class="title">
+        {{#link-to 'fixtures.bets' bet.fixture.id}} <!-- TODO #inverseLink -->
+          <div class="nowrap has-text-dark">
+            {{t (concat 'team.name.' bet.fixture.homeTeam.id)}} <!-- TODO #responsiveLetterSpacing -->
+            <span class="has-text-grey">{{bet.fixture.goalsHomeTeam}}</span>
+          </div>
+          <div class="nowrap has-text-dark">
+            {{t (concat 'team.name.' bet.fixture.awayTeam.id)}} <!-- TODO #responsiveLetterSpacing -->
+            <span class="has-text-grey">{{bet.fixture.goalsAwayTeam}}</span>
+          </div>
+        {{/link-to}}
       </div>
-      <div class="nowrap">
-        {{t (concat 'team.name.' bet.fixture.awayTeam.id)}}
-        <span class="has-text-grey">{{bet.fixture.goalsAwayTeam}}</span>
-      </div>
-    </div>
-    <div class="subtitle nowrap">
+      <div class="subtitle nowrap">
             <span class="is-hidden-tablet-only is-hidden-widescreen-only">
               {{date-format bet.fixture.date "dddd, MMM D, HH:mm"}}
             </span>
-      <span class="is-hidden-mobile is-hidden-desktop-only is-hidden-fullhd">
-        {{date-format bet.fixture.date "ddd, MMM D, HH:mm"}}
-      </span>
-    </div>
+        <span class="is-hidden-mobile is-hidden-desktop-only is-hidden-fullhd">
+          {{date-format bet.fixture.date "ddd, MMM D, HH:mm"}}
+        </span>
+      </div>
+    {{/unless}}
+    {{#unless hideUser}}
+      <div class="title">
+        {{#link-to 'users.bets' bet.user.id class='has-text-dark'}} <!-- TODO #inverseLink -->
+          <span class="nowrap">{{bet.user.firstName}}</span><br> <!-- TODO #responsiveLetterSpacing -->
+          <span class="nowrap">{{bet.user.lastName}}</span> <!-- TODO #responsiveLetterSpacing -->
+        {{/link-to}}
+      </div>
+    {{/unless}}
     <div>
       <form>
         <div class="columns is-mobile is-gapless">
