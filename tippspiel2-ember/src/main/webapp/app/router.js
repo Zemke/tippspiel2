@@ -24,6 +24,10 @@ Router.map(function() {
   this.route('betting-games', function() {
     this.route('new');
   });
+
+  this.route('users', function() {
+    this.route('bets', {path: '/:user_id/bets'});
+  });
 });
 
 export default Router;

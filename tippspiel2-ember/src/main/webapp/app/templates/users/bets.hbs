@@ -1,0 +1,15 @@
+<h1 class="title">
+  {{model.user.firstName}}
+  {{model.user.lastName}}
+</h1>
+
+<div class="columns is-multiline">
+  {{#each model.bets as |bet|}}
+    <div class="column is-one-third-tablet is-one-quarter-widescreen">
+      {{#bet-card bet=bet}}
+      {{/bet-card}}
+    </div>
+  {{/each}}
+</div>
+
+{{outlet}}
