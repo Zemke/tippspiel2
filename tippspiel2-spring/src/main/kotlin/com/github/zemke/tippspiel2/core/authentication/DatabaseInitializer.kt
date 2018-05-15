@@ -67,7 +67,7 @@ class DatabaseInitializer : ApplicationListener<ContextRefreshedEvent> {
         val competition = FootballDataCompetitionDto.fromDto(competitionDto)
         val teams = teamWrappedListDto.teams.map { FootballDataTeamDto.fromDto(it, competition) }
         val fixtures = fixtureWrappedListDto.fixtures
-                .filter { listOf(FixtureStatus.TIMED, FixtureStatus.IN_PLAY, FixtureStatus.FINISHED).contains(it.status) }
+                .filter { FixtureStatus.OF_INTEREST.contains(it.status) }
                 .filter { it.homeTeamId != NULL_TEAM_ID && it.awayTeamId != NULL_TEAM_ID }
                 .map { FootballDataFixtureDto.fromDto(it, teams, competition) }
 
