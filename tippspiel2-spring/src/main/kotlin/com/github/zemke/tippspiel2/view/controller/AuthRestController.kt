@@ -3,6 +3,7 @@ package com.github.zemke.tippspiel2.view.controller
 import com.github.zemke.tippspiel2.core.authentication.AuthenticatedUser
 import com.github.zemke.tippspiel2.service.JsonWebTokenService
 import com.github.zemke.tippspiel2.service.UserService
+import com.github.zemke.tippspiel2.view.exception.UnauthorizedException
 import com.github.zemke.tippspiel2.view.model.AuthenticationRequestDto
 import com.github.zemke.tippspiel2.view.model.JsonWebTokenDto
 import org.springframework.beans.factory.annotation.Autowired
@@ -26,7 +27,7 @@ class AuthRestController(@Autowired private val jsonWebTokenService: JsonWebToke
 
     @GetMapping("")
     fun getAuthenticatedUser(request: HttpServletRequest): AuthenticatedUser {
-        val email = jsonWebTokenService.getSubjectFromToken(jsonWebTokenService.assertToken(request))
+        val email = jsonWebTokenService.getSubjectFromToken(jsonWebTokenService.assertToken(request) ?: throw UnauthorizedException())
         return (userDetailsService.loadUserByUsername(email) as AuthenticatedUser)
     }
 

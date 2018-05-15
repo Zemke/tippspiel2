@@ -9,6 +9,7 @@ import com.github.zemke.tippspiel2.service.UserService
 import com.github.zemke.tippspiel2.view.exception.BadRequestException
 import com.github.zemke.tippspiel2.view.exception.ForbiddenException
 import com.github.zemke.tippspiel2.view.exception.NotFoundException
+import com.github.zemke.tippspiel2.view.exception.UnauthorizedException
 import com.github.zemke.tippspiel2.view.model.BetCreationDto
 import com.github.zemke.tippspiel2.view.model.BetDto
 import org.springframework.beans.factory.annotation.Autowired
@@ -56,7 +57,8 @@ class BetRestController {
                   request: HttpServletRequest): ResponseEntity<BetDto> {
         val bet = betService.find(betId).orElseThrow({ throw NotFoundException() })
         assertBetDeadline(bet.fixture)
-        if (jsonWebTokenService.getIdFromToken(jsonWebTokenService.assertToken(request)) != bet.user.id) throw ForbiddenException()
+        val token = jsonWebTokenService.assertToken(request) ?: throw UnauthorizedException()
+        if (jsonWebTokenService.getIdFromToken(token) != bet.user.id) throw ForbiddenException()
         bet.goalsHomeTeamBet = betCreationDto.goalsHomeTeamBet
         bet.goalsAwayTeamBet = betCreationDto.goalsAwayTeamBet
         return ResponseEntity.ok(BetDto.toDto(betService.save(bet)))
@@ -64,7 +66,8 @@ class BetRestController {
 
     @PostMapping("")
     fun saveBet(@RequestBody betCreationDto: BetCreationDto, request: HttpServletRequest): ResponseEntity<BetDto> {
-        if (jsonWebTokenService.getIdFromToken(jsonWebTokenService.assertToken(request)) != betCreationDto.user) {
+        val token = jsonWebTokenService.assertToken(request) ?: throw UnauthorizedException()
+        if (jsonWebTokenService.getIdFromToken(token) != betCreationDto.user) {
             throw ForbiddenException()
         }
 

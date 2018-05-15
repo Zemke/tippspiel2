@@ -2,7 +2,6 @@ package com.github.zemke.tippspiel2.service
 
 import com.github.zemke.tippspiel2.core.authentication.AuthenticatedUser
 import com.github.zemke.tippspiel2.core.properties.AuthenticationProperties
-import com.github.zemke.tippspiel2.view.exception.UnauthorizedException
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
@@ -21,10 +20,8 @@ class JsonWebTokenService(
 
     private val clock = DefaultClock.INSTANCE
 
-    @Throws(UnauthorizedException::class)
-    fun assertToken(request: HttpServletRequest): String {
-        return request.getHeader(authenticationProperties.jwt.header)?.substring(7) ?: throw UnauthorizedException()
-    }
+    fun assertToken(request: HttpServletRequest): String? =
+            request.getHeader(authenticationProperties.jwt.header)?.substring(7)
 
     fun validateToken(token: String, userDetails: UserDetails): Boolean {
         val user = userDetails as AuthenticatedUser

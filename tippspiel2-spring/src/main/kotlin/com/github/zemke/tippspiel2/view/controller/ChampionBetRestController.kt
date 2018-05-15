@@ -5,6 +5,7 @@ import com.github.zemke.tippspiel2.service.ChampionBetService
 import com.github.zemke.tippspiel2.service.JsonWebTokenService
 import com.github.zemke.tippspiel2.service.TeamService
 import com.github.zemke.tippspiel2.service.UserService
+import com.github.zemke.tippspiel2.view.exception.UnauthorizedException
 import com.github.zemke.tippspiel2.view.model.ChampionBetCreationDto
 import com.github.zemke.tippspiel2.view.model.ChampionBetDto
 import org.springframework.beans.factory.annotation.Autowired
@@ -30,8 +31,9 @@ class ChampionBetRestController(
     fun createChampionBet(
             @RequestBody championBetCreationDto: ChampionBetCreationDto,
             request: HttpServletRequest): ResponseEntity<ChampionBetDto> {
+        val token = jsonWebTokenService.assertToken(request) ?: throw UnauthorizedException()
         val user = userService.findUserByEmail(
-                jsonWebTokenService.getSubjectFromToken(jsonWebTokenService.assertToken(request)))
+                jsonWebTokenService.getSubjectFromToken(token))
 
         val championBet = ChampionBetCreationDto.fromDto(
                 bettingGameService.find(championBetCreationDto.bettingGame),

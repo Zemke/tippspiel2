@@ -5,24 +5,24 @@
          "homeTeamName" : "Russia",
          "awayTeamName" : "Saudi Arabia",
          "competitionId" : 467,
-         "date" : "2018-06-14T15:00:00Z",
+         "date" : "2018-03-14T15:00:00Z",
          "awayTeamId" : 801,
          "id" : 165069,
          "odds" : null,
          "result" : {
-            "goalsHomeTeam" : null,
-            "goalsAwayTeam" : null
+            "goalsHomeTeam" : 0,
+            "goalsAwayTeam" : 2
          },
-         "status" : "TIMED",
+         "status" : "FINISHED",
          "matchday" : 1
       },
       {
          "matchday" : 1,
          "result" : {
-            "goalsHomeTeam" : null,
-            "goalsAwayTeam" : null
+            "goalsHomeTeam" : 0,
+            "goalsAwayTeam" : 0
          },
-         "status" : "TIMED",
+         "status" : "IN_PLAY",
          "odds" : null,
          "id" : 165084,
          "awayTeamId" : 758,

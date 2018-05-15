@@ -24,7 +24,7 @@ class AuthenticationFilter : OncePerRequestFilter() {
     @Throws(ServletException::class, IOException::class)
     override fun doFilterInternal(request: HttpServletRequest, response: HttpServletResponse, chain: FilterChain) {
         try {
-            val authToken = jsonWebTokenService.assertToken(request)
+            val authToken = jsonWebTokenService.assertToken(request) ?: return chain.doFilter(request, response)
             val username = jsonWebTokenService.getSubjectFromToken(authToken)
 
             if (SecurityContextHolder.getContext().authentication == null) {
