@@ -21,3 +21,11 @@
 .navbar-brand > .select {
   margin: auto 12px;
 }
+
+.inverse-link {
+  color: inherit;
+}
+
+.inverse-link:hover {
+  color: $link;
+}

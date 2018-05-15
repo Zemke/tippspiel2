@@ -2,15 +2,15 @@
   <div class="card-content">
     {{#unless hideGame}}
       <div class="title">
-        {{#link-to 'fixtures.bets' bet.fixture.id}} <!-- TODO #inverseLink -->
-          <div class="nowrap has-text-dark">
+        {{#link-to 'fixtures.bets' bet.fixture.id class="inverse-link"}}
+          <span class="nowrap">
             {{t (concat 'team.name.' bet.fixture.homeTeam.id)}} <!-- TODO #responsiveLetterSpacing -->
             <span class="has-text-grey">{{bet.fixture.goalsHomeTeam}}</span>
-          </div>
-          <div class="nowrap has-text-dark">
+          </span><br>
+          <span class="nowrap">
             {{t (concat 'team.name.' bet.fixture.awayTeam.id)}} <!-- TODO #responsiveLetterSpacing -->
             <span class="has-text-grey">{{bet.fixture.goalsAwayTeam}}</span>
-          </div>
+          </span>
         {{/link-to}}
       </div>
       <div class="subtitle nowrap">
@@ -24,7 +24,7 @@
     {{/unless}}
     {{#unless hideUser}}
       <div class="title">
-        {{#link-to 'users.bets' bet.user.id class='has-text-dark'}} <!-- TODO #inverseLink -->
+        {{#link-to 'users.bets' bet.user.id class="inverse-link"}}
           <span class="nowrap">{{bet.user.firstName}}</span><br> <!-- TODO #responsiveLetterSpacing -->
           <span class="nowrap">{{bet.user.lastName}}</span> <!-- TODO #responsiveLetterSpacing -->
         {{/link-to}}
