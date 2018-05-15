@@ -1,6 +1,5 @@
 package com.github.zemke.tippspiel2.view.controller
 
-import com.github.zemke.tippspiel2.persistence.model.Fixture
 import com.github.zemke.tippspiel2.service.BetService
 import com.github.zemke.tippspiel2.service.BettingGameService
 import com.github.zemke.tippspiel2.service.FixtureService
@@ -23,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
+import java.sql.Timestamp
 import java.util.*
 import javax.servlet.http.HttpServletRequest
 
@@ -56,7 +56,7 @@ class BetRestController {
     fun updateBet(@PathVariable("betId") betId: Long, @RequestBody betCreationDto: BetCreationDto,
                   request: HttpServletRequest): ResponseEntity<BetDto> {
         val bet = betService.find(betId).orElseThrow({ throw NotFoundException() })
-        assertBetDeadline(bet.fixture)
+        if (!isBettingStillAllowed(bet.fixture.date)) throw BadRequestException("Too late to bet.")
         val token = jsonWebTokenService.assertToken(request) ?: throw UnauthorizedException()
         if (jsonWebTokenService.getIdFromToken(token) != bet.user.id) throw ForbiddenException()
         bet.goalsHomeTeamBet = betCreationDto.goalsHomeTeamBet
@@ -72,7 +72,7 @@ class BetRestController {
         }
 
         val fixture = fixtureService.getById(betCreationDto.fixture)
-        assertBetDeadline(fixture)
+        if (!isBettingStillAllowed(fixture.date)) throw BadRequestException("Too late to bet.")
 
         val bet = BetCreationDto.fromDto(
                 dto = betCreationDto,
@@ -82,8 +82,5 @@ class BetRestController {
         return ResponseEntity.status(HttpStatus.CREATED).body(BetDto.toDto(betService.save(bet)))
     }
 
-    @Throws(BadRequestException::class)
-    private fun assertBetDeadline(fixture: Fixture) {
-        if (fixture.date <= Date()) throw BadRequestException("Too late to bet.")
-    }
+    private fun isBettingStillAllowed(fixtureStart: Timestamp) = fixtureStart > Date()
 }
