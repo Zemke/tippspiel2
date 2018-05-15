@@ -29,3 +29,10 @@
 .inverse-link:hover {
   color: $link;
 }
+
+@media screen and (min-width: $tablet) and (max-width: $desktop - 1px) {
+
+  .responsive-letter-spacing {
+    letter-spacing: -0.08em;
+  }
+}

@@ -4,11 +4,15 @@
       <div class="title">
         {{#link-to 'fixtures.bets' bet.fixture.id class="inverse-link"}}
           <span class="nowrap">
-            {{t (concat 'team.name.' bet.fixture.homeTeam.id)}} <!-- TODO #responsiveLetterSpacing -->
+            {{#responsive-letter-spacing boundary=180}}
+              {{t (concat 'team.name.' bet.fixture.homeTeam.id)}}
+            {{/responsive-letter-spacing}}
             <span class="has-text-grey">{{bet.fixture.goalsHomeTeam}}</span>
           </span><br>
           <span class="nowrap">
-            {{t (concat 'team.name.' bet.fixture.awayTeam.id)}} <!-- TODO #responsiveLetterSpacing -->
+            {{#responsive-letter-spacing boundary=180}}
+              {{t (concat 'team.name.' bet.fixture.awayTeam.id)}}
+            {{/responsive-letter-spacing}}
             <span class="has-text-grey">{{bet.fixture.goalsAwayTeam}}</span>
           </span>
         {{/link-to}}
@@ -25,8 +29,12 @@
     {{#unless hideUser}}
       <div class="title">
         {{#link-to 'users.bets' bet.user.id class="inverse-link"}}
-          <span class="nowrap">{{bet.user.firstName}}</span><br> <!-- TODO #responsiveLetterSpacing -->
-          <span class="nowrap">{{bet.user.lastName}}</span> <!-- TODO #responsiveLetterSpacing -->
+          {{#responsive-letter-spacing boundary=180}}
+            {{bet.user.firstName}}
+          {{/responsive-letter-spacing}}<br>
+          {{#responsive-letter-spacing boundary=180}}
+            {{bet.user.lastName}}
+          {{/responsive-letter-spacing}}
         {{/link-to}}
       </div>
     {{/unless}}
