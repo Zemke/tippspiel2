@@ -85,7 +85,8 @@ class BetRestController {
         val bet = BetCreationDto.fromDto(
                 dto = betCreationDto,
                 fixture = fixture,
-                bettingGame = bettingGameService.find(betCreationDto.bettingGame),
+                bettingGame = bettingGameService.find(betCreationDto.bettingGame)
+                        .orElseThrow { throw BadRequestException("There is no such betting game.") },
                 user = userService.getUser(betCreationDto.user)!!)
         return ResponseEntity.status(HttpStatus.CREATED).body(BetDto.toDto(betService.save(bet)))
     }

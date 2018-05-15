@@ -6,6 +6,7 @@ import com.github.zemke.tippspiel2.persistence.repository.BettingGameRepository
 import com.github.zemke.tippspiel2.persistence.repository.StandingRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import java.util.*
 import javax.transaction.Transactional
 
 @Service
@@ -14,7 +15,7 @@ class BettingGameService(
         @Autowired private var standingRepository: StandingRepository
 ) {
 
-    fun find(bettingGameId: Long): BettingGame = bettingGameRepository.getOne(bettingGameId)
+    fun find(bettingGameId: Long): Optional<BettingGame> = bettingGameRepository.findById(bettingGameId)
 
     @Transactional
     fun createBettingGame(bettingGame: BettingGame): BettingGame {

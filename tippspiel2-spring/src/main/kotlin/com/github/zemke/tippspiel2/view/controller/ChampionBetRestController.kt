@@ -5,6 +5,7 @@ import com.github.zemke.tippspiel2.service.ChampionBetService
 import com.github.zemke.tippspiel2.service.JsonWebTokenService
 import com.github.zemke.tippspiel2.service.TeamService
 import com.github.zemke.tippspiel2.service.UserService
+import com.github.zemke.tippspiel2.view.exception.BadRequestException
 import com.github.zemke.tippspiel2.view.exception.UnauthorizedException
 import com.github.zemke.tippspiel2.view.model.ChampionBetCreationDto
 import com.github.zemke.tippspiel2.view.model.ChampionBetDto
@@ -36,7 +37,8 @@ class ChampionBetRestController(
                 jsonWebTokenService.getSubjectFromToken(token))
 
         val championBet = ChampionBetCreationDto.fromDto(
-                bettingGameService.find(championBetCreationDto.bettingGame),
+                bettingGameService.find(championBetCreationDto.bettingGame)
+                        .orElseThrow { throw BadRequestException("There is no such betting game.") },
                 teamService.find(championBetCreationDto.team),
                 user!!
         )

@@ -1,5 +1,6 @@
 package com.github.zemke.tippspiel2.service
 
+import com.github.zemke.tippspiel2.persistence.model.BettingGame
 import com.github.zemke.tippspiel2.persistence.model.Competition
 import com.github.zemke.tippspiel2.persistence.model.Standing
 import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
@@ -85,4 +86,10 @@ class StandingService(
             0
         }
     }
+
+    fun findByBettingGame(bettingGame: BettingGame) =
+            standingRepository.findByBettingGame(bettingGame)
+
+    fun findAll(): List<Standing> =
+            standingRepository.findAll()
 }
