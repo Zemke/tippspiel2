@@ -1,24 +1,24 @@
 <h1 class="title">Standings</h1>
 
-<table class="table">
+<table class="table is-hoverable is-narrow-mobile is-fullwidth-desktop">
   <thead>
   <tr class="standings">
-    <th>#</th>
+    <th class="has-text-centered">#</th>
     <th>Name</th>
-    <th>P</th>
-    <th>5</th>
-    <th>3</th>
-    <th>1</th>
-    <th>0</th>
-    <th>-1</th>
-    <th>10</th>
+    <th class="has-text-centered">P</th>
+    <th class="has-text-centered">{{#bet-evaluation-icon evaluation=5}}{{/bet-evaluation-icon}}</th>
+    <th class="has-text-centered">{{#bet-evaluation-icon evaluation=3}}{{/bet-evaluation-icon}}</th>
+    <th class="has-text-centered">{{#bet-evaluation-icon evaluation=1}}{{/bet-evaluation-icon}}</th>
+    <th class="has-text-centered">{{#bet-evaluation-icon evaluation=0}}{{/bet-evaluation-icon}}</th>
+    <th class="has-text-centered">{{#bet-evaluation-icon evaluation=null}}{{/bet-evaluation-icon}}</th>
+    <th class="has-text-centered">{{#bet-evaluation-icon evaluation=10}}{{/bet-evaluation-icon}}</th>
   </tr>
   </thead>
   <tbody>
-  {{#each model as |standing|}}
+  {{#each standingsAsTable as |standing index|}}
     <tr class="standings">
-      <td>
-        0
+      <td class="has-text-centered">
+        {{standing.position}}
       </td>
       <td>
         {{#link-to 'users.bets' standing.user.id}}
@@ -26,12 +26,12 @@
           {{standing.user.lastName}}
         {{/link-to}}
       </td>
-      <td><strong>{{ standing.points }}</strong></td>
-      <td>{{standing.exactBets}}</td>
-      <td>{{standing.goalDifferenceBets}}</td>
-      <td>{{standing.winnerBets}}</td>
-      <td>{{standing.wrongBets}}</td>
-      <td>{{standing.missedBets}}</td>
+      <td class="has-text-centered"><strong>{{standing.points}}</strong></td>
+      <td class="has-text-centered">{{standing.exactBets}}</td>
+      <td class="has-text-centered">{{standing.goalDifferenceBets}}</td>
+      <td class="has-text-centered">{{standing.winnerBets}}</td>
+      <td class="has-text-centered">{{standing.wrongBets}}</td>
+      <td class="has-text-centered">{{standing.missedBets}}</td>
       <td>
         Flag.
       </td>

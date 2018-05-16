@@ -36,3 +36,32 @@
     letter-spacing: -0.08em;
   }
 }
+
+@media screen and (max-width: $tablet - 1px) {
+
+  .table.is-narrow-mobile td, .table.is-narrow-mobile th {
+    padding: 0.25em 0.5em;
+  }
+}
+
+@media screen and (max-width: $desktop - 1px) {
+
+  .is-fullwidth-desktop {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-device-width: 730px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  tr.standings th:nth-child(4),
+  tr.standings td:nth-child(4),
+  tr.standings th:nth-child(5),
+  tr.standings td:nth-child(5),
+  tr.standings th:nth-child(6),
+  tr.standings td:nth-child(6),
+  tr.standings th:nth-child(7),
+  tr.standings td:nth-child(7),
+  tr.standings th:nth-child(8),
+  tr.standings td:nth-child(8) {
+    display: none !important;
+  }
+}
