@@ -94,3 +94,5 @@ team:
     804: 'SEN'
     818: 'COL'
     766: 'JAP'
+bets:
+  none: 'There are no bets yet.'
