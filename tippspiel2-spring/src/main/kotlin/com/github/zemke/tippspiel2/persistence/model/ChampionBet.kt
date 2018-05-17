@@ -17,7 +17,7 @@ data class ChampionBet(
 
         @Id @GeneratedValue val id: Long?,
         @ManyToOne(optional = false) val user: User,
-        @ManyToOne(optional = false) val team: Team,
+        @ManyToOne(optional = false) var team: Team,
         @ManyToOne(optional = false) val bettingGame: BettingGame,
         @UpdateTimestamp @NotNull val modified: Timestamp
 )

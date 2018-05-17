@@ -22,6 +22,10 @@ me:
       currentCompetition: 'Current competition'
       setCommunity: 'Pick a community'
       submit: 'Create Betting Game'
+championBet:
+  title: 'Champion Bet'
+  selectTeam: 'Select team'
+  submit: 'Submit'
 #      id:
 #        placeholder: 'Enter ID'
 #        info: 'The ID can be derived from football-data.org. It’s meant to be looked up manually and is then used to undertake external API requests.'

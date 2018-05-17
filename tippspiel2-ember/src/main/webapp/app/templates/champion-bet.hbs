@@ -1,0 +1,45 @@
+<h1 class="title">
+  {{t 'championBet.title'}}
+</h1>
+
+<div class="columns is-desktop">
+  <div class="column is-half">
+    <form>
+      <div class="field has-addons is-horizontal">
+        <div class="control has-icons-left">
+          <div class="select">
+            <select onchange={{action "selectTeam" value="target.value"}}>
+              {{#if model.championBet.team.id}}
+                <option value={{model.championBet.team.id}} selected>
+                  {{model.championBet.team.name}}
+                </option>
+              {{else}}
+                <option value="" disabled selected>
+                  {{t 'championBet.selectTeam'}}
+                </option>
+              {{/if}}
+              {{#each model.teams as |team|}}
+                <option value={{team.id}}>
+                  {{t (concat 'team.name.' team.id)}}
+                </option>
+              {{/each}}
+            </select>
+          </div>
+          <span class="icon is-left">
+            <i class="fa fa-trophy"></i>
+          </span>
+        </div>
+        <div class="control">
+          <button type="submit" class="button is-static">
+            {{#country-flag teamId=model.championBet.team.id class="icon"}}{{/country-flag}}
+          </button>
+        </div>
+        <div class="control">
+          {{#submit-button model=model.championBet submit=(action 'submit')}}
+            {{t 'championBet.submit'}}
+          {{/submit-button}}
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

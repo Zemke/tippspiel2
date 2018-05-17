@@ -33,9 +33,13 @@
       <td class="has-text-centered">{{standing.wrongBets}}</td>
       <td class="has-text-centered">{{standing.missedBets}}</td>
       <td>
-        <span class="icon">
-          <img src="/flags/{{standing.championBetFlag}}.png">
-        </span>
+        {{#if standing.isAuthenticatedUser}} <!-- TODO No change allowed as soon as first game has started. -->
+          {{#link-to 'champion-bet' class="icon"}}
+            {{#country-flag teamId=standing.championBet.team.id}}{{/country-flag}}
+          {{/link-to}}
+        {{else}}
+          {{#country-flag teamId=standing.championBet.team.id}}{{/country-flag}}
+        {{/if}}
       </td>
     </tr>
   {{/each}}

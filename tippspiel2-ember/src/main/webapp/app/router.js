@@ -32,6 +32,8 @@ Router.map(function() {
   this.route('fixtures', function() {
     this.route('bets', {path: '/:fixture_id/bets'});
   });
+
+  this.route('champion-bet');
 });
 
 export default Router;

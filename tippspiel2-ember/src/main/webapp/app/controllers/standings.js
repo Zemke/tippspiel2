@@ -16,6 +16,8 @@ export default Controller.extend({
         value.set('championBetFlag', championBet != null ? championBet.get('team.id') : 'unknown');
         value.set('championBet', championBet);
 
+        value.set('isAuthenticatedUser', this.get('model.authenticatedUser.id') === value.get('user.id'));
+
         return value;
       });
   })
