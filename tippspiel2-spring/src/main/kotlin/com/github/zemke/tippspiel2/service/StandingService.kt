@@ -3,6 +3,7 @@ package com.github.zemke.tippspiel2.service
 import com.github.zemke.tippspiel2.persistence.model.BettingGame
 import com.github.zemke.tippspiel2.persistence.model.Competition
 import com.github.zemke.tippspiel2.persistence.model.Standing
+import com.github.zemke.tippspiel2.persistence.model.Team
 import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
 import com.github.zemke.tippspiel2.persistence.repository.BetRepository
 import com.github.zemke.tippspiel2.persistence.repository.FixtureRepository
@@ -15,7 +16,8 @@ import javax.transaction.Transactional
 class StandingService(
         @Autowired private val standingRepository: StandingRepository,
         @Autowired private val betRepository: BetRepository,
-        @Autowired private val fixtureRepository: FixtureRepository
+        @Autowired private val fixtureRepository: FixtureRepository,
+        @Autowired private val championBetService: ChampionBetService
 ) {
 
     /**
@@ -48,6 +50,13 @@ class StandingService(
         }
 
         val fixtures = fixtureRepository.findAll()
+        val competitionChampion: Team? = championBetService.getCompetitionChampionFromFixtures(
+                fixtures, competition.numberOfMatchdays)
+        val usersWithRightChampionBet =
+                if (competitionChampion != null)
+                    championBetService.findByCompetitionAndTeam(competition, competitionChampion).map { it.user.id }
+                else
+                    emptyList()
 
         standings.forEach {
             val numberOfFixturesInCompetition = fixtures
@@ -55,6 +64,7 @@ class StandingService(
                     .count()
 
             it.missedBets = calcMissedBets(it, numberOfFixturesInCompetition)
+            if (usersWithRightChampionBet.contains(it.user.id)) it.points.plus(10)
         }
 
         return standingRepository.saveAll(standings)

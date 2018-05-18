@@ -38,6 +38,8 @@ class FootballDataScheduledTaskTest {
     @Mock
     private lateinit var standingService: StandingService
 
+    // Add test with champion bet points. GH-30
+
     @Test
     fun testExec() {
         val currentCompetition = PersistenceUtils.instantiateCompetition()
@@ -64,7 +66,8 @@ class FootballDataScheduledTaskTest {
                 .`when`(footballDataService.requestFixtures(Mockito.anyLong()))
                 .thenAnswer {
                     fixturesToAnswerFromApi = mutableListOf(*fixturesToAnswer.toTypedArray())
-                    fixturesToAnswerFromApi[0].goalsHomeTeam = fixturesToAnswerFromApi[0].goalsHomeTeam!! + 2
+                    fixturesToAnswerFromApi[0] = fixturesToAnswerFromApi[0]
+                            .copy(goalsHomeTeam = fixturesToAnswerFromApi[0].goalsHomeTeam!! + 2)
                     fixturesToAnswerFromApi[1].status = FixtureStatus.CANCELED
 
                     FootballDataFixtureWrappedListDto(
