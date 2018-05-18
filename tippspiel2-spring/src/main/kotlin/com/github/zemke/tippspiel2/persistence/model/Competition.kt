@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.Range
 import java.sql.Timestamp
 import javax.persistence.Entity
 import javax.persistence.Id
+import javax.persistence.ManyToOne
 import javax.persistence.Table
 import javax.persistence.UniqueConstraint
 import javax.validation.constraints.Min
@@ -27,5 +28,7 @@ data class Competition(
         /**
          * Currently only one competition can be played at a time.
          */
-        var current: Boolean = false
+        var current: Boolean = false,
+        @ManyToOne val champion: Team? = null,
+        val championBetAllowed: Boolean = true
 )

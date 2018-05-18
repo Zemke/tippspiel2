@@ -10,4 +10,6 @@ export default DS.Model.extend({
   numberOfGames: DS.attr('number'),
   lastUpdated: DS.attr('Date'),
   current: DS.attr('boolean', {allowNull: true}),
+  champion: DS.belongsTo('Team'),
+  championBetAllowed: DS.attr('boolean'),
 });
