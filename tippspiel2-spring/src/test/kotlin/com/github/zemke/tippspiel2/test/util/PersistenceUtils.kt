@@ -48,22 +48,22 @@ object PersistenceUtils {
                     current = true
             )
 
-    fun instantiateTeam(): Team =
+    fun instantiateTeam(competition: Competition = instantiateCompetition()): Team =
             Team(
                     id = (100..999).random(),
-                    competition = instantiateCompetition(),
+                    competition = competition,
                     name = "1",
                     squadMarketValue = null
             )
 
-    fun instantiateFixture(): Fixture =
+    fun instantiateFixture(competition: Competition = instantiateCompetition()): Fixture =
             Fixture(
                     id = (100..999).random(),
                     date = now(),
                     status = FixtureStatus.TIMED,
-                    awayTeam = instantiateTeam(),
-                    homeTeam = instantiateTeam().copy(id = 2),
-                    competition = instantiateCompetition(),
+                    awayTeam = instantiateTeam(competition),
+                    homeTeam = instantiateTeam(competition).copy(id = 2),
+                    competition = competition,
                     goalsAwayTeam = 2,
                     goalsHomeTeam = 3,
                     matchday = 1,

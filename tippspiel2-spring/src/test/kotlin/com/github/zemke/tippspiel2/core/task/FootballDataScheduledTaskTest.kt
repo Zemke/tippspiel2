@@ -52,9 +52,9 @@ class FootballDataScheduledTaskTest {
         Mockito
                 .doAnswer {
                     fixturesToAnswer = mutableListOf(
-                            PersistenceUtils.instantiateFixture().copy(id = 1, competition = currentCompetition),
-                            PersistenceUtils.instantiateFixture().copy(id = 2, competition = currentCompetition),
-                            PersistenceUtils.instantiateFixture().copy(id = 3, competition = currentCompetition)
+                            PersistenceUtils.instantiateFixture(currentCompetition).copy(id = 1),
+                            PersistenceUtils.instantiateFixture(currentCompetition).copy(id = 2),
+                            PersistenceUtils.instantiateFixture(currentCompetition).copy(id = 3)
                     )
                     fixturesToAnswer.add(fixturesToAnswer[0].copy(id = 4, homeTeam = fixturesToAnswer[2].awayTeam))
                     fixturesToAnswer
@@ -67,7 +67,7 @@ class FootballDataScheduledTaskTest {
                 .thenAnswer {
                     fixturesToAnswerFromApi = mutableListOf(*fixturesToAnswer.toTypedArray())
                     fixturesToAnswerFromApi[0] = fixturesToAnswerFromApi[0]
-                            .copy(goalsHomeTeam = fixturesToAnswerFromApi[0].goalsHomeTeam!! + 2)
+                            .copy(goalsHomeTeam = 3)
                     fixturesToAnswerFromApi[1].status = FixtureStatus.CANCELED
 
                     FootballDataFixtureWrappedListDto(
