@@ -37,6 +37,9 @@ class StandingServiceTest {
     @Mock
     private lateinit var fixtureRepository: FixtureRepository
 
+    @Mock
+    private lateinit var championBetService: ChampionBetService
+
     @Test
     fun testUpdateStandings() {
         val user1 = PersistenceUtils.instantiateUser("1")
@@ -45,10 +48,11 @@ class StandingServiceTest {
         val community = PersistenceUtils.instantiateCommunity().copy(users = listOf(user1, user2))
         val bettingGame = PersistenceUtils.instantiateBettingGame().copy(community = community)
         val teams = createTeams(bettingGame.competition, "Russia", "Norway", "England", "Italy", "Ireland", "Iceland", "Poland", "Spain")
+        val fixtures = createFixtures(bettingGame, teams)
 
         Mockito
                 .`when`(betRepository.findByCompetitionAndFixtureStatus(bettingGame.competition, FixtureStatus.FINISHED))
-                .thenReturn(createBets(createFixtures(bettingGame, teams), bettingGame, user1, user2))
+                .thenReturn(createBets(fixtures, bettingGame, user1, user2))
 
         Mockito
                 .`when`(standingRepository.findAll())
@@ -56,7 +60,7 @@ class StandingServiceTest {
 
         Mockito
                 .`when`(fixtureRepository.findAll())
-                .thenReturn(createFixtures(bettingGame, teams))
+                .thenReturn(fixtures)
 
         Mockito
                 .`when`(standingRepository.saveAll(Mockito.anyList<Standing>()))
@@ -84,6 +88,68 @@ class StandingServiceTest {
                         )),
                 standingsActual)
     }
+
+    @Test
+    fun testUpdateStandingsWithChampionBet() {
+        val user1 = PersistenceUtils.instantiateUser("1").copy(id = 1)
+        val user2 = PersistenceUtils.instantiateUser("2").copy(id = 2)
+
+        val community = PersistenceUtils.instantiateCommunity().copy(users = listOf(user1, user2))
+        val bettingGame = PersistenceUtils.instantiateBettingGame().copy(community = community)
+        val teams = createTeams(bettingGame.competition, "Russia", "Norway", "England", "Italy", "Ireland", "Iceland", "Poland", "Spain")
+        val fixtures = createFixtures(bettingGame, teams)
+        val competitionChampion = fixtures[0].homeTeam
+        val championBet = PersistenceUtils.instantiateChampionBet(
+                user = user1, bettingGame = bettingGame, team = competitionChampion)
+
+        Mockito
+                .`when`(betRepository.findByCompetitionAndFixtureStatus(bettingGame.competition, FixtureStatus.FINISHED))
+                .thenReturn(createBets(fixtures, bettingGame, user1, user2))
+
+        Mockito
+                .`when`(standingRepository.findAll())
+                .thenReturn(createStandings(user1, bettingGame, user2))
+
+        Mockito
+                .`when`(fixtureRepository.findAll())
+                .thenReturn(fixtures)
+
+        Mockito
+                .`when`(standingRepository.saveAll(Mockito.anyList<Standing>()))
+                .thenAnswer { it.getArgument(0) }
+
+        Mockito
+                .`when`(championBetService.getCompetitionChampionFromFixtures(
+                        Mockito.anyList<Fixture>(), Mockito.eq(bettingGame.competition.numberOfMatchdays)))
+                .thenAnswer { competitionChampion }
+
+        Mockito
+                .`when`(championBetService.findByCompetitionAndTeam(bettingGame.competition, competitionChampion))
+                .thenAnswer { listOf(championBet) }
+
+        val standingsActual = standingService.updateStandings(bettingGame.competition)
+
+        Assert.assertEquals(
+                listOf(
+                        createStandings(user1, bettingGame, user2)[0].copy(
+                                exactBets = 2,
+                                goalDifferenceBets = 1,
+                                winnerBets = 0,
+                                wrongBets = 0,
+                                missedBets = 0,
+                                points = 23 // 13 + 10 for champion bet
+                        ),
+                        createStandings(user1, bettingGame, user2)[1].copy(
+                                exactBets = 0,
+                                goalDifferenceBets = 0,
+                                winnerBets = 1,
+                                wrongBets = 1,
+                                missedBets = 1,
+                                points = 1
+                        )),
+                standingsActual)
+    }
+
 
     private fun createStandings(user1: User, bettingGame: BettingGame, user2: User): List<Standing> =
             listOf(

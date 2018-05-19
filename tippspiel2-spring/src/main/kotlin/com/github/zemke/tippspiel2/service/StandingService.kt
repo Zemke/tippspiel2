@@ -64,7 +64,7 @@ class StandingService(
                     .count()
 
             it.missedBets = calcMissedBets(it, numberOfFixturesInCompetition)
-            if (usersWithRightChampionBet.contains(it.user.id)) it.points.plus(10)
+            if (usersWithRightChampionBet.contains(it.user.id)) it.points += 10
         }
 
         return standingRepository.saveAll(standings)

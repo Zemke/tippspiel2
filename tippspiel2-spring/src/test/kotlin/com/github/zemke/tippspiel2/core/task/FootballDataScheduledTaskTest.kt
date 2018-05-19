@@ -38,8 +38,6 @@ class FootballDataScheduledTaskTest {
     @Mock
     private lateinit var standingService: StandingService
 
-    // Add test with champion bet points. GH-30
-
     @Test
     fun testExec() {
         val currentCompetition = PersistenceUtils.instantiateCompetition()

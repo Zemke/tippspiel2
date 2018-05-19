@@ -2,6 +2,7 @@ package com.github.zemke.tippspiel2.test.util
 
 import com.github.zemke.tippspiel2.persistence.model.Bet
 import com.github.zemke.tippspiel2.persistence.model.BettingGame
+import com.github.zemke.tippspiel2.persistence.model.ChampionBet
 import com.github.zemke.tippspiel2.persistence.model.Community
 import com.github.zemke.tippspiel2.persistence.model.Competition
 import com.github.zemke.tippspiel2.persistence.model.Fixture
@@ -97,6 +98,16 @@ object PersistenceUtils {
                     goalsHomeTeamBet = 1,
                     goalsAwayTeamBet = 1,
                     fixture = instantiateFixture()
+            )
+
+    fun instantiateChampionBet(bettingGame: BettingGame = instantiateBettingGame(), user: User = instantiateUser(),
+                               team: Team = instantiateTeam()): ChampionBet =
+            ChampionBet(
+                    id = null,
+                    bettingGame = bettingGame,
+                    user = user,
+                    modified = now(),
+                    team = team
             )
 
     fun now() = Timestamp(Date().time)
