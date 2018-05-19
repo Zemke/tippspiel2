@@ -31,6 +31,8 @@ championBet:
 #        info: 'The ID can be derived from football-data.org. It’s meant to be looked up manually and is then used to undertake external API requests.'
 #      header: 'Load a Competition'
 #      submit: 'Load Competition'
+standings:
+  yetToBet: 'You only have time to bet the champion of the tournament until the first game kicks off.'
 team:
   name:
     808: 'Russia'

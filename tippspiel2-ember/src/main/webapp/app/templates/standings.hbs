@@ -1,5 +1,15 @@
 <h1 class="title">Standings</h1>
 
+{{#unless championBetOfAuthenticatedUser}}
+  <article class="message is-warning">
+    {{#link-to 'champion-bet'}}
+      <div class="message-body">
+        {{t 'standings.yetToBet'}}
+      </div>
+    {{/link-to}}
+  </article>
+{{/unless}}
+
 <table class="table is-hoverable is-narrow-mobile is-fullwidth-desktop">
   <thead>
   <tr class="standings">
@@ -33,12 +43,18 @@
       <td class="has-text-centered">{{standing.wrongBets}}</td>
       <td class="has-text-centered">{{standing.missedBets}}</td>
       <td>
-        {{#if standing.isAuthenticatedUser}} <!-- TODO No change allowed as soon as first game has started. -->
+        {{#if standing.isAuthenticatedUserAndChampionBetAllowed}}
           {{#link-to 'champion-bet' class="icon"}}
             {{#country-flag teamId=standing.championBet.team.id}}{{/country-flag}}
           {{/link-to}}
         {{else}}
-          {{#country-flag teamId=standing.championBet.team.id}}{{/country-flag}}
+          {{#if standing.hasCorrectChampionBet}}
+            <span class="icon badge" data-badge="10">
+              {{#country-flag teamId=standing.championBet.team.id}}{{/country-flag}}
+            </span>
+          {{else}}
+            {{#country-flag teamId=standing.championBet.team.id}}{{/country-flag}}
+          {{/if}}
         {{/if}}
       </td>
     </tr>

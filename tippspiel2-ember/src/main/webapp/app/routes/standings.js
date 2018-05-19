@@ -10,7 +10,8 @@ export default Route.extend({
       RSVP.hash({
         standings: this.get('store').query('standing', {bettingGame: currentBettingGame.get('id')}),
         championBets: this.get('store').query('champion-bet', {bettingGame: currentBettingGame.get('id')}),
-        authenticatedUser: this.get('auth.user')
+        authenticatedUser: this.get('auth.user'),
+        competition: currentBettingGame.get('competition')
       })
     );
   }
