@@ -31,17 +31,17 @@ class FootballDataScheduledTask {
     @Transactional
     fun exec() {
         val competition = competitionService.findByCurrentTrue() ?: return
-        val fixturesToUpdate = fixtureService.findFixturesByCompetitionAndManualFalse(competition)
-        val teamsToBeAffectedByUpdate = fixturesToUpdate.fold(arrayListOf()) { acc: ArrayList<Team>, fixture: Fixture ->
+        val currentFixtures = fixtureService.findFixturesByCompetitionAndManualFalse(competition)
+        val teamsToBeAffectedByUpdate = currentFixtures.fold(arrayListOf()) { acc: ArrayList<Team>, fixture: Fixture ->
             with(acc) { addAll(listOf(fixture.homeTeam, fixture.awayTeam)); this }
         }
         val footballDataFixturesOfCompetition = footballDataService.requestFixtures(competition.id).fixtures
-        val fixturesToSave = footballDataFixturesOfCompetition
+        val fixturesNewOrChanged = footballDataFixturesOfCompetition
                 .map { FootballDataFixtureDto.fromDto(it, teamsToBeAffectedByUpdate, competition) }
-                .filter { fixturesToUpdate.contains(it) }
+                .filter { !currentFixtures.contains(it) }
 
-        if (fixturesToSave.isNotEmpty()) {
-            fixtureService.saveMany(fixturesToSave)
+        if (fixturesNewOrChanged.isNotEmpty()) {
+            fixtureService.saveMany(fixturesNewOrChanged)
             standingService.updateStandings(competition)
         }
     }

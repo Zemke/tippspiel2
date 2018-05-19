@@ -65,8 +65,11 @@ class FootballDataScheduledTaskTest {
                 .thenAnswer {
                     fixturesToAnswerFromApi = mutableListOf(*fixturesToAnswer.toTypedArray())
                     fixturesToAnswerFromApi[0] = fixturesToAnswerFromApi[0]
-                            .copy(goalsHomeTeam = 3)
-                    fixturesToAnswerFromApi[1].status = FixtureStatus.CANCELED
+                            .copy(goalsHomeTeam = 4)
+                    fixturesToAnswerFromApi[1] = fixturesToAnswerFromApi[1]
+                            .copy(status = FixtureStatus.CANCELED)
+                    fixturesToAnswerFromApi.add(PersistenceUtils.instantiateFixture(currentCompetition)
+                            .copy(id = 5, homeTeam = fixturesToAnswerFromApi[0].homeTeam, awayTeam = fixturesToAnswerFromApi[1].awayTeam))
 
                     FootballDataFixtureWrappedListDto(
                             fixturesToAnswerFromApi.count(),
@@ -76,7 +79,9 @@ class FootballDataScheduledTaskTest {
         Mockito
                 .doAnswer {
                     val fixturesPassedToMethod = it.getArgument<List<Fixture>>(0)
-                    Assert.assertEquals(fixturesToAnswerFromApi, fixturesPassedToMethod)
+                    Assert.assertEquals(
+                            listOf(fixturesToAnswerFromApi[0], fixturesToAnswerFromApi[1], fixturesToAnswerFromApi[4]),
+                            fixturesPassedToMethod)
                     fixturesPassedToMethod
                 }
                 .`when`(fixtureService).saveMany(Mockito.anyList<Fixture>())
