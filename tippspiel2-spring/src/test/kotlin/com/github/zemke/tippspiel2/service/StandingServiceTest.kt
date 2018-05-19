@@ -9,6 +9,7 @@ import com.github.zemke.tippspiel2.persistence.model.Team
 import com.github.zemke.tippspiel2.persistence.model.User
 import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
 import com.github.zemke.tippspiel2.persistence.repository.BetRepository
+import com.github.zemke.tippspiel2.persistence.repository.CompetitionRepository
 import com.github.zemke.tippspiel2.persistence.repository.FixtureRepository
 import com.github.zemke.tippspiel2.persistence.repository.StandingRepository
 import com.github.zemke.tippspiel2.test.util.PersistenceUtils
@@ -40,6 +41,9 @@ class StandingServiceTest {
     @Mock
     private lateinit var championBetService: ChampionBetService
 
+    @Mock
+    private lateinit var competitionRepository: CompetitionRepository
+
     @Test
     fun testUpdateStandings() {
         val user1 = PersistenceUtils.instantiateUser("1")
@@ -65,6 +69,9 @@ class StandingServiceTest {
         Mockito
                 .`when`(standingRepository.saveAll(Mockito.anyList<Standing>()))
                 .thenAnswer { it.getArgument(0) }
+
+        Mockito
+                .verify(competitionRepository, Mockito.never()).save(Mockito.any(Competition::class.java))
 
         val standingsActual = standingService.updateStandings(bettingGame.competition)
 
@@ -126,6 +133,15 @@ class StandingServiceTest {
         Mockito
                 .`when`(championBetService.findByTeam(competitionChampion))
                 .thenAnswer { listOf(championBet) }
+
+        Mockito
+                .doAnswer{
+                    val competition = it.getArgument<Competition>(0)
+                    Assert.assertEquals(competition.champion, competitionChampion)
+                    competition
+                }
+                .`when`(competitionRepository).save(Mockito.any(Competition::class.java))
+
 
         val standingsActual = standingService.updateStandings(bettingGame.competition)
 

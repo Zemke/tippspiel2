@@ -29,6 +29,6 @@ data class Competition(
          * Currently only one competition can be played at a time.
          */
         var current: Boolean = false,
-        @ManyToOne val champion: Team? = null,
+        @ManyToOne var champion: Team? = null,
         val championBetAllowed: Boolean = true
 )

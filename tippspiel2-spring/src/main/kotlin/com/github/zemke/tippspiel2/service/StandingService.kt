@@ -6,6 +6,7 @@ import com.github.zemke.tippspiel2.persistence.model.Standing
 import com.github.zemke.tippspiel2.persistence.model.Team
 import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
 import com.github.zemke.tippspiel2.persistence.repository.BetRepository
+import com.github.zemke.tippspiel2.persistence.repository.CompetitionRepository
 import com.github.zemke.tippspiel2.persistence.repository.FixtureRepository
 import com.github.zemke.tippspiel2.persistence.repository.StandingRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -17,7 +18,8 @@ class StandingService(
         @Autowired private val standingRepository: StandingRepository,
         @Autowired private val betRepository: BetRepository,
         @Autowired private val fixtureRepository: FixtureRepository,
-        @Autowired private val championBetService: ChampionBetService
+        @Autowired private val championBetService: ChampionBetService,
+        @Autowired private val competitionRepository: CompetitionRepository
 ) {
 
     /**
@@ -50,8 +52,15 @@ class StandingService(
         }
 
         val fixtures = fixtureRepository.findAll()
-        val competitionChampion: Team? = championBetService.getCompetitionChampionFromFixtures(
-                fixtures, competition.numberOfMatchdays)
+        val competitionChampion: Team? =
+                competition.champion
+                ?: championBetService.getCompetitionChampionFromFixtures(fixtures, competition.numberOfMatchdays)
+
+        if (competition.champion == null && competitionChampion != null) {
+            competition.champion = competitionChampion
+            competitionRepository.save(competition)
+        }
+
         val usersWithRightChampionBet =
                 if (competitionChampion != null)
                     championBetService.findByTeam(competitionChampion)

@@ -32,7 +32,7 @@ data class CompetitionDto(
                 competition.numberOfGames,
                 Date(competition.lastUpdated.time),
                 competition.championBetAllowed,
-                if (competition.champion != null) TeamDto.toDto(competition.champion) else null
+                if (competition.champion != null) TeamDto.toDto(competition.champion!!) else null
         )
     }
 }
