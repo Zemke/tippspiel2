@@ -56,7 +56,7 @@ class ChampionBetRestController(
     }
 
     @PutMapping("/{championBetId}")
-    fun createChampionBet(
+    fun editChampionBet(
             @PathVariable championBetId: Long,
             @RequestBody championBetCreationDto: ChampionBetCreationDto,
             request: HttpServletRequest): ResponseEntity<ChampionBetDto> {
