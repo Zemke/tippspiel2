@@ -2,7 +2,6 @@ package com.github.zemke.tippspiel2.service
 
 import com.github.zemke.tippspiel2.persistence.model.BettingGame
 import com.github.zemke.tippspiel2.persistence.model.ChampionBet
-import com.github.zemke.tippspiel2.persistence.model.Competition
 import com.github.zemke.tippspiel2.persistence.model.Fixture
 import com.github.zemke.tippspiel2.persistence.model.Team
 import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
@@ -28,8 +27,11 @@ class ChampionBetService(
     fun findByBettingGame(bettingGame: BettingGame): List<ChampionBet> =
             championBetRepository.findByBettingGame(bettingGame)
 
-    fun findByCompetitionAndTeam(competition: Competition, competitionChampion: Team) =
-            championBetRepository.findByCompetitionAndTeam(competition, competitionChampion)
+    fun findByBettingGameAndTeam(bettingGame: BettingGame, competitionChampion: Team) =
+            championBetRepository.findByBettingGameAndTeam(bettingGame, competitionChampion)
+
+    fun findByTeam(team: Team): List<ChampionBet> =
+            championBetRepository.findByTeam(team)
 
     fun getCompetitionChampionFromFixtures(fixturesOfCompetition: List<Fixture>, finalMatchdayOfCompetition: Int): Team? {
         val finishedFinalGame = fixturesOfCompetition

@@ -54,7 +54,9 @@ class StandingService(
                 fixtures, competition.numberOfMatchdays)
         val usersWithRightChampionBet =
                 if (competitionChampion != null)
-                    championBetService.findByCompetitionAndTeam(competition, competitionChampion).map { it.user.id }
+                    championBetService.findByTeam(competitionChampion)
+                            .filter { it.bettingGame.competition == competition }
+                            .map { it.user.id }
                 else
                     emptyList()
 

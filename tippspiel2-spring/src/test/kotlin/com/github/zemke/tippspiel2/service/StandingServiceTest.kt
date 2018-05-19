@@ -124,7 +124,7 @@ class StandingServiceTest {
                 .thenAnswer { competitionChampion }
 
         Mockito
-                .`when`(championBetService.findByCompetitionAndTeam(bettingGame.competition, competitionChampion))
+                .`when`(championBetService.findByTeam(competitionChampion))
                 .thenAnswer { listOf(championBet) }
 
         val standingsActual = standingService.updateStandings(bettingGame.competition)
@@ -149,7 +149,6 @@ class StandingServiceTest {
                         )),
                 standingsActual)
     }
-
 
     private fun createStandings(user1: User, bettingGame: BettingGame, user2: User): List<Standing> =
             listOf(
