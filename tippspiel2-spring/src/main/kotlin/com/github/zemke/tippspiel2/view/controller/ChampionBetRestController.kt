@@ -42,9 +42,14 @@ class ChampionBetRestController(
         val user = userService.findUserByEmail(
                 jsonWebTokenService.getSubjectFromToken(token))
 
+        val bettingGame = bettingGameService.find(championBetCreationDto.bettingGame)
+                .orElseThrow { throw BadRequestException("There is no such betting game.") }
+
+        if (!bettingGame.competition.championBetAllowed)
+            throw BadRequestException("Champion bet deadline has exceeded.")
+
         val championBet = ChampionBetCreationDto.fromDto(
-                bettingGameService.find(championBetCreationDto.bettingGame)
-                        .orElseThrow { throw BadRequestException("There is no such betting game.") },
+                bettingGame,
                 teamService.find(championBetCreationDto.team)
                         .orElseThrow { throw BadRequestException("There is no such team.") },
                 user!!
@@ -65,6 +70,10 @@ class ChampionBetRestController(
 
         val championBet = championBetService.find(championBetId)
                 .orElseThrow { throw NotFoundException("Champion bet not found.") }
+
+        if (!championBet.bettingGame.competition.championBetAllowed)
+            throw BadRequestException("Champion bet deadline has exceeded.")
+
 
         if (authenticatedUserId != championBet.user.id) throw ForbiddenException("This champion bet is not yours.")
 
