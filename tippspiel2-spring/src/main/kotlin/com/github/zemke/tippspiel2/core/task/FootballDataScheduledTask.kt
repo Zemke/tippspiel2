@@ -2,11 +2,14 @@ package com.github.zemke.tippspiel2.core.task
 
 import com.github.zemke.tippspiel2.persistence.model.Fixture
 import com.github.zemke.tippspiel2.persistence.model.Team
-import com.github.zemke.tippspiel2.service.CompetitionService
+import com.github.zemke.tippspiel2.persistence.repository.CompetitionRepository
+import com.github.zemke.tippspiel2.persistence.repository.TeamRepository
 import com.github.zemke.tippspiel2.service.FixtureService
 import com.github.zemke.tippspiel2.service.FootballDataService
 import com.github.zemke.tippspiel2.service.StandingService
+import com.github.zemke.tippspiel2.view.model.FootballDataCompetitionDto
 import com.github.zemke.tippspiel2.view.model.FootballDataFixtureDto
+import com.github.zemke.tippspiel2.view.model.FootballDataTeamDto
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Component
@@ -19,7 +22,7 @@ class FootballDataScheduledTask {
     private lateinit var footballDataService: FootballDataService
 
     @Autowired
-    private lateinit var competitionService: CompetitionService
+    private lateinit var competitionRepository: CompetitionRepository
 
     @Autowired
     private lateinit var fixtureService: FixtureService
@@ -27,10 +30,13 @@ class FootballDataScheduledTask {
     @Autowired
     private lateinit var standingService: StandingService
 
+    @Autowired
+    private lateinit var teamRepository: TeamRepository
+
     @Scheduled(fixedDelayString = "\${tippspiel2.football-data.fixed-delay}")
     @Transactional
     fun exec() {
-        val competition = competitionService.findByCurrentTrue() ?: return
+        val competition = competitionRepository.findByCurrentTrue() ?: return
         val currentFixtures = fixtureService.findFixturesByCompetitionAndManualFalse(competition)
         val teamsToBeAffectedByUpdate = currentFixtures.fold(arrayListOf()) { acc: ArrayList<Team>, fixture: Fixture ->
             with(acc) { addAll(listOf(fixture.homeTeam, fixture.awayTeam)); this }
@@ -44,5 +50,22 @@ class FootballDataScheduledTask {
             fixtureService.saveMany(fixturesNewOrChanged)
             standingService.updateStandings(competition)
         }
+    }
+
+    @Scheduled(cron = "0 0 3 * * ?", zone = "CET")
+    @Transactional
+    fun exec2() {
+        val currentCompetition = competitionRepository.findByCurrentTrue() ?: return
+        val footballDataCompetition = FootballDataCompetitionDto.fromDto(
+                footballDataService.requestCompetition(currentCompetition.id))
+
+        if (currentCompetition != footballDataCompetition) competitionRepository.save(footballDataCompetition)
+
+        val teamsOfCurrentCompetition = teamRepository.findByCompetition(currentCompetition)
+
+        val footballDataTeams = footballDataService.requestTeams(currentCompetition.id).teams
+                .map { FootballDataTeamDto.fromDto(it, footballDataCompetition) }
+
+        teamRepository.saveAll(footballDataTeams.filter { !teamsOfCurrentCompetition.contains(it) })
     }
 }

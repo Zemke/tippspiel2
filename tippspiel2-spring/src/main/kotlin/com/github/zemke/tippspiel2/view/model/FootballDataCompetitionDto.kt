@@ -32,5 +32,17 @@ data class FootballDataCompetitionDto(
                 numberOfGames = dto.numberOfGames,
                 lastUpdated = Timestamp(dto.lastUpdated.time)
         )
+
+        fun toDto(competition: Competition): FootballDataCompetitionDto = FootballDataCompetitionDto(
+                id = competition.id,
+                numberOfMatchdays = competition.numberOfMatchdays,
+                caption = competition.caption,
+                currentMatchday = competition.currentMatchday,
+                lastUpdated = competition.lastUpdated,
+                league = competition.league,
+                numberOfGames = competition.numberOfGames,
+                numberOfTeams = competition.numberOfTeams,
+                year = competition.year
+        )
     }
 }

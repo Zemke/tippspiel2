@@ -28,5 +28,13 @@ data class FootballDataTeamDto(
                 squadMarketValue = dto.squadMarketValue,
                 competition = competition
         )
+
+        fun toDto(team: Team): FootballDataTeamDto = FootballDataTeamDto(
+                id = team.id,
+                name = team.name,
+                crestUrl = null,
+                shortName = null,
+                squadMarketValue = team.squadMarketValue
+        )
     }
 }

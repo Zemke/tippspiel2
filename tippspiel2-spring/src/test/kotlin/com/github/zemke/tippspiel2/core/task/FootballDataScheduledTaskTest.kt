@@ -1,28 +1,33 @@
 package com.github.zemke.tippspiel2.core.task
 
+import com.github.zemke.tippspiel2.persistence.model.Competition
 import com.github.zemke.tippspiel2.persistence.model.Fixture
 import com.github.zemke.tippspiel2.persistence.model.Standing
+import com.github.zemke.tippspiel2.persistence.model.Team
 import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
-import com.github.zemke.tippspiel2.service.CompetitionService
+import com.github.zemke.tippspiel2.persistence.repository.CompetitionRepository
+import com.github.zemke.tippspiel2.persistence.repository.TeamRepository
 import com.github.zemke.tippspiel2.service.FixtureService
 import com.github.zemke.tippspiel2.service.FootballDataService
 import com.github.zemke.tippspiel2.service.StandingService
 import com.github.zemke.tippspiel2.test.util.PersistenceUtils
+import com.github.zemke.tippspiel2.view.model.FootballDataCompetitionDto
 import com.github.zemke.tippspiel2.view.model.FootballDataFixtureDto
 import com.github.zemke.tippspiel2.view.model.FootballDataFixtureWrappedListDto
+import com.github.zemke.tippspiel2.view.model.FootballDataTeamDto
+import com.github.zemke.tippspiel2.view.model.FootballDataTeamWrappedListDto
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito
-import org.mockito.Spy
 import org.mockito.junit.MockitoJUnitRunner
+
 
 @RunWith(MockitoJUnitRunner.Strict::class)
 class FootballDataScheduledTaskTest {
 
-    @Spy
     @InjectMocks
     private lateinit var footballDataScheduledTask: FootballDataScheduledTask
 
@@ -30,7 +35,10 @@ class FootballDataScheduledTaskTest {
     private lateinit var footballDataService: FootballDataService
 
     @Mock
-    private lateinit var competitionService: CompetitionService
+    private lateinit var competitionRepository: CompetitionRepository
+
+    @Mock
+    private lateinit var teamRepository: TeamRepository
 
     @Mock
     private lateinit var fixtureService: FixtureService
@@ -40,11 +48,7 @@ class FootballDataScheduledTaskTest {
 
     @Test
     fun testExec() {
-        val currentCompetition = PersistenceUtils.instantiateCompetition()
-
-        Mockito
-                .doReturn(currentCompetition)
-                .`when`(competitionService).findByCurrentTrue()
+        val currentCompetition = mockCurrentCompetition()
 
         var fixturesToAnswer = mutableListOf<Fixture>()
         Mockito
@@ -91,5 +95,103 @@ class FootballDataScheduledTaskTest {
                 .`when`(standingService).updateStandings(currentCompetition)
 
         footballDataScheduledTask.exec()
+    }
+
+    @Test
+    fun testExec2CompetitionUpdate() {
+        val currentCompetition = mockCurrentCompetition()
+
+        Mockito
+                .doReturn(FootballDataCompetitionDto.toDto(currentCompetition.copy(currentMatchday = currentCompetition.currentMatchday + 1)))
+                .`when`(footballDataService).requestCompetition(currentCompetition.id)
+
+        Mockito
+                .doReturn(FootballDataTeamWrappedListDto(0, emptyList()))
+                .`when`(footballDataService).requestTeams(currentCompetition.id)
+
+        Mockito
+                .doAnswer {
+                    Assert.assertEquals(emptyList<Team>(), it.getArgument(0))
+                    it.getArgument(0)
+                }
+                .`when`(teamRepository).saveAll(Mockito.anyList())
+
+        footballDataScheduledTask.exec2()
+
+        Mockito
+                .verify(competitionRepository).save(Mockito.any(Competition::class.java))
+    }
+
+    @Test
+    fun testExec2UnchangedCompetition() {
+        val currentCompetition = mockCurrentCompetition()
+
+        Mockito
+                .doReturn(FootballDataCompetitionDto.toDto(currentCompetition))
+                .`when`(footballDataService).requestCompetition(currentCompetition.id)
+
+        Mockito
+                .doReturn(FootballDataTeamWrappedListDto(0, emptyList()))
+                .`when`(footballDataService).requestTeams(currentCompetition.id)
+
+        Mockito
+                .doAnswer {
+                    Assert.assertEquals(emptyList<Team>(), it.getArgument(0))
+                    it.getArgument(0)
+                }
+                .`when`(teamRepository).saveAll(Mockito.anyList())
+
+        footballDataScheduledTask.exec2()
+
+        Mockito
+                .verify(competitionRepository, Mockito.never()).save(Mockito.any(Competition::class.java))
+    }
+
+    @Test
+    fun testExec2Teams() {
+        val currentCompetition = mockCurrentCompetition()
+
+        Mockito
+                .doReturn(FootballDataCompetitionDto.toDto(currentCompetition))
+                .`when`(footballDataService).requestCompetition(currentCompetition.id)
+
+        val teamsOfCurrentCompetition = listOf(
+                Team(1, "Schokoladenbärenland", "2.50", currentCompetition),
+                Team(2, "Team2", null, currentCompetition),
+                Team(3, "Team3", null, currentCompetition))
+
+        val footballDataTeams = listOf(
+                Team(2, "Team2", null, currentCompetition),
+                Team(1, "Schokoladenbärenland", "2.50", currentCompetition),
+                Team(3, "Team3", "10000000", currentCompetition))
+
+        Mockito
+                .doReturn(teamsOfCurrentCompetition)
+                .`when`(teamRepository).findByCompetition(currentCompetition)
+
+        Mockito
+                .doReturn(FootballDataTeamWrappedListDto(3, footballDataTeams.map { FootballDataTeamDto.toDto(it) }))
+                .`when`(footballDataService).requestTeams(currentCompetition.id)
+
+        Mockito
+                .doAnswer {
+                    Assert.assertEquals(listOf(footballDataTeams[2]), it.getArgument(0))
+                    it.getArgument(0)
+                }
+                .`when`(teamRepository).saveAll(Mockito.anyList())
+
+        footballDataScheduledTask.exec2()
+
+        Mockito
+                .verify(competitionRepository, Mockito.never()).save(Mockito.any(Competition::class.java))
+    }
+
+    private fun mockCurrentCompetition(): Competition {
+        val currentCompetition = PersistenceUtils.instantiateCompetition()
+
+        Mockito
+                .doReturn(currentCompetition)
+                .`when`(competitionRepository).findByCurrentTrue()
+        return currentCompetition
     }
 }
