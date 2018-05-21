@@ -19,14 +19,12 @@ import org.junit.runner.RunWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito
-import org.mockito.Spy
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner.StrictStubs::class)
 class StandingServiceTest {
 
     @InjectMocks
-    @Spy
     private lateinit var standingService: StandingService
 
     @Mock
@@ -70,10 +68,10 @@ class StandingServiceTest {
                 .`when`(standingRepository.saveAll(Mockito.anyList<Standing>()))
                 .thenAnswer { it.getArgument(0) }
 
+        val standingsActual = standingService.updateStandings(bettingGame.competition)
+
         Mockito
                 .verify(competitionRepository, Mockito.never()).save(Mockito.any(Competition::class.java))
-
-        val standingsActual = standingService.updateStandings(bettingGame.competition)
 
         Assert.assertEquals(
                 listOf(
