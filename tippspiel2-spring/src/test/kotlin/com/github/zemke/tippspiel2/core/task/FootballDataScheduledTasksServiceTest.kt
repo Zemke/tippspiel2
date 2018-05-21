@@ -8,6 +8,7 @@ import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
 import com.github.zemke.tippspiel2.persistence.repository.CompetitionRepository
 import com.github.zemke.tippspiel2.persistence.repository.TeamRepository
 import com.github.zemke.tippspiel2.service.FixtureService
+import com.github.zemke.tippspiel2.service.FootballDataScheduledTasksService
 import com.github.zemke.tippspiel2.service.FootballDataService
 import com.github.zemke.tippspiel2.service.StandingService
 import com.github.zemke.tippspiel2.test.util.PersistenceUtils
@@ -26,10 +27,10 @@ import org.mockito.junit.MockitoJUnitRunner
 
 
 @RunWith(MockitoJUnitRunner.Strict::class)
-class FootballDataScheduledTaskTest {
+class FootballDataScheduledTasksServiceTest {
 
     @InjectMocks
-    private lateinit var footballDataScheduledTask: FootballDataScheduledTask
+    private lateinit var footballDataScheduledTasksService: FootballDataScheduledTasksService
 
     @Mock
     private lateinit var footballDataService: FootballDataService
@@ -47,7 +48,7 @@ class FootballDataScheduledTaskTest {
     private lateinit var standingService: StandingService
 
     @Test
-    fun testExec() {
+    fun testRequestFixturesAndUpdateStandings() {
         val currentCompetition = mockCurrentCompetition()
 
         var fixturesToAnswer = mutableListOf<Fixture>()
@@ -94,11 +95,11 @@ class FootballDataScheduledTaskTest {
                 .doAnswer({ emptyList<Standing>() })
                 .`when`(standingService).updateStandings(currentCompetition)
 
-        footballDataScheduledTask.exec()
+        footballDataScheduledTasksService.requestFixturesAndUpdateStandings()
     }
 
     @Test
-    fun testExec2CompetitionUpdate() {
+    fun testUpdateCurrentCompetitionWithItsTeamsCompetitionUpdate() {
         val currentCompetition = mockCurrentCompetition()
 
         Mockito
@@ -116,14 +117,14 @@ class FootballDataScheduledTaskTest {
                 }
                 .`when`(teamRepository).saveAll(Mockito.anyList())
 
-        footballDataScheduledTask.exec2()
+        footballDataScheduledTasksService.updateCurrentCompetitionWithItsTeams()
 
         Mockito
                 .verify(competitionRepository).save(Mockito.any(Competition::class.java))
     }
 
     @Test
-    fun testExec2UnchangedCompetition() {
+    fun testUpdateCurrentCompetitionWithItsTeamsUnchangedCompetition() {
         val currentCompetition = mockCurrentCompetition()
 
         Mockito
@@ -141,14 +142,14 @@ class FootballDataScheduledTaskTest {
                 }
                 .`when`(teamRepository).saveAll(Mockito.anyList())
 
-        footballDataScheduledTask.exec2()
+        footballDataScheduledTasksService.updateCurrentCompetitionWithItsTeams()
 
         Mockito
                 .verify(competitionRepository, Mockito.never()).save(Mockito.any(Competition::class.java))
     }
 
     @Test
-    fun testExec2Teams() {
+    fun testUpdateCurrentCompetitionWithItsTeamsTeams() {
         val currentCompetition = mockCurrentCompetition()
 
         Mockito
@@ -180,7 +181,7 @@ class FootballDataScheduledTaskTest {
                 }
                 .`when`(teamRepository).saveAll(Mockito.anyList())
 
-        footballDataScheduledTask.exec2()
+        footballDataScheduledTasksService.updateCurrentCompetitionWithItsTeams()
 
         Mockito
                 .verify(competitionRepository, Mockito.never()).save(Mockito.any(Competition::class.java))

@@ -25,9 +25,14 @@ public class FootballDataProperties {
     private String endpoint;
 
     /**
-     * Milliseconds between polling of endpoint.
+     * Milliseconds between polling of endpoint for fixtures.
      */
-    private Long fixedDelay = 60000L;
+    private Long fixedDelayFixtures = 60000L;
+
+    /**
+     * Cron expression in CET for when to look for update for the current competition.
+     */
+    private String cronExpressionCurrentCompetition = "0 0 3 * * ?";
 
     public String getApiToken() {
         return apiToken;
@@ -53,11 +58,19 @@ public class FootballDataProperties {
         this.endpoint = endpoint;
     }
 
-    public Long getFixedDelay() {
-        return fixedDelay;
+    public Long getFixedDelayFixtures() {
+        return fixedDelayFixtures;
     }
 
-    public void setFixedDelay(Long fixedDelay) {
-        this.fixedDelay = fixedDelay;
+    public void setFixedDelayFixtures(Long fixedDelayFixtures) {
+        this.fixedDelayFixtures = fixedDelayFixtures;
+    }
+
+    public String getCronExpressionCurrentCompetition() {
+        return cronExpressionCurrentCompetition;
+    }
+
+    public void setCronExpressionCurrentCompetition(String cronExpressionCurrentCompetition) {
+        this.cronExpressionCurrentCompetition = cronExpressionCurrentCompetition;
     }
 }

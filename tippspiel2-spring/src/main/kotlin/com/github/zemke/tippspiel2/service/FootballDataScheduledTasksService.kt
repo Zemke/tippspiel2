@@ -1,12 +1,9 @@
-package com.github.zemke.tippspiel2.core.task
+package com.github.zemke.tippspiel2.service
 
 import com.github.zemke.tippspiel2.persistence.model.Fixture
 import com.github.zemke.tippspiel2.persistence.model.Team
 import com.github.zemke.tippspiel2.persistence.repository.CompetitionRepository
 import com.github.zemke.tippspiel2.persistence.repository.TeamRepository
-import com.github.zemke.tippspiel2.service.FixtureService
-import com.github.zemke.tippspiel2.service.FootballDataService
-import com.github.zemke.tippspiel2.service.StandingService
 import com.github.zemke.tippspiel2.view.model.FootballDataCompetitionDto
 import com.github.zemke.tippspiel2.view.model.FootballDataFixtureDto
 import com.github.zemke.tippspiel2.view.model.FootballDataTeamDto
@@ -16,7 +13,7 @@ import org.springframework.stereotype.Component
 import javax.transaction.Transactional
 
 @Component
-class FootballDataScheduledTask {
+class FootballDataScheduledTasksService {
 
     @Autowired
     private lateinit var footballDataService: FootballDataService
@@ -33,9 +30,9 @@ class FootballDataScheduledTask {
     @Autowired
     private lateinit var teamRepository: TeamRepository
 
-    @Scheduled(fixedDelayString = "\${tippspiel2.football-data.fixed-delay}")
+    @Scheduled(fixedDelayString = "\${tippspiel2.football-data.fixed-delay-fixtures}")
     @Transactional
-    fun exec() {
+    fun requestFixturesAndUpdateStandings() {
         val competition = competitionRepository.findByCurrentTrue() ?: return
         val currentFixtures = fixtureService.findFixturesByCompetitionAndManualFalse(competition)
         val teamsToBeAffectedByUpdate = currentFixtures.fold(arrayListOf()) { acc: ArrayList<Team>, fixture: Fixture ->
@@ -52,9 +49,9 @@ class FootballDataScheduledTask {
         }
     }
 
-    @Scheduled(cron = "0 0 3 * * ?", zone = "CET")
+    @Scheduled(cron = "\${tippspiel2.football-data.cron-expression-current-competition}", zone = "CET")
     @Transactional
-    fun exec2() {
+    fun updateCurrentCompetitionWithItsTeams() {
         val currentCompetition = competitionRepository.findByCurrentTrue() ?: return
         val footballDataCompetition = FootballDataCompetitionDto.fromDto(
                 footballDataService.requestCompetition(currentCompetition.id))
