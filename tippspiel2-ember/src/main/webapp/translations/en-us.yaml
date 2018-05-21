@@ -22,6 +22,9 @@ me:
       currentCompetition: 'Current competition'
       setCommunity: 'Pick a community'
       submit: 'Create Betting Game'
+  updateCompetitionAndTeams:
+    title: 'Update Competition'
+    subtitle: 'Request the external interface to synchronize data of the current competition along with its teams.'
 championBet:
   title: 'Champion Bet'
   selectTeam: 'Select team'

@@ -33,6 +33,21 @@
       </p>
     {{/link-to}}
   </div>
+  <div class="tile is-parent">
+    <div class="tile is-child notification is-danger">
+      <p class="title">
+        {{t 'me.updateCompetitionAndTeams.title'}}
+      </p>
+      <p class="subtitle">
+        {{t 'me.updateCompetitionAndTeams.subtitle'}}
+      </p>
+      <div class="content">
+        <button class="button is-primary" {{action 'updateCurrentCompetition'}}>
+          {{t 'me.updateCompetitionAndTeams.title'}}
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 
 {{outlet}}

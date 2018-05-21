@@ -3,8 +3,10 @@ package com.github.zemke.tippspiel2.view.controller
 import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
 import com.github.zemke.tippspiel2.service.CompetitionService
 import com.github.zemke.tippspiel2.service.FixtureService
+import com.github.zemke.tippspiel2.service.FootballDataScheduledTasksService
 import com.github.zemke.tippspiel2.service.FootballDataService
 import com.github.zemke.tippspiel2.service.NULL_TEAM_ID
+import com.github.zemke.tippspiel2.view.exception.BadRequestException
 import com.github.zemke.tippspiel2.view.exception.NotFoundException
 import com.github.zemke.tippspiel2.view.model.CompetitionCreationDto
 import com.github.zemke.tippspiel2.view.model.CompetitionDto
@@ -15,7 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -25,11 +29,12 @@ import org.springframework.web.bind.annotation.RestController
 class CompetitionRestController(
         @Autowired private val footballDataService: FootballDataService,
         @Autowired private val competitionService: CompetitionService,
-        @Autowired private val fixtureService: FixtureService
+        @Autowired private val fixtureService: FixtureService,
+        @Autowired private val footballDataScheduledTasksService: FootballDataScheduledTasksService
 ) {
 
     @PostMapping("")
-    fun createCompetition(@RequestBody competitionCreationDto: CompetitionCreationDto): ResponseEntity<CompetitionDto>? {
+    fun createCompetition(@RequestBody competitionCreationDto: CompetitionCreationDto): ResponseEntity<CompetitionDto> {
         val competitionDto = footballDataService.requestCompetition(competitionCreationDto.id)
         val fixtureWrappedListDto = footballDataService.requestFixtures(competitionCreationDto.id)
         val teamWrappedListDto = footballDataService.requestTeams(competitionCreationDto.id)
@@ -44,6 +49,17 @@ class CompetitionRestController(
         fixtureService.saveMany(fixtures)
 
         return ResponseEntity.status(HttpStatus.CREATED).body(CompetitionDto.toDto(competition))
+    }
+
+    @PutMapping("/{competitionId}")
+    fun updateCompetition(@PathVariable competitionId: Long,
+                          @RequestBody competitionCreationDto: CompetitionCreationDto): ResponseEntity<CompetitionDto> {
+        val competitionToUpdate = competitionService.find(competitionId)
+                .orElseThrow { throw NotFoundException("No such competition.") }
+        val currentCompetition = competitionService.findByCurrentTrue()
+        if (competitionToUpdate == currentCompetition) footballDataScheduledTasksService.updateCurrentCompetitionWithItsTeams()
+        else throw BadRequestException("At the moment you can only update the current competition.")
+        return ResponseEntity.ok(CompetitionDto.toDto(competitionService.find(competitionId).get()))
     }
 
     @GetMapping("/current")
