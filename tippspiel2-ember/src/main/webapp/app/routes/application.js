@@ -25,17 +25,20 @@ export default Route.extend({
   },
   actions: {
     error(error, transition) {
+      let message;
+
       if (error.status === 404) {
-        alert('Page not found.');
+        message = 'Page not found.';
       } else if (error.status === 503) {
-        alert('Service temporarily unavailable.');
+        message = 'Service temporarily unavailable.';
       } else if (error.status === 401 || error.status === 403) {
-        alert('Access denied.');
+        message = 'Access denied.';
       } else {
-        alert('An unknown error occurred.');
+        message = 'An unknown error occurred.';
       }
 
-      this.transitionTo('application')
+      this.get('resHandler').handleWithRouting(
+        transition, this.transitionTo.bind(this), message);
     }
   }
 });

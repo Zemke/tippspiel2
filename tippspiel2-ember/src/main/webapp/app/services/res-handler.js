@@ -6,5 +6,14 @@ export default Service.extend({
   },
   handleError(res) {
     iziToast.error({message: res.message});
+  },
+  handleWithRouting(transition, transitionTo, message) {
+    if (transition.sequence === 0) {
+      alert(message);
+      transitionTo('application');
+    } else {
+      this.handleError({message});
+      transition.abort();
+    }
   }
 });
