@@ -5,7 +5,7 @@
 {{#if auth.isAdmin}}
   <div class="tile is-ancestor">
     <div class="tile is-parent">
-      {{#link-to 'communities.new' class="tile is-child notification is-danger"}}
+      {{#link-to 'communities.new' class="tile is-child is-danger notification is-primary"}}
         <p class="title">
           {{t 'me.community.title'}}
         </p>
@@ -15,7 +15,7 @@
       {{/link-to}}
     </div>
     <div class="tile is-parent">
-      {{#link-to 'competitions.new' class="tile is-child notification is-danger"}}
+      {{#link-to 'competitions.new' class="tile is-child is-danger notification is-primary"}}
         <p class="title">
           {{t 'me.competition.title'}}
         </p>
@@ -24,8 +24,10 @@
         </p>
       {{/link-to}}
     </div>
+  </div>
+  <div class="tile is-ancestor">
     <div class="tile is-parent">
-      {{#link-to 'betting-games.new' class="tile is-child notification is-danger"}}
+      {{#link-to 'betting-games.new' class="tile is-child is-danger notification is-primary"}}
         <p class="title">
           {{t 'me.bettingGame.title'}}
         </p>
@@ -34,8 +36,30 @@
         </p>
       {{/link-to}}
     </div>
+  </div>
+  <div class="tile is-ancestor">
     <div class="tile is-parent">
-      <div class="tile is-child notification is-danger">
+      <article class="tile is-child is-danger notification is-primary">
+        <p class="title">
+          {{t 'me.setCurrentCompetition.title'}}
+        </p>
+        <p class="subtitle">
+          {{t 'me.setCurrentCompetition.subtitle'}}
+        </p>
+        <div class="content">
+          <p>{{t 'me.setCurrentCompetition.theCurrentCompetitionIs'}} TODO.</p>
+          <div class="select is-danger"> <!-- isLoading -->
+            <select>
+              <option selected disabled value="">
+                {{t 'me.setCurrentCompetition.placeholder'}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child is-danger notification is-primary">
         <p class="title">
           {{t 'me.updateCompetitionAndTeams.title'}}
         </p>
@@ -43,11 +67,11 @@
           {{t 'me.updateCompetitionAndTeams.subtitle'}}
         </p>
         <div class="content">
-          <button class="button is-primary" {{action 'updateCurrentCompetition'}}>
+          <button class="button is-danger is-inverted" {{action 'updateCurrentCompetition'}}>
             {{t 'me.updateCompetitionAndTeams.title'}}
           </button>
         </div>
-      </div>
+      </article>
     </div>
   </div>
 {{else}}

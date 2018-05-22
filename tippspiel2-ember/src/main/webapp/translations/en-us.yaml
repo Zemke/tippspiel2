@@ -25,6 +25,11 @@ me:
   updateCompetitionAndTeams:
     title: 'Update Competition'
     subtitle: 'Request the external interface to synchronize data of the current competition along with its teams.'
+  setCurrentCompetition:
+    title: 'Set Current Competition'
+    subtitle: 'You can play multiple betting games simultaneously but they all have to concern the same competition. Only one competition can be played at a time.'
+    placeholder: 'Select current competition'
+    theCurrentCompetitionIs: 'The current competition is'
 championBet:
   title: 'Champion Bet'
   selectTeam: 'Select team'
