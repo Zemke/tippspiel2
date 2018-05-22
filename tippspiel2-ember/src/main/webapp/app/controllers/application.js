@@ -2,7 +2,6 @@ import DS from 'ember-data';
 import Controller from '@ember/controller';
 import {computed} from '@ember/object';
 import {inject} from '@ember/service';
-import RSVP from 'rsvp';
 
 export default Controller.extend({
   intl: inject(),
@@ -21,28 +20,18 @@ export default Controller.extend({
         this.set('localeIsEnUs', true);
       }
     },
-    changeBettingGame(selectedBettingGameId) {
-      this.get('bettingGame').setCurrentBettingGame(
-        this.get('model.bettingGames').findBy('id', selectedBettingGameId).get('id'));
-      location.reload();
-    },
     signOut() {
       this.get('auth').wipeToken();
       window.location.href = '/'
     }
   },
-  otherBettingGames: computed('bettingGame.currentBettingGame', 'model.bettingGames', function () {
-    return DS.PromiseArray.create({
-      promise: RSVP.hash({
-        currentBettingGame: this.get('bettingGame.currentBettingGame'),
-        bettingGames: this.get('model.bettingGames'),
-        user: this.get('auth.user'),
-      }).then((hash) =>
-        this.get('bettingGame').bettingGamesWithUser(hash.bettingGames, hash.user)
-          .filter(bG => bG.get('id') !== hash.currentBettingGame.get('id')))
-    });
+  bettingGames: computed('bettingGame.currentBettingGame', 'auth.user', function () {
+    const promise = this.get('auth.user').then(authenticatedUser =>
+      this.get('bettingGame').bettingGamesWithUser(this.get('store').peekAll('betting-game'), authenticatedUser));
+    return DS.PromiseArray.create({promise: promise})
   }),
-  isOnlyOneBettingGame: computed('otherBettingGames', function () {
-    return DS.PromiseObject.create({promise: this.get('otherBettingGames').then(res => res.length === 0)});
+  isOnlyOneBettingGame: computed('bettingGames', function () {
+    const promise = this.get('bettingGames').then(bettingGames => bettingGames.get('length') === 1);
+    return DS.PromiseObject.create({promise: promise})
   })
 });

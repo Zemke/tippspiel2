@@ -7,18 +7,8 @@
             <strong>{{bettingGame.currentBettingGame.name}}</strong>
           {{/link-to}}
         {{else}}
-          <div class="select is-primary">
-            <select onchange={{action "changeBettingGame" value="target.value"}}>
-              <option value={{bettingGame.currentBettingGame.id}} selected>
-                {{bettingGame.currentBettingGame.name}}
-              </option>
-              {{#each otherBettingGames as |otherBettingGame|}}
-                <option value={{otherBettingGame.id}}>
-                  {{otherBettingGame.name}}
-                </option>
-              {{/each}}
-            </select>
-          </div>
+          {{#betting-game-dropdown bettingGames=bettingGames}}
+          {{/betting-game-dropdown}}
         {{/if}}
       {{else}}
         {{#link-to "index" class="navbar-item"}}
