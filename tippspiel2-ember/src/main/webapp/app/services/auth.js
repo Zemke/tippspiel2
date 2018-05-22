@@ -32,7 +32,10 @@ export default Service.extend({
     return localStorage.getItem('auth-token');
   },
   parseTokenPayload(token) {
-    const payload = JSON.parse(atob(token.split('.')[1]));
+    const decoded = decodeURIComponent(
+      Array.prototype.map.call(atob(token.split('.')[1]),
+      c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+    const payload = JSON.parse(decoded);
     payload.id = payload.id.toString();
     return payload;
   }
