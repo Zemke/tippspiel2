@@ -8,7 +8,9 @@ export default Route.extend({
     return RSVP.hash({
       bettingGame: this.store.createRecord('betting-game'),
       communities: this.store.findAll('community'),
-      currentCompetition: this.store.queryRecord('competition', {})
+      currentCompetition: this.store.query('competition', {current: true})
+        .then(currentCompetitions =>
+          currentCompetitions.get('firstObject'))
         .catch(err => {
           this.get('resHandler').handleError(err);
           transition.abort();

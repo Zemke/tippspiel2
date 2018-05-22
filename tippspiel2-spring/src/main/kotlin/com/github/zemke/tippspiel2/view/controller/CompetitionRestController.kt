@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -32,6 +33,19 @@ class CompetitionRestController(
         @Autowired private val fixtureService: FixtureService,
         @Autowired private val footballDataScheduledTasksService: FootballDataScheduledTasksService
 ) {
+
+    @GetMapping("")
+    fun queryCompetitions(@RequestParam("current", defaultValue = "false") current: Boolean): ResponseEntity<List<CompetitionDto>> {
+        val competitions = if (current) {
+            listOf(competitionService.findByCurrentTrue()
+                    ?: throw NotFoundException("There is currently no competition.")
+            )
+        } else {
+            competitionService.findAll()
+        }
+
+        return ResponseEntity.ok(competitions.map { CompetitionDto.toDto(it) })
+    }
 
     @PostMapping("")
     fun createCompetition(@RequestBody competitionCreationDto: CompetitionCreationDto): ResponseEntity<CompetitionDto> {
@@ -60,12 +74,5 @@ class CompetitionRestController(
         if (competitionToUpdate == currentCompetition) footballDataScheduledTasksService.updateCurrentCompetitionWithItsTeams()
         else throw BadRequestException("At the moment you can only update the current competition.")
         return ResponseEntity.ok(CompetitionDto.toDto(competitionService.find(competitionId).get()))
-    }
-
-    @GetMapping("/current")
-    fun readCurrentCompetition(): ResponseEntity<CompetitionDto> {
-        val currentCompetition = competitionService.findByCurrentTrue()
-                ?: throw NotFoundException("There is currently no competition.")
-        return ResponseEntity.ok(CompetitionDto.toDto(currentCompetition))
     }
 }

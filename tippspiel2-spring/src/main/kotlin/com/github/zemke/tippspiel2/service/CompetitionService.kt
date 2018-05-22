@@ -11,7 +11,12 @@ class CompetitionService(
         @Autowired private var competitionRepository: CompetitionRepository
 ) {
 
-    fun find(competitionId: Long): Optional<Competition> = competitionRepository.findById(competitionId)
+    fun find(competitionId: Long): Optional<Competition> =
+            competitionRepository.findById(competitionId)
 
-    fun findByCurrentTrue(): Competition? = competitionRepository.findByCurrentTrue()
+    fun findByCurrentTrue(): Competition? =
+            competitionRepository.findByCurrentTrue()
+
+    fun findAll(): List<Competition> =
+            competitionRepository.findAll()
 }
