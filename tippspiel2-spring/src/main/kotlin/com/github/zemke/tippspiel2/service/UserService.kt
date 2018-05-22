@@ -15,6 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.crypto.bcrypt.BCrypt
 import org.springframework.stereotype.Service
+import java.util.*
 
 @Service
 class UserService(
@@ -33,8 +34,8 @@ class UserService(
                 roleRepository.findByNameIn(roles)))
     }
 
-    fun getUser(id: Long): User? {
-        return userRepository.getOne(id)
+    fun findUser(id: Long): Optional<User> {
+        return userRepository.findById(id)
     }
 
     fun findUsers(users: List<Long>): List<User> {

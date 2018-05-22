@@ -35,10 +35,8 @@ class UserRestController(
 
     @GetMapping("/{id}")
     fun readUser(@PathVariable("id") id: Long): ResponseEntity<UserDto> {
-        return when (userService.getUser(id)) {
-            null -> throw NotFoundException("User with id $id not found.")
-            else -> ResponseEntity.ok(UserDto.toDto(userService.getUser(id)!!))
-        }
+        return ResponseEntity.ok(UserDto.toDto(userService.findUser(id)
+                .orElseThrow { throw NotFoundException("User not found.") }))
     }
 
     @GetMapping("")

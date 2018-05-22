@@ -87,7 +87,9 @@ class BetRestController {
                 fixture = fixture,
                 bettingGame = bettingGameService.find(betCreationDto.bettingGame)
                         .orElseThrow { throw BadRequestException("There is no such betting game.") },
-                user = userService.getUser(betCreationDto.user)!!)
+                user = userService.findUser(betCreationDto.user)
+                        .orElseThrow { throw BadRequestException("There is no such user.") }
+        )
         return ResponseEntity.status(HttpStatus.CREATED).body(BetDto.toDto(betService.save(bet)))
     }
 
