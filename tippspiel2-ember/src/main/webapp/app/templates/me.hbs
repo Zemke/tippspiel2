@@ -2,52 +2,56 @@
   {{auth.user.firstName}} {{auth.user.lastName}}
 </h1>
 
-<div class="tile is-ancestor">
-  <div class="tile is-parent">
-    {{#link-to 'communities.new' class="tile is-child notification is-danger"}}
-      <p class="title">
-        {{t 'me.community.title'}}
-      </p>
-      <p class="subtitle">
-        {{t 'me.community.subtitle'}}
-      </p>
-    {{/link-to}}
-  </div>
-  <div class="tile is-parent">
-    {{#link-to 'competitions.new' class="tile is-child notification is-danger"}}
-      <p class="title">
-        {{t 'me.competition.title'}}
-      </p>
-      <p class="subtitle">
-        {{t 'me.competition.subtitle'}}
-      </p>
-    {{/link-to}}
-  </div>
-  <div class="tile is-parent">
-    {{#link-to 'betting-games.new' class="tile is-child notification is-danger"}}
-      <p class="title">
-        {{t 'me.bettingGame.title'}}
-      </p>
-      <p class="subtitle">
-        {{t 'me.bettingGame.subtitle'}}
-      </p>
-    {{/link-to}}
-  </div>
-  <div class="tile is-parent">
-    <div class="tile is-child notification is-danger">
-      <p class="title">
-        {{t 'me.updateCompetitionAndTeams.title'}}
-      </p>
-      <p class="subtitle">
-        {{t 'me.updateCompetitionAndTeams.subtitle'}}
-      </p>
-      <div class="content">
-        <button class="button is-primary" {{action 'updateCurrentCompetition'}}>
+{{#if auth.isAdmin}}
+  <div class="tile is-ancestor">
+    <div class="tile is-parent">
+      {{#link-to 'communities.new' class="tile is-child notification is-danger"}}
+        <p class="title">
+          {{t 'me.community.title'}}
+        </p>
+        <p class="subtitle">
+          {{t 'me.community.subtitle'}}
+        </p>
+      {{/link-to}}
+    </div>
+    <div class="tile is-parent">
+      {{#link-to 'competitions.new' class="tile is-child notification is-danger"}}
+        <p class="title">
+          {{t 'me.competition.title'}}
+        </p>
+        <p class="subtitle">
+          {{t 'me.competition.subtitle'}}
+        </p>
+      {{/link-to}}
+    </div>
+    <div class="tile is-parent">
+      {{#link-to 'betting-games.new' class="tile is-child notification is-danger"}}
+        <p class="title">
+          {{t 'me.bettingGame.title'}}
+        </p>
+        <p class="subtitle">
+          {{t 'me.bettingGame.subtitle'}}
+        </p>
+      {{/link-to}}
+    </div>
+    <div class="tile is-parent">
+      <div class="tile is-child notification is-danger">
+        <p class="title">
           {{t 'me.updateCompetitionAndTeams.title'}}
-        </button>
+        </p>
+        <p class="subtitle">
+          {{t 'me.updateCompetitionAndTeams.subtitle'}}
+        </p>
+        <div class="content">
+          <button class="button is-primary" {{action 'updateCurrentCompetition'}}>
+            {{t 'me.updateCompetitionAndTeams.title'}}
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+{{else}}
+  <p>GH-45 is waiting for you.</p>
+{{/if}}
 
 {{outlet}}

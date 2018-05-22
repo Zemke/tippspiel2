@@ -22,6 +22,10 @@ export default Service.extend({
       })
     });
   }),
+  isAdmin: computed('user', function () {
+    const promise = this.get('user').then(authenticatedUser => authenticatedUser.roles.indexOf('ADMIN') !== -1);
+    return DS.PromiseObject.create({promise: promise})
+  }),
   storeToken(token) {
     localStorage.setItem('auth-token', token);
   },

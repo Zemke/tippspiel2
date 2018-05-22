@@ -34,11 +34,12 @@ class JsonWebTokenService(
     }
 
     fun generateToken(authenticatedUser: AuthenticatedUser): String {
-        val claims = mapOf<String, Any>(
+        val claims = mapOf(
                 Pair("id", authenticatedUser.id),
                 Pair("firstName", authenticatedUser.firstName),
                 Pair("lastName", authenticatedUser.lastName),
-                Pair("email", authenticatedUser.email))
+                Pair("email", authenticatedUser.email),
+                Pair("roles", authenticatedUser.roles.map { it.name.unPrefixed() }))
         return doGenerateToken(claims, authenticatedUser.username)
     }
 
