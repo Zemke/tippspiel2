@@ -21,7 +21,6 @@ export default Service.extend({
               this.setCurrentBettingGame(bettingGame.get('id'));
               return bettingGame;
             }))
-        .catch(() => null)
     });
   }),
   setCurrentBettingGame(currentBettingGameId) {

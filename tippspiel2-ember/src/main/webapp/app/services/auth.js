@@ -8,19 +8,18 @@ export default Service.extend({
     return DS.PromiseObject.create({
       promise: new Promise((resolve, reject) => {
         const token = this.getToken();
-        if (token == null) return reject();
+        if (token == null) return reject({status: 401, message: 'Access denied.'});
 
         this.get('store').findRecord('auth', token)
           .then(res => {
             this.storeToken(res.id);
             resolve(this.parseTokenPayload(res.id));
           })
-          .catch(() => {
+          .catch(err => {
             this.wipeToken();
-            reject();
+            reject(err);
           });
       })
-
     });
   }),
   storeToken(token) {
