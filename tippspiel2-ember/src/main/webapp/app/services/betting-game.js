@@ -7,20 +7,23 @@ export default Service.extend({
   auth: inject(),
   currentBettingGame: computed(function () {
     return DS.PromiseObject.create({
-      promise: this.get('auth.user')
-        .then(authenticatedUser =>
-          this.get('store').findAll('betting-game')
-            .then(allBettingGames =>
-              this.bettingGamesWithUser(allBettingGames, authenticatedUser))
-            .then(bettingGamesWithUser => {
-              if (!bettingGamesWithUser.length) return null;
-              const bettingGameIdFromStorage = this.getCurrentBettingGame();
-              const bettingGame =
-                (bettingGameIdFromStorage && bettingGamesWithUser.findBy('id', bettingGameIdFromStorage))
-                || (bettingGamesWithUser.objectAt(0));
-              this.setCurrentBettingGame(bettingGame.get('id'));
-              return bettingGame;
-            }))
+      promise: new Promise((resolve, reject) => {
+        this.get('auth.user')
+          .then(authenticatedUser =>
+            this.get('store').findAll('betting-game')
+              .then(allBettingGames => {
+                return this.bettingGamesWithUserAndCurrentCompetition(allBettingGames, authenticatedUser)
+              })
+              .then(filteredBettingGames => {
+                if (!filteredBettingGames.length) return reject({status: 401});
+                const bettingGameIdFromStorage = this.getCurrentBettingGame();
+                const bettingGame =
+                  (bettingGameIdFromStorage && filteredBettingGames.findBy('id', bettingGameIdFromStorage))
+                  || (filteredBettingGames.objectAt(0));
+                this.setCurrentBettingGame(bettingGame.get('id'));
+                return resolve(bettingGame);
+              }));
+      })
     });
   }),
   setCurrentBettingGame(currentBettingGameId) {
@@ -29,11 +32,11 @@ export default Service.extend({
   getCurrentBettingGame() {
     return localStorage.getItem('betting-game');
   },
-  bettingGamesWithUser(bettingGames, user) {
+  bettingGamesWithUserAndCurrentCompetition(bettingGames, user) {
     return bettingGames
+      .filter(bG => bG.get('competition.current'))
       .filter(bG => bG.get('community.users')
         .mapBy('id')
         .includes(user.id.toString()));
   }
 });
-

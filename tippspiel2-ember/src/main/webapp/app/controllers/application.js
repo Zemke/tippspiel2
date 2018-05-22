@@ -27,7 +27,7 @@ export default Controller.extend({
   },
   bettingGames: computed('bettingGame.currentBettingGame', 'auth.user', function () {
     const promise = this.get('auth.user').then(authenticatedUser =>
-      this.get('bettingGame').bettingGamesWithUser(this.get('store').peekAll('betting-game'), authenticatedUser));
+      this.get('bettingGame').bettingGamesWithUserAndCurrentCompetition(this.get('store').peekAll('betting-game'), authenticatedUser));
     return DS.PromiseArray.create({promise: promise})
   }),
   isOnlyOneBettingGame: computed('bettingGames', function () {

@@ -15,6 +15,7 @@ data class CompetitionDto(
         val numberOfTeams: Int,
         val numberOfGames: Int,
         val lastUpdated: Date,
+        val current: Boolean,
         val championBetAllowed: Boolean,
         val champion: TeamDto?
 ) {
@@ -31,6 +32,7 @@ data class CompetitionDto(
                 competition.numberOfTeams,
                 competition.numberOfGames,
                 Date(competition.lastUpdated.time),
+                competition.current,
                 competition.championBetAllowed,
                 if (competition.champion != null) TeamDto.toDto(competition.champion!!) else null
         )

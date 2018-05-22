@@ -22,7 +22,7 @@ export default Component.extend({
         bettingGames: this.get('bettingGames'),
         user: this.get('auth.user'),
       }).then((hash) =>
-        this.get('bettingGame').bettingGamesWithUser(hash.bettingGames, hash.user)
+        this.get('bettingGame').bettingGamesWithUserAndCurrentCompetition(hash.bettingGames, hash.user)
           .filter(bG => bG.get('id') !== hash.currentBettingGame.get('id')))
     });
   })
