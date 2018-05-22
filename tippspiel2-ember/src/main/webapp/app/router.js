@@ -12,6 +12,7 @@ Router.map(function() {
   this.route('sign-up');
   this.route('sign-in');
   this.route('me');
+  this.route('champion-bet');
 
   this.route('communities', function() {
     this.route('new');
@@ -33,7 +34,7 @@ Router.map(function() {
     this.route('bets', {path: '/:fixture_id/bets'});
   });
 
-  this.route('champion-bet');
+  this.route('404', {path: '/*'});
 });
 
 export default Router;

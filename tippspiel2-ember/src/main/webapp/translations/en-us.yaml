@@ -36,6 +36,9 @@ championBet:
 #      submit: 'Load Competition'
 standings:
   yetToBet: 'You only have time to bet the champion of the tournament until the first game kicks off.'
+bets:
+  none: 'There are no bets yet.'
+notFound: 'The page you were looking for wasn’t found.'
 team:
   name:
     808: 'Russia'
@@ -103,5 +106,3 @@ team:
     804: 'SEN'
     818: 'COL'
     766: 'JAP'
-bets:
-  none: 'There are no bets yet.'
