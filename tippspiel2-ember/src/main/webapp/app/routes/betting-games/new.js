@@ -4,6 +4,7 @@ import {inject} from '@ember/service';
 
 export default Route.extend({
   resHandler: inject(),
+  auth: inject(),
   model(params, transition) {
     return RSVP.hash({
       bettingGame: this.store.createRecord('betting-game'),
