@@ -25,8 +25,9 @@ export default Route.extend({
   },
   actions: {
     error(error, transition) {
-      let message;
+      console.error(error);
 
+      let message;
       if (error.status === 404) {
         message = 'Page not found.';
       } else if (error.status === 503) {
