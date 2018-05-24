@@ -47,14 +47,21 @@
           {{t 'me.setCurrentCompetition.subtitle'}}
         </p>
         <div class="content">
-          <p>{{t 'me.setCurrentCompetition.theCurrentCompetitionIs'}} TODO.</p>
-          <div class="select is-danger"> <!-- isLoading -->
-            <select>
-              <option selected disabled value="">
-                {{t 'me.setCurrentCompetition.placeholder'}}
-              </option>
-            </select>
-          </div>
+          <p>
+            {{t 'me.setCurrentCompetition.warning'}}
+          </p>
+          <p>
+            {{#if model.currentCompetition}}
+              {{t 'me.setCurrentCompetition.theCurrentCompetitionIs'}}
+              <strong>{{model.currentCompetition.caption}}</strong>.
+            {{else}}
+              {{t 'me.setCurrentCompetition.thereIsNoCurrentCompetition'}}
+            {{/if}}
+          </p>
+          {{#alternative-for-selection class="is-danger" selected=model.currentCompetition value='id'
+                                       label='caption' options=model.competitions onChange=(action 'updateCurrentCompetition')
+                                       placeholder=(t 'me.setCurrentCompetition.placeholder')}}
+          {{/alternative-for-selection}}
         </div>
       </article>
     </div>

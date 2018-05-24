@@ -1,0 +1,16 @@
+<select onchange={{action "select" value="target.value"}} disabled={{disabled}}>
+  {{#if selected}}
+    <option selected value="{{get selected value}}">
+      {{get selected label}}
+    </option>
+  {{else}}
+    <option selected disabled value="">
+      {{placeholder}}
+    </option>
+  {{/if}}
+  {{#each alternatives as |alternative|}}
+    <option value="{{get alternative value}}">
+      {{get alternative label}}
+    </option>
+  {{/each}}
+</select>

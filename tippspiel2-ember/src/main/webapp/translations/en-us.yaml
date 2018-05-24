@@ -30,6 +30,8 @@ me:
     subtitle: 'You can play multiple betting games simultaneously but they all have to concern the same competition. Only one competition can be played at a time.'
     placeholder: 'Select current competition'
     theCurrentCompetitionIs: 'The current competition is'
+    thereIsNoCurrentCompetition: 'No current competition is set.'
+    warning: 'Please bear in mind that betting games which are assigned a competition that is not the current cannot be played.'
 championBet:
   title: 'Champion Bet'
   selectTeam: 'Select team'

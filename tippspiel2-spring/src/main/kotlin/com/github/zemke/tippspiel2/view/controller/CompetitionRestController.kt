@@ -68,11 +68,18 @@ class CompetitionRestController(
     @PutMapping("/{competitionId}")
     fun updateCompetition(@PathVariable competitionId: Long,
                           @RequestBody competitionCreationDto: CompetitionCreationDto): ResponseEntity<CompetitionDto> {
-        val competitionToUpdate = competitionService.find(competitionId)
-                .orElseThrow { throw NotFoundException("No such competition.") }
-        val currentCompetition = competitionService.findByCurrentTrue()
-        if (competitionToUpdate == currentCompetition) footballDataScheduledTasksService.updateCurrentCompetitionWithItsTeams()
-        else throw BadRequestException("At the moment you can only update the current competition.")
-        return ResponseEntity.ok(CompetitionDto.toDto(competitionService.find(competitionId).get()))
+        if (competitionCreationDto.current == true) {
+            val newCurrentCompetition = competitionService.find(competitionId)
+                    .orElseThrow { throw NotFoundException("No such competition.") }
+
+            return ResponseEntity.ok(CompetitionDto.toDto(competitionService.setCurrentCompetition(newCurrentCompetition)))
+        } else {
+            val currentCompetition = competitionService.findByCurrentTrue()
+            val competitionToUpdate = competitionService.find(competitionId)
+                    .orElseThrow { throw NotFoundException("No such competition.") }
+            if (competitionToUpdate == currentCompetition) footballDataScheduledTasksService.updateCurrentCompetitionWithItsTeams()
+            else throw BadRequestException("At the moment you can only update the current competition.")
+            return ResponseEntity.ok(CompetitionDto.toDto(competitionService.find(competitionId).get()))
+        }
     }
 }
