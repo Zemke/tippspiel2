@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 import {computed} from '@ember/object';
 import Service, {inject} from '@ember/service';
+import {Promise} from 'rsvp';
 
 export default Service.extend({
   store: inject(),
