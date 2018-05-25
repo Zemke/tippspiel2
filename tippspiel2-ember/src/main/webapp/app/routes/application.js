@@ -1,15 +1,18 @@
 import Route from '@ember/routing/route';
 import {computed} from '@ember/object';
 import {inject} from '@ember/service';
+import RSVP from 'rsvp';
 
 export default Route.extend({
   intl: inject(),
   auth: inject(),
   resHandler: inject(),
+  bettingGame: inject(),
   model() {
-    return {
-      localeIsEnUs: computed(() => this.get('intl').get('locale')[0] === 'en-us')
-    }
+    return RSVP.hash({
+      localeIsEnUs: computed(() => this.get('intl').get('locale')[0] === 'en-us'),
+      currentBettingGame: this.get('bettingGame.currentBettingGame')
+    });
   },
   beforeModel() {
     iziToast.settings({position: 'topRight'});

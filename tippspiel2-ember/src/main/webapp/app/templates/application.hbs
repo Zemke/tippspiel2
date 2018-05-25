@@ -1,10 +1,10 @@
 <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
   <div class="container">
     <div class="navbar-brand">
-      {{#if bettingGame.currentBettingGame}}
+      {{#if model.currentBettingGame}}
         {{#if isOnlyOneBettingGame}}
           {{#link-to "standings" class="navbar-item"}}
-            <strong>{{bettingGame.currentBettingGame.name}}</strong>
+            <strong>{{model.currentBettingGame.name}}</strong>
           {{/link-to}}
         {{else}}
           {{#betting-game-dropdown bettingGames=bettingGames}}
@@ -22,7 +22,7 @@
       {{/burger-menu}}
     </div>
     <div class="navbar-menu" id="navMenu">
-      {{#if bettingGame.currentBettingGame}}
+      {{#if model.currentBettingGame}}
         <div class="navbar-start">
           {{#unless isOnlyOneBettingGame}}
             {{#link-to "standings" class="navbar-item"}}
