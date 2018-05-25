@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import {computed} from "@ember/object";
+import {Promise} from "rsvp";
 
 export default Component.extend({
   classNames: ['select'],
@@ -17,7 +18,7 @@ export default Component.extend({
       this.set('isLoading', true);
       this.set('disabled', true);
 
-      onChange(newSelected)
+      Promise.resolve(onChange(newSelected))
         .then(() => {
           performChange();
         })
