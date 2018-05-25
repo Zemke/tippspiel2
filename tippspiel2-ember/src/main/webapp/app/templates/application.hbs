@@ -2,13 +2,14 @@
   <div class="container">
     <div class="navbar-brand">
       {{#if model.currentBettingGame}}
-        {{#if isOnlyOneBettingGame}}
+        {{#if model.isOnlyOneBettingGame}}
           {{#link-to "standings" class="navbar-item"}}
             <strong>{{model.currentBettingGame.name}}</strong>
           {{/link-to}}
         {{else}}
-          {{#betting-game-dropdown bettingGames=bettingGames}}
-          {{/betting-game-dropdown}}
+          {{#alternative-for-selection selected=model.currentBettingGame value='id' label='name'
+                                       options=model.bettingGames onChange=(action 'changeBettingGame')}}
+          {{/alternative-for-selection}}
         {{/if}}
       {{else}}
         {{#link-to "index" class="navbar-item"}}
@@ -24,7 +25,7 @@
     <div class="navbar-menu" id="navMenu">
       {{#if model.currentBettingGame}}
         <div class="navbar-start">
-          {{#unless isOnlyOneBettingGame}}
+          {{#unless model.isOnlyOneBettingGame}}
             {{#link-to "standings" class="navbar-item"}}
               Standings
             {{/link-to}}

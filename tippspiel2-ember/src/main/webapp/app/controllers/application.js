@@ -1,4 +1,3 @@
-import DS from 'ember-data';
 import Controller from '@ember/controller';
 import {computed} from '@ember/object';
 import {inject} from '@ember/service';
@@ -23,15 +22,10 @@ export default Controller.extend({
     signOut() {
       this.get('auth').wipeToken();
       window.location.href = '/'
+    },
+    changeBettingGame(selectedBettingGame) {
+      this.get('bettingGame').setCurrentBettingGame(selectedBettingGame.get('id'));
+      location.reload();
     }
-  },
-  bettingGames: computed('model.currentBettingGame', 'auth.user', function () {
-    const promise = this.get('auth.user').then(authenticatedUser =>
-      this.get('bettingGame').bettingGamesWithUserAndCurrentCompetition(this.get('store').peekAll('betting-game'), authenticatedUser));
-    return DS.PromiseArray.create({promise: promise})
-  }),
-  isOnlyOneBettingGame: computed('bettingGames', function () {
-    const promise = this.get('bettingGames').then(bettingGames => bettingGames.get('length') === 1);
-    return DS.PromiseObject.create({promise: promise})
-  })
+  }
 });

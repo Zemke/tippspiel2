@@ -2,6 +2,7 @@ import Route from '@ember/routing/route';
 import {computed} from '@ember/object';
 import {inject} from '@ember/service';
 import RSVP from 'rsvp';
+import DS from "ember-data";
 
 export default Route.extend({
   intl: inject(),
@@ -9,9 +10,17 @@ export default Route.extend({
   resHandler: inject(),
   bettingGame: inject(),
   model() {
+    const currentBettingGame = this.get('bettingGame.currentBettingGame');
+    const bettingGames = currentBettingGame.then(currentBettingGame => {
+      const promise = this.get('auth.user').then(authenticatedUser =>
+        this.get('bettingGame').bettingGamesWithUserAndCurrentCompetition(this.get('store').peekAll('betting-game'), authenticatedUser));
+      return DS.PromiseArray.create({promise: promise})
+    });
     return RSVP.hash({
       localeIsEnUs: computed(() => this.get('intl').get('locale')[0] === 'en-us'),
-      currentBettingGame: this.get('bettingGame.currentBettingGame')
+      currentBettingGame: currentBettingGame,
+      bettingGames: bettingGames,
+      isOnlyOneBettingGame: DS.PromiseObject.create({promise: bettingGames.then(bettingGames => bettingGames.get('length') === 1)})
     });
   },
   beforeModel() {
