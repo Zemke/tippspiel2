@@ -38,10 +38,13 @@ class StandingService(
     @Transactional
     fun updateStandings(competition: Competition): List<Standing> {
         val bets = betRepository.findByCompetitionAndFixtureStatus(competition, FixtureStatus.FINISHED)
-        val standings = standingRepository.findAll()
+        val allStandings = standingRepository.findAll()
+        val standingsWithBets = allStandings
+                .filter { bets.map { it.user }.distinct().contains(it.user) }
+                .map { it.reset() }
 
         bets.forEach {
-            val standingOfUser = standings.find { standing -> standing.user == it.user }
+            val standingOfUser = standingsWithBets.find { standing -> standing.user == it.user }
                     ?: return@forEach
 
             val pointsForBet = calcPoints(
@@ -69,9 +72,9 @@ class StandingService(
                 else
                     emptyList()
 
-        standings.forEach { standing ->
+        allStandings.forEach { standing ->
             val numberOfFinishedFixturesInCompetition = fixtures
-                    .filter { fixture -> fixture.competition === standing.bettingGame.competition }
+                    .filter { fixture -> fixture.competition === competition }
                     .filter { fixture -> fixture.status == FixtureStatus.FINISHED }
                     .count()
 
@@ -79,7 +82,7 @@ class StandingService(
             if (usersWithRightChampionBet.contains(standing.user.id)) standing.points += 10
         }
 
-        return standingRepository.saveAll(standings)
+        return standingRepository.saveAll(standingsWithBets)
     }
 
     private fun calcMissedBets(standing: Standing, numberOfFixturesInCompetition: Int): Int {

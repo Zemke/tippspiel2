@@ -162,6 +162,89 @@ class StandingServiceTest {
                 standingsActual)
     }
 
+    @Test
+    fun testUpdateStandingsWithChangedFixture() {
+        val bettingGame = PersistenceUtils.instantiateBettingGame()
+
+        val user1 = PersistenceUtils.instantiateUser("1").copy(bettingGames = listOf(bettingGame))
+        val user2 = PersistenceUtils.instantiateUser("2").copy(bettingGames = listOf(bettingGame))
+        val teams = createTeams(bettingGame.competition, "Russia", "Norway", "England", "Italy", "Ireland", "Iceland", "Poland", "Spain")
+        val fixtures = createFixtures(bettingGame, teams)
+
+        Mockito
+                .`when`(betRepository.findByCompetitionAndFixtureStatus(bettingGame.competition, FixtureStatus.FINISHED))
+                .thenReturn(createBets(fixtures, bettingGame, user1, user2))
+
+        Mockito
+                .`when`(standingRepository.findAll())
+                .thenReturn(createStandings(user1, bettingGame, user2))
+
+        Mockito
+                .`when`(fixtureRepository.findAll())
+                .thenReturn(fixtures)
+
+        Mockito
+                .`when`(standingRepository.saveAll(Mockito.anyList<Standing>()))
+                .thenAnswer { it.getArgument(0) }
+
+        val standingsActual = standingService.updateStandings(bettingGame.competition)
+
+        Mockito
+                .verify(competitionRepository, Mockito.never()).save(Mockito.any(Competition::class.java))
+
+        Assert.assertEquals(
+                listOf(
+                        createStandings(user1, bettingGame, user2)[0].copy(
+                                exactBets = 2,
+                                goalDifferenceBets = 1,
+                                winnerBets = 0,
+                                wrongBets = 0,
+                                missedBets = 0,
+                                points = 13
+                        ),
+                        createStandings(user1, bettingGame, user2)[1].copy(
+                                exactBets = 0,
+                                goalDifferenceBets = 0,
+                                winnerBets = 1,
+                                wrongBets = 1,
+                                missedBets = 1,
+                                points = 1
+                        )),
+                standingsActual)
+
+        fixtures[0] = fixtures[0].copy(goalsHomeTeam = 3, goalsAwayTeam = 1)
+
+        Mockito
+                .`when`(betRepository.findByCompetitionAndFixtureStatus(bettingGame.competition, FixtureStatus.FINISHED))
+                .thenReturn(createBets(fixtures, bettingGame, user1, user2))
+
+        Mockito
+                .`when`(fixtureRepository.findAll())
+                .thenReturn(fixtures)
+
+        val standingsActual2 = standingService.updateStandings(bettingGame.competition)
+
+        Assert.assertEquals(
+                listOf(
+                        createStandings(user1, bettingGame, user2)[0].copy(
+                                exactBets = 1,
+                                goalDifferenceBets = 2,
+                                winnerBets = 0,
+                                wrongBets = 0,
+                                missedBets = 0,
+                                points = 11
+                        ),
+                        createStandings(user1, bettingGame, user2)[1].copy(
+                                exactBets = 0,
+                                goalDifferenceBets = 0,
+                                winnerBets = 1,
+                                wrongBets = 1,
+                                missedBets = 1,
+                                points = 1
+                        )),
+                standingsActual2)
+    }
+
     private fun createStandings(user1: User, bettingGame: BettingGame, user2: User): List<Standing> =
             listOf(
                     Standing(id = null, user = user1, bettingGame = bettingGame),
@@ -211,8 +294,8 @@ class StandingServiceTest {
                     )                // No bet by user2.
             )
 
-    private fun createFixtures(bettingGame: BettingGame, teams: List<Team>): List<Fixture> =
-            listOf(
+    private fun createFixtures(bettingGame: BettingGame, teams: List<Team>): MutableList<Fixture> =
+            mutableListOf(
                     PersistenceUtils.instantiateFixture().copy(
                             competition = bettingGame.competition,
                             goalsHomeTeam = 2,
