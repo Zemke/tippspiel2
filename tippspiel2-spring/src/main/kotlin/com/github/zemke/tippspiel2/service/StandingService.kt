@@ -69,13 +69,14 @@ class StandingService(
                 else
                     emptyList()
 
-        standings.forEach {
-            val numberOfFixturesInCompetition = fixtures
-                    .filter { fixture -> fixture.competition === it.bettingGame.competition }
+        standings.forEach { standing ->
+            val numberOfFinishedFixturesInCompetition = fixtures
+                    .filter { fixture -> fixture.competition === standing.bettingGame.competition }
+                    .filter { fixture -> fixture.status == FixtureStatus.FINISHED }
                     .count()
 
-            it.missedBets = calcMissedBets(it, numberOfFixturesInCompetition)
-            if (usersWithRightChampionBet.contains(it.user.id)) it.points += 10
+            standing.missedBets = calcMissedBets(standing, numberOfFinishedFixturesInCompetition)
+            if (usersWithRightChampionBet.contains(standing.user.id)) standing.points += 10
         }
 
         return standingRepository.saveAll(standings)
