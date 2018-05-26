@@ -2,6 +2,7 @@ package com.github.zemke.tippspiel2.service
 
 import com.github.zemke.tippspiel2.persistence.model.Fixture
 import com.github.zemke.tippspiel2.persistence.model.Team
+import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
 import com.github.zemke.tippspiel2.persistence.repository.CompetitionRepository
 import com.github.zemke.tippspiel2.persistence.repository.TeamRepository
 import com.github.zemke.tippspiel2.view.model.FootballDataCompetitionDto
@@ -40,6 +41,8 @@ class FootballDataScheduledTasksService {
         }
         val footballDataFixturesOfCompetition = footballDataService.requestFixtures(competition.id).fixtures
         val fixturesNewOrChanged = footballDataFixturesOfCompetition
+                .filter { FixtureStatus.OF_INTEREST.contains(it.status) }
+                .filter { it.homeTeamId != NULL_TEAM_ID && it.awayTeamId != NULL_TEAM_ID }
                 .map { FootballDataFixtureDto.fromDto(it, teamsToBeAffectedByUpdate, competition) }
                 .filter { !currentFixtures.contains(it) }
 
