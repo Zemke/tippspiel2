@@ -7,7 +7,7 @@
             <strong>{{model.currentBettingGame.name}}</strong>
           {{/link-to}}
         {{else}}
-          {{#alternative-for-selection selected=model.currentBettingGame value='id' label='name'
+          {{#alternative-for-selection selected=model.currentBettingGame value='id' label='name' class="is-primary"
                                        options=model.bettingGames onChange=(action 'changeBettingGame')}}
           {{/alternative-for-selection}}
         {{/if}}
