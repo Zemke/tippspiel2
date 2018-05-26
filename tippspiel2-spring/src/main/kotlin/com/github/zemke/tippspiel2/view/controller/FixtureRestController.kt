@@ -1,12 +1,8 @@
 package com.github.zemke.tippspiel2.view.controller
 
-import com.github.zemke.tippspiel2.service.BetService
-import com.github.zemke.tippspiel2.service.BettingGameService
 import com.github.zemke.tippspiel2.service.FixtureService
-import com.github.zemke.tippspiel2.service.JsonWebTokenService
-import com.github.zemke.tippspiel2.service.UserService
+import com.github.zemke.tippspiel2.view.exception.NotFoundException
 import com.github.zemke.tippspiel2.view.model.FixtureDto
-import javassist.NotFoundException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -18,11 +14,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/fixtures")
 class FixtureRestController(
-        @Autowired private val fixtureService: FixtureService,
-        @Autowired private val jsonWebTokenService: JsonWebTokenService,
-        @Autowired private val userService: UserService,
-        @Autowired private val bettingGameService: BettingGameService,
-        @Autowired private val betService: BetService
+        @Autowired private val fixtureService: FixtureService
 ) {
 
     @GetMapping("")
