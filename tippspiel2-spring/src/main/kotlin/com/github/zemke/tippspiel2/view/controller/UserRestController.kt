@@ -26,7 +26,7 @@ class UserRestController(
     @PostMapping("")
     fun createUser(@RequestBody userCreationDto: UserCreationDto): ResponseEntity<UserDto> {
         val plainPassword = userCreationDto.password
-        val bettingGame = bettingGameService.find(userCreationDto.bettingGame)
+        val bettingGame = bettingGameService.find(userCreationDto.bettingGames[0])
                 .orElseThrow { throw BadRequestException("Invalid betting game.") }
         val persistedUser = userService.addUser(
                 userCreationDto.firstName, userCreationDto.lastName,

@@ -9,5 +9,5 @@ data class UserCreationDto(
         val lastName: String,
         val email: String,
         val password: String,
-        val bettingGame: Long
+        val bettingGames: List<Long>
 )

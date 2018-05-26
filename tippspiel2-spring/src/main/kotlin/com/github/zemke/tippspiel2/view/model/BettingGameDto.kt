@@ -7,6 +7,7 @@ data class BettingGameDto(
         val id: Long,
         val name: String,
         val competition: CompetitionDto,
+        val invitationToken: String,
         val created: Date
 ) {
 
@@ -16,14 +17,16 @@ data class BettingGameDto(
                 id = bettingGame.id!!,
                 name = bettingGame.name,
                 competition = CompetitionDto.toDto(bettingGame.competition),
-                created = bettingGame.created
+                created = bettingGame.created,
+                invitationToken = bettingGame.invitationToken
         )
 
         fun fromDto(bettingGame: BettingGame): BettingGameDto = BettingGameDto(
                 id = bettingGame.id!!,
                 competition = CompetitionDto.toDto(bettingGame.competition),
                 name = bettingGame.name,
-                created = bettingGame.created
+                created = bettingGame.created,
+                invitationToken = bettingGame.invitationToken
         )
     }
 }

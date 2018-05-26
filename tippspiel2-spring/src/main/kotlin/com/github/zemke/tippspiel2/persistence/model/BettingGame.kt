@@ -16,6 +16,7 @@ data class BettingGame(
 
         @Id @GeneratedValue val id: Long? = null,
         @Column(unique = true) @NotBlank val name: String,
+        @Column(unique = true) @NotBlank val invitationToken: String = UUID.randomUUID().toString(),
         @ManyToOne(optional = false) val competition: Competition,
         @CreationTimestamp @NotNull val created: Timestamp = Timestamp.from(Date().toInstant())
 )

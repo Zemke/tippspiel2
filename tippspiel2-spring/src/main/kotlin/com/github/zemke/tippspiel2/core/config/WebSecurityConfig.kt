@@ -78,6 +78,7 @@ class WebSecurityConfig(
                 .antMatchers("/api/hellos/**").hasRole(UserRole.ROLE_ADMIN.unPrefixed())
                 .antMatchers(HttpMethod.POST, "/api/auth").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/betting-games").hasRole(UserRole.ROLE_ADMIN.unPrefixed())
+                .antMatchers(HttpMethod.GET, "/api/betting-games").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/competitions").hasRole(UserRole.ROLE_ADMIN.unPrefixed())
                 .antMatchers(HttpMethod.PUT, "/api/competitions").hasRole(UserRole.ROLE_ADMIN.unPrefixed())
                 .antMatchers(HttpMethod.POST, "/api/users").permitAll()
