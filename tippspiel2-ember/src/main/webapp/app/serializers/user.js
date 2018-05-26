@@ -3,7 +3,7 @@ import ApplicationJSONSerializer from './application';
 
 export default ApplicationJSONSerializer.extend(DS.EmbeddedRecordsMixin, {
   attrs: {
-    competition: {
+    bettingGames: {
       deserialize: 'records'
     }
   }

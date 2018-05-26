@@ -5,16 +5,6 @@
 {{#if auth.isAdmin}}
   <div class="tile is-ancestor">
     <div class="tile is-parent">
-      {{#link-to 'communities.new' class="tile is-child is-danger notification is-primary"}}
-        <p class="title">
-          {{t 'me.community.title'}}
-        </p>
-        <p class="subtitle">
-          {{t 'me.community.subtitle'}}
-        </p>
-      {{/link-to}}
-    </div>
-    <div class="tile is-parent">
       {{#link-to 'competitions.new' class="tile is-child is-danger notification is-primary"}}
         <p class="title">
           {{t 'me.competition.title'}}

@@ -11,11 +11,6 @@ export default Controller.extend({
           this.transitionToRoute('me');
         })
         .catch(this.get('resHandler').handleError);
-    },
-    setCommunity(selectedCommunityId) {
-      this.set(
-        'model.bettingGame.community',
-        this.get('model.communities').find(u => u.id === selectedCommunityId));
     }
   }
 });

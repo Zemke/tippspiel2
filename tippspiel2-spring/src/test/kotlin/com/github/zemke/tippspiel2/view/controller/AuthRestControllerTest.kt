@@ -2,6 +2,7 @@ package com.github.zemke.tippspiel2.view.controller
 
 import com.github.zemke.tippspiel2.SpringBootTippspiel2Application
 import com.github.zemke.tippspiel2.core.authentication.AuthenticatedUser
+import com.github.zemke.tippspiel2.service.BettingGameService
 import com.github.zemke.tippspiel2.service.JsonWebTokenService
 import com.github.zemke.tippspiel2.service.UserService
 import com.github.zemke.tippspiel2.test.util.IntegrationTest
@@ -36,6 +37,9 @@ class AuthRestControllerTest {
     private lateinit var userService: UserService
 
     @Autowired
+    private lateinit var bettingGameService: BettingGameService
+
+    @Autowired
     private lateinit var jsonWebTokenService: JsonWebTokenService
 
     private lateinit var mockMvc: MockMvc
@@ -50,7 +54,7 @@ class AuthRestControllerTest {
         val plainPassword = "hamburger"
         val email = "Florian.Zemke@btc-ag.com"
         val requestPayload = JacksonUtils.toJson(AuthenticationRequestDto(email, plainPassword))
-        val user = userService.addUser("Florian", "Zemke", email, plainPassword)
+        val user = userService.addUser("Florian", "Zemke", email, plainPassword, bettingGameService.findAll()[0])
 
         this.mockMvc.perform(post("/api/auth/")
                 .contentType(MediaType.APPLICATION_JSON)

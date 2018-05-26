@@ -14,10 +14,6 @@ Router.map(function() {
   this.route('me');
   this.route('champion-bet');
 
-  this.route('communities', function() {
-    this.route('new');
-  });
-
   this.route('competitions', function() {
     this.route('new');
   });

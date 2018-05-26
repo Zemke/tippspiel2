@@ -24,7 +24,7 @@ export default Controller.extend({
       window.location.href = '/'
     },
     changeBettingGame(selectedBettingGame) {
-      this.get('bettingGame').setCurrentBettingGame(selectedBettingGame.get('id'));
+      this.get('bettingGame').rememberCurrentBettingGame(selectedBettingGame.get('id'));
       location.reload();
     }
   }

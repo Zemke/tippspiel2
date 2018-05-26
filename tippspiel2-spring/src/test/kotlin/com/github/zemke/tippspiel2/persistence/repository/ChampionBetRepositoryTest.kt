@@ -22,14 +22,12 @@ class ChampionBetRepositoryTest {
 
     @Test
     fun testSave() {
-        val user = PersistenceUtils.createUser(testEntityManager)
-        val community = testEntityManager.persistAndFlush(PersistenceUtils.instantiateCommunity()
-                .copy(users = listOf(user)))
         val competition = testEntityManager.persistAndFlush(PersistenceUtils.instantiateCompetition())
         val team = testEntityManager.persistAndFlush(PersistenceUtils.instantiateTeam()
                 .copy(competition = competition))
         val bettingGame = testEntityManager.persistAndFlush(PersistenceUtils.instantiateBettingGame()
-                .copy(community = community, competition = competition))
+                .copy(competition = competition))
+        val user = PersistenceUtils.createUser(testEntityManager, listOf(bettingGame))
 
         val unmanagedEntity = ChampionBet(
                 id = null,
@@ -47,11 +45,6 @@ class ChampionBetRepositoryTest {
 
     @Test
     fun testFindByBettingGameAndTeam() {
-        val user1 = PersistenceUtils.createUser(testEntityManager)
-        val user2 = PersistenceUtils.createUser(testEntityManager)
-        val user3 = PersistenceUtils.createUser(testEntityManager)
-        val community = testEntityManager.persist(PersistenceUtils.instantiateCommunity()
-                .copy(users = listOf(user1, user2, user3)))
         val competition = testEntityManager.persist(PersistenceUtils.instantiateCompetition()
                 .copy(id = 99))
         val team1 = testEntityManager.persist(PersistenceUtils.instantiateTeam()
@@ -59,15 +52,17 @@ class ChampionBetRepositoryTest {
         val team2 = testEntityManager.persist(PersistenceUtils.instantiateTeam()
                 .copy(competition = competition))
         val bettingGame = testEntityManager.persist(PersistenceUtils.instantiateBettingGame()
-                .copy(community = community, competition = competition))
+                .copy(competition = competition))
+
+        val user1 = PersistenceUtils.createUser(testEntityManager, listOf(bettingGame))
+        val user2 = PersistenceUtils.createUser(testEntityManager, listOf(bettingGame))
+        val user3 = PersistenceUtils.createUser(testEntityManager, listOf(bettingGame))
 
         val championBet1 = testEntityManager.persist(PersistenceUtils.instantiateChampionBet(bettingGame, user1, team1))
         testEntityManager.persist(PersistenceUtils.instantiateChampionBet(bettingGame, user2, team2))
         val championBet2 = testEntityManager.persist(PersistenceUtils.instantiateChampionBet(bettingGame, user3, team1))
 
         testEntityManager.flush()
-
-        PersistenceUtils.createBettingGame(testEntityManager, listOf(user1, user2))
 
         Assert.assertEquals(
                 listOf(championBet1, championBet2),

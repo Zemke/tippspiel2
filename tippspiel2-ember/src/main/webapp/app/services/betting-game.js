@@ -11,33 +11,25 @@ export default Service.extend({
       promise: new Promise((resolve, reject) => {
         this.get('auth.user')
           .then(authenticatedUser =>
-            this.get('store').findAll('betting-game')
-              .then(allBettingGames => {
-                return this.bettingGamesWithUserAndCurrentCompetition(allBettingGames, authenticatedUser)
-              })
-              .then(filteredBettingGames => {
-                if (!filteredBettingGames.length) return reject({status: 401});
-                const bettingGameIdFromStorage = this.getCurrentBettingGame();
+            this.get('store').findRecord('user', authenticatedUser.id)
+              .then(user => {
+                const bettingGames = user.get('bettingGames').filter(bG => bG.get('competition.current') === true);
+                if (!bettingGames.length) return reject({status: 401, message: 'Access denied.'});
+                const bettingGameIdFromStorage = this.getRememberedCurrentBettingGame();
                 const bettingGame =
-                  (bettingGameIdFromStorage && filteredBettingGames.findBy('id', bettingGameIdFromStorage))
-                  || (filteredBettingGames.objectAt(0));
-                this.setCurrentBettingGame(bettingGame.get('id'));
+                  (bettingGameIdFromStorage && bettingGames.findBy('id', bettingGameIdFromStorage))
+                  || (bettingGames.objectAt(0));
+                this.rememberCurrentBettingGame(bettingGame.get('id'));
                 return resolve(bettingGame);
-              }));
+              }))
+          .catch(() => reject({status: 401, message: 'Access denied.'}));
       })
     });
   }),
-  setCurrentBettingGame(currentBettingGameId) {
+  rememberCurrentBettingGame(currentBettingGameId) {
     localStorage.setItem('betting-game', currentBettingGameId);
   },
-  getCurrentBettingGame() {
+  getRememberedCurrentBettingGame() {
     return localStorage.getItem('betting-game');
-  },
-  bettingGamesWithUserAndCurrentCompetition(bettingGames, user) {
-    return bettingGames
-      .filter(bG => bG.get('competition.current'))
-      .filter(bG => bG.get('community.users')
-        .mapBy('id')
-        .includes(user.id.toString()));
   }
 });

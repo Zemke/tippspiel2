@@ -1,6 +1,8 @@
 package com.github.zemke.tippspiel2.view.controller
 
+import com.github.zemke.tippspiel2.service.BettingGameService
 import com.github.zemke.tippspiel2.service.UserService
+import com.github.zemke.tippspiel2.view.exception.BadRequestException
 import com.github.zemke.tippspiel2.view.exception.NotFoundException
 import com.github.zemke.tippspiel2.view.model.UserCreationDto
 import com.github.zemke.tippspiel2.view.model.UserDto
@@ -17,15 +19,19 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/users")
 class UserRestController(
-        @Autowired private val userService: UserService
+        @Autowired private val userService: UserService,
+        @Autowired private val bettingGameService: BettingGameService
 ) {
 
     @PostMapping("")
     fun createUser(@RequestBody userCreationDto: UserCreationDto): ResponseEntity<UserDto> {
         val plainPassword = userCreationDto.password
+        val bettingGame = bettingGameService.find(userCreationDto.bettingGame)
+                .orElseThrow { throw BadRequestException("Invalid betting game.") }
         val persistedUser = userService.addUser(
                 userCreationDto.firstName, userCreationDto.lastName,
-                userCreationDto.email, userCreationDto.password)
+                userCreationDto.email, userCreationDto.password,
+                bettingGame)
         val token = userService.authenticate(persistedUser.email, plainPassword)
 
         return ResponseEntity

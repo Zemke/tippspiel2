@@ -23,5 +23,5 @@ export default Model.extend(Validations, {
   email: attr('string'),
   password: attr('string'),
   token: attr('string'),
-  communities: DS.hasMany('community'),
+  bettingGames: DS.hasMany('betting-game'),
 });

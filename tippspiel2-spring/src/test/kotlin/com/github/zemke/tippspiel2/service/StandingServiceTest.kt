@@ -44,11 +44,10 @@ class StandingServiceTest {
 
     @Test
     fun testUpdateStandings() {
-        val user1 = PersistenceUtils.instantiateUser("1")
-        val user2 = PersistenceUtils.instantiateUser("2")
+        val bettingGame = PersistenceUtils.instantiateBettingGame()
 
-        val community = PersistenceUtils.instantiateCommunity().copy(users = listOf(user1, user2))
-        val bettingGame = PersistenceUtils.instantiateBettingGame().copy(community = community)
+        val user1 = PersistenceUtils.instantiateUser("1").copy(bettingGames = listOf(bettingGame))
+        val user2 = PersistenceUtils.instantiateUser("2").copy(bettingGames = listOf(bettingGame))
         val teams = createTeams(bettingGame.competition, "Russia", "Norway", "England", "Italy", "Ireland", "Iceland", "Poland", "Spain")
         val fixtures = createFixtures(bettingGame, teams)
 
@@ -96,11 +95,10 @@ class StandingServiceTest {
 
     @Test
     fun testUpdateStandingsWithChampionBet() {
-        val user1 = PersistenceUtils.instantiateUser("1").copy(id = 1)
-        val user2 = PersistenceUtils.instantiateUser("2").copy(id = 2)
+        val bettingGame = PersistenceUtils.instantiateBettingGame()
+        val user1 = PersistenceUtils.instantiateUser("1").copy(id = 1, bettingGames = listOf(bettingGame))
+        val user2 = PersistenceUtils.instantiateUser("2").copy(id = 2, bettingGames = listOf(bettingGame))
 
-        val community = PersistenceUtils.instantiateCommunity().copy(users = listOf(user1, user2))
-        val bettingGame = PersistenceUtils.instantiateBettingGame().copy(community = community)
         val teams = createTeams(bettingGame.competition, "Russia", "Norway", "England", "Italy", "Ireland", "Iceland", "Poland", "Spain")
         val fixtures = createFixtures(bettingGame, teams)
         val competitionChampion = fixtures[0].homeTeam

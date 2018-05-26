@@ -23,8 +23,8 @@ class BetRepositoryTest {
 
     @Test
     fun testSave() {
-        val user = PersistenceUtils.createUser(testEntityManager)
-        val bettingGame = PersistenceUtils.createBettingGame(testEntityManager, listOf(user))
+        val bettingGame = PersistenceUtils.createBettingGame(testEntityManager)
+        val user = PersistenceUtils.createUser(testEntityManager, listOf(bettingGame))
         val homeTeam = testEntityManager.persistAndFlush(PersistenceUtils.instantiateTeam())
         val awayTeam = testEntityManager.persistAndFlush(PersistenceUtils.instantiateTeam().copy(id = 2))
         val fixture = testEntityManager.persistFlushFind(PersistenceUtils.instantiateFixture().copy(homeTeam = homeTeam, awayTeam = awayTeam))
@@ -47,9 +47,9 @@ class BetRepositoryTest {
 
     @Test
     fun testFindByCompetitionAndFixtureStatus() {
-        val user1 = PersistenceUtils.createUser(testEntityManager)
-        val user2 = PersistenceUtils.createUser(testEntityManager, "2")
-        val bettingGame = PersistenceUtils.createBettingGame(testEntityManager, listOf(user1, user2))
+        val bettingGame = PersistenceUtils.createBettingGame(testEntityManager)
+        val user1 = PersistenceUtils.createUser(testEntityManager, listOf(bettingGame))
+        val user2 = PersistenceUtils.createUser(testEntityManager, listOf(bettingGame), "2")
         val competition = testEntityManager.persistAndFlush(PersistenceUtils.instantiateCompetition().copy(id = 99))
         val homeTeam = testEntityManager.persistFlushFind(PersistenceUtils.instantiateTeam().copy(id = 1, competition = bettingGame.competition))
         val awayTeam = testEntityManager.persistFlushFind(PersistenceUtils.instantiateTeam().copy(id = 2, competition = bettingGame.competition))
@@ -78,25 +78,25 @@ class BetRepositoryTest {
         val bets = listOf(
                 testEntityManager.persistFlushFind(
                         PersistenceUtils.instantiateBet()
-                                .copy(bettingGame = bettingGame, user = bettingGame.community.users[0], fixture = fixtures[0])),
+                                .copy(bettingGame = bettingGame, user = user1, fixture = fixtures[0])),
                 testEntityManager.persistFlushFind(
                         PersistenceUtils.instantiateBet()
-                                .copy(bettingGame = bettingGame, user = bettingGame.community.users[1], fixture = fixtures[0])),
+                                .copy(bettingGame = bettingGame, user = user2, fixture = fixtures[0])),
                 testEntityManager.persistFlushFind(
                         PersistenceUtils.instantiateBet()
-                                .copy(bettingGame = bettingGame, user = bettingGame.community.users[0], fixture = fixtures[1])),
+                                .copy(bettingGame = bettingGame, user = user1, fixture = fixtures[1])),
                 testEntityManager.persistFlushFind(
                         PersistenceUtils.instantiateBet()
-                                .copy(bettingGame = bettingGame, user = bettingGame.community.users[0], fixture = fixtures[2])),
+                                .copy(bettingGame = bettingGame, user = user1, fixture = fixtures[2])),
                 testEntityManager.persistFlushFind(
                         PersistenceUtils.instantiateBet()
-                                .copy(bettingGame = bettingGame, user = bettingGame.community.users[0], fixture = fixtures[3])),
+                                .copy(bettingGame = bettingGame, user = user1, fixture = fixtures[3])),
                 testEntityManager.persistFlushFind(
                         PersistenceUtils.instantiateBet()
-                                .copy(bettingGame = bettingGame, user = bettingGame.community.users[0], fixture = fixtures[4])),
+                                .copy(bettingGame = bettingGame, user = user1, fixture = fixtures[4])),
                 testEntityManager.persistFlushFind(
                         PersistenceUtils.instantiateBet()
-                                .copy(bettingGame = bettingGame, user = bettingGame.community.users[0], fixture = fixtures[5]))
+                                .copy(bettingGame = bettingGame, user = user1, fixture = fixtures[5]))
         )
         val actualBets = betRepository.findByCompetitionAndFixtureStatus(bettingGame.competition, FixtureStatus.FINISHED)
 

@@ -12,8 +12,7 @@ export default Route.extend({
   model() {
     const currentBettingGame = this.get('bettingGame.currentBettingGame');
     const bettingGames = currentBettingGame.then(currentBettingGame => {
-      const promise = this.get('auth.user').then(authenticatedUser =>
-        this.get('bettingGame').bettingGamesWithUserAndCurrentCompetition(this.get('store').peekAll('betting-game'), authenticatedUser));
+      const promise = this.get('auth.user').then(authenticatedUser => this.get('store').peekAll('betting-game'));
       return DS.PromiseArray.create({promise: promise})
     });
     return RSVP.hash({
