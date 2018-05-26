@@ -8,6 +8,7 @@ module.exports = function(defaults) {
       includePaths: [
         'node_modules/bulma',
         'node_modules/bulma-badge/dist',
+        'node_modules/bulma-tooltip/dist',
       ],
       extension: 'sass'
     }
