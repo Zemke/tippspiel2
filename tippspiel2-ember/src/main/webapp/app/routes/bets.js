@@ -21,5 +21,17 @@ export default Route.extend({
             bettingGame: this.get('store').peekRecord('betting-game', hash.currentBettingGame.get('id'))
           }))
       ));
+  },
+  actions: {
+    willTransition(transition) {
+      const hasUnsavedChanges = this.controller.get('model')
+        .find(bet => bet.get('hasDirtyAttributes') === true && bet.get('validations.isValid'));
+
+      if (hasUnsavedChanges != null && !confirm('You have unsaved bets. Do you really want to leave?')) {
+        transition.abort();
+      } else {
+        return true;
+      }
+    }
   }
 });
