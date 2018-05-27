@@ -27,11 +27,11 @@
         <div class="navbar-start">
           {{#unless model.isOnlyOneBettingGame}}
             {{#link-to "standings" class="navbar-item"}}
-              Standings
+              {{t 'app.standings'}}
             {{/link-to}}
           {{/unless}}
           {{#link-to "bets" class="navbar-item"}}
-            Bets
+            {{t 'app.bets'}}
           {{/link-to}}
         </div>
       {{/if}}
@@ -41,11 +41,11 @@
             {{auth.user.firstName}}
           {{/link-to}}
           <a class="navbar-item" {{action 'signOut'}}>
-            Sign Out
+            {{t 'app.signOut'}}
           </a>
         {{else}}
           {{#link-to "sign-in" class="navbar-item"}}
-            Sign In
+            {{t 'app.signIn'}}
           {{/link-to}}
         {{/if}}
         <a class="navbar-item small-caps" {{action 'toggleLocale'}}>

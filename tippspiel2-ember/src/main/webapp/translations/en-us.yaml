@@ -1,3 +1,20 @@
+app:
+  signOut: 'Sign Out'
+  signIn: 'Sign In'
+  signUp: 'Sign Up'
+  standings: 'Standings'
+  bets: 'Bets'
+signIn:
+  password:
+    placeholder: 'Password'
+  email:
+    placeholder: 'Email'
+signUp:
+  firstName: 'First name'
+  lastName: 'Last name'
+  email: 'Email'
+  password: 'Password'
+  passwordConfirmation: 'Password confirmation'
 hello:
   world: 'Hello, World!'
 me:
@@ -11,7 +28,7 @@ me:
     subtitle: 'From an external API load a competition along with its fixtures and teams to then be able to start aan actual betting game with a community.'
     new:
       id:
-        placeholder: 'Enter ID'
+        placeholder: "Competition ID"
         info: 'The ID can be derived from football-data.org. It’s meant to be looked up manually and is then used to undertake external API requests.'
       header: 'Load a Competition'
       submit: 'Load Competition'
@@ -22,6 +39,8 @@ me:
       currentCompetition: 'Current competition'
       setCommunity: 'Pick a community'
       submit: 'Create Betting Game'
+      name:
+        placeholder: 'Betting game name'
   updateCompetitionAndTeams:
     title: 'Update Competition'
     subtitle: 'Request the external interface to synchronize data of the current competition along with its teams.'
@@ -60,6 +79,7 @@ err:
   championBetDeadlineExceeded: 'It’s too late to bet on a champion.'
   tooLateToBet: 'It’s too late to place a bet.'
 team:
+  noCountry: 'No country'
   name:
     808: 'Russia'
     801: 'Saudi Arabia'

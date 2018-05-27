@@ -1,11 +1,11 @@
 <div class="columns is-desktop">
   <div class="column is-half">
-    <h1 class="title">Sign Up</h1>
+    <h1 class="title">{{t 'app.signUp'}}</h1>
     <form>
       <div class="field field-body">
         <div class="field">
           <div class="control has-icons-left">
-            {{input type="text" placeholder="First name"
+            {{input type="text" placeholder=(t 'signUp.firstName')
                     class=(concat 'input ' (if (v-get model 'firstName' 'isInvalid') 'is-danger'))
                     value=(mut (get model 'firstName'))}}
             <span class="icon is-small is-left">
@@ -15,7 +15,7 @@
         </div>
         <div class="field">
           <div class="control has-icons-left is-expanded">
-            {{input type="text" placeholder="Last name"
+            {{input type="text" placeholder=(t 'signUp.lastName')
                     class=(concat 'input ' (if (v-get model 'lastName' 'isInvalid') 'is-danger'))
                     value=(mut (get model 'lastName'))}}
             <span class="icon">
@@ -26,7 +26,7 @@
       </div>
       <div class="field">
         <div class="control has-icons-left">
-          {{input type="email" placeholder="Email"
+          {{input type="email" placeholder=(t 'signUp.email')
                   class=(concat 'input ' (if (v-get model 'email' 'isInvalid') 'is-danger'))
                   value=(mut (get model 'email'))}}
           <span class="icon">
@@ -36,7 +36,7 @@
       </div>
       <div class="field">
         <div class="control has-icons-left">
-          {{input type="password" placeholder="Password"
+          {{input type="password" placeholder=(t 'signUp.password')
                   class=(concat 'input ' (if (v-get model 'password' 'isInvalid') 'is-danger'))
                   value=(mut (get model 'password'))}}
           <span class="icon">
@@ -46,7 +46,7 @@
       </div>
       <div class="field">
         <div class="control has-icons-left">
-          {{input type="password" placeholder="Password confirmation"
+          {{input type="password" placeholder=(t 'signUp.passwordConfirmation')
                   class=(concat 'input ' (if (v-get model 'passwordConfirmation' 'isInvalid') 'is-danger'))
                   value=(mut (get model 'passwordConfirmation'))}}
           <span class="icon">
@@ -57,7 +57,7 @@
       <div class="field">
         <div class="control">
           {{#submit-button model=model submit=(action 'submit')}}
-            Sign Up
+            {{t 'app.signUp'}}
           {{/submit-button}}
         </div>
       </div>
