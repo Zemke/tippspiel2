@@ -18,11 +18,6 @@ signUp:
 hello:
   world: 'Hello, World!'
 me:
-  community:
-    title: 'Create a Community'
-    subtitle: 'A group of users who can then in conjunction with a competition form a betting game.'
-    new:
-      addUser: 'Add a user to the community'
   competition:
     title: 'Load a Competition'
     subtitle: 'From an external API load a competition along with its fixtures and teams to then be able to start aan actual betting game with a community.'
@@ -37,7 +32,6 @@ me:
     subtitle: 'Create an actual betting game by combining a competition with a community.'
     new:
       currentCompetition: 'Current competition'
-      setCommunity: 'Pick a community'
       submit: 'Create Betting Game'
       name:
         placeholder: 'Betting game name'
@@ -62,8 +56,8 @@ bets:
 notFound: 'The page you were looking for wasn’t found.'
 catchError:
   resourceNotFound: 'The page you were looking for wasn’t found.'
-  serviceUnavailable: 'The page you were looking for wasn’t found.'
-  accessDenied: 'The page you were looking for wasn’t found.'
+  serviceUnavailable: 'The service is temporarily unavailable.'
+  accessDenied: 'Access denied.'
 err:
   unknown: 'An unknown error has occurred.'
   competitionNotFound: 'No such competition.'

@@ -1,6 +1,86 @@
+app:
+  signOut: 'Ausloggen'
+  signIn: 'Einloggen'
+  signUp: 'Anmelden'
+  standings: 'Tabelle'
+  bets: 'Tipps'
+signIn:
+  password:
+    placeholder: 'Passwort'
+  email:
+    placeholder: 'E-Mail'
+signUp:
+  firstName: 'Vorname'
+  lastName: 'Nachname'
+  email: 'E-Mail'
+  password: 'Passwort'
+  passwordConfirmation: 'Passwort bestätigen'
 hello:
   world: 'Hallo, Welt!'
+me:
+  competition:
+    title: 'Wettbewerb laden'
+    subtitle: 'Von einem externen API die Wettbewerb mit Spielbegegnungen und Teams laden, um dann eine eigentliche Tipprunde zu beginnen.'
+    new:
+      id:
+        placeholder: "Wettbewerb ID"
+        info: 'Die ID gibt’s bei football-data.org zu finden. Sie muss selber nachgeschlagen werden und wird dann genutzt, um externe API Anfragen durchzuführen.'
+      header: 'Wettbewerb laden'
+      submit: 'Wettbewerb laden'
+  bettingGame:
+    title: 'Tipprunde beginnen'
+    subtitle: 'Erstelle eine neue Tipprunde.'
+    new:
+      currentCompetition: 'Aktueller Wettbewerb'
+      submit: 'Erstelle Tipprunde'
+      name:
+        placeholder: 'Name der Tipprunde'
+  updateCompetitionAndTeams:
+    title: 'Wettbewerb aktualisieren'
+    subtitle: 'Frange die externe Schnittstelle nach aktuellen Daten und synchronisiere der aktuelle Wettbewerb mit dessen Teams.'
+  setCurrentCompetition:
+    title: 'Aktuellen Wettbewerb setzen'
+    subtitle: 'Du kannst mehrere Tipprunden gleichzeitig spielen, aber sie müssen alle denselben Wettbewerb betreffen. Nur ein Wettbewerb kann gleichzeitig gespielt werden.'
+    placeholder: 'Wähle aktuellen Wettbewerb'
+    theCurrentCompetitionIs: 'Der aktuelle Wettbewerb ist'
+    thereIsNoCurrentCompetition: 'Kein aktueller Wettbewerb gewählt.'
+    warning: 'Denke daran, dass Tipprunden, die nicht den aktuellen Wettbewerb spielen nicht fortgeführt werden können.'
+championBet:
+  title: 'Turniersieger tippen'
+  selectTeam: 'Wähle das Team'
+  submit: 'Abschicken'
+standings:
+    yetToBet: 'Du hast Zeit bis zum ersten Spiel deinen Turniersieger-Tipp zum abzugeben.'
+bets:
+  none: 'Es gibt noch keine Tipps.'
+notFound: 'Die aufgerufene Seite gibt es nicht.'
+catchError:
+  resourceNotFound: 'Die nachgefragte Seite konne nicht gefunden werden.'
+  serviceUnavailable: 'Aktuell stehen die Dienste nicht zur Verfügung.'
+  accessDenied: 'Zutritt verboten.'
+err:
+  unknown: 'Ein unbekannter Fehler ist aufgetreten.'
+  competitionNotFound: 'Nachgefragter Wettbewerb wurde nicht gefunden.'
+  bettingGameNotFound: 'Nachgefragte Tipprunde wurde nicht gefunden.'
+  fixtureNotFound: 'Nachgefragte Spielbegegnung wurde nicht gefunden.'
+  teamNotFound: 'Nachgefragtes Team wurde nicht gefunden.'
+  userNotFound: 'Nachgefragter Benutzer wurde nicht gefunden.'
+  betNotFound: 'Nachgefragter Tipp wurde nicht gefunden.'
+  championBetNotFound: 'Nachgefragter Turniersieger-Tipp wurde nicht gefunden.'
+  competitionUpdateOnlyCurrent: 'Du kannst nur den aktuellen Wettbewerb aktualisieren.'
+  editSomebodyElsesBet: 'Du darfst nicht den Tipp eines anderen ändern.'
+  championBetDeadlineExceeded: 'Es ist zu spät für einen Tipp.'
+  tooLateToBet: 'Es ist zu spät für einen Tipp.'
+evaluation:
+  tooltip:
+    5: 'Exaktes Ergebnis'
+    3: 'Richtige Tordifferenz'
+    1: 'Richtiger Sieger'
+    0: 'Daneben'
+    10: 'Richtigen Turniersieger'
+    void: 'Kein Tipp abgegeben'
 team:
+  noCountry: 'Kein Land'
   name:
     808: 'Russland'
     801: 'Saudi Arabien'
