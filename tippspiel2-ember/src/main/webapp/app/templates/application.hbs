@@ -49,8 +49,8 @@
           {{/link-to}}
         {{/if}}
         <a class="navbar-item small-caps" {{action 'toggleLocale'}}>
-          <span class="{{unless model.localeIsEnUs "has-text-weight-bold"}}">de</span>/<span
-          class="{{if model.localeIsEnUs "has-text-weight-bold"}}">en</span>
+          <span class="{{unless localeIsEnUs "has-text-weight-bold"}}">de</span>/<span
+          class="{{if localeIsEnUs "has-text-weight-bold"}}">en</span>
         </a>
       </div>
     </div>

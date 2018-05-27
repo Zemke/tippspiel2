@@ -8,16 +8,10 @@ export default Controller.extend({
   bettingGame: inject(),
   actions: {
     toggleLocale() {
-      try {
-        const newLocale = this.get('intl').get('locale')[0] === 'de' ? 'en-us' : 'de';
-        this.get('intl').setLocale([newLocale]);
-        localStorage.setItem('locale', newLocale);
-        this.set('localeIsEnUs', newLocale === 'en-us');
-      } catch (e) {
-        this.get('intl').setLocale(['en-us']);
-        localStorage.setItem('locale', 'en-us');
-        this.set('localeIsEnUs', true);
-      }
+      const newLocale = this.get('intl').get('locale')[0] === 'de' ? 'en-us' : 'de';
+      this.get('intl').setLocale(newLocale);
+      localStorage.setItem('locale', newLocale);
+      this.set('localeIsEnUs', newLocale === 'en-us');
     },
     signOut() {
       this.get('auth').wipeToken();
@@ -27,5 +21,8 @@ export default Controller.extend({
       this.get('bettingGame').rememberCurrentBettingGame(selectedBettingGame.get('id'));
       location.reload();
     }
-  }
+  },
+  localeIsEnUs: computed(function () {
+    return this.get('intl').get('locale') === 'en-us';
+  }),
 });

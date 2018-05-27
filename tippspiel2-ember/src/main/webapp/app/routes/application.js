@@ -16,7 +16,6 @@ export default Route.extend({
       return DS.PromiseArray.create({promise: promise})
     });
     return RSVP.hash({
-      localeIsEnUs: computed(() => this.get('intl').get('locale')[0] === 'en-us'),
       currentBettingGame: currentBettingGame,
       bettingGames: bettingGames,
       isOnlyOneBettingGame: DS.PromiseObject.create({promise: bettingGames.then(bettingGames => bettingGames.get('length') === 1)})
@@ -25,14 +24,16 @@ export default Route.extend({
   beforeModel() {
     iziToast.settings({position: 'topRight'});
 
+    let locale;
     try {
-      const locale = localStorage.getItem('locale') || 'en-us';
-      this.get('intl').setLocale([locale]);
-      localStorage.setItem('locale', locale);
+      const browserLocale = ((navigator.languages && navigator.languages.length) ? navigator.languages[0] : navigator.language).toLowerCase();
+      const rememberedLocale = localStorage.getItem('locale');
+      locale = (rememberedLocale != null ? rememberedLocale : browserLocale).startsWith('de') ? 'de' : 'en-us';
     } catch (e) {
-      this.get('intl').setLocale(['en-us']);
-      localStorage.setItem('locale', 'en-us');
+      locale = 'en-us';
     }
+    this.get('intl').setLocale(locale);
+    localStorage.setItem('locale', locale);
   },
   actions: {
     error(error, transition) {
