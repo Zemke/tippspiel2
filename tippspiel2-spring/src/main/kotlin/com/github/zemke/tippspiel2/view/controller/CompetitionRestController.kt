@@ -38,7 +38,7 @@ class CompetitionRestController(
     fun queryCompetitions(@RequestParam("current", defaultValue = "false") current: Boolean): ResponseEntity<List<CompetitionDto>> {
         val competitions = if (current) {
             listOf(competitionService.findByCurrentTrue()
-                    ?: throw NotFoundException("There is currently no competition.", "err.competitionNotFound")
+                    ?: throw NotFoundException("There is currently no competition.", "err.noCurrentCompetition")
             )
         } else {
             competitionService.findAll()

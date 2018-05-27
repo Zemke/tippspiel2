@@ -77,6 +77,7 @@ err:
   editSomebodyElsesBet: 'Du darfst nicht den Tipp eines anderen ändern.'
   championBetDeadlineExceeded: 'Es ist zu spät für einen Tipp.'
   tooLateToBet: 'Es ist zu spät für einen Tipp.'
+  noCurrentCompetition: 'Es gibt keinen aktuellen Wettbewerb.'
 evaluation:
   tooltip:
     5: 'Exaktes Ergebnis'

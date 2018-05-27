@@ -77,6 +77,7 @@ err:
   editSomebodyElsesBet: 'You may not edit someone else’s bet'
   championBetDeadlineExceeded: 'It’s too late to bet on a champion.'
   tooLateToBet: 'It’s too late to place a bet.'
+  noCurrentCompetition: 'There is currently no competition.'
 evaluation:
   tooltip:
     5: 'Exact result'
