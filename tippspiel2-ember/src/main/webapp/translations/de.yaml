@@ -59,6 +59,11 @@ catchError:
   resourceNotFound: 'Die nachgefragte Seite konne nicht gefunden werden.'
   serviceUnavailable: 'Aktuell stehen die Dienste nicht zur Verfügung.'
   accessDenied: 'Zutritt verboten.'
+success:
+  competitionCreated: 'Wettbewerb erstellt.'
+  bettingGameCreated: 'Tipprunde erstellt.'
+  competitionSaved: 'Wettbewerb aktualisiert.'
+  betSaved: 'Tipp gespeichert.'
 err:
   unknown: 'Ein unbekannter Fehler ist aufgetreten.'
   competitionNotFound: 'Nachgefragter Wettbewerb wurde nicht gefunden.'

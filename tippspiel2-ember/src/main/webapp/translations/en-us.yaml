@@ -59,6 +59,11 @@ catchError:
   resourceNotFound: 'The page you were looking for wasn’t found.'
   serviceUnavailable: 'The service is temporarily unavailable.'
   accessDenied: 'Access denied.'
+success:
+  competitionCreated: 'Competition created.'
+  bettingGameCreated: 'Betting game created.'
+  competitionSaved: 'Competition updated.'
+  betSaved: 'Bet saved.'
 err:
   unknown: 'An unknown error has occurred.'
   competitionNotFound: 'No such competition.'
