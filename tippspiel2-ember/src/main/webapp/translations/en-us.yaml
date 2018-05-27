@@ -28,9 +28,12 @@ me:
         info: 'The ID can be derived from football-data.org. It’s meant to be looked up manually and is then used to undertake external API requests.'
       header: 'Load a Competition'
       submit: 'Load Competition'
+  bettingGames:
+    title: 'List of Betting Games'
+    subtitle: 'A curated list of all betting games.'
   bettingGame:
     title: 'Start Off a Betting Game'
-    subtitle: 'Create an actual betting game by combining a competition with a community.'
+    subtitle: 'Create an actual betting game.'
     new:
       currentCompetition: 'Current competition'
       submit: 'Create Betting Game'
@@ -86,6 +89,15 @@ evaluation:
     0: 'Failed bet'
     10: 'Right champion'
     void: 'No bet submitted'
+bettingGame:
+  list:
+    title: 'Betting Games'
+    created: 'Created'
+    competition: 'Competition'
+    name: 'Name'
+    details: 'Details'
+    invitationToken: 'Invitation Token'
+    users: 'Users'
 team:
   noCountry: 'No country'
   name:

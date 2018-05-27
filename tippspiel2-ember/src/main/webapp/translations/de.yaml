@@ -28,6 +28,9 @@ me:
         info: 'Die ID gibt’s bei football-data.org zu finden. Sie muss selber nachgeschlagen werden und wird dann genutzt, um externe API Anfragen durchzuführen.'
       header: 'Wettbewerb laden'
       submit: 'Wettbewerb laden'
+  bettingGames:
+    title: 'Liste aller Tipprunden'
+    subtitle: 'Eine kurierte List aller Tipprunden.'
   bettingGame:
     title: 'Tipprunde beginnen'
     subtitle: 'Erstelle eine neue Tipprunde.'
@@ -86,6 +89,15 @@ evaluation:
     0: 'Daneben'
     10: 'Richtigen Turniersieger'
     void: 'Kein Tipp abgegeben'
+bettingGame:
+  list:
+    title: 'Tipprundend'
+    created: 'Erstellung'
+    competition: 'Wettbewerb'
+    name: 'Name'
+    details: 'Details'
+    invitationToken: 'Einladungs-Token'
+    users: 'Benutzer'
 team:
   noCountry: 'Kein Land'
   name:

@@ -1,0 +1,36 @@
+<h1 class="title">{{model.name}}</h1>
+
+<div class="columns">
+  <div class="column">
+    <div class="has-text-weight-bold">{{t 'bettingGame.list.name'}}</div>
+    {{model.name}}
+  </div>
+</div>
+<div class="columns">
+  <div class="column">
+    <div class="has-text-weight-bold">{{t 'bettingGame.list.competition'}}</div>
+    {{model.competition.caption}}
+  </div>
+</div>
+<div class="columns">
+  <div class="column">
+    <div class="has-text-weight-bold">{{t 'bettingGame.list.invitationToken'}}</div>
+    {{model.invitationToken}}
+  </div>
+</div>
+<div class="columns">
+  <div class="column">
+    <div class="has-text-weight-bold">{{t 'bettingGame.list.created'}}</div>
+    {{date-format model.created "dddd, MMMM D, HH:mm"}}
+  </div>
+</div>
+<div class="columns">
+  <div class="column">
+    <div class="has-text-weight-bold">{{t 'bettingGame.list.users'}}</div>
+    {{#each model.users as |user|}}
+      {{user.firstName}} {{user.lastName}}<br>
+    {{/each}}
+  </div>
+</div>
+
+{{outlet}}

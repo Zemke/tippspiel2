@@ -20,6 +20,8 @@ Router.map(function() {
 
   this.route('betting-games', function() {
     this.route('new');
+    this.route('list');
+    this.route('details', {path: '/:betting-game_id'});
   });
 
   this.route('users', function() {

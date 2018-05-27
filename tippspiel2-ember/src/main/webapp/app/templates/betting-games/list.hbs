@@ -1,0 +1,30 @@
+<h1 class="title">
+  {{t 'bettingGame.list.title'}}
+</h1>
+
+<table class="table is-striped">
+  <thead>
+  <tr>
+    <th>{{t 'bettingGame.list.name'}}</th>
+    <th>{{t 'bettingGame.list.competition'}}</th>
+    <th>{{t 'bettingGame.list.created'}}</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    {{#each model as |bettingGame|}}
+      <td>{{bettingGame.name}}</td>
+      <td>{{bettingGame.competition.caption}}</td>
+      <td>{{date-format bettingGame.created "dddd, MMMM D, HH:mm"}}</td>
+      <td>
+        {{#link-to 'betting-games.details' bettingGame class="button is-primary is-small"}}
+          {{t 'bettingGame.list.details'}}
+        {{/link-to}}
+      </td>
+    {{/each}}
+  </tr>
+  </tbody>
+</table>
+
+{{outlet}}
