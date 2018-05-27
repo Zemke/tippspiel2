@@ -35,7 +35,8 @@ class BettingGameRepositoryTest {
                         id = managedEntityBettingGame.id,
                         name = "Bobabel",
                         competition = managedEntityCompetition,
-                        created = managedEntityBettingGame.created
+                        created = managedEntityBettingGame.created,
+                        invitationToken = managedEntityBettingGame.invitationToken
                 ),
                 managedEntityBettingGame
         )
