@@ -29,6 +29,8 @@
     <div class="has-text-weight-bold">{{t 'bettingGame.list.users'}}</div>
     {{#each model.users as |user|}}
       {{user.firstName}} {{user.lastName}}<br>
+    {{else}}
+      —
     {{/each}}
   </div>
 </div>
