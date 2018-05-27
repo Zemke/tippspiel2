@@ -11,5 +11,5 @@ class RoleService(
         @Autowired private var roleRepository: RoleRepository
 ) {
 
-    fun initRoles(): MutableList<Role> = roleRepository.saveAll(UserRole.values().map { Role(it) })
+    fun initRoles(): List<Role> = roleRepository.saveAll(UserRole.values().map { Role(it) })
 }
