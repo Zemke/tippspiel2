@@ -18,6 +18,10 @@
   @extend .is-small;
 }
 
+.active {
+  @extend .is-active;
+}
+
 .navbar-brand > .select {
   margin: auto 12px;
 }
