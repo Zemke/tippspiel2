@@ -1,9 +1,5 @@
-<h1 class="title">
-  Tippspiel2
-</h1>
-<p class="subtitle">
-  Time’s running.
-</p>
-<p>
-  {{t 'hello.world'}}
-</p>
+<div class="has-text-centered">
+  {{#each model as |team|}}
+    {{#country-flag teamId=team.id class="icon"}}{{/country-flag}}
+  {{/each}}
+</div>

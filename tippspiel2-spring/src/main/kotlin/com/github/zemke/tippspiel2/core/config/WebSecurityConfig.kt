@@ -82,6 +82,7 @@ class WebSecurityConfig(
                 .antMatchers(HttpMethod.POST, "/api/competitions").hasRole(UserRole.ROLE_ADMIN.unPrefixed())
                 .antMatchers(HttpMethod.PUT, "/api/competitions").hasRole(UserRole.ROLE_ADMIN.unPrefixed())
                 .antMatchers(HttpMethod.POST, "/api/users").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/teams").permitAll()
                 .anyRequest().authenticated()
 
         httpSecurity
