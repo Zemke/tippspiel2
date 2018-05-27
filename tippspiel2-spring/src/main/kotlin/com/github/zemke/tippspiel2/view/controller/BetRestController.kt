@@ -67,7 +67,7 @@ class BetRestController {
         if (!isBettingStillAllowed(bet.fixture.date)) throw BadRequestException("Too late to bet.", "err.tooLateToBet")
         val token = jsonWebTokenService.assertToken(request) ?: throw UnauthorizedException()
         if (jsonWebTokenService.getIdFromToken(token) != bet.user.id)
-            throw ForbiddenException("You may not edit somebody else's bid", "err.editSomebodyElsesBid")
+            throw ForbiddenException("You may not edit somebody else's bid", "err.editSomebodyElsesBet")
         bet.goalsHomeTeamBet = betCreationDto.goalsHomeTeamBet
         bet.goalsAwayTeamBet = betCreationDto.goalsAwayTeamBet
         return ResponseEntity.ok(BetDto.toDto(betService.save(bet)))
@@ -77,7 +77,7 @@ class BetRestController {
     fun saveBet(@RequestBody betCreationDto: BetCreationDto, request: HttpServletRequest): ResponseEntity<BetDto> {
         val token = jsonWebTokenService.assertToken(request) ?: throw UnauthorizedException()
         if (jsonWebTokenService.getIdFromToken(token) != betCreationDto.user) {
-            throw ForbiddenException("You may not edit somebody else's bid", "err.editSomebodyElsesBid")
+            throw ForbiddenException("You may not edit somebody else's bid", "err.editSomebodyElsesBet")
         }
 
         val fixture = fixtureService.getById(betCreationDto.fixture)

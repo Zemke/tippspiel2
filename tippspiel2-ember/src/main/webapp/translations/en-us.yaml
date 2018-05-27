@@ -48,6 +48,17 @@ bets:
 notFound: 'The page you were looking for wasn’t found.'
 err:
   unknown: 'An unknown error has occurred.'
+  competitionNotFound: 'No such competition.'
+  bettingGameNotFound: 'No such betting game.'
+  fixtureNotFound: 'No such fixture.'
+  teamNotFound: 'No such team.'
+  userNotFound: 'No such user.'
+  betNotFound: 'No such bet.'
+  championBetNotFound: 'No such champion bet.'
+  competitionUpdateOnlyCurrent: 'You may only update the current competition.'
+  editSomebodyElsesBet: 'You may not edit someone else’s bet'
+  championBetDeadlineExceeded: 'It’s too late to bet on a champion.'
+  tooLateToBet: 'It’s too late to place a bet.'
 team:
   name:
     808: 'Russia'

@@ -76,7 +76,7 @@ class ChampionBetRestController(
 
 
         if (authenticatedUserId != championBet.user.id)
-            throw ForbiddenException("This champion bet is not yours.", "err.editSomebodyElsesChampionBet")
+            throw ForbiddenException("This champion bet is not yours.", "err.editSomebodyElsesBet")
 
         championBet.team = teamService.find(championBetCreationDto.team)
                 .orElseThrow { throw BadRequestException("There is no such betting game.", "err.bettingGameNotFound") }
