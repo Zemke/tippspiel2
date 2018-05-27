@@ -53,6 +53,7 @@ championBet:
   title: 'Champion Bet'
   selectTeam: 'Select team'
   submit: 'Submit'
+  hintAtLaterChange: 'Your bet may be changed later on by clicking on your flag in the standings.'
 standings:
   yetToBet: 'You only have time to bet the champion of the tournament until the first game kicks off.'
 bets:

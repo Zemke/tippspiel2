@@ -53,6 +53,7 @@ championBet:
   title: 'Turniersieger tippen'
   selectTeam: 'Wähle das Team'
   submit: 'Abschicken'
+  hintAtLaterChange: 'Dein Turniersieger-Tipp kann später geändert werden, indem du auf deine Flagge in der Tabelle klickst.'
 standings:
     yetToBet: 'Du hast Zeit bis zum ersten Spiel deinen Turniersieger-Tipp zum abzugeben.'
 bets:
