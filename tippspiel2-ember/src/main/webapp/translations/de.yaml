@@ -1,3 +1,4 @@
+easterEgg: 'Hier könnte ein Easter Egg implementiert werden.'
 app:
   signOut: 'Ausloggen'
   signIn: 'Einloggen'
