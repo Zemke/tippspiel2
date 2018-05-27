@@ -7,7 +7,7 @@ export default Route.extend({
     return this.get('store').query('betting-game', {'invitation-token': model.invitationToken})
       .then(bettingGames => {
         if (!bettingGames.get('length')) {
-          this.get('resHandler').handleWithRouting(transition, this.transitionTo.bind(this), "Access denied");
+          this.get('resHandler').handleWithRouting(transition, this.transitionTo.bind(this), "catchError.accessDenied");
         }
         return this.store.createRecord('user', {bettingGames: [bettingGames.objectAt(0)]});
       });

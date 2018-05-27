@@ -39,19 +39,19 @@ export default Route.extend({
     error(error, transition) {
       console.error(error);
 
-      let message;
+      let locKey;
       if (error.status === 404) {
-        message = 'Page not found.';
+        locKey = 'catchError.resourceNotFound';
       } else if (error.status === 503) {
-        message = 'Service temporarily unavailable.';
+        locKey = 'catchError.serviceUnavailable';
       } else if (error.status === 401 || error.status === 403) {
-        message = 'Access denied.';
+        locKey = 'catchError.accessDenied';
       } else {
-        message = 'An unknown error occurred.';
+        locKey = 'err.unknown';
       }
 
       this.get('resHandler').handleWithRouting(
-        transition, this.transitionTo.bind(this), message);
+        transition, this.transitionTo.bind(this), locKey);
     }
   }
 });

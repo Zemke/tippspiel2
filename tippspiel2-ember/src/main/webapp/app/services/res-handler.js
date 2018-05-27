@@ -9,7 +9,8 @@ export default Service.extend({
     const locKey = res.locKey || 'err.unknown';
     iziToast.error({message: this.get('intl').t(locKey)});
   },
-  handleWithRouting(transition, transitionTo, message) {
+  handleWithRouting(transition, transitionTo, locKey) {
+    const message = this.get('intl').t(locKey);
     if (transition.sequence === 0) {
       alert(message);
       transitionTo('application');

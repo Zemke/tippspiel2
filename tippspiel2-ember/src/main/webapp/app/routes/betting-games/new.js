@@ -22,6 +22,6 @@ export default Route.extend({
   },
   beforeModel(transition) {
     return this.get('auth.isAdmin').then(isAdmin =>
-      !isAdmin && this.get('resHandler').handleWithRouting(transition, this.transitionTo.bind(this), "Access denied"))
+      !isAdmin && this.get('resHandler').handleWithRouting(transition, this.transitionTo.bind(this), "catchError.accessDenied"))
   }
 });

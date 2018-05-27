@@ -23,17 +23,17 @@ export default Component.extend({
     const evaluation = this.get('evaluation');
 
     if (evaluation === 5) {
-      return 'Exact result';
+      return '5';
     } else if (evaluation === 3) {
-      return 'Right goal difference';
+      return '3';
     } else if (evaluation === 1) {
-      return 'Right winner';
+      return '1';
     } else if (evaluation === 0) {
-      return 'Failed bet';
+      return '0';
     }  else if (evaluation === 10) {
-      return 'Right champion';
+      return '10';
     } else {
-      return 'No bet submitted';
+      return 'void';
     }
   })
 });
