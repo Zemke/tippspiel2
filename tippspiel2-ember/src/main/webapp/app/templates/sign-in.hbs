@@ -7,9 +7,9 @@
           {{input type="email" placeholder=(t 'signIn.email.placeholder')
                   class=(concat 'input ' (if (v-get model 'email' 'isInvalid') 'is-danger'))
                   value=(mut (get model 'email'))}}
-          <span class="icon">
-              <i class="fa fa-envelope"></i>
-            </span>
+          <span class="icon is-left">
+            <i class="fa fa-envelope"></i>
+          </span>
         </div>
       </div>
       <div class="field">
@@ -17,9 +17,9 @@
           {{input type="password" placeholder=(t 'signIn.password.placeholder')
                   class=(concat 'input ' (if (v-get model 'password' 'isInvalid') 'is-danger'))
                   value=(mut (get model 'password'))}}
-          <span class="icon">
-              <i class="fa fa-unlock"></i>
-            </span>
+          <span class="icon is-left">
+            <i class="fa fa-unlock"></i>
+          </span>
         </div>
       </div>
       <div class="field">
