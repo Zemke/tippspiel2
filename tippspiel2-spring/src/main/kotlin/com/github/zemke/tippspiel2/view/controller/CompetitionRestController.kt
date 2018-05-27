@@ -38,7 +38,7 @@ class CompetitionRestController(
     fun queryCompetitions(@RequestParam("current", defaultValue = "false") current: Boolean): ResponseEntity<List<CompetitionDto>> {
         val competitions = if (current) {
             listOf(competitionService.findByCurrentTrue()
-                    ?: throw NotFoundException("There is currently no competition.")
+                    ?: throw NotFoundException("There is currently no competition.", "err.competitionNotFound")
             )
         } else {
             competitionService.findAll()
@@ -68,17 +68,17 @@ class CompetitionRestController(
     @PutMapping("/{competitionId}")
     fun updateCompetition(@PathVariable competitionId: Long,
                           @RequestBody competitionCreationDto: CompetitionCreationDto): ResponseEntity<CompetitionDto> {
-        if (competitionCreationDto.current == true) {
-            val newCurrentCompetition = competitionService.find(competitionId)
-                    .orElseThrow { throw NotFoundException("No such competition.") }
+        val competitionToUpdate = competitionService.find(competitionId)
+                .orElseThrow { throw NotFoundException("No such competition.", "err.competitionNotFound") }
 
-            return ResponseEntity.ok(CompetitionDto.toDto(competitionService.setCurrentCompetition(newCurrentCompetition)))
+        if (competitionCreationDto.current == true) {
+            return ResponseEntity.ok(CompetitionDto.toDto(competitionService.setCurrentCompetition(competitionToUpdate)))
         } else {
             val currentCompetition = competitionService.findByCurrentTrue()
-            val competitionToUpdate = competitionService.find(competitionId)
-                    .orElseThrow { throw NotFoundException("No such competition.") }
             if (competitionToUpdate == currentCompetition) footballDataScheduledTasksService.updateCurrentCompetitionWithItsTeams()
-            else throw BadRequestException("At the moment you can only update the current competition.")
+            else throw BadRequestException(
+                    "At the moment you can only update the current competition.",
+                    "err.competitionUpdateOnlyCurrent")
             return ResponseEntity.ok(CompetitionDto.toDto(competitionService.find(competitionId).get()))
         }
     }

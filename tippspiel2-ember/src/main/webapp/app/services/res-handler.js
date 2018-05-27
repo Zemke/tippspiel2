@@ -1,11 +1,13 @@
-import Service from '@ember/service';
+import Service, {inject} from '@ember/service';
 
 export default Service.extend({
-  handleSuccess(message) {
-    iziToast.success({message});
+  intl: inject(),
+  handleSuccess(locKey) {
+    iziToast.success({message: this.get('intl').t(locKey)});
   },
   handleError(res) {
-    iziToast.error({message: res.message});
+    const locKey = res.locKey || 'err.unknown';
+    iziToast.error({message: this.get('intl').t(locKey)});
   },
   handleWithRouting(transition, transitionTo, message) {
     if (transition.sequence === 0) {

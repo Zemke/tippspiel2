@@ -11,8 +11,8 @@ export default Controller.extend({
     },
     submit() {
       this.get('model.championBet').save()
-        .then(res => this.get('resHandler').handleSuccess('Bet has been saved.'))
-        .catch(this.get('resHandler').handleError);
+        .then(res => this.get('resHandler').handleSuccess('success.betSaved'))
+        .catch(err => this.get('resHandler').handleError(err));
     }
   }
 });

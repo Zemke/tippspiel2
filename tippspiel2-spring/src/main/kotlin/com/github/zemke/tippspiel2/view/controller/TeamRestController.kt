@@ -23,7 +23,7 @@ class TeamRestController(
         val teams =
                 if (competition != null)
                     teamService.findByCompetition(competitionService.find(competition)
-                            .orElseThrow { throw BadRequestException("Invalid competition.") })
+                            .orElseThrow { throw BadRequestException("Invalid competition.", "err.competitionNotFound") })
                 else teamService.findAll()
 
         return ResponseEntity.ok(teams.map { TeamDto.toDto(it) })

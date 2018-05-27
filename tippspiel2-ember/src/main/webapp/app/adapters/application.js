@@ -13,11 +13,11 @@ export default RESTAdapter.extend({
   },
   handleResponse(status, headers, payload, requestData) {
     if (status === 500) {
-      return {status, message: 'An unknown error occurred.'};
+      return {status, locKey: payload.locKey};
     } else if (status === 401 || status === 403) {
-      return {status, message: "Access denied."};
+      return {status, locKey: payload.locKey};
     } else if (status === 400 || status === 404) {
-      return {status, message: payload.message};
+      return {status, locKey: payload.locKey};
     } else {
       return this._super(...arguments);
     }

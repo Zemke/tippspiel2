@@ -7,10 +7,10 @@ export default Controller.extend({
     submit() {
       this.model.save()
         .then(res => {
-          this.get('resHandler').handleSuccess('The community has been created.');
+          this.get('resHandler').handleSuccess("success.competitionCreated");
           this.transitionToRoute('me');
         })
-        .catch(this.get('resHandler').handleError);
+        .catch(err => this.get('resHandler').handleError(err));
     }
   }
 });

@@ -26,5 +26,5 @@ class FixtureRestController(
     @GetMapping("/{fixtureId}")
     fun getFixture(@PathVariable("fixtureId") fixtureId: Long): ResponseEntity<FixtureDto> =
             ResponseEntity.ok(FixtureDto.toDto(fixtureService.getById(fixtureId)
-                    .orElseThrow { throw NotFoundException("There is no such fixture.") }))
+                    .orElseThrow { throw NotFoundException("There is no such fixture.", "err.fixtureNotFound") }))
 }

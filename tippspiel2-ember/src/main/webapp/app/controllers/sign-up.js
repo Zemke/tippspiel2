@@ -17,7 +17,7 @@ export default Controller.extend({
           this.get('auth').storeToken(res.get('token'));
           window.location.href = '/';
         })
-        .catch(this.get('resHandler').handleError)
+        .catch(err => this.get('resHandler').handleError(err))
     }
   }
 });

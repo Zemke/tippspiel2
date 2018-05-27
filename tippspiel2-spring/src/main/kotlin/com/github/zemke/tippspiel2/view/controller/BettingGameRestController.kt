@@ -28,7 +28,7 @@ class BettingGameRestController {
     @PostMapping("")
     fun createBettingGame(@RequestBody bettingGameCreationDto: BettingGameCreationDto): ResponseEntity<BettingGameDto> {
         val competition = competitionService.find(bettingGameCreationDto.competition)
-                .orElseThrow { throw BadRequestException() }
+                .orElseThrow { throw BadRequestException("There is no such betting game", "err.bettingGameNotFound") }
 
         val bettingGame = BettingGameCreationDto.fromDto(bettingGameCreationDto, competition)
 

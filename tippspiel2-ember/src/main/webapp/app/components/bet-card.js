@@ -8,8 +8,8 @@ export default Component.extend({
   actions: {
     submit(bet) {
       bet.save()
-        .then(res => this.get('resHandler').handleSuccess('Bet saved.'))
-        .catch(this.get('resHandler').handleError);
+        .then(res => this.get('resHandler').handleSuccess('success.betSaved'))
+        .catch(err => this.get('resHandler').handleError(err));
     }
   },
   disabled: computed(function () {

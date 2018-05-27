@@ -4,8 +4,4 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.ResponseStatus
 
 @ResponseStatus(HttpStatus.UNAUTHORIZED)
-class UnauthorizedException : RuntimeException {
-
-    constructor()
-    constructor(message: String) : super(message)
-}
+class UnauthorizedException : AbstractRestException("Unauthorized", "err.unauthorized", HttpStatus.UNAUTHORIZED)

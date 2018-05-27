@@ -26,7 +26,7 @@ class StandingRestController {
     fun getStandings(@RequestParam bettingGame: Long?, request: HttpServletRequest): ResponseEntity<List<StandingDto>> {
         return if (bettingGame != null)
             ResponseEntity.ok(standingService.findByBettingGame(bettingGameService.find(bettingGame)
-                    .orElseThrow { throw BadRequestException("There is no such betting game.") })
+                    .orElseThrow { throw BadRequestException("There is no such betting game.", "err.bettingGameNotFound") })
                     .map { StandingDto.toDto(it) })
         else
             ResponseEntity.ok(standingService.findAll().map { StandingDto.toDto(it) })

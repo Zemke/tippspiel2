@@ -43,15 +43,15 @@ class ChampionBetRestController(
                 jsonWebTokenService.getSubjectFromToken(token))
 
         val bettingGame = bettingGameService.find(championBetCreationDto.bettingGame)
-                .orElseThrow { throw BadRequestException("There is no such betting game.") }
+                .orElseThrow { throw BadRequestException("There is no such betting game.", "err.bettingGameNotFound") }
 
         if (!bettingGame.competition.championBetAllowed)
-            throw BadRequestException("Champion bet deadline has exceeded.")
+            throw BadRequestException("Champion bet deadline has exceeded.", "err.championBetDeadlineExceeded")
 
         val championBet = ChampionBetCreationDto.fromDto(
                 bettingGame,
                 teamService.find(championBetCreationDto.team)
-                        .orElseThrow { throw BadRequestException("There is no such team.") },
+                        .orElseThrow { throw BadRequestException("There is no such team.", "err.teamNotFound") },
                 user!!
         )
 
@@ -69,16 +69,17 @@ class ChampionBetRestController(
         val authenticatedUserId = jsonWebTokenService.getIdFromToken(token)
 
         val championBet = championBetService.find(championBetId)
-                .orElseThrow { throw NotFoundException("Champion bet not found.") }
+                .orElseThrow { throw NotFoundException("Champion bet not found.", "err.championBetNotFound") }
 
         if (!championBet.bettingGame.competition.championBetAllowed)
-            throw BadRequestException("Champion bet deadline has exceeded.")
+            throw BadRequestException("Champion bet deadline has exceeded.", "err.championBetDeadlineExceeded")
 
 
-        if (authenticatedUserId != championBet.user.id) throw ForbiddenException("This champion bet is not yours.")
+        if (authenticatedUserId != championBet.user.id)
+            throw ForbiddenException("This champion bet is not yours.", "err.editSomebodyElsesChampionBet")
 
         championBet.team = teamService.find(championBetCreationDto.team)
-                .orElseThrow { throw BadRequestException("There is no such betting game.") }
+                .orElseThrow { throw BadRequestException("There is no such betting game.", "err.bettingGameNotFound") }
 
         return ResponseEntity.ok(ChampionBetDto.toDto(championBetService.saveChampionBet(championBet)))
     }
@@ -88,7 +89,7 @@ class ChampionBetRestController(
         val championBets =
                 (if (bettingGame != null)
                     championBetService.findByBettingGame(bettingGameService.find(bettingGame)
-                            .orElseThrow { throw BadRequestException("Invalid betting game.") })
+                            .orElseThrow { throw BadRequestException("Invalid betting game.", "err.bettingGameNotFound") })
                 else championBetService.findAll())
                         .filter { user == null || user == it.user.id }
 

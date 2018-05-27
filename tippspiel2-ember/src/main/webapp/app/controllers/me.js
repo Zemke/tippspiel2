@@ -8,8 +8,8 @@ export default Controller.extend({
     updateCurrentCompetition(newCurrentCompetition) {
       newCurrentCompetition.set('current', true);
       return newCurrentCompetition.save()
-        .then(() => this.get('resHandler').handleSuccess("Competition has been updated."))
-        .catch(this.get('resHandler').handleError);
+        .then(() => this.get('resHandler').handleSuccess('success.competitionSaved'))
+        .catch(err => this.get('resHandler').handleError(err));
     }
   }
 });

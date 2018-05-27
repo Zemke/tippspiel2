@@ -27,7 +27,7 @@ class UserRestController(
     fun createUser(@RequestBody userCreationDto: UserCreationDto): ResponseEntity<UserDto> {
         val plainPassword = userCreationDto.password
         val bettingGame = bettingGameService.find(userCreationDto.bettingGames[0])
-                .orElseThrow { throw BadRequestException("Invalid betting game.") }
+                .orElseThrow { throw BadRequestException("Invalid betting game.", "err.bettingGameNotFound") }
         val persistedUser = userService.addUser(
                 userCreationDto.firstName, userCreationDto.lastName,
                 userCreationDto.email, userCreationDto.password,
@@ -42,7 +42,7 @@ class UserRestController(
     @GetMapping("/{id}")
     fun readUser(@PathVariable("id") id: Long): ResponseEntity<UserDto> {
         return ResponseEntity.ok(UserDto.toDto(userService.findUser(id)
-                .orElseThrow { throw NotFoundException("User not found.") }))
+                .orElseThrow { throw NotFoundException("User not found.", "err.userNotFound") }))
     }
 
     @GetMapping("")

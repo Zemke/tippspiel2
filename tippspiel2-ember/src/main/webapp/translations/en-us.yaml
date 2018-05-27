@@ -46,6 +46,8 @@ standings:
 bets:
   none: 'There are no bets yet.'
 notFound: 'The page you were looking for wasn’t found.'
+err:
+  unknown: 'An unknown error has occurred.'
 team:
   name:
     808: 'Russia'

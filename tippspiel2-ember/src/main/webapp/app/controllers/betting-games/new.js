@@ -7,10 +7,10 @@ export default Controller.extend({
     submit() {
       this.model.bettingGame.save()
         .then(res => {
-          this.get('resHandler').handleSuccess('The betting game has been created.');
+          this.get('resHandler').handleSuccess('success.bettingGameCreated');
           this.transitionToRoute('me');
         })
-        .catch(this.get('resHandler').handleError);
+        .catch(err => this.get('resHandler').handleError(err));
     }
   }
 });
