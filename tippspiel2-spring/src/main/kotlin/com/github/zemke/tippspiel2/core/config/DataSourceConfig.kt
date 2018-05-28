@@ -1,8 +1,10 @@
 package com.github.zemke.tippspiel2.core.config
 
 import com.github.zemke.tippspiel2.core.profile.Dev
+import com.github.zemke.tippspiel2.core.profile.Prod
 import com.github.zemke.tippspiel2.core.properties.EmbeddedDataSourceProperties
 import com.zaxxer.hikari.HikariDataSource
+import org.apache.tomcat.jdbc.pool.DataSource
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.jdbc.DataSourceBuilder
@@ -29,6 +31,14 @@ class DataSourceConfig {
                 .create()
                 .type(HikariDataSource::class.java)
                 .build()
+    }
+
+    @Bean
+    @ConfigurationProperties("spring.datasource")
+    @Primary
+    @Prod
+    fun standalonePostgresDatabaseDataSource(): DataSource {
+        return org.apache.tomcat.jdbc.pool.DataSource();
     }
 
     private fun startEmbeddedPostgresDatabase() {
