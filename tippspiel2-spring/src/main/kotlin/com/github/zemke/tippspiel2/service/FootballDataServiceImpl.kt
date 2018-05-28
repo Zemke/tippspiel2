@@ -8,9 +8,9 @@ import com.github.zemke.tippspiel2.view.model.FootballDataCompetitionDto
 import com.github.zemke.tippspiel2.view.model.FootballDataFixtureWrappedListDto
 import com.github.zemke.tippspiel2.view.model.FootballDataTeamWrappedListDto
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.devtools.remote.client.HttpHeaderInterceptor
 import org.springframework.boot.web.client.RestTemplateBuilder
 import org.springframework.http.MediaType
+import org.springframework.http.client.ClientHttpRequestInterceptor
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestTemplate
@@ -28,10 +28,11 @@ class FootballDataServiceImpl : FootballDataService {
     fun postConstruct() {
         restTemplate = RestTemplateBuilder()
                 .interceptors(
-                        listOf(
-                                HttpHeaderInterceptor(footballDataProperties.apiTokenHeader, footballDataProperties.apiToken),
-                                HttpHeaderInterceptor("X-Response-Control", "minified")
-                        ))
+                        ClientHttpRequestInterceptor { request, body, execution ->
+                            request.headers.add(footballDataProperties.apiTokenHeader, footballDataProperties.apiToken)
+                            request.headers.add("X-Response-Control", "minified")
+                            execution.execute(request, body)
+                        })
                 .messageConverters(
                         with(MappingJackson2HttpMessageConverter()) {
                             supportedMediaTypes = listOf(MediaType.APPLICATION_JSON)
