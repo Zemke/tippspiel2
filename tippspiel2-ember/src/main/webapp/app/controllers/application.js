@@ -25,4 +25,7 @@ export default Controller.extend({
   localeIsEnUs: computed(function () {
     return this.get('intl').get('locale') === 'en-us';
   }),
+  isAppleStandalone: computed(function () {
+    return ("standalone" in window.navigator) && window.navigator.standalone;
+  }),
 });

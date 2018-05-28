@@ -1,4 +1,4 @@
-<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+<nav class={{concat 'navbar is-primary' (if isAppleStandalone ' apple-standalone')}} role="navigation" aria-label="main navigation">
   <div class="container">
     <div class="navbar-brand">
       {{#if model.currentBettingGame}}

@@ -1,3 +1,8 @@
+.navbar.apple-standalone {
+  padding-top: 20px;
+  @extend .is-fixed-top;
+}
+
 .small-caps {
   font-variant: small-caps
 }
