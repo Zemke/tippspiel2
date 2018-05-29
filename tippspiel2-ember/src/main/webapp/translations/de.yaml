@@ -55,7 +55,7 @@ championBet:
   submit: 'Abschicken'
   hintAtLaterChange: 'Dein Turniersieger-Tipp kann später geändert werden, indem du auf deine Flagge in der Tabelle klickst.'
 standings:
-    yetToBet: 'Du hast Zeit bis zum ersten Spiel deinen Turniersieger-Tipp zum abzugeben.'
+    yetToBet: 'Klicke hier um deinen Turniersieger-Tipp zum abzugeben. Du hast Zeit bis zum ersten Spiel.'
 bets:
   none: 'Es gibt noch keine Tipps.'
   leaveWarning: 'Du hast ungespeicherte Tipps. Willst du die Seite wirklich verlassen?'
