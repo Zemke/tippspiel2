@@ -9,6 +9,7 @@ export default Route.extend({
       return RSVP.hash({
         user: this.get('store').findRecord('user', params.user_id),
         bets: this.get('store').query('bet', {user: params.user_id, bettingGame: currentBettingGame.get('id')})
+          .then(bets => bets.toArray().sort((a, b) => a.get('fixture.date') - b.get('fixture.date')))
       });
     });
   }
