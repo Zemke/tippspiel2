@@ -5,13 +5,15 @@ import {inject} from '@ember/service';
 export default Route.extend({
   auth: inject(),
   bettingGame: inject(),
+  intl: inject(),
   model() {
     return RSVP.hash({
       currentBettingGame: this.get('bettingGame.currentBettingGame'),
       authenticatedUser: this.get('auth.user')
     }).then(hash =>
       RSVP.hash({
-        teams: this.get('store').findAll('team', {reload: true}).then(teams => teams.sortBy('name')), // TODO Sort by localized name.
+        teams: this.get('store').findAll('team', {reload: true}).then(teams => teams.toArray().sort((a, b) =>
+            this.get('intl').t(`team.name.${a.id}`).localeCompare(this.get('intl').t(`team.name.${b.id}`)))),
         championBet: this.get('store').query(
           'champion-bet',
           {
