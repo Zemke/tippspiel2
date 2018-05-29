@@ -67,15 +67,8 @@ class WebSecurityConfig(
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                .antMatchers(
-                        HttpMethod.GET,
-                        "/",
-                        "/img/**/*",
-                        "/fonts/**/*",
-                        "/**/*.html",
-                        "/**/*.css",
-                        "/**/*.js",
-                        "/**/*.js.map").permitAll()
+                .antMatchers(HttpMethod.GET, "/").permitAll()
+                .antMatchers(HttpMethod.GET, "/{path:^(?!api).+}/**").permitAll()
                 .antMatchers("/api/hellos/**").hasRole(UserRole.ROLE_ADMIN.unPrefixed())
                 .antMatchers(HttpMethod.POST, "/api/auth").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/betting-games").hasRole(UserRole.ROLE_ADMIN.unPrefixed())
