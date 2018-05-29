@@ -58,6 +58,7 @@ standings:
   yetToBet: 'You only have time to bet the champion of the tournament until the first game kicks off.'
 bets:
   none: 'There are no bets yet.'
+  leaveWarning: 'You have unsaved bets. Do you really want to leave?'
 notFound: 'The page you were looking for wasn’t found.'
 catchError:
   resourceNotFound: 'The page you were looking for wasn’t found.'

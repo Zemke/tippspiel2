@@ -58,6 +58,7 @@ standings:
     yetToBet: 'Du hast Zeit bis zum ersten Spiel deinen Turniersieger-Tipp zum abzugeben.'
 bets:
   none: 'Es gibt noch keine Tipps.'
+  leaveWarning: 'Du hast ungespeicherte Tipps. Willst du die Seite wirklich verlassen?'
 notFound: 'Die aufgerufene Seite gibt es nicht.'
 catchError:
   resourceNotFound: 'Die nachgefragte Seite konne nicht gefunden werden.'

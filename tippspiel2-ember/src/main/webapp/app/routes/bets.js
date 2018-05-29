@@ -5,6 +5,7 @@ import {inject} from '@ember/service';
 export default Route.extend({
   auth: inject(),
   bettingGame: inject(),
+  intl: inject(),
   model() {
     return RSVP.hash({
       user: this.get('auth.user'),
