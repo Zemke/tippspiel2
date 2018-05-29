@@ -2,10 +2,13 @@ package com.github.zemke.tippspiel2.view.controller
 
 import com.github.zemke.tippspiel2.SpringBootTippspiel2Application
 import com.github.zemke.tippspiel2.core.authentication.AuthenticatedUser
-import com.github.zemke.tippspiel2.service.BettingGameService
+import com.github.zemke.tippspiel2.persistence.model.BettingGame
+import com.github.zemke.tippspiel2.persistence.repository.BettingGameRepository
+import com.github.zemke.tippspiel2.persistence.repository.CompetitionRepository
 import com.github.zemke.tippspiel2.service.JsonWebTokenService
 import com.github.zemke.tippspiel2.service.UserService
 import com.github.zemke.tippspiel2.test.util.IntegrationTest
+import com.github.zemke.tippspiel2.test.util.PersistenceUtils
 import com.github.zemke.tippspiel2.view.model.AuthenticationRequestDto
 import com.github.zemke.tippspiel2.view.model.JsonWebTokenDto
 import com.github.zemke.tippspiel2.view.util.JacksonUtils
@@ -37,7 +40,10 @@ class AuthRestControllerTest {
     private lateinit var userService: UserService
 
     @Autowired
-    private lateinit var bettingGameService: BettingGameService
+    private lateinit var bettingGameRepository: BettingGameRepository
+
+    @Autowired
+    private lateinit var competitionRepository: CompetitionRepository
 
     @Autowired
     private lateinit var jsonWebTokenService: JsonWebTokenService
@@ -54,7 +60,7 @@ class AuthRestControllerTest {
         val plainPassword = "hamburger"
         val email = "Florian.Zemke@btc-ag.com"
         val requestPayload = JacksonUtils.toJson(AuthenticationRequestDto(email, plainPassword))
-        val user = userService.addUser("Florian", "Zemke", email, plainPassword, bettingGameService.findAll()[0])
+        val user = userService.addUser("Florian", "Zemke", email, plainPassword, createBettingGame())
 
         this.mockMvc.perform(post("/api/auth/")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -65,6 +71,12 @@ class AuthRestControllerTest {
                     Assert.isTrue(jsonWebTokenService.validateToken(token, AuthenticatedUser.create(user)))
                     Assert.isTrue(jsonWebTokenService.getSubjectFromToken(token) == user.email)
                 }
+    }
+
+    private fun createBettingGame(): BettingGame {
+        val bettingGame = PersistenceUtils.instantiateBettingGame()
+        return bettingGameRepository.save(
+                bettingGame.copy(competition = competitionRepository.save(bettingGame.competition)))
     }
 
 }
