@@ -70,14 +70,13 @@ class WebSecurityConfig(
                 .antMatchers(
                         HttpMethod.GET,
                         "/",
+                        "/img/**/*",
                         "/fonts/**/*",
-                        "/icons/**/*",
-                        "/loading*.gif",
                         "/**/*.html",
                         "/**/*.css",
                         "/**/*.js",
                         "/**/*.js.map").permitAll()
-        .antMatchers("/api/hellos/**").hasRole(UserRole.ROLE_ADMIN.unPrefixed())
+                .antMatchers("/api/hellos/**").hasRole(UserRole.ROLE_ADMIN.unPrefixed())
                 .antMatchers(HttpMethod.POST, "/api/auth").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/betting-games").hasRole(UserRole.ROLE_ADMIN.unPrefixed())
                 .antMatchers(HttpMethod.GET, "/api/betting-games").permitAll()
