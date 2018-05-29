@@ -38,7 +38,7 @@ class FootballDataServiceImpl : FootballDataService {
                             supportedMediaTypes = listOf(MediaType.APPLICATION_JSON)
                             objectMapper = with(ObjectMapper()) {
                                 configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-                                setDateFormat(SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Zw'"))
+                                setDateFormat(SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'"))
                             }
                             this
                         })
