@@ -17,7 +17,7 @@
             <select onchange={{action "selectTeam" value="target.value"}}>
               {{#if model.championBet.team.id}}
                 <option value={{model.championBet.team.id}} selected>
-                  {{model.championBet.team.name}}
+                  {{t (concat 'team.name.' model.championBet.team.id)}}
                 </option>
               {{else}}
                 <option value="" disabled selected>
