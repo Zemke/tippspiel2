@@ -6,7 +6,6 @@ import {pluralize} from 'ember-inflector';
 
 export default RESTAdapter.extend({
   auth: inject(),
-  host: 'http://0.0.0.0:8080',
   namespace: 'api',
   pathForType(modelName) {
     return decamelize(pluralize(modelName));
