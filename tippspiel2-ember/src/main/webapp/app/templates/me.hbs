@@ -5,7 +5,7 @@
 {{#if auth.isAdmin}}
   <div class="tile is-ancestor">
     <div class="tile is-parent">
-      {{#link-to 'competitions.new' class="tile is-child is-danger notification is-primary"}}
+      {{#link-to 'competitions.new' class="tile is-child is-danger notification"}}
         <p class="title">
           {{t 'me.competition.title'}}
         </p>
@@ -17,7 +17,7 @@
   </div>
   <div class="tile is-ancestor">
     <div class="tile is-parent">
-      {{#link-to 'betting-games.new' class="tile is-child is-danger notification is-primary"}}
+      {{#link-to 'betting-games.new' class="tile is-child is-danger notification"}}
         <p class="title">
           {{t 'me.bettingGame.title'}}
         </p>
@@ -27,7 +27,7 @@
       {{/link-to}}
     </div>
     <div class="tile is-parent">
-      {{#link-to 'betting-games.list' class="tile is-child is-danger notification is-primary"}}
+      {{#link-to 'betting-games.list' class="tile is-child is-danger notification"}}
         <p class="title">
           {{t 'me.bettingGames.title'}}
         </p>
@@ -39,7 +39,7 @@
   </div>
   <div class="tile is-ancestor">
     <div class="tile is-parent">
-      <article class="tile is-child is-danger notification is-primary">
+      <article class="tile is-child is-danger notification">
         <p class="title">
           {{t 'me.setCurrentCompetition.title'}}
         </p>
