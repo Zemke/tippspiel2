@@ -9,7 +9,7 @@
     </parent>
     <groupId>com.github.zemke.tippspiel2</groupId>
     <artifactId>tippspiel2</artifactId>
-    <version>1.2.0-SNAPSHOT</version>
+    <version>1.2.0</version>
     <packaging>pom</packaging>
     <modules>
         <module>tippspiel2-spring</module>
@@ -45,7 +45,7 @@
         <url>https://github.com/Zemke/tippspiel</url>
         <connection>scm:git:git://github.com/Zemke/tippspiel.git</connection>
         <developerConnection>scm:git:git@github.com:Zemke/tippspiel.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>tippspiel2-1.2.0</tag>
     </scm>
     <build>
         <plugins>
