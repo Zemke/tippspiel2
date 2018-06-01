@@ -50,6 +50,6 @@ class BettingGameRestController {
     fun queryBettingGames(@RequestParam("invitation-token") invitationToken: String?): ResponseEntity<List<BettingGameDto>> {
         val bettingGames = bettingGameService.findAll()
                 .filter { invitationToken == null || it.invitationToken == invitationToken }
-        return ResponseEntity.ok(bettingGames.map { BettingGameDto.fromDto(it) })
+        return ResponseEntity.ok(bettingGames.map { BettingGameDto.toDto(it) })
     }
 }

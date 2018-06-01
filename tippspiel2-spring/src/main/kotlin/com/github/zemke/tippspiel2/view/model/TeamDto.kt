@@ -19,5 +19,12 @@ data class TeamDto(
                 team.squadMarketValue,
                 CompetitionDto.toDto(team.competition)
         )
+
+        fun fromDto(dto: TeamDto): Team = Team(
+                id = dto.id,
+                name = dto.name,
+                competition = CompetitionDto.fromDto(dto.competition),
+                squadMarketValue = dto.squadMarketValue
+        )
     }
 }

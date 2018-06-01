@@ -1,4 +1,6 @@
 easterEgg: 'An Easter Egg will be implemented here.'
+submit: 'Submit'
+join: 'Join {name}'
 app:
   signOut: 'Sign Out'
   signIn: 'Sign In'
@@ -49,6 +51,10 @@ me:
     theCurrentCompetitionIs: 'The current competition is'
     thereIsNoCurrentCompetition: 'No current competition is set.'
     warning: 'Please bear in mind that betting games which are assigned a competition that is not the current cannot be played.'
+  join:
+    title: 'Join Another Betting Game'
+    subtitle: 'If you have received an invitation token, you can enter it here to join another betting game.'
+    success: 'Successfully joined betting game.'
 championBet:
   title: 'Champion Bet'
   selectTeam: 'Select team'
@@ -83,6 +89,8 @@ err:
   championBetDeadlineExceeded: 'It’s too late to bet on a champion.'
   tooLateToBet: 'It’s too late to place a bet.'
   noCurrentCompetition: 'There is currently no competition.'
+  joinNonCurrent: 'The betting game doesn’t play the current competition.'
+  joinEndedBettingGame: 'Apparently the betting game has ended.'
 evaluation:
   tooltip:
     5: 'Exact result'

@@ -1,0 +1,39 @@
+<div class="columns is-desktop">
+  <div class="column">
+    <h1 class="title">{{t 'me.join.title'}}</h1>
+    <p class="subtitle">{{t 'me.join.subtitle'}}</p>
+  </div>
+</div>
+{{#unless model.bettingGameToJoin}}
+  <div class="columns is-desktop">
+    <div class="column is-half">
+      <form>
+        <div class="field">
+          <div class="control has-icons-left">
+            {{input type="text" placeholder=(t 'bettingGame.list.invitationToken')
+                    class='input'
+                    value=(mut invitationToken)}}
+            <span class="icon is-left">
+              <i class="fa fa-envelope"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            {{#submit-button model=model submit=(action 'submitInvitationToken')}}
+              {{t 'submit'}}
+            {{/submit-button}}
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+{{else}}
+  <div class="columns is-desktop">
+    <div class="column">
+      <button class={{concat "button is-danger is-large"  (if model.user.isSaving ' is-loading')}} {{action 'joinBettingGame'}}>
+        {{t 'join' name=model.bettingGameToJoin.name}}
+      </button>
+    </div>
+  </div>
+{{/unless}}

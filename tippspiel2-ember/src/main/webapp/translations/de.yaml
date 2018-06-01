@@ -1,4 +1,6 @@
 easterEgg: 'Hier könnte ein Easter Egg implementiert werden.'
+submit: 'Abschicken'
+join: '{name} beitreten'
 app:
   signOut: 'Ausloggen'
   signIn: 'Einloggen'
@@ -49,6 +51,10 @@ me:
     theCurrentCompetitionIs: 'Der aktuelle Wettbewerb ist'
     thereIsNoCurrentCompetition: 'Kein aktueller Wettbewerb gewählt.'
     warning: 'Denke daran, dass Tipprunden, die nicht den aktuellen Wettbewerb spielen nicht fortgeführt werden können.'
+  join:
+    title: 'Trete einer weiteren Tipprunde bei'
+    subtitle: 'Wenn du einen Einladungs-Token bekommen hast, kannst du ihn hier eintragen und einer weiteren Tipprunde beitreten.'
+    success: 'Tipprunde erfolgreich beigetreten.'
 championBet:
   title: 'Turniersieger tippen'
   selectTeam: 'Wähle das Team'
@@ -83,6 +89,8 @@ err:
   championBetDeadlineExceeded: 'Es ist zu spät für einen Tipp.'
   tooLateToBet: 'Es ist zu spät für einen Tipp.'
   noCurrentCompetition: 'Es gibt keinen aktuellen Wettbewerb.'
+  joinNonCurrent: 'Die Tipprunde spielt nicht den aktuellen Wettbewerb.'
+  joinEndedBettingGame: 'Die Tipprunde ist offenbar beendet.'
 evaluation:
   tooltip:
     5: 'Exaktes Ergebnis'

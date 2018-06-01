@@ -2,6 +2,19 @@
   {{auth.user.firstName}} {{auth.user.lastName}}
 </h1>
 
+<div class="tile is-ancestor">
+  <div class="tile is-parent">
+    {{#link-to 'join' class="tile is-child notification is-primary"}}
+      <p class="title">
+        {{t 'me.join.title'}}
+      </p>
+      <p class="subtitle">
+        {{t 'me.join.subtitle'}}
+      </p>
+    {{/link-to}}
+  </div>
+</div>
+
 {{#if auth.isAdmin}}
   <div class="tile is-ancestor">
     <div class="tile is-parent">
@@ -81,8 +94,6 @@
       </article>
     </div>
   </div>
-{{else}}
-  <p>{{t 'easterEgg'}}</p>
 {{/if}}
 
 {{outlet}}

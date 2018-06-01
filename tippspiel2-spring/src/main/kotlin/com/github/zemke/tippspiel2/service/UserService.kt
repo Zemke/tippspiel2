@@ -39,19 +39,7 @@ class UserService(
                 FullName(firstName, lastName), email,
                 BCrypt.hashpw(plainPassword, authenticationProperties.bcryptSalt),
                 roleRepository.findByNameIn(roles), listOf(bettingGame)))
-
-        standingRepository.save(Standing(
-                id = null,
-                points = 0,
-                exactBets = 0,
-                goalDifferenceBets = 0,
-                winnerBets = 0,
-                wrongBets = 0,
-                missedBets = 0,
-                user = persistedUser,
-                bettingGame = bettingGame
-        ))
-
+        createInitialStanding(persistedUser, bettingGame)
         return persistedUser
     }
 
@@ -75,5 +63,33 @@ class UserService(
 
     fun findAllUsers(): List<User> {
         return userRepository.findAll()
+    }
+
+    fun joinBettingGame(user: User, bettingGame: BettingGame): User {
+        if (!bettingGame.competition.current) throw IllegalArgumentException("You may only join current competitions.")
+        if (bettingGame.competition.champion != null) throw IllegalArgumentException("The betting game has probably already ended.")
+
+        user.bettingGames = with(user.bettingGames.toMutableList()){
+            add(bettingGame)
+            this
+        }
+
+        createInitialStanding(user, bettingGame)
+
+        return userRepository.save(user)
+    }
+
+    private fun createInitialStanding(persistedUser: User, bettingGame: BettingGame) {
+        standingRepository.save(Standing(
+                id = null,
+                points = 0,
+                exactBets = 0,
+                goalDifferenceBets = 0,
+                winnerBets = 0,
+                wrongBets = 0,
+                missedBets = 0,
+                user = persistedUser,
+                bettingGame = bettingGame
+        ))
     }
 }

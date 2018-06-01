@@ -2,6 +2,7 @@ package com.github.zemke.tippspiel2.view.model
 
 import com.github.zemke.tippspiel2.persistence.model.Competition
 import com.github.zemke.tippspiel2.view.util.DataTransferObject
+import java.sql.Timestamp
 import java.util.*
 
 @DataTransferObject
@@ -35,6 +36,21 @@ data class CompetitionDto(
                 competition.current,
                 competition.championBetAllowed,
                 if (competition.champion != null) TeamDto.toDto(competition.champion!!) else null
+        )
+
+        fun fromDto(dto: CompetitionDto): Competition = Competition(
+                id = dto.id,
+                currentMatchday = dto.currentMatchday,
+                year = dto.year,
+                numberOfTeams = dto.numberOfTeams,
+                numberOfGames = dto.numberOfGames,
+                league = dto.league,
+                lastUpdated = Timestamp(dto.lastUpdated.time),
+                caption = dto.caption,
+                numberOfMatchdays = dto.numberOfMatchdays,
+                champion = if (dto.champion != null) TeamDto.fromDto(dto.champion) else null,
+                championBetAllowed = dto.championBetAllowed,
+                current = dto.current
         )
     }
 }

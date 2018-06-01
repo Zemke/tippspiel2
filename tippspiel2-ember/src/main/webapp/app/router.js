@@ -13,6 +13,7 @@ Router.map(function() {
   this.route('sign-in');
   this.route('me');
   this.route('champion-bet');
+  this.route('join');
 
   this.route('competitions', function() {
     this.route('new');
