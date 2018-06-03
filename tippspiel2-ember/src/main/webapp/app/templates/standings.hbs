@@ -40,7 +40,7 @@
       <td class="has-text-centered">{{standing.winnerBets}}</td>
       <td class="has-text-centered">{{standing.wrongBets}}</td>
       <td class="has-text-centered">{{standing.missedBets}}</td>
-      <td>
+      <td class="has-text-centered">
         {{#if standing.isAuthenticatedUserAndChampionBetAllowed}}
           {{#link-to 'champion-bet' class="icon"}}
             {{#country-flag teamId=standing.championBet.team.id}}{{/country-flag}}
