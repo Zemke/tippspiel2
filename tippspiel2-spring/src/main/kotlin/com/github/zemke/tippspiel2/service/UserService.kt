@@ -93,4 +93,7 @@ class UserService(
                 bettingGame = bettingGame
         ))
     }
+
+    fun findByBettingGames(bettingGame: List<BettingGame>): List<User> =
+            userRepository.findByBettingGames(bettingGame)
 }

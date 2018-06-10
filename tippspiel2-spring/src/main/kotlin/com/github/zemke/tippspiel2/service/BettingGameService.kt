@@ -18,4 +18,6 @@ class BettingGameService(
     fun saveBettingGame(bettingGame: BettingGame): BettingGame = bettingGameRepository.save(bettingGame)
 
     fun findAll(): List<BettingGame> = bettingGameRepository.findAll()
+
+    fun findMany(bettingGames: List<Long>): List<BettingGame> = bettingGameRepository.findAllById(bettingGames)
 }

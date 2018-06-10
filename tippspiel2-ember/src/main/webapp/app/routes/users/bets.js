@@ -8,8 +8,16 @@ export default Route.extend({
     return this.get('bettingGame.currentBettingGame').then(currentBettingGame => {
       return RSVP.hash({
         user: this.get('store').findRecord('user', params.user_id),
-        bets: this.get('store').query('bet', {user: params.user_id, bettingGame: currentBettingGame.get('id')})
-          .then(bets => bets.toArray().sort((a, b) => a.get('fixture.date') - b.get('fixture.date')))
+        bets: this.get('store').query('bet', {user: params.user_id, bettingGame: currentBettingGame.get('id')}),
+        fixtures: this.get('store').query('fixture', {competition: currentBettingGame.get('competition.id'), status: 'FINISHED'}),
+      }).then(hash => {
+        hash.bets = hash.fixtures
+          .map(f => hash.bets.find(b => b.get('fixture.id') === f.id) || this.get('store').createRecord('bet', {
+            fixture: f,
+            user: this.get('store').peekRecord('user', params.user_id),
+            bettingGame: this.get('store').peekRecord('betting-game', currentBettingGame.get('id'))
+          }));
+        return hash;
       });
     });
   }

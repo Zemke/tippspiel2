@@ -1,5 +1,6 @@
 package com.github.zemke.tippspiel2.persistence.repository
 
+import com.github.zemke.tippspiel2.persistence.model.BettingGame
 import com.github.zemke.tippspiel2.persistence.model.User
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
@@ -8,4 +9,6 @@ import org.springframework.stereotype.Repository
 interface UserRepository : JpaRepository<User, Long> {
 
     fun findByEmail(email: String): User?
+
+    fun findByBettingGames(bettingGames: List<BettingGame>): List<User>
 }

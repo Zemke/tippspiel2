@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -72,7 +73,10 @@ class UserRestController(
     }
 
     @GetMapping("")
-    fun readUsers(): ResponseEntity<List<UserDto>> {
-        return ResponseEntity.ok(userService.findAllUsers().map { UserDto.toDto(it) })
+    fun queryUser(@RequestParam bettingGame: List<Long>?): ResponseEntity<List<UserDto>> {
+        val users =
+                if (bettingGame != null) userService.findByBettingGames(bettingGameService.findMany(bettingGame))
+                else userService.findAllUsers()
+        return ResponseEntity.ok(users.map { UserDto.toDto(it) })
     }
 }
