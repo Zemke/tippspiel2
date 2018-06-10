@@ -23,7 +23,8 @@ export default Controller.extend({
     }
   },
   localeIsEnUs: computed(function () {
-    return this.get('intl').get('locale') === 'en-us';
+    const locale = this.get('intl').get('locale');
+    return locale != null && locale[0] === 'en-us';
   }),
   isAppleStandalone: computed(function () {
     return ("standalone" in window.navigator) && window.navigator.standalone;
