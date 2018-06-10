@@ -52,22 +52,22 @@ class StandingServiceTest {
         val fixtures = createFixtures(bettingGame, teams)
 
         Mockito
-                .`when`(betRepository.findByCompetitionAndFixtureStatus(bettingGame.competition, FixtureStatus.FINISHED))
+                .`when`(betRepository.findByBettingGame(bettingGame))
                 .thenReturn(createBets(fixtures, bettingGame, user1, user2))
 
         Mockito
-                .`when`(standingRepository.findAll())
+                .`when`(standingRepository.findByBettingGame(bettingGame))
                 .thenReturn(createStandings(user1, bettingGame, user2))
 
         Mockito
-                .`when`(fixtureRepository.findAll())
+                .`when`(fixtureRepository.findFixturesByCompetition(bettingGame.competition))
                 .thenReturn(fixtures)
 
         Mockito
                 .`when`(standingRepository.saveAll(Mockito.anyList<Standing>()))
                 .thenAnswer { it.getArgument(0) }
 
-        val standingsActual = standingService.updateStandings(bettingGame.competition)
+        val standingsActual = standingService.updateStandings(bettingGame)
 
         Mockito
                 .verify(competitionRepository, Mockito.never()).save(Mockito.any(Competition::class.java))
@@ -106,15 +106,15 @@ class StandingServiceTest {
                 user = user1, bettingGame = bettingGame, team = competitionChampion)
 
         Mockito
-                .`when`(betRepository.findByCompetitionAndFixtureStatus(bettingGame.competition, FixtureStatus.FINISHED))
+                .`when`(betRepository.findByBettingGame(bettingGame))
                 .thenReturn(createBets(fixtures, bettingGame, user1, user2))
 
         Mockito
-                .`when`(standingRepository.findAll())
+                .`when`(standingRepository.findByBettingGame(bettingGame))
                 .thenReturn(createStandings(user1, bettingGame, user2))
 
         Mockito
-                .`when`(fixtureRepository.findAll())
+                .`when`(fixtureRepository.findFixturesByCompetition(bettingGame.competition))
                 .thenReturn(fixtures)
 
         Mockito
@@ -139,7 +139,7 @@ class StandingServiceTest {
                 .`when`(competitionRepository).save(Mockito.any(Competition::class.java))
 
 
-        val standingsActual = standingService.updateStandings(bettingGame.competition)
+        val standingsActual = standingService.updateStandings(bettingGame)
 
         Assert.assertEquals(
                 listOf(
@@ -172,22 +172,22 @@ class StandingServiceTest {
         val fixtures = createFixtures(bettingGame, teams)
 
         Mockito
-                .`when`(betRepository.findByCompetitionAndFixtureStatus(bettingGame.competition, FixtureStatus.FINISHED))
+                .`when`(betRepository.findByBettingGame(bettingGame))
                 .thenReturn(createBets(fixtures, bettingGame, user1, user2))
 
         Mockito
-                .`when`(standingRepository.findAll())
+                .`when`(standingRepository.findByBettingGame(bettingGame))
                 .thenReturn(createStandings(user1, bettingGame, user2))
 
         Mockito
-                .`when`(fixtureRepository.findAll())
+                .`when`(fixtureRepository.findFixturesByCompetition(bettingGame.competition))
                 .thenReturn(fixtures)
 
         Mockito
                 .`when`(standingRepository.saveAll(Mockito.anyList<Standing>()))
                 .thenAnswer { it.getArgument(0) }
 
-        val standingsActual = standingService.updateStandings(bettingGame.competition)
+        val standingsActual = standingService.updateStandings(bettingGame)
 
         Mockito
                 .verify(competitionRepository, Mockito.never()).save(Mockito.any(Competition::class.java))
@@ -215,14 +215,14 @@ class StandingServiceTest {
         fixtures[0] = fixtures[0].copy(goalsHomeTeam = 3, goalsAwayTeam = 1)
 
         Mockito
-                .`when`(betRepository.findByCompetitionAndFixtureStatus(bettingGame.competition, FixtureStatus.FINISHED))
+                .`when`(betRepository.findByBettingGame(bettingGame))
                 .thenReturn(createBets(fixtures, bettingGame, user1, user2))
 
         Mockito
-                .`when`(fixtureRepository.findAll())
+                .`when`(fixtureRepository.findFixturesByCompetition(bettingGame.competition))
                 .thenReturn(fixtures)
 
-        val standingsActual2 = standingService.updateStandings(bettingGame.competition)
+        val standingsActual2 = standingService.updateStandings(bettingGame)
 
         Assert.assertEquals(
                 listOf(

@@ -2,6 +2,7 @@ package com.github.zemke.tippspiel2.service
 
 import com.github.zemke.tippspiel2.persistence.model.Fixture
 import com.github.zemke.tippspiel2.persistence.model.Team
+import com.github.zemke.tippspiel2.persistence.repository.BettingGameRepository
 import com.github.zemke.tippspiel2.persistence.repository.CompetitionRepository
 import com.github.zemke.tippspiel2.persistence.repository.TeamRepository
 import com.github.zemke.tippspiel2.view.model.FootballDataCompetitionDto
@@ -20,6 +21,9 @@ class FootballDataScheduledTasksService {
 
     @Autowired
     private lateinit var competitionRepository: CompetitionRepository
+
+    @Autowired
+    private lateinit var bettingGameRepository: BettingGameRepository
 
     @Autowired
     private lateinit var fixtureService: FixtureService
@@ -46,7 +50,9 @@ class FootballDataScheduledTasksService {
 
         if (fixturesNewOrChanged.isNotEmpty()) {
             fixtureService.saveMany(fixturesNewOrChanged)
-            standingService.updateStandings(competition)
+            bettingGameRepository.findByCompetition(competition).forEach {
+                standingService.updateStandings(it)
+            }
         }
     }
 

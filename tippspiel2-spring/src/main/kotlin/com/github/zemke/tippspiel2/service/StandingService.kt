@@ -1,7 +1,6 @@
 package com.github.zemke.tippspiel2.service
 
 import com.github.zemke.tippspiel2.persistence.model.BettingGame
-import com.github.zemke.tippspiel2.persistence.model.Competition
 import com.github.zemke.tippspiel2.persistence.model.Standing
 import com.github.zemke.tippspiel2.persistence.model.Team
 import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
@@ -36,9 +35,10 @@ class StandingService(
      * There's probably no way to make it more reliably.
      */
     @Transactional
-    fun updateStandings(competition: Competition): List<Standing> {
-        val bets = betRepository.findByCompetitionAndFixtureStatus(competition, FixtureStatus.FINISHED)
-        val allStandings = standingRepository.findAll()
+    fun updateStandings(bettingGame: BettingGame): List<Standing> {
+        val bets = betRepository.findByBettingGame(bettingGame)
+                .filter { it.fixture.status == FixtureStatus.FINISHED }
+        val allStandings = standingRepository.findByBettingGame(bettingGame)
         val standingsWithBets = allStandings
                 .filter { bets.map { it.user }.distinct().contains(it.user) }
                 .map { it.reset() }
@@ -54,27 +54,27 @@ class StandingService(
             changeStatsByNewPoints(standingOfUser, pointsForBet)
         }
 
-        val fixtures = fixtureRepository.findAll()
+        val fixtures = fixtureRepository.findFixturesByCompetition(bettingGame.competition)
         val competitionChampion: Team? =
-                competition.champion
-                ?: championBetService.getCompetitionChampionFromFixtures(fixtures, competition.numberOfMatchdays)
+                bettingGame.competition.champion
+                ?: championBetService.getCompetitionChampionFromFixtures(fixtures, bettingGame.competition.numberOfMatchdays)
 
-        if (competition.champion == null && competitionChampion != null) {
-            competition.champion = competitionChampion
-            competitionRepository.save(competition)
+        if (bettingGame.competition.champion == null && competitionChampion != null) {
+            bettingGame.competition.champion = competitionChampion
+            competitionRepository.save(bettingGame.competition)
         }
 
         val usersWithRightChampionBet =
                 if (competitionChampion != null)
                     championBetService.findByTeam(competitionChampion)
-                            .filter { it.bettingGame.competition == competition }
+                            .filter { it.bettingGame.competition == bettingGame.competition }
                             .map { it.user.id }
                 else
                     emptyList()
 
         allStandings.forEach { standing ->
             val numberOfFinishedFixturesInCompetition = fixtures
-                    .filter { fixture -> fixture.competition === competition }
+                    .filter { fixture -> fixture.competition === bettingGame.competition }
                     .filter { fixture -> fixture.status == FixtureStatus.FINISHED }
                     .count()
 

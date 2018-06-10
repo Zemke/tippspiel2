@@ -2,9 +2,9 @@ package com.github.zemke.tippspiel2.core.task
 
 import com.github.zemke.tippspiel2.persistence.model.Competition
 import com.github.zemke.tippspiel2.persistence.model.Fixture
-import com.github.zemke.tippspiel2.persistence.model.Standing
 import com.github.zemke.tippspiel2.persistence.model.Team
 import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
+import com.github.zemke.tippspiel2.persistence.repository.BettingGameRepository
 import com.github.zemke.tippspiel2.persistence.repository.CompetitionRepository
 import com.github.zemke.tippspiel2.persistence.repository.TeamRepository
 import com.github.zemke.tippspiel2.service.FixtureService
@@ -46,6 +46,9 @@ class FootballDataScheduledTasksServiceTest {
 
     @Mock
     private lateinit var standingService: StandingService
+
+    @Mock
+    private lateinit var bettingGameRepository: BettingGameRepository
 
     @Test
     fun testRequestFixturesAndUpdateStandings() {
@@ -90,10 +93,6 @@ class FootballDataScheduledTasksServiceTest {
                     fixturesPassedToMethod
                 }
                 .`when`(fixtureService).saveMany(Mockito.anyList<Fixture>())
-
-        Mockito
-                .doAnswer({ emptyList<Standing>() })
-                .`when`(standingService).updateStandings(currentCompetition)
 
         footballDataScheduledTasksService.requestFixturesAndUpdateStandings()
     }
