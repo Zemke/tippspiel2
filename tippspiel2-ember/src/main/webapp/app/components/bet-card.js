@@ -15,6 +15,9 @@ export default Component.extend({
   disabled: computed(function () {
     later(() => this.set('disabled', true), this.get('bet.fixture.date') - Date.now());
   }).volatile(),
+  live: computed('disabled', 'bet.fixture.status', function () {
+    return this.get('disabled') && this.get('bet.fixture.status') === 'IN_PLAY';
+  }),
   evaluatable: computed('bet.fixture.status', function () {
     return this.get('bet.fixture.status') === 'FINISHED';
   })

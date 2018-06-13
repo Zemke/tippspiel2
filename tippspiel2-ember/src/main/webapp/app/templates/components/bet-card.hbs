@@ -1,4 +1,7 @@
 <div class="card">
+  {{#if live}}
+    <i class="fa fa-circle text-danger blink"></i>
+  {{/if}}
   <div class="card-content">
     {{#unless hideGame}}
       <div class="title">

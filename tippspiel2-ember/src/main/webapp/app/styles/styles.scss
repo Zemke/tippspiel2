@@ -39,6 +39,24 @@
   color: $link;
 }
 
+.blink {
+  position: absolute;
+  animation: blinker 1.5s cubic-bezier(0.5, 0, 1, 1) infinite alternate;
+  padding-top: 5px;
+  left: 100%;
+  margin-left: -20px;
+  color: $danger;
+}
+
+@keyframes blinker {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 @media screen and (min-width: $tablet) and (max-width: $desktop - 1px) {
 
   .responsive-letter-spacing {
