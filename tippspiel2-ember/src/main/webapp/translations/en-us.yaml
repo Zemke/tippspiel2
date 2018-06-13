@@ -64,6 +64,7 @@ standings:
   yetToBet: 'Click here to place champion bet. You have time till the first game kicks off.'
 bets:
   none: 'There are no bets yet.'
+  noneUntilFinished: 'You will see other users’ bets once the game has kicked off.'
   leaveWarning: 'You have unsaved bets. Do you really want to leave?'
 notFound: 'The page you were looking for wasn’t found.'
 catchError:

@@ -11,7 +11,7 @@ export default Route.extend({
         bets: this.get('store').query('bet', {fixture: params.fixture_id, bettingGame: currentBettingGame.get('id')}),
         users: this.get('store').query('user', {bettingGame: currentBettingGame.get('id')})
       }).then(hash => {
-        hash.bets = hash.users
+        hash.bets = hash.fixture.get('date') - Date.now() > 0 ? [] : hash.users
           .map(u => hash.bets.find(b => b.get('user.id') === u.id) || this.get('store').createRecord('bet', {
             fixture: hash.fixture,
             user: u,
