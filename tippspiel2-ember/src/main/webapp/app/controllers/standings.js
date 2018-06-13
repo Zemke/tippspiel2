@@ -20,10 +20,12 @@ export default Controller.extend({
           value.set('hasCorrectChampionBet', this.get('model.competition.champion.id') === championBet.get('team.id'));
         }
 
+        const isAuthenticatedUser = this.get('model.authenticatedUser.id') === value.get('user.id');
+        value.set('isAuthenticatedUser', isAuthenticatedUser);
+
         value.set(
           'isAuthenticatedUserAndChampionBetAllowed',
-          this.get('model.authenticatedUser.id') === value.get('user.id')
-            && this.get('model.competition.championBetAllowed') === true);
+          isAuthenticatedUser && this.get('model.competition.championBetAllowed') === true);
 
         return value;
       });
