@@ -39,8 +39,7 @@ class ChampionBetRestController(
             @RequestBody championBetCreationDto: ChampionBetCreationDto,
             request: HttpServletRequest): ResponseEntity<ChampionBetDto> {
         val token = jsonWebTokenService.assertToken(request) ?: throw UnauthorizedException()
-        val user = userService.findUserByEmail(
-                jsonWebTokenService.getSubjectFromToken(token))
+        val user = userService.findUserByEmailIgnoreCase(jsonWebTokenService.getSubjectFromToken(token))
 
         val bettingGame = bettingGameService.find(championBetCreationDto.bettingGame)
                 .orElseThrow { throw BadRequestException("There is no such betting game.", "err.bettingGameNotFound") }

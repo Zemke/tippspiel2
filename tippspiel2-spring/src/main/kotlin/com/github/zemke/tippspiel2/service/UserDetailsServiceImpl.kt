@@ -14,7 +14,7 @@ class  UserDetailsServiceImpl(@Autowired private val userRepository: UserReposit
 
     @Throws(UsernameNotFoundException::class)
     override fun loadUserByUsername(username: String): AuthenticatedUser {
-        val user = userRepository.findByEmail(username)
+        val user = userRepository.findByEmailIgnoreCase(username)
 
         return when (user) {
             null -> throw UsernameNotFoundException("No user found with email $username.")

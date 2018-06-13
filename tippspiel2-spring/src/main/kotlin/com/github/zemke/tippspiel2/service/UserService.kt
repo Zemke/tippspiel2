@@ -51,7 +51,7 @@ class UserService(
         return userRepository.findAllById(users)
     }
 
-    fun findUserByEmail(email: String): User? = userRepository.findByEmail(email)
+    fun findUserByEmailIgnoreCase(email: String): User? = userRepository.findByEmailIgnoreCase(email)
 
     @Throws(AuthenticationException::class)
     fun authenticate(email: String, password: String): String {
