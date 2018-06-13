@@ -54,7 +54,6 @@ class BetRestController {
         return ResponseEntity.ok(betService.findAll()
                 .filter { user == null || user == it.user.id }
                 .filter { bettingGame == null || bettingGame == it.bettingGame.id }
-                .filter { bettingGame == null || bettingGame == it.bettingGame.id }
                 .filter { fixture == null || fixture == it.fixture.id }
                 .filter { it.user.id == authenticatedUserId || !isBettingStillAllowed(it.fixture.date) }
                 .map { BetDto.toDto(it) })
