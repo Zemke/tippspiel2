@@ -52,7 +52,7 @@ me:
     thereIsNoCurrentCompetition: 'Kein aktueller Wettbewerb gewählt.'
     warning: 'Denke daran, dass Tipprunden, die nicht den aktuellen Wettbewerb spielen nicht fortgeführt werden können.'
   join:
-    title: 'Trete einer weiteren Tipprunde bei'
+    title: 'Tritt einer weiteren Tipprunde bei'
     subtitle: 'Wenn du einen Einladungs-Token bekommen hast, kannst du ihn hier eintragen und einer weiteren Tipprunde beitreten.'
     success: 'Tipprunde erfolgreich beigetreten.'
 championBet:
