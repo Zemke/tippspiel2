@@ -3,7 +3,10 @@
   {{t (concat 'team.name.' model.fixture.awayTeam.id)}} <span class="has-text-grey">{{model.fixture.goalsAwayTeam}}</span>
 </h1>
 <p class="subtitle">
-  {{date-format model.fixture.date "dddd, MMMM D, HH:mm"}}
+  {{format-date model.fixture.date weekday="long"}},
+  {{format-date model.fixture.date month="short"}}.
+  {{format-date model.fixture.date day="numeric"}},
+  {{format-time model.fixture.date hour='2-digit' minute='2-digit' hour12=false}}
 </p>
 
 <div class="columns is-multiline">

@@ -21,7 +21,10 @@
 <div class="columns">
   <div class="column">
     <div class="has-text-weight-bold">{{t 'bettingGame.list.created'}}</div>
-    {{date-format model.created "dddd, MMMM D, HH:mm"}}
+    {{format-date model.created weekday="long"}},
+    {{format-date model.created month="short"}}.
+    {{format-date model.created day="numeric"}},
+    {{format-time model.created hour='2-digit' minute='2-digit' hour12=false}}
   </div>
 </div>
 <div class="columns">

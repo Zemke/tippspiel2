@@ -21,12 +21,15 @@
         {{/link-to}}
       </div>
       <div class="subtitle nowrap">
-            <span class="is-hidden-tablet-only is-hidden-widescreen-only">
-              {{date-format bet.fixture.date "dddd, MMM D, HH:mm"}}
-            </span>
-        <span class="is-hidden-mobile is-hidden-desktop-only is-hidden-fullhd">
-          {{date-format bet.fixture.date "ddd, MMM D, HH:mm"}}
+        <span class="is-hidden-tablet-only is-hidden-widescreen-only">
+          {{format-date bet.fixture.date weekday="long"}},
         </span>
+        <span class="is-hidden-mobile is-hidden-desktop-only is-hidden-fullhd">
+          {{format-date bet.fixture.date weekday="short"}},
+        </span>
+        {{format-date bet.fixture.date month="short"}}.
+        {{format-date bet.fixture.date day="numeric"}},
+        {{format-time bet.fixture.date hour='2-digit' minute='2-digit' hour12=false}}
       </div>
     {{/unless}}
     {{#unless hideUser}}

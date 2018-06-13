@@ -16,7 +16,12 @@
     <tr>
       <td>{{bettingGame.name}}</td>
       <td>{{bettingGame.competition.caption}}</td>
-      <td class="is-hidden-mobile">{{date-format bettingGame.created "dddd, MMMM D, HH:mm"}}</td>
+      <td class="is-hidden-mobile">
+        {{format-date bettingGame.created weekday="long"}},
+        {{format-date bettingGame.created month="short"}}.
+        {{format-date bettingGame.created day="numeric"}},
+        {{format-time bettingGame.created hour='2-digit' minute='2-digit' hour12=false}}
+      </td>
       <td>
         {{#link-to 'betting-games.details' bettingGame class="button is-primary is-small"}}
           {{t 'bettingGame.list.details'}}
