@@ -9,7 +9,7 @@ export default Route.extend({
       return RSVP.hash({
         user: this.get('store').findRecord('user', params.user_id),
         bets: this.get('store').query('bet', {user: params.user_id, bettingGame: currentBettingGame.get('id')}),
-        fixtures: this.get('store').query('fixture', {competition: currentBettingGame.get('competition.id'), status: 'FINISHED'}),
+        fixtures: this.get('store').query('fixture', {competition: currentBettingGame.get('competition.id'), status: 'FINISHED,IN_PLAY'}),
       }).then(hash => {
         hash.bets = hash.fixtures
           .map(f => hash.bets.find(b => b.get('fixture.id') === f.id) || this.get('store').createRecord('bet', {
