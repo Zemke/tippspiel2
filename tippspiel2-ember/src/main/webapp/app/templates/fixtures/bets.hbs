@@ -9,17 +9,7 @@
   {{format-time model.fixture.date hour='2-digit' minute='2-digit' hour12=false}}
 </p>
 
-<div class="columns is-multiline">
-  {{#each model.bets as |bet|}}
-    <div class="column is-one-third-tablet is-one-quarter-widescreen">
-      {{#bet-card bet=bet hideGame=true}}
-      {{/bet-card}}
-    </div>
-  {{else}}
-    <div class="column">
-      {{t 'bets.noneUntilFinished'}}
-    </div>
-  {{/each}}
-</div>
+{{#live-bet-cards bets=model.bets hideGame=true}}
+{{/live-bet-cards}}
 
 {{outlet}}

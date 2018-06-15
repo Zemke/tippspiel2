@@ -29,6 +29,7 @@ module.exports = function(defaults) {
 
   app.import('node_modules/izitoast/dist/css/iziToast.css');
   app.import('node_modules/izitoast/dist/js/iziToast.js');
+  app.import('node_modules/shufflejs/dist/shuffle.js');
 
   return app.toTree();
 };

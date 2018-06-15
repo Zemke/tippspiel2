@@ -1,0 +1,10 @@
+{{#each bets as |bet|}}
+  <div class="column is-one-third-tablet is-one-quarter-widescreen" data-bet-id={{bet.id}}>
+    {{#bet-card bet=bet hideGame=hideGame}}
+    {{/bet-card}}
+  </div>
+{{else}}
+  <div class="column">
+    {{t 'bets.noneUntilFinished'}}
+  </div>
+{{/each}}
