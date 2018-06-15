@@ -9,7 +9,7 @@
   {{format-time model.fixture.date hour='2-digit' minute='2-digit' hour12=false}}
 </p>
 
-{{#live-bet-cards bets=model.bets hideGame=true}}
+{{#live-bet-cards bets=model.bets fixture=model.fixture hideGame=true}}
 {{/live-bet-cards}}
 
 {{outlet}}
