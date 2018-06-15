@@ -36,7 +36,10 @@ class FixtureRepositoryTest {
                 numberOfMatchdays = 8,
                 numberOfTeams = 32,
                 numberOfGames = 64,
-                lastUpdated = Timestamp(JacksonUtils.toDate("2018-01-10T14:10:08Z").time)
+                lastUpdated = Timestamp(JacksonUtils.toDate("2018-01-10T14:10:08Z").time),
+                champion = null,
+                current = false,
+                championBetAllowed = true
         )
         val fixturesToPersist = listOf(
                 Fixture(

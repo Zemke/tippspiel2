@@ -2,6 +2,7 @@ package com.github.zemke.tippspiel2.view.model
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.github.zemke.tippspiel2.persistence.model.Competition
+import com.github.zemke.tippspiel2.persistence.model.Team
 import com.github.zemke.tippspiel2.view.util.DataTransferObject
 import java.sql.Timestamp
 import java.util.*
@@ -21,7 +22,10 @@ data class FootballDataCompetitionDto(
 
     companion object {
 
-        fun fromDto(dto: FootballDataCompetitionDto): Competition = Competition(
+        fun fromDto(dto: FootballDataCompetitionDto,
+                    current: Boolean,
+                    championBetAllowed: Boolean,
+                    champion: Team?): Competition = Competition(
                 id = dto.id,
                 caption = dto.caption,
                 league = dto.league,
@@ -30,7 +34,10 @@ data class FootballDataCompetitionDto(
                 numberOfMatchdays = dto.numberOfMatchdays,
                 numberOfTeams = dto.numberOfTeams,
                 numberOfGames = dto.numberOfGames,
-                lastUpdated = Timestamp(dto.lastUpdated.time)
+                lastUpdated = Timestamp(dto.lastUpdated.time),
+                current = current,
+                championBetAllowed = championBetAllowed,
+                champion = champion
         )
 
         fun toDto(competition: Competition): FootballDataCompetitionDto = FootballDataCompetitionDto(
