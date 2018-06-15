@@ -14,10 +14,7 @@ export default Controller.extend({
     return this.get('model.standings').toArray()
       .sort((s1, s2) => compare(s1, s2))
       .map((value, index, arr) => {
-        value.set('position', (index == 0 ? 1 :
-                               arr[index-1].get('position') +
-                               (compare(value, arr[index-1]) > 0 ? 1 : 0))
-                 );
+        value.set('position', (index == 0 ? 1 : (compare(value, arr[index-1]) > 0 ? index+1 : "")));
 
         const championBet = this.get('model.championBets').find(cB => cB.get('user.id') === value.get('user.id'));
 
