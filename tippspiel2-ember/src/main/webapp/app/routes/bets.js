@@ -14,15 +14,21 @@ export default Route.extend({
       RSVP.hash({
         fixtures: this.get('store').query('fixture', {competition: hash.currentBettingGame.get('competition.id')}),
         bets: this.get('store').query('bet', {user: hash.user.id, bettingGame: hash.currentBettingGame.get('id')})
-      }).then(hash1 =>
-        hash1.fixtures
-          .map(f => hash1.bets.find(b => b.get('fixture.id') === f.id) || this.get('store').createRecord('bet', {
-            fixture: f,
-            user: this.get('store').peekRecord('user', hash.user.id),
-            bettingGame: this.get('store').peekRecord('betting-game', hash.currentBettingGame.get('id'))
-          }))
-          .toArray()
-          .sort((a, b) => a.get('fixture.date') - b.get('fixture.date'))
+      }).then(hash1 => {
+          const bets = hash1.fixtures
+            .map(f => hash1.bets.find(b => b.get('fixture.id') === f.id) || this.get('store').createRecord('bet', {
+              fixture: f,
+              user: this.get('store').peekRecord('user', hash.user.id),
+              bettingGame: this.get('store').peekRecord('betting-game', hash.currentBettingGame.get('id'))
+            }))
+            .toArray()
+            .sort((a, b) => a.get('fixture.date') - b.get('fixture.date'));
+
+          return {
+            betsForFinishedFixtures: bets.filter(b => b.get('fixture.status') === 'FINISHED'),
+            betsForUnfinishedFixtures: bets.filter(b => b.get('fixture.status') !== 'FINISHED')
+          }
+        }
       ));
   },
   actions: {

@@ -1,9 +1,28 @@
-<h1 class="title is-hidden-desktop">
-  {{t 'app.bets'}}
-</h1>
+<div class="title">
+  <div class="field is-pulled-right has-text-weight-normal">
+    {{input id="switch-past-fixtures" type="checkbox" name="switch-past-fixtures" class="switch is-rtl no-outline"
+            onchange='toggleShowPastFixtures' checked=showPastFixtures}}
+    <label for="switch-past-fixtures">{{t 'pastFixtures'}}</label>
+  </div>
+  <div class="is-clearfix is-hidden-touch"></div>
+  <h1 class="is-hidden-desktop">{{t 'app.bets'}}</h1>
+</div>
+
+<div class={{concat 'columns is-multiline' (unless showPastFixtures ' is-hidden')}}>
+  {{#each model.betsForFinishedFixtures as |bet|}}
+    <div class="column is-one-third-tablet is-one-quarter-widescreen">
+      {{#bet-card bet=bet hideUser=true}}
+      {{/bet-card}}
+    </div>
+  {{else}}
+    <div class="column">
+      {{t 'bets.none'}}
+    </div>
+  {{/each}}
+</div>
 
 <div class="columns is-multiline">
-  {{#each model as |bet|}}
+  {{#each model.betsForUnfinishedFixtures as |bet|}}
     <div class="column is-one-third-tablet is-one-quarter-widescreen">
       {{#bet-card bet=bet hideUser=true}}
       {{/bet-card}}

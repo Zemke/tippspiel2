@@ -1,6 +1,7 @@
 easterEgg: 'Hier könnte ein Easter Egg implementiert werden.'
 submit: 'Abschicken'
 join: '{name} beitreten'
+pastFixtures: 'Vergangene'
 app:
   signOut: 'Ausloggen'
   signIn: 'Einloggen'
