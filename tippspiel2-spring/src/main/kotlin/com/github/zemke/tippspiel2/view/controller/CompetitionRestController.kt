@@ -6,6 +6,7 @@ import com.github.zemke.tippspiel2.service.FixtureService
 import com.github.zemke.tippspiel2.service.FootballDataScheduledTasksService
 import com.github.zemke.tippspiel2.service.FootballDataService
 import com.github.zemke.tippspiel2.service.NULL_TEAM_ID
+import com.github.zemke.tippspiel2.service.TeamService
 import com.github.zemke.tippspiel2.view.exception.BadRequestException
 import com.github.zemke.tippspiel2.view.exception.NotFoundException
 import com.github.zemke.tippspiel2.view.model.CompetitionCreationDto
@@ -16,6 +17,7 @@ import com.github.zemke.tippspiel2.view.model.FootballDataTeamDto
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -31,6 +33,7 @@ class CompetitionRestController(
         @Autowired private val footballDataService: FootballDataService,
         @Autowired private val competitionService: CompetitionService,
         @Autowired private val fixtureService: FixtureService,
+        @Autowired private val teamService: TeamService,
         @Autowired private val footballDataScheduledTasksService: FootballDataScheduledTasksService
 ) {
 
@@ -66,20 +69,29 @@ class CompetitionRestController(
     }
 
     @PutMapping("/{competitionId}")
+    @Transactional
     fun updateCompetition(@PathVariable competitionId: Long,
                           @RequestBody competitionCreationDto: CompetitionCreationDto): ResponseEntity<CompetitionDto> {
         val competitionToUpdate = competitionService.find(competitionId)
                 .orElseThrow { throw NotFoundException("No such competition.", "err.competitionNotFound") }
 
-        if (competitionCreationDto.current == true) {
-            return ResponseEntity.ok(CompetitionDto.toDto(competitionService.setCurrentCompetition(competitionToUpdate)))
-        } else {
-            val currentCompetition = competitionService.findByCurrentTrue()
-            if (competitionToUpdate == currentCompetition) footballDataScheduledTasksService.updateCurrentCompetitionWithItsTeams()
-            else throw BadRequestException(
-                    "At the moment you can only update the current competition.",
-                    "err.competitionUpdateOnlyCurrent")
-            return ResponseEntity.ok(CompetitionDto.toDto(competitionService.find(competitionId).get()))
+        if (competitionCreationDto.current != competitionToUpdate.current)
+            competitionService.setCurrentCompetition(competitionToUpdate)
+
+        if (competitionCreationDto.champion != null && competitionCreationDto.champion != competitionToUpdate.champion?.id)
+            competitionService.saveChampion(
+                    competitionToUpdate,
+                    teamService.find(competitionCreationDto.champion)
+                            .orElseThrow { throw BadRequestException("No such team.", "err.teamNotFound") },
+                    true)
+
+        val currentCompetition = competitionService.findByCurrentTrue()
+
+        if (currentCompetition != null && currentCompetition == competitionToUpdate) {
+            footballDataScheduledTasksService.updateCurrentCompetitionWithItsTeams()
+            return ResponseEntity.ok(CompetitionDto.toDto(currentCompetition))
         }
+
+        return ResponseEntity.ok(CompetitionDto.toDto(competitionToUpdate))
     }
 }
