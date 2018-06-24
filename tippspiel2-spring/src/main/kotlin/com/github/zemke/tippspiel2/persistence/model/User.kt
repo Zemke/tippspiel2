@@ -23,6 +23,7 @@ data class User(
         @Embedded val fullName: FullName,
         @Column(unique = true) @NotNull @Email val email: String,
         @Size(min = 60, max = 60) val password: String,
+        var passwordResetToken: String? = null,
         @NotNull @CreationTimestamp val lastPasswordReset: Timestamp?,
         @ManyToMany var bettingGames: List<BettingGame> = emptyList(),
         @ManyToMany(fetch = FetchType.EAGER) val roles: List<Role>

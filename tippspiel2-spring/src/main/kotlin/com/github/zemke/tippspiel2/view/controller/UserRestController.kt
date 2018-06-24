@@ -79,4 +79,12 @@ class UserRestController(
                 else userService.findAllUsers()
         return ResponseEntity.ok(users.map { UserDto.toDto(it) })
     }
+
+    @PostMapping("/reset-password")
+    fun resetPassword(@RequestBody email: String): ResponseEntity<Any> {
+        val user = userService.findUserByEmailIgnoreCase(email)
+                ?: throw BadRequestException("No such user", "err.userNotFound")
+
+        userService.resetPassword(user)
+    }
 }

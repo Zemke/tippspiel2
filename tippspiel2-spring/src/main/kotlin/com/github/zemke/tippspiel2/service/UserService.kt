@@ -2,6 +2,7 @@ package com.github.zemke.tippspiel2.service
 
 import com.github.zemke.tippspiel2.core.authentication.AuthenticatedUser
 import com.github.zemke.tippspiel2.core.properties.AuthenticationProperties
+import com.github.zemke.tippspiel2.core.properties.Tippspiel2AppProperties
 import com.github.zemke.tippspiel2.persistence.model.BettingGame
 import com.github.zemke.tippspiel2.persistence.model.Standing
 import com.github.zemke.tippspiel2.persistence.model.User
@@ -11,6 +12,7 @@ import com.github.zemke.tippspiel2.persistence.repository.RoleRepository
 import com.github.zemke.tippspiel2.persistence.repository.StandingRepository
 import com.github.zemke.tippspiel2.persistence.repository.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.mail.javamail.MimeMessageHelper
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.AuthenticationException
@@ -19,7 +21,10 @@ import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.crypto.bcrypt.BCrypt
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import org.springframework.transaction.support.TransactionSynchronization
+import org.springframework.transaction.support.TransactionSynchronizationManager
 import java.util.*
+
 
 @Service
 class UserService(
@@ -29,7 +34,9 @@ class UserService(
         @Autowired private val authenticationProperties: AuthenticationProperties,
         @Autowired private val authenticationManager: AuthenticationManager,
         @Autowired private val jsonWebTokenService: JsonWebTokenService,
-        @Autowired private val userDetailsService: UserDetailsService
+        @Autowired private val userDetailsService: UserDetailsService,
+        @Autowired private val emailSender: JavaMailSender,
+        @Autowired private val tippspiel2AppProperties: Tippspiel2AppProperties
 ) {
 
     @Transactional
@@ -96,4 +103,33 @@ class UserService(
 
     fun findByBettingGames(bettingGame: List<BettingGame>): List<User> =
             userRepository.findByBettingGames(bettingGame)
+
+    @Transactional
+    fun resetPassword(user: User): User {
+        user.passwordResetToken = UUID.randomUUID().toString()
+        val savedUser = userRepository.save(user)
+
+        TransactionSynchronizationManager.registerSynchronization(object: TransactionSynchronization {
+            override fun afterCommit() {
+                try {
+                    val message = emailSender.createMimeMessage()
+                    message.setSubject("Tippspiel2 — Password Reset")
+
+                    val passwordResetUrl = "${tippspiel2AppProperties.url}reset/" // TODO Reset URL and Ember Data integration
+                    MimeMessageHelper(message, true).apply {
+                        setFrom(tippspiel2AppProperties.supportMail)
+                        setTo(user.email)
+                        setBcc(tippspiel2AppProperties.supportMail)
+                        setText("<a href=\"$passwordResetUrl\">$passwordResetUrl</a>", true)
+                    }
+                    emailSender.send(message)
+                } finally {
+                    user.passwordResetToken = null
+                    userRepository.save(user)
+                }
+            }
+        })
+
+        return savedUser
+    }
 }
