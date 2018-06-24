@@ -33,7 +33,7 @@ export default Route.extend({
   },
   actions: {
     willTransition(transition) {
-      const hasUnsavedChanges = this.controller.get('model')
+      const hasUnsavedChanges = this.controller.get('model.betsForUnfinishedFixtures')
         .find(bet => bet.get('hasDirtyAttributes') === true && bet.get('validations.isValid'));
 
       if (hasUnsavedChanges != null && !confirm('You have unsaved bets. Do you really want to leave?')) {
