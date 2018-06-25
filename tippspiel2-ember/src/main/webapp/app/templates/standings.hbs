@@ -1,3 +1,22 @@
+{{#if model.liveFixtures.length }}
+  <div class="field has-text-right">
+    {{input id="switch-live" type="checkbox" name="switch-live" class="switch is-rtl no-outline"
+            onchange='toggleShowLiveStandings' checked=showLiveStandings}}
+    <label for="switch-live">LIVE</label>
+  </div>
+
+  {{#if showLiveStandings}}
+    <div class="columns is-multiline is-right">
+      {{#each model.liveFixtures as |liveFixture|}}
+        <div class="column is-one-third-tablet is-one-quarter-widescreen">
+          {{#bet-card bet=liveFixture hideUser=true}}
+          {{/bet-card}}
+        </div>
+      {{/each}}
+    </div>
+  {{/if}}
+{{/if}}
+
 {{#unless championBetOfAuthenticatedUser}}
   <article class="message is-warning">
     {{#link-to 'champion-bet'}}
@@ -8,7 +27,7 @@
   </article>
 {{/unless}}
 
-<table class="table is-hoverable is-narrow-mobile is-fullwidth-desktop">
+<table class="table is-hoverable is-narrow-mobile is-fullwidth">
   <thead>
   <tr class="standings">
     <th class="has-text-centered">#</th>

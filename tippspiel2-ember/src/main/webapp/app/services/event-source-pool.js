@@ -9,5 +9,8 @@ export default Service.extend({
   },
   acquireSourceFixtureById(fixtureId) {
     return new EventSource(`${this.get('url')}/stream/fixtures/${fixtureId}`);
+  },
+  acquireSourceFixtures() {
+    return new EventSource(`${this.get('url')}/stream/fixtures?status=IN_PLAY`);
   }
 });

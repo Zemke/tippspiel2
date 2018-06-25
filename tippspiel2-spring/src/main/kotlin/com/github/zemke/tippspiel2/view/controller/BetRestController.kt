@@ -46,7 +46,7 @@ class BetRestController {
     private lateinit var userService: UserService
 
     @GetMapping("")
-    fun getBets(@RequestParam user: Long?, @RequestParam bettingGame: Long?, @RequestParam fixture: Long?,
+    fun getBets(@RequestParam user: Long?, @RequestParam bettingGame: Long?, @RequestParam fixture: List<Long>?,
                 request: HttpServletRequest): ResponseEntity<List<BetDto>> {
         val token = jsonWebTokenService.assertToken(request)
         val authenticatedUserId = if (token != null) jsonWebTokenService.getIdFromToken(token) else null
@@ -54,7 +54,7 @@ class BetRestController {
         return ResponseEntity.ok(betService.findAll()
                 .filter { user == null || user == it.user.id }
                 .filter { bettingGame == null || bettingGame == it.bettingGame.id }
-                .filter { fixture == null || fixture == it.fixture.id }
+                .filter { fixture == null || fixture.contains(it.fixture.id) }
                 .filter { it.user.id == authenticatedUserId || !isBettingStillAllowed(it.fixture.date) }
                 .map { BetDto.toDto(it) })
     }

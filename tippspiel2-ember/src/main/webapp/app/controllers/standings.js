@@ -1,7 +1,21 @@
 import Controller from '@ember/controller';
 import {computed} from '@ember/object';
+import {inject} from '@ember/service';
 
 export default Controller.extend({
+  eventSourcePool: inject('eventSourcePool'),
+  init() {
+    this.get('eventSourcePool').acquireSourceFixtures().onmessage = e => {
+      const data = JSON.parse(e.data);
+      // TODO Update fixtures in Ember Data store
+      // TODO Shuffle table rows with ShuffleJS
+    };
+  },
+  actions: {
+    toggleShowLiveStandings() {
+      this.toggleProperty('showLiveStandings');
+    }
+  },
   standingsAsTable: computed('model.standings', 'model.championBets', 'model.competition', function () {
     return this.get('model.standings').toArray()
       .sort((s1, s2) =>

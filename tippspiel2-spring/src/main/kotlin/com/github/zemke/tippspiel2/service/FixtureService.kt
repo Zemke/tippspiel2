@@ -2,6 +2,7 @@ package com.github.zemke.tippspiel2.service
 
 import com.github.zemke.tippspiel2.persistence.model.Competition
 import com.github.zemke.tippspiel2.persistence.model.Fixture
+import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
 import com.github.zemke.tippspiel2.persistence.repository.FixtureRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -24,4 +25,7 @@ class FixtureService(
 
     fun findAll() =
             fixtureRepository.findAll()
+
+    fun findByStatusIn(statuses: List<FixtureStatus>): List<Fixture> =
+            fixtureRepository.findByStatusIn(statuses)
 }
