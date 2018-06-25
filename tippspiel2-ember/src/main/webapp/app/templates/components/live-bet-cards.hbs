@@ -1,5 +1,6 @@
 {{#each bets as |bet|}}
-  <div class="column is-one-third-tablet is-one-quarter-widescreen" data-bet-id={{bet.id}}>
+  <div class="column is-one-third-tablet is-one-quarter-widescreen"
+       data-bet-goals-home-team="{{bet.goalsHomeTeamBet}}" data-bet-goals-away-team="{{bet.goalsAwayTeamBet}}">
     {{#bet-card bet=bet hideGame=hideGame}}
     {{/bet-card}}
   </div>

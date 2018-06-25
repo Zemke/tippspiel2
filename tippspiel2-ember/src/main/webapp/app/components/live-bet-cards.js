@@ -5,17 +5,38 @@ import {inject} from '@ember/service';
 export default Component.extend({
   classNames: ['columns', 'is-multiline'],
   bet: inject('bet'),
-  didRender() {
-    const evaluate = (betId) => {
-      const bet = this.get('bets').findBy('id', betId);
-      return this.get('bet').evaluate(
-        bet.get('fixture.goalsHomeTeam'), bet.get('fixture.goalsAwayTeam'),
-        bet.get('goalsHomeTeamBet'), bet.get('goalsAwayTeamBet'));
-    };
+  store: inject('store'),
+  eventSourcePool: inject('eventSourcePool'),
+  init() {
+    this._super(...arguments);
 
-    new Shuffle(this.get('element'))
-      .sort({by: elem => evaluate(elem.getAttribute('data-bet-id')), reverse: true});
+    window.setTimeout(() => {
+      const shuffleInstance = new Shuffle(this.get('element'));
 
-    return true;
+      this.get('eventSourcePool').acquireSourceFixtureById(this.get('bets').objectAt(0).get('fixture.id')).onmessage = e => {
+        const fixtureUpdate = JSON.parse(e.data);
+        const fixtureFromStore = this.get('store').peekRecord('fixture', fixtureUpdate.id);
+        fixtureFromStore.set('goalsHomeTeam', fixtureUpdate.goalsHomeTeam);
+        fixtureFromStore.set('goalsAwayTeam', fixtureUpdate.goalsAwayTeam);
+
+        shuffleInstance.sort({
+          compare: (a, b) => {
+            let evalB = this.get('bet').evaluate(
+              fixtureUpdate.goalsHomeTeam, fixtureUpdate.goalsAwayTeam,
+              parseInt(b.element.getAttribute('data-bet-goals-home-team')),
+              parseInt(b.element.getAttribute('data-bet-goals-away-team')));
+            if (evalB === null) evalB = -1;
+
+            let evalA = this.get('bet').evaluate(
+              fixtureUpdate.goalsHomeTeam, fixtureUpdate.goalsAwayTeam,
+              parseInt(a.element.getAttribute('data-bet-goals-home-team')),
+              parseInt(a.element.getAttribute('data-bet-goals-away-team')));
+            if (evalA === null) evalA = -1;
+
+            return evalB - evalA;
+          }
+        });
+      };
+    }, 5000)
   }
 });
