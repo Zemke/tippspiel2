@@ -1505,6 +1505,10 @@ bulma-badge@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/bulma-badge/-/bulma-badge-1.0.1.tgz#855a6b4b8213a67201b4bc40bbc1ce1186674618"
 
+bulma-switch@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/bulma-switch/-/bulma-switch-2.0.0.tgz#7a187cd1bb8073e9a542478d936b89315f1ffcd8"
+
 bulma-tooltip@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/bulma-tooltip/-/bulma-tooltip-1.0.5.tgz#c0048929086a28ae3d7958ad6e71dd5ce216cc13"

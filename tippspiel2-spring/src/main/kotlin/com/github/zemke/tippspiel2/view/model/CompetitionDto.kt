@@ -18,7 +18,7 @@ data class CompetitionDto(
         val lastUpdated: Date,
         val current: Boolean,
         val championBetAllowed: Boolean,
-        val champion: TeamDto?
+        val champion: ChampionTeamDto?
 ) {
 
     companion object {
@@ -35,7 +35,7 @@ data class CompetitionDto(
                 Date(competition.lastUpdated.time),
                 competition.current,
                 competition.championBetAllowed,
-                if (competition.champion != null) TeamDto.toDto(competition.champion!!) else null
+                if (competition.champion != null) ChampionTeamDto.toDto(competition.champion!!) else null
         )
 
         fun fromDto(dto: CompetitionDto): Competition = Competition(
@@ -48,7 +48,7 @@ data class CompetitionDto(
                 lastUpdated = Timestamp(dto.lastUpdated.time),
                 caption = dto.caption,
                 numberOfMatchdays = dto.numberOfMatchdays,
-                champion = if (dto.champion != null) TeamDto.fromDto(dto.champion) else null,
+                champion = if (dto.champion != null) ChampionTeamDto.fromDto(dto.champion, dto) else null,
                 championBetAllowed = dto.championBetAllowed,
                 current = dto.current
         )

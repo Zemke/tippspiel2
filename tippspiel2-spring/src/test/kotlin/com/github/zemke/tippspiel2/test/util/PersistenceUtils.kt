@@ -44,7 +44,9 @@ object PersistenceUtils {
                     numberOfMatchdays = 1,
                     numberOfTeams = 1,
                     year = "2018",
-                    current = true
+                    current = true,
+                    championBetAllowed = true,
+                    champion = null
             )
 
     fun instantiateTeam(competition: Competition = instantiateCompetition()): Team =

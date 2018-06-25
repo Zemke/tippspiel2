@@ -9,6 +9,7 @@ module.exports = function(defaults) {
         'node_modules/bulma',
         'node_modules/bulma-badge/dist',
         'node_modules/bulma-tooltip/dist',
+        'node_modules/bulma-switch/dist/css',
       ],
       extension: 'sass'
     }

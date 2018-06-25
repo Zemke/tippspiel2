@@ -61,7 +61,8 @@ class FootballDataScheduledTasksService {
     fun updateCurrentCompetitionWithItsTeams() {
         val currentCompetition = competitionRepository.findByCurrentTrue() ?: return
         val footballDataCompetition = FootballDataCompetitionDto.fromDto(
-                footballDataService.requestCompetition(currentCompetition.id))
+                footballDataService.requestCompetition(currentCompetition.id),
+                true, currentCompetition.championBetAllowed, currentCompetition.champion)
 
         if (currentCompetition != footballDataCompetition) competitionRepository.save(footballDataCompetition)
 

@@ -2,6 +2,7 @@ easterEgg: 'Hier könnte ein Easter Egg implementiert werden.'
 submit: 'Abschicken'
 join: '{name} beitreten'
 points: 'Punkte'
+pastFixtures: 'Vergangene'
 app:
   signOut: 'Ausloggen'
   signIn: 'Einloggen'
@@ -56,6 +57,12 @@ me:
     title: 'Tritt einer weiteren Tipprunde bei'
     subtitle: 'Wenn du einen Einladungs-Token bekommen hast, kannst du ihn hier eintragen und einer weiteren Tipprunde beitreten.'
     success: 'Tipprunde erfolgreich beigetreten.'
+  manualChampion:
+    title: 'Turniersieger bestimmen'
+    subtitle: 'Der Turniersieger wird über die Spielbegegnung mit dem <code>matchday</code> gleich dem <code>lastMatchday</code> des Wettbewerbs automatisch erkannt. Sollte das Spiel jedoch nach regulärer Spielzeit unentschieden stehen, kann der Turniersieger nicht automatisch benannt werden. Manuelles Setzen löst eine erneute Berechnung der Tabellen der Tipprunden aus.'
+    placeholder: 'Turniersieger setzen'
+    confirm: 'Möchtest du wirklich {teamName} als Turniersieger bestimmen?'
+    success: 'Turniersieger erfolgreich bestimmt und Tabellen ausgerechnet.'
 championBet:
   title: 'Turniersieger tippen'
   selectTeam: 'Wähle das Team'

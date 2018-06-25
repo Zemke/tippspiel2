@@ -24,40 +24,9 @@ data class Competition(
         @Min(1) val numberOfMatchdays: Int,
         @Min(2) val numberOfTeams: Int,
         @Min(1) val numberOfGames: Int,
-        @NotNull val lastUpdated: Timestamp
-) {
-
-    constructor(id: Long,
-                caption: String,
-                league: String,
-                year: String,
-                currentMatchday: Int,
-                numberOfMatchdays: Int,
-                numberOfTeams: Int,
-                numberOfGames: Int,
-                lastUpdated: Timestamp,
-                current: Boolean = false,
-                champion: Team? = null,
-                championBetAllowed: Boolean = true) : this(
-            id = id,
-            caption = caption,
-            league = league,
-            year = year,
-            currentMatchday = currentMatchday,
-            numberOfMatchdays = numberOfMatchdays,
-            numberOfTeams = numberOfTeams,
-            numberOfGames = numberOfGames,
-            lastUpdated = lastUpdated
-    ) {
-        this.current = current
-        this.champion = champion
-        this.championBetAllowed = championBetAllowed
-    }
-
-    /**
-     * Currently only one competition can be played at a time.
-     */
-    var current: Boolean = false
-    @ManyToOne var champion: Team? = null
-    var championBetAllowed: Boolean = true
-}
+        @NotNull val lastUpdated: Timestamp,
+        /** Currently only one competition can be played at a time. */
+        var current: Boolean,
+        @ManyToOne var champion: Team?,
+        var championBetAllowed: Boolean
+)

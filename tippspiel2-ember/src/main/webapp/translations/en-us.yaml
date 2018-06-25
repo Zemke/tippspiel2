@@ -2,6 +2,7 @@ easterEgg: 'An Easter Egg will be implemented here.'
 submit: 'Submit'
 join: 'Join {name}'
 points: 'Points'
+pastFixtures: 'Past'
 app:
   signOut: 'Sign Out'
   signIn: 'Sign In'
@@ -56,6 +57,12 @@ me:
     title: 'Join Another Betting Game'
     subtitle: 'If you have received an invitation token, you can enter it here to join another betting game.'
     success: 'Successfully joined betting game.'
+  manualChampion:
+    title: 'Set Champion Manually'
+    subtitle: 'The champion is automatically derived from the fixture with its <code>matchday</code> being the <code>lastMatchday</code> of the competition. However, if that match has drawn during regular play time, there’s no way to know the champion in which case it has to be set manually. This will also immediately trigger re-calculation of the standings.'
+    placeholder: 'Set champion'
+    confirm: 'Do you really want to set {teamName} to be the champion?'
+    success: 'Successfully set champion and re-calculated standings.'
 championBet:
   title: 'Champion Bet'
   selectTeam: 'Select team'

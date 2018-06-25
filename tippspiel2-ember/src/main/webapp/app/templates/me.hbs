@@ -94,6 +94,24 @@
       </article>
     </div>
   </div>
+  <div class="tile is-ancestor">
+    <div class="tile is-parent is-half">
+      <article class="tile is-child is-danger notification">
+        <p class="title">
+          {{t 'me.manualChampion.title'}}
+        </p>
+        <p class="subtitle">
+          {{t 'me.manualChampion.subtitle' htmlSafe=true}}
+        </p>
+        <p class="content">
+          {{#alternative-for-selection class="is-danger" value='id'
+                                       label='name' options=model.teams onChange=(action 'manuallySetChampion')
+                                       placeholder=(t 'me.manualChampion.placeholder')}}
+          {{/alternative-for-selection}}
+        </p>
+      </article>
+    </div>
+  </div>
 {{/if}}
 
 {{outlet}}

@@ -19,6 +19,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 import org.springframework.web.cors.CorsConfiguration
+import org.springframework.web.filter.CommonsRequestLoggingFilter
 
 @Configuration
 @EnableWebSecurity
@@ -51,6 +52,16 @@ class WebSecurityConfig(
     fun authenticationTokenFilterBean(): AuthenticationFilter {
         return AuthenticationFilter()
     }
+
+    @Bean
+    fun requestLoggingFilter(): CommonsRequestLoggingFilter =
+            CommonsRequestLoggingFilterImpl().apply {
+                setIncludeClientInfo(true)
+                setIncludeQueryString(true)
+                setIncludePayload(true)
+                setAfterMessagePrefix("")
+                setAfterMessageSuffix("")
+            }
 
     @Throws(Exception::class)
     override fun configure(httpSecurity: HttpSecurity) {
