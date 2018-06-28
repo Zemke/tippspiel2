@@ -18,7 +18,7 @@ export default Route.extend({
             bettingGame: this.get('store').peekRecord('betting-game', currentBettingGame.get('id'))
           }))
           .toArray()
-          .sort((a, b) => a.get('fixture.date') - b.get('fixture.date'));
+          .sort((a, b) => b.get('fixture.date') - a.get('fixture.date'));
         return hash;
       });
     });
