@@ -21,6 +21,8 @@
   {{/each}}
 </div>
 
+<hr class={{unless showPastFixtures 'is-hidden'}}>
+
 <div class="columns is-multiline">
   {{#each model.betsForUnfinishedFixtures as |bet|}}
     <div class="column is-one-third-tablet is-one-quarter-widescreen">
