@@ -2,19 +2,18 @@ import Controller from '@ember/controller';
 import {computed} from '@ember/object';
 
 export default Controller.extend({
+  compareStandings(s1, s2) {
+    return (s2.get('points') - s1.get('points')
+      || s2.get('exactBets') - s1.get('exactBets')
+      || s2.get('goalDifferenceBets') - s1.get('goalDifferenceBets')
+      || s2.get('winnerBets') - s1.get('winnerBets')
+      || s1.get('missedBets') - s2.get('missedBets'))
+  },
   standingsAsTable: computed('model.standings', 'model.championBets', 'model.competition', function () {
-    function compare(s1, s2) {
-      return  (s2.get('points') - s1.get('points')
-               || s2.get('exactBets') - s1.get('exactBets')
-               || s2.get('goalDifferenceBets') - s1.get('goalDifferenceBets')
-               || s2.get('winnerBets') - s1.get('winnerBets')
-               || s1.get('missedBets') - s2.get('missedBets')
-               || s2.get('wrongBets') - s1.get('wrongBets'))
-    }
     return this.get('model.standings').toArray()
-      .sort((s1, s2) => compare(s1, s2))
+      .sort((s1, s2) => this.compareStandings(s1, s2))
       .map((value, index, arr) => {
-        value.set('position', (index == 0 ? 1 : (compare(value, arr[index-1]) > 0 ? index+1 : "")));
+        value.set('position', (index === 0 ? 1 : (this.compareStandings(value, arr[index - 1]) > 0 ? index + 1 : null)));
 
         const championBet = this.get('model.championBets').find(cB => cB.get('user.id') === value.get('user.id'));
 

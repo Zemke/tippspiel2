@@ -23,7 +23,7 @@
   </tr>
   </thead>
   <tbody>
-  {{#each standingsAsTable as |standing index|}}
+  {{#each standingsAsTable as |standing|}}
     <tr class={{concat 'standings' (if standing.isAuthenticatedUser ' has-background-light')}}>
       <td class="has-text-centered">
         {{standing.position}}
