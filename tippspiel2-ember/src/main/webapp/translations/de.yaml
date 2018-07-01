@@ -68,7 +68,8 @@ championBet:
   submit: 'Abschicken'
   hintAtLaterChange: 'Dein Turniersieger-Tipp kann später geändert werden, indem du auf deine Flagge in der Tabelle klickst.'
 standings:
-    yetToBet: 'Klicke hier um deinen Turniersieger-Tipp zum abzugeben. Du hast Zeit bis zum ersten Spiel.'
+  yetToBet: 'Klicke hier um deinen Turniersieger-Tipp zum abzugeben. Du hast Zeit bis zum ersten Spiel.'
+  sorting: 'Die Sortierung ist in absteigender Reihenfolge Punkte, exakte Tipps, Tor-Differenz-Tipps, Sieger-Tipps; in aufsteigender Reihenfolge fehlende Tipps. Sollte das noch immer zu Gleichstand führen, wird der korrekte Turniersieger-Tipp entscheiden.'
 bets:
   none: 'Es gibt noch keine Tipps.'
   noneUntilFinished: 'Sobald das Spiel angepfiffen wurde, siehst du hier die Tipps der anderen.'
