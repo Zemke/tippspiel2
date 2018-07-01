@@ -69,6 +69,7 @@ championBet:
   hintAtLaterChange: 'Your bet may be changed later on by clicking on your flag in the standings.'
 standings:
   yetToBet: 'Click here to place champion bet. You have time till the first game kicks off.'
+  sorting: 'The sorting criteria is in descending order points, exact bets, goal difference bets, winner bets; in ascending order missed bets. If that still amounts to the same standing, a correct champion bet would favor a participant.'
 bets:
   none: 'There are no bets yet.'
   noneUntilFinished: 'You will see other users’ bets once the game has kicked off.'
