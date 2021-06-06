@@ -8,7 +8,6 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user
 import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity
 import org.springframework.test.context.ContextConfiguration
@@ -23,7 +22,6 @@ import org.springframework.web.context.WebApplicationContext
 
 
 @RunWith(SpringRunner::class)
-@SpringBootTest(classes = [(SpringBootTippspiel2Application::class)])
 @WebAppConfiguration
 @ContextConfiguration(classes = [WebSecurityConfig::class])
 @IntegrationTest
