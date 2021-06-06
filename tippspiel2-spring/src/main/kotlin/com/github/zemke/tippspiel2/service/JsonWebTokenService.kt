@@ -27,6 +27,7 @@ class JsonWebTokenService(
         val user = userDetails as AuthenticatedUser
         val email = getSubjectFromToken(token)
         val created = getIssuedAtDateFromToken(token)
+        // TODO Why is this commented out?
         //final Date expiration = getExpirationDateFromToken(token);
         return (email == user.username
                 && !isTokenExpired(token)
