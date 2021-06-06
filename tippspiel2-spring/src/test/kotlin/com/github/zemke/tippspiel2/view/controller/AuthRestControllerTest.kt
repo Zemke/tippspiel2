@@ -44,7 +44,7 @@ class AuthRestControllerTest {
         val requestPayload = JacksonUtils.toJson(AuthenticationRequestDto(email, plainPassword))
         val user = userService.addUser("Florian", "Zemke", email, plainPassword, createBettingGame())
 
-        this.mockMvc.perform(post("/api/auth/")
+        this.mockMvc.perform(post("/api/auth")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestPayload))
                 .andExpect(status().isCreated)
