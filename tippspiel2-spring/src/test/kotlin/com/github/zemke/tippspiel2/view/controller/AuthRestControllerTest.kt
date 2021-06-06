@@ -1,6 +1,5 @@
 package com.github.zemke.tippspiel2.view.controller
 
-import com.github.zemke.tippspiel2.SpringBootTippspiel2Application
 import com.github.zemke.tippspiel2.core.authentication.AuthenticatedUser
 import com.github.zemke.tippspiel2.persistence.model.BettingGame
 import com.github.zemke.tippspiel2.persistence.repository.BettingGameRepository
@@ -13,26 +12,15 @@ import com.github.zemke.tippspiel2.view.model.AuthenticationRequestDto
 import com.github.zemke.tippspiel2.view.model.JsonWebTokenDto
 import com.github.zemke.tippspiel2.view.util.JacksonUtils
 import io.jsonwebtoken.lang.Assert
-import org.junit.Before
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType
-import org.springframework.test.context.junit4.SpringRunner
-import org.springframework.test.context.web.WebAppConfiguration
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
-import org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup
-import org.springframework.web.context.WebApplicationContext
 
-@RunWith(SpringRunner::class)
-@WebAppConfiguration
 @IntegrationTest
 class AuthRestControllerTest {
-
-    @Autowired
-    private lateinit var webApplicationContext: WebApplicationContext
 
     @Autowired
     private lateinit var userService: UserService
@@ -46,12 +34,8 @@ class AuthRestControllerTest {
     @Autowired
     private lateinit var jsonWebTokenService: JsonWebTokenService
 
+    @Autowired
     private lateinit var mockMvc: MockMvc
-
-    @Before
-    fun setUp() {
-        this.mockMvc = webAppContextSetup(webApplicationContext).build()
-    }
 
     @Test
     fun createAuthenticationToken() {
