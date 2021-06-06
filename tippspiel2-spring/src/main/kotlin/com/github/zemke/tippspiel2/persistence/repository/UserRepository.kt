@@ -10,5 +10,5 @@ interface UserRepository : JpaRepository<User, Long> {
 
     fun findByEmailIgnoreCase(email: String): User?
 
-    fun findByBettingGames(bettingGames: List<BettingGame>): List<User>
+    fun findByBettingGamesIn(bettingGames: List<BettingGame>): List<User>
 }

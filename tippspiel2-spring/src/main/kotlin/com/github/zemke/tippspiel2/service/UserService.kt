@@ -95,5 +95,5 @@ class UserService(
     }
 
     fun findByBettingGames(bettingGame: List<BettingGame>): List<User> =
-            userRepository.findByBettingGames(bettingGame)
+            userRepository.findByBettingGamesIn(bettingGame)
 }
