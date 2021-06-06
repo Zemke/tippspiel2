@@ -55,8 +55,8 @@ class ChampionBetRepositoryTest {
                 .copy(competition = competition))
 
         val user1 = PersistenceUtils.createUser(testEntityManager, listOf(bettingGame))
-        val user2 = PersistenceUtils.createUser(testEntityManager, listOf(bettingGame))
-        val user3 = PersistenceUtils.createUser(testEntityManager, listOf(bettingGame))
+        val user2 = PersistenceUtils.createUser(testEntityManager, listOf(bettingGame), "2")
+        val user3 = PersistenceUtils.createUser(testEntityManager, listOf(bettingGame), "3")
 
         val championBet1 = testEntityManager.persist(PersistenceUtils.instantiateChampionBet(bettingGame, user1, team1))
         testEntityManager.persist(PersistenceUtils.instantiateChampionBet(bettingGame, user2, team2))
