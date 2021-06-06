@@ -4,7 +4,7 @@ import com.github.zemke.tippspiel2.persistence.model.Competition
 import com.github.zemke.tippspiel2.persistence.model.Fixture
 import com.github.zemke.tippspiel2.persistence.model.Team
 import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
-import com.github.zemke.tippspiel2.test.util.EmbeddedPostgresDataJpaTest
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import com.github.zemke.tippspiel2.view.util.JacksonUtils
 import org.junit.Assert
 import org.junit.Test
@@ -16,7 +16,7 @@ import java.sql.Timestamp
 import java.util.*
 
 @RunWith(SpringRunner::class)
-@EmbeddedPostgresDataJpaTest
+@DataJpaTest
 class FixtureRepositoryTest {
 
     @Autowired

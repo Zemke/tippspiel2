@@ -1,7 +1,7 @@
 package com.github.zemke.tippspiel2.persistence.repository
 
 import com.github.zemke.tippspiel2.persistence.model.ChampionBet
-import com.github.zemke.tippspiel2.test.util.EmbeddedPostgresDataJpaTest
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import com.github.zemke.tippspiel2.test.util.PersistenceUtils
 import org.junit.Assert
 import org.junit.Test
@@ -11,7 +11,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager
 import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(SpringRunner::class)
-@EmbeddedPostgresDataJpaTest
+@DataJpaTest
 class ChampionBetRepositoryTest {
 
     @Autowired
