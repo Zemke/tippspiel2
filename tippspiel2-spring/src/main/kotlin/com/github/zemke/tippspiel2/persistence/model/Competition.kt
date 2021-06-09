@@ -1,7 +1,7 @@
 package com.github.zemke.tippspiel2.persistence.model
 
 import org.hibernate.validator.constraints.Range
-import java.sql.Timestamp
+import java.time.Instant
 import javax.persistence.Entity
 import javax.persistence.Id
 import javax.persistence.ManyToOne
@@ -19,12 +19,10 @@ data class Competition(
         @Id val id: Long,
         @NotBlank val caption: String,
         @NotBlank val league: String,
-        @Range(min = 1900, max = 3000) @NotBlank val year: String,
+        @Range(min = 1900, max = 3000) @NotBlank val year: Int,
         @Range(min = 0) @NotNull val currentMatchday: Int,
-        @Min(1) val numberOfMatchdays: Int,
-        @Min(2) val numberOfTeams: Int,
-        @Min(1) val numberOfGames: Int,
-        @NotNull val lastUpdated: Timestamp,
+        val numberOfAvailableSeasons: Int,
+        @NotNull val lastUpdated: Instant,
         /** Currently only one competition can be played at a time. */
         var current: Boolean,
         @ManyToOne var champion: Team?,

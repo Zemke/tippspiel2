@@ -11,6 +11,5 @@ data class Team(
 
         @Id val id: Long,
         @NotBlank val name: String,
-        val squadMarketValue: String?,
         @ManyToOne(optional = false, cascade = [CascadeType.MERGE]) val competition: Competition
 )

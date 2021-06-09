@@ -16,7 +16,6 @@ data class FootballDataTeamDto(
         @JsonProperty("id") var id: Long,
         @JsonProperty("name") var name: String,
         @JsonProperty("shortName") var shortName: String?,
-        @JsonProperty("squadMarketValue") var squadMarketValue: String?,
         @JsonProperty("crestUrl") var crestUrl: String?
 ) {
 
@@ -25,7 +24,6 @@ data class FootballDataTeamDto(
         fun fromDto(dto: FootballDataTeamDto, competition: Competition): Team = Team(
                 id = dto.id,
                 name = dto.name,
-                squadMarketValue = dto.squadMarketValue,
                 competition = competition
         )
 
@@ -34,7 +32,6 @@ data class FootballDataTeamDto(
                 name = team.name,
                 crestUrl = null,
                 shortName = null,
-                squadMarketValue = team.squadMarketValue
         )
     }
 }

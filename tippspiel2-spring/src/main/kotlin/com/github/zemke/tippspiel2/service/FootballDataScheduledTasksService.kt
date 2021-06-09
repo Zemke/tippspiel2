@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Component
 import javax.transaction.Transactional
+import com.github.zemke.tippspiel2.service.NULL_TEAM_ID
 
 @Component
 class FootballDataScheduledTasksService {
@@ -39,12 +40,15 @@ class FootballDataScheduledTasksService {
     fun requestFixturesAndUpdateStandings() {
         val competition = competitionRepository.findByCurrentTrue() ?: return
         val currentFixtures = fixtureService.findFixturesByCompetitionAndManualFalse(competition)
-        val teamsToBeAffectedByUpdate = currentFixtures.fold(arrayListOf()) { acc: ArrayList<Team>, fixture: Fixture ->
-            with(acc) { addAll(listOf(fixture.homeTeam, fixture.awayTeam)); this }
-        }
-        val footballDataFixturesOfCompetition = footballDataService.requestFixtures(competition.id).fixtures
+        val teamsToBeAffectedByUpdate = currentFixtures
+            .fold(arrayListOf()) { acc: ArrayList<Team?>, fixture: Fixture ->
+                with(acc) { addAll(listOf(fixture.homeTeam, fixture.awayTeam)); this }
+            }
+            .filterNotNull()
+        val footballDataFixturesOfCompetition = footballDataService.requestFixtures(competition.id).matches
         val fixturesNewOrChanged = footballDataFixturesOfCompetition
-                .filter { it.homeTeamId != NULL_TEAM_ID && it.awayTeamId != NULL_TEAM_ID }
+                .filter { it.homeTeam != null && it.awayTeam != null }
+                .filter { it.homeTeam?.id != NULL_TEAM_ID && it.awayTeam?.id != NULL_TEAM_ID }
                 .map { FootballDataFixtureDto.fromDto(it, teamsToBeAffectedByUpdate, competition) }
                 .filter { !currentFixtures.contains(it) }
 

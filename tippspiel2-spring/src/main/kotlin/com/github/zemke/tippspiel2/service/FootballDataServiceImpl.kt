@@ -2,11 +2,19 @@ package com.github.zemke.tippspiel2.service
 
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.SerializationFeature
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
+
 import com.github.zemke.tippspiel2.core.profile.Prod
 import com.github.zemke.tippspiel2.core.properties.FootballDataProperties
 import com.github.zemke.tippspiel2.view.model.FootballDataCompetitionDto
 import com.github.zemke.tippspiel2.view.model.FootballDataFixtureWrappedListDto
 import com.github.zemke.tippspiel2.view.model.FootballDataTeamWrappedListDto
+
+import java.text.SimpleDateFormat
+
+import javax.annotation.PostConstruct
+
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.web.client.RestTemplateBuilder
 import org.springframework.http.MediaType
@@ -14,8 +22,6 @@ import org.springframework.http.client.ClientHttpRequestInterceptor
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestTemplate
-import java.text.SimpleDateFormat
-import javax.annotation.PostConstruct
 
 @Prod
 @Service
@@ -37,8 +43,9 @@ class FootballDataServiceImpl : FootballDataService {
                         with(MappingJackson2HttpMessageConverter()) {
                             supportedMediaTypes = listOf(MediaType.APPLICATION_JSON)
                             objectMapper = with(ObjectMapper()) {
-                                configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-                                setDateFormat(SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'"))
+                                disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+                                disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
+                                registerModule(JavaTimeModule())
                             }
                             this
                         })
@@ -49,7 +56,7 @@ class FootballDataServiceImpl : FootballDataService {
             fireQuery("/competitions/$competitionId")
 
     override fun requestFixtures(competitionId: Long): FootballDataFixtureWrappedListDto =
-            fireQuery("/competitions/$competitionId/fixtures")
+            fireQuery("/competitions/$competitionId/matches")
 
     override fun requestTeams(competitionId: Long): FootballDataTeamWrappedListDto =
             fireQuery("/competitions/$competitionId/teams")

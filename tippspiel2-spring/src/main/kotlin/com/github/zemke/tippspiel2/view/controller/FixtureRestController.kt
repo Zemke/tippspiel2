@@ -1,4 +1,4 @@
-package com.github.zemke.tippspiel2.view.controller
+
 
 import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
 import com.github.zemke.tippspiel2.service.FixtureService
@@ -20,8 +20,10 @@ class FixtureRestController(
 
     @GetMapping("")
     fun getFixtures(@RequestParam() competitionId: Long?,
+                    @RequestParam(defaultValue = "false") complete: Boolean,
                     @RequestParam("status") statuses: List<FixtureStatus>?): ResponseEntity<List<FixtureDto>> =
             ResponseEntity.ok(fixtureService.findAll()
+                    .filter { !complete || it.complete() }
                     .filter { competitionId == null || it.competition.id == competitionId }
                     .filter { statuses == null || statuses.contains(it.status) }
                     .map { FixtureDto.toDto(it) })

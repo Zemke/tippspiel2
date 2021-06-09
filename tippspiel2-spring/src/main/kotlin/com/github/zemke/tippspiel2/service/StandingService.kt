@@ -54,26 +54,16 @@ class StandingService(
             changeStatsByNewPoints(standingOfUser, pointsForBet)
         }
 
-        val fixtures = fixtureRepository.findFixturesByCompetition(bettingGame.competition)
-        val competitionChampion: Team? =
-                bettingGame.competition.champion
-                ?: championBetService.getCompetitionChampionFromFixtures(fixtures, bettingGame.competition.numberOfMatchdays)
-
-        if (bettingGame.competition.champion == null && competitionChampion != null) {
-            bettingGame.competition.champion = competitionChampion
-            competitionRepository.save(bettingGame.competition)
-        }
-
         val usersWithRightChampionBet =
-                if (competitionChampion != null)
-                    championBetService.findByTeam(competitionChampion)
+                bettingGame.competition.champion?.let { champion ->
+                    // TODO Champion could not be up-to-date in competition at this time. Champion of the competition could possibibly be derived from the fixture as well.
+                    championBetService.findByTeam(champion)
                             .filter { it.bettingGame.competition == bettingGame.competition }
                             .map { it.user.id }
-                else
-                    emptyList()
+                } ?: emptyList()
 
         allStandings.forEach { standing ->
-            val numberOfFinishedFixturesInCompetition = fixtures
+            val numberOfFinishedFixturesInCompetition = fixtureRepository.findFixturesByCompetition(bettingGame.competition)
                     .filter { fixture -> fixture.competition === bettingGame.competition }
                     .filter { fixture -> fixture.status == FixtureStatus.FINISHED }
                     .count()

@@ -12,7 +12,7 @@ export default Route.extend({
       currentBettingGame: this.get('bettingGame.currentBettingGame')
     }).then(hash =>
       RSVP.hash({
-        fixtures: this.get('store').query('fixture', {competition: hash.currentBettingGame.get('competition.id')}),
+        fixtures: this.get('store').query('fixture', {competition: hash.currentBettingGame.get('competition.id'), complete: true}),
         bets: this.get('store').query('bet', {user: hash.user.id, bettingGame: hash.currentBettingGame.get('id')})
       }).then(hash1 => {
           const bets = hash1.fixtures

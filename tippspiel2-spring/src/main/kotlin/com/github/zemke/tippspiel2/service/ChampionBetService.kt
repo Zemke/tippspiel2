@@ -32,17 +32,4 @@ class ChampionBetService(
 
     fun findByTeam(team: Team): List<ChampionBet> =
             championBetRepository.findByTeam(team)
-
-    fun getCompetitionChampionFromFixtures(fixturesOfCompetition: List<Fixture>, finalMatchdayOfCompetition: Int): Team? {
-        val finishedFinalGame = fixturesOfCompetition
-                .find { it.matchday == finalMatchdayOfCompetition && it.status == FixtureStatus.FINISHED } ?: return null
-
-        if (finishedFinalGame.goalsHomeTeam == null || finishedFinalGame.goalsAwayTeam == null) return null
-
-        return when {
-            finishedFinalGame.goalsHomeTeam > finishedFinalGame.goalsAwayTeam -> finishedFinalGame.homeTeam
-            finishedFinalGame.goalsAwayTeam > finishedFinalGame.goalsHomeTeam -> finishedFinalGame.awayTeam
-            else -> null
-        }
-    }
 }

@@ -5,18 +5,17 @@ package com.github.zemke.tippspiel2.persistence.model.enumeration
  */
 enum class FixtureStatus {
     SCHEDULED,
-    TIMED,
     IN_PLAY,
     FINISHED,
     POSTPONED,
-    CANCELED;
+    CANCELED,
+    SUSPENDED,
+    PAUSED,
+    AWARDED;
 
     companion object {
 
         /** Betting is not permitted anymore. */
-        val NO_BETTING = listOf(FixtureStatus.IN_PLAY, FixtureStatus.FINISHED)
-
-        /** For persistence often times only a few statuses are of interest. */
-        val OF_INTEREST = listOf(FixtureStatus.TIMED, FixtureStatus.IN_PLAY, FixtureStatus.FINISHED)
+        val NO_BETTING = listOf(FixtureStatus.IN_PLAY, FixtureStatus.FINISHED, FixtureStatus.AWARDED, FixtureStatus.PAUSED)
     }
 }

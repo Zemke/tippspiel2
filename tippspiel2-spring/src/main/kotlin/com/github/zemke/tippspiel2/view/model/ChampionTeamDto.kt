@@ -7,7 +7,6 @@ import com.github.zemke.tippspiel2.view.util.DataTransferObject
 data class ChampionTeamDto(
         val id: Long,
         val name: String,
-        val squadMarketValue: String?
 ) {
 
     companion object {
@@ -15,14 +14,12 @@ data class ChampionTeamDto(
         fun toDto(team: Team): ChampionTeamDto = ChampionTeamDto(
                 team.id,
                 team.name,
-                team.squadMarketValue
         )
 
         fun fromDto(dto: ChampionTeamDto, competition: CompetitionDto): Team = Team(
                 id = dto.id,
                 name = dto.name,
                 competition = CompetitionDto.fromDto(competition),
-                squadMarketValue = dto.squadMarketValue
         )
     }
 }

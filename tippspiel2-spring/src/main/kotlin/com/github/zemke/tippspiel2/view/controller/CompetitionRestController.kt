@@ -37,6 +37,7 @@ class CompetitionRestController(
         @Autowired private val footballDataScheduledTasksService: FootballDataScheduledTasksService
 ) {
 
+
     @GetMapping("")
     fun queryCompetitions(@RequestParam("current", defaultValue = "false") current: Boolean): ResponseEntity<List<CompetitionDto>> {
         val competitions = if (current) {
@@ -58,9 +59,9 @@ class CompetitionRestController(
 
         val competition = FootballDataCompetitionDto.fromDto(competitionDto, false, true, null)
         val teams = teamWrappedListDto.teams.map { FootballDataTeamDto.fromDto(it, competition) }
-        val fixtures = fixtureWrappedListDto.fixtures
-                .filter { FixtureStatus.OF_INTEREST.contains(it.status) }
-                .filter { it.homeTeamId != NULL_TEAM_ID && it.awayTeamId != NULL_TEAM_ID }
+        val fixtures = fixtureWrappedListDto.matches
+                .filter { it.homeTeam != null && it.awayTeam != null }
+                .filter { it.homeTeam?.id != NULL_TEAM_ID && it.awayTeam?.id != NULL_TEAM_ID }
                 .map { FootballDataFixtureDto.fromDto(it, teams, competition) }
 
         fixtureService.saveMany(fixtures)

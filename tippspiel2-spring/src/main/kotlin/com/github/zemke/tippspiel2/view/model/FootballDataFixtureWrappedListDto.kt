@@ -6,27 +6,23 @@ import com.github.zemke.tippspiel2.persistence.model.Fixture
 import com.github.zemke.tippspiel2.persistence.model.Team
 import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
 import com.github.zemke.tippspiel2.view.util.DataTransferObject
-import java.sql.Timestamp
-import java.util.*
+import java.time.Instant
 
 @DataTransferObject
 data class FootballDataFixtureWrappedListDto(
         @JsonProperty("count") var count: Int,
-        @JsonProperty("fixtures") var fixtures: List<FootballDataFixtureDto>
+        @JsonProperty("matches") var matches: List<FootballDataFixtureDto>
 )
 
 @DataTransferObject
 data class FootballDataFixtureDto(
         @JsonProperty("id") var id: Long,
-        @JsonProperty("homeTeamName") var homeTeamName: String,
-        @JsonProperty("awayTeamName") var awayTeamName: String,
-        @JsonProperty("result") var result: FootballDataFixtureResultDto,
+        @JsonProperty("homeTeam") var homeTeam: FootballDataFixtureTeamDto?,
+        @JsonProperty("awayTeam") var awayTeam: FootballDataFixtureTeamDto?,
+        @JsonProperty("score") var score: FootballDataFixtureResultDto?,
         @JsonProperty("matchday") var matchday: Int,
         @JsonProperty("status") var status: FixtureStatus,
-        @JsonProperty("date") var date: Date?,
-        @JsonProperty("odds") var odds: Double?,
-        @JsonProperty("homeTeamId") var homeTeamId: Long,
-        @JsonProperty("awayTeamId") var awayTeamId: Long,
+        @JsonProperty("utcDate") var utcDate: Instant,
         @JsonProperty("competitionId") var competitionId: Long
 ) {
 
@@ -34,36 +30,31 @@ data class FootballDataFixtureDto(
 
         fun fromDto(dto: FootballDataFixtureDto, teams: List<Team>, competition: Competition): Fixture = Fixture(
                 id = dto.id,
-                date = Timestamp(dto.date?.time!!),
+                date = dto.utcDate,
                 status = dto.status,
                 matchday = dto.matchday,
-                odds = dto.odds,
-                goalsHomeTeam = dto.result.goalsHomeTeam,
-                goalsAwayTeam = dto.result.goalsAwayTeam,
-                homeTeam = teams.find { it.id == dto.homeTeamId }!!,
-                awayTeam = teams.find { it.id == dto.awayTeamId }!!,
+                goalsHomeTeam = dto.score?.fullTime?.homeTeam,
+                goalsAwayTeam = dto.score?.fullTime?.awayTeam,
+                homeTeam = dto.homeTeam?.let { team -> teams.find { it.id == team.id } },
+                awayTeam = dto.awayTeam?.let { team -> teams.find { it.id == team.id } },
                 competition = competition
         )
-
-        fun toDto(fixture: Fixture): FootballDataFixtureDto =
-                FootballDataFixtureDto(
-                        id = fixture.id!!,
-                        homeTeamName = fixture.homeTeam.name,
-                        awayTeamName = fixture.awayTeam.name,
-                        result = FootballDataFixtureResultDto(fixture.goalsHomeTeam, fixture.goalsAwayTeam),
-                        matchday = fixture.matchday,
-                        status = fixture.status,
-                        date = fixture.date,
-                        odds = fixture.odds,
-                        homeTeamId = fixture.homeTeam.id,
-                        awayTeamId = fixture.awayTeam.id,
-                        competitionId = fixture.competition.id
-                )
     }
 }
 
 @DataTransferObject
 data class FootballDataFixtureResultDto(
-        @JsonProperty("goalsHomeTeam") var goalsHomeTeam: Int?,
-        @JsonProperty("goalsAwayTeam") var goalsAwayTeam: Int?
+        @JsonProperty("fullTime") var fullTime: FootballDataFixtureFullTimeResultDto,
+)
+
+@DataTransferObject
+data class FootballDataFixtureFullTimeResultDto(
+        @JsonProperty("homeTeam") var homeTeam: Int,
+        @JsonProperty("awayTeam") var awayTeam: Int,
+)
+
+@DataTransferObject
+data class FootballDataFixtureTeamDto(
+    @JsonProperty("id") var id: Long,
+    @JsonProperty("name") var name: String?,
 )
