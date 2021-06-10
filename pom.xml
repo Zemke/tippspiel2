@@ -75,10 +75,10 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${basedir}/tippspiel2-spring/src/main/resources/static</outputDirectory>
+                            <outputDirectory>${project.basedir}/tippspiel2-spring/src/main/resources/static</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>${basedir}/tippspiel2-ember/src/main/webapp/dist</directory>
+                                    <directory>${project.basedir}/tippspiel2-ember/src/main/webapp/dist</directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>
