@@ -1,4 +1,4 @@
-
+package com.github.zemke.tippspiel2.view.controller
 
 import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
 import com.github.zemke.tippspiel2.service.FixtureService
