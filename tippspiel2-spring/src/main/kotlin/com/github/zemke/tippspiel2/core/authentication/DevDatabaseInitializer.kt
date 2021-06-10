@@ -26,11 +26,13 @@ class DevDatabaseInitializer : ApplicationListener<ContextRefreshedEvent> {
     private lateinit var authenticationProperties: AuthenticationProperties
 
     override fun onApplicationEvent(event: ContextRefreshedEvent?) {
-        userRepository.save(User(
-                fullName = FullName("Florian", "Zemke"),
-                password = BCrypt.hashpw("admin", authenticationProperties.bcryptSalt),
-                email = "flzemke@gmail.com",
-                roles = roleService.initRoles()
-        ))
+        userRepository.findByEmailIgnoreCase("florian@zemke.io") ?: run {
+            userRepository.save(User(
+                    fullName = FullName("Florian", "Zemke"),
+                    password = BCrypt.hashpw("admin", authenticationProperties.bcryptSalt),
+                    email = "florian@zemke.io",
+                    roles = roleService.initRoles()
+            ))
+        }
     }
 }
