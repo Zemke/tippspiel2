@@ -4,7 +4,7 @@
   "private": true,
   "description": "Tippspiel 2 is a betting game initially developed for the World Cup 2018 in Russia.",
   "license": "MIT",
-  "author": "Florian Zemke <flzemke@gmail.com>",
+  "author": "Florian Zemke <florian@zemke.io>",
   "directories": {
     "doc": "doc",
     "test": "tests"
