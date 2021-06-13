@@ -3,9 +3,13 @@ import {computed} from '@ember/object';
 import {inject} from '@ember/service';
 import {decamelize} from '@ember/string';
 import {pluralize} from 'ember-inflector';
+import config from '../config/environment';
+
+const host = config.environment === "development" ? "http://localhost:8080" : null;
 
 export default RESTAdapter.extend({
   auth: inject(),
+  host,
   namespace: 'api',
   pathForType(modelName) {
     return decamelize(pluralize(modelName));
