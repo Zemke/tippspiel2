@@ -1,229 +1,480 @@
 {
-   "count" : 32,
+   "competition" : {
+      "area" : {
+         "id" : 2077,
+         "name" : "Europe"
+      },
+      "code" : "EC",
+      "id" : 2018,
+      "lastUpdated" : "2020-09-10T13:51:03Z",
+      "name" : "European Championship",
+      "plan" : "TIER_ONE"
+   },
+   "count" : 24,
+   "filters" : {},
+   "season" : {
+      "currentMatchday" : 1,
+      "endDate" : "2021-07-11",
+      "id" : 507,
+      "startDate" : "2021-06-11",
+      "winner" : null
+   },
    "teams" : [
       {
-         "crestUrl" : "https://upload.wikimedia.org/wikipedia/en/f/f3/Flag_of_Russia.svg",
-         "shortName" : null,
-         "id" : 808,
-         "squadMarketValue" : null,
-         "name" : "Russia"
-      },
-      {
-         "squadMarketValue" : null,
-         "name" : "Saudi Arabia",
-         "shortName" : null,
-         "id" : 801,
-         "crestUrl" : null
-      },
-      {
-         "squadMarketValue" : null,
-         "name" : "Egypt",
-         "crestUrl" : null,
-         "shortName" : null,
-         "id" : 825
-      },
-      {
-         "crestUrl" : null,
-         "id" : 758,
-         "shortName" : null,
-         "squadMarketValue" : null,
-         "name" : "Uruguay"
-      },
-      {
-         "name" : "Morocco",
-         "squadMarketValue" : null,
-         "id" : 815,
-         "shortName" : null,
-         "crestUrl" : null
-      },
-      {
-         "id" : 840,
-         "shortName" : "Iran",
-         "crestUrl" : null,
-         "name" : "Iran",
-         "squadMarketValue" : null
-      },
-      {
-         "name" : "Portugal",
-         "squadMarketValue" : null,
-         "crestUrl" : "https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg",
-         "id" : 765,
-         "shortName" : null
-      },
-      {
-         "shortName" : null,
-         "id" : 760,
-         "crestUrl" : "https://upload.wikimedia.org/wikipedia/en/9/9a/Flag_of_Spain.svg",
-         "squadMarketValue" : null,
-         "name" : "Spain"
-      },
-      {
-         "name" : "France",
-         "squadMarketValue" : null,
-         "crestUrl" : "https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg",
-         "shortName" : null,
-         "id" : 773
-      },
-      {
-         "squadMarketValue" : null,
-         "name" : "Australia",
-         "crestUrl" : null,
-         "id" : 779,
-         "shortName" : null
-      },
-      {
-         "squadMarketValue" : null,
-         "name" : "Argentina",
-         "crestUrl" : null,
-         "id" : 762,
-         "shortName" : null
-      },
-      {
-         "squadMarketValue" : null,
-         "name" : "Iceland",
-         "crestUrl" : "https://upload.wikimedia.org/wikipedia/commons/c/ce/Flag_of_Iceland.svg",
-         "shortName" : null,
-         "id" : 1066
-      },
-      {
-         "name" : "Peru",
-         "squadMarketValue" : null,
-         "shortName" : "Peru",
-         "id" : 832,
-         "crestUrl" : null
-      },
-      {
-         "name" : "Denmark",
-         "squadMarketValue" : null,
-         "crestUrl" : null,
-         "shortName" : null,
-         "id" : 782
-      },
-      {
-         "crestUrl" : "https://upload.wikimedia.org/wikipedia/commons/1/1b/Flag_of_Croatia.svg",
-         "id" : 799,
-         "shortName" : null,
-         "squadMarketValue" : null,
-         "name" : "Croatia"
-      },
-      {
-         "name" : "Nigeria",
-         "squadMarketValue" : null,
-         "id" : 776,
-         "shortName" : null,
-         "crestUrl" : null
-      },
-      {
-         "name" : "Costa Rica",
-         "squadMarketValue" : null,
-         "shortName" : null,
-         "id" : 793,
-         "crestUrl" : null
-      },
-      {
-         "shortName" : null,
-         "id" : 780,
-         "crestUrl" : null,
-         "squadMarketValue" : null,
-         "name" : "Serbia"
-      },
-      {
+         "address" : "Otto-Fleck-Schneise 6 / Postfach 710265 Frankfurt am Main 60492",
+         "area" : {
+            "id" : 2088,
+            "name" : "Germany"
+         },
+         "clubColors" : "White / Black",
+         "crestUrl" : "https://crests.football-data.org/759.svg",
+         "email" : "info@dfb.de",
+         "founded" : 1900,
+         "id" : 759,
+         "lastUpdated" : "2021-05-26T09:46:39Z",
          "name" : "Germany",
-         "squadMarketValue" : null,
-         "crestUrl" : "https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg",
-         "shortName" : null,
-         "id" : 759
+         "phone" : "+49 (69) 67880",
+         "shortName" : "Germany",
+         "tla" : "GER",
+         "venue" : "RheinEnergieSTADION",
+         "website" : "http://www.dfb.de"
       },
       {
-         "crestUrl" : null,
-         "shortName" : null,
-         "id" : 769,
-         "name" : "Mexico",
-         "squadMarketValue" : null
+         "address" : "RamÃ³n y Cajal, s/n Las Rozas 28230",
+         "area" : {
+            "id" : 2224,
+            "name" : "Spain"
+         },
+         "clubColors" : "Red / Blue / Yellow",
+         "crestUrl" : "https://crests.football-data.org/760.svg",
+         "email" : "rfef@rfef.es",
+         "founded" : 1909,
+         "id" : 760,
+         "lastUpdated" : "2021-05-26T09:46:48Z",
+         "name" : "Spain",
+         "phone" : "+34 (91) 4959800",
+         "shortName" : "Spain",
+         "tla" : "ESP",
+         "venue" : "Estadio Alfredo Di StÃ©fano",
+         "website" : "http://www.rfef.es"
       },
       {
-         "crestUrl" : null,
-         "shortName" : null,
-         "id" : 764,
-         "squadMarketValue" : null,
-         "name" : "Brazil"
+         "address" : "Rua Alexandre Herculano, 58 Lisboa 1250-012",
+         "area" : {
+            "id" : 2187,
+            "name" : "Portugal"
+         },
+         "clubColors" : "Red / Green",
+         "crestUrl" : "https://crests.football-data.org/765.svg",
+         "email" : "info@fpf.pt",
+         "founded" : 1914,
+         "id" : 765,
+         "lastUpdated" : "2021-05-26T09:46:58Z",
+         "name" : "Portugal",
+         "phone" : "+351 (213) 252700",
+         "shortName" : "Portugal",
+         "tla" : "POR",
+         "venue" : "EstÃ¡dio JosÃ© Alvalade",
+         "website" : "http://www.fpf.pt"
       },
       {
-         "squadMarketValue" : null,
-         "name" : "Switzerland",
-         "crestUrl" : "https://upload.wikimedia.org/wikipedia/commons/0/08/Flag_of_Switzerland_(Pantone).svg",
-         "shortName" : null,
-         "id" : 788
+         "address" : "TrnavskÃ¡ 100 Bratislava 82101",
+         "area" : {
+            "id" : 2214,
+            "name" : "Slovakia"
+         },
+         "clubColors" : "Blue / White",
+         "crestUrl" : "https://crests.football-data.org/768.svg",
+         "email" : "office@futbalsfz.sk",
+         "founded" : 1938,
+         "id" : 768,
+         "lastUpdated" : "2021-05-26T19:20:07Z",
+         "name" : "Slovakia",
+         "phone" : "+421 (2) 48206000",
+         "shortName" : "Slovakia",
+         "tla" : "SVK",
+         "venue" : "City Arena Trnava",
+         "website" : "http://www.futbalsfz.sk"
       },
       {
-         "name" : "Sweden",
-         "squadMarketValue" : null,
-         "shortName" : null,
-         "id" : 792,
-         "crestUrl" : "https://upload.wikimedia.org/wikipedia/en/4/4c/Flag_of_Sweden.svg"
-      },
-      {
-         "crestUrl" : null,
-         "id" : 772,
-         "shortName" : null,
-         "squadMarketValue" : null,
-         "name" : "Korea Republic"
-      },
-      {
-         "squadMarketValue" : null,
-         "name" : "Belgium",
-         "crestUrl" : "https://upload.wikimedia.org/wikipedia/commons/6/65/Flag_of_Belgium.svg",
-         "id" : 805,
-         "shortName" : null
-      },
-      {
-         "crestUrl" : null,
-         "shortName" : "Panama",
-         "id" : 1836,
-         "name" : "Panama",
-         "squadMarketValue" : null
-      },
-      {
-         "id" : 802,
-         "shortName" : null,
-         "crestUrl" : null,
-         "name" : "Tunisia",
-         "squadMarketValue" : null
-      },
-      {
+         "address" : "Wembley Stadium, PO Box 1966 London SW1P 9EQ",
+         "area" : {
+            "id" : 2072,
+            "name" : "England"
+         },
+         "clubColors" : "White / Red / Navy Blue",
+         "crestUrl" : "https://crests.football-data.org/770.svg",
+         "email" : "info@thefa.com",
+         "founded" : 1863,
+         "id" : 770,
+         "lastUpdated" : "2021-05-26T09:47:50Z",
          "name" : "England",
-         "squadMarketValue" : null,
-         "crestUrl" : "https://upload.wikimedia.org/wikipedia/en/b/be/Flag_of_England.svg",
-         "shortName" : null,
-         "id" : 770
+         "phone" : "+44 (844) 9808200",
+         "shortName" : "England",
+         "tla" : "ENG",
+         "venue" : "Wembley Stadium",
+         "website" : "http://www.thefa.com"
       },
       {
-         "squadMarketValue" : null,
+         "address" : "87 Boulevard de Grenelle Paris 75738",
+         "area" : {
+            "id" : 2081,
+            "name" : "France"
+         },
+         "clubColors" : "Blue / White / Red",
+         "crestUrl" : "https://crests.football-data.org/773.svg",
+         "email" : "webmaster@fff.fr",
+         "founded" : 1919,
+         "id" : 773,
+         "lastUpdated" : "2021-05-26T09:47:59Z",
+         "name" : "France",
+         "phone" : "+33 (1) 44317300",
+         "shortName" : "France",
+         "tla" : "FRA",
+         "venue" : "Stade de France",
+         "website" : "http://www.fff.fr"
+      },
+      {
+         "address" : "House of Football, DBU AllÃ© 1 BrÃ¸ndby 2605",
+         "area" : {
+            "id" : 2065,
+            "name" : "Denmark"
+         },
+         "clubColors" : "Red / White",
+         "crestUrl" : "https://crests.football-data.org/782.svg",
+         "email" : "dbu@dbu.dk",
+         "founded" : 1889,
+         "id" : 782,
+         "lastUpdated" : "2021-05-26T10:45:14Z",
+         "name" : "Denmark",
+         "phone" : "+45 (43) 262222",
+         "shortName" : "Denmark",
+         "tla" : "DEN",
+         "venue" : "Telia Parken",
+         "website" : "http://www.dbu.dk"
+      },
+      {
+         "address" : "Via Gregorio Allegri, 14 / CP 2450 Roma 00198",
+         "area" : {
+            "id" : 2114,
+            "name" : "Italy"
+         },
+         "clubColors" : "Blue / White",
+         "crestUrl" : "https://crests.football-data.org/784.svg",
+         "email" : "international@figc.it",
+         "founded" : 1898,
+         "id" : 784,
+         "lastUpdated" : "2021-05-26T10:29:34Z",
+         "name" : "Italy",
+         "phone" : "+39 (06) 84911",
+         "shortName" : "Italy",
+         "tla" : "ITA",
+         "venue" : "Stadio Artemio Franchi",
+         "website" : "http://www.figc.it"
+      },
+      {
+         "address" : "Worbstrasse 48 Bern 3000",
+         "area" : {
+            "id" : 2234,
+            "name" : "Switzerland"
+         },
+         "clubColors" : "Red / White",
+         "crestUrl" : "https://crests.football-data.org/788.svg",
+         "email" : "sfv.asf@football.ch",
+         "founded" : 1895,
+         "id" : 788,
+         "lastUpdated" : "2021-05-26T10:29:27Z",
+         "name" : "Switzerland",
+         "phone" : "+41 (31) 9508111",
+         "shortName" : "Switzerland",
+         "tla" : "SUI",
+         "venue" : "St. Jakob-Park",
+         "website" : "http://www.football.ch"
+      },
+      {
+         "address" : "Provulok Laboratorniy 7-A / PO Box 55 KyÃ¯v 01133",
+         "area" : {
+            "id" : 2253,
+            "name" : "Ukraine"
+         },
+         "clubColors" : "Yellow / Blue",
+         "crestUrl" : "https://crests.football-data.org/790.svg",
+         "email" : "info@ffu.org.ua",
+         "founded" : 1991,
+         "id" : 790,
+         "lastUpdated" : "2021-06-02T14:19:45Z",
+         "name" : "Ukraine",
+         "phone" : "+380 (44) 5210521",
+         "shortName" : "Ukraine",
+         "tla" : "UKR",
+         "venue" : "NSK Olimpijs'kyj",
+         "website" : "http://www.ffu.org.ua"
+      },
+      {
+         "address" : "Evenemangsgatan 31 / Box 1216 Solna 17123",
+         "area" : {
+            "id" : 2233,
+            "name" : "Sweden"
+         },
+         "clubColors" : "Yellow / Blue",
+         "crestUrl" : "https://crests.football-data.org/792.svg",
+         "email" : "svff@svenskfotboll.se",
+         "founded" : 1904,
+         "id" : 792,
+         "lastUpdated" : "2021-05-26T10:29:20Z",
+         "name" : "Sweden",
+         "phone" : "+46 (8) 7350900",
+         "shortName" : "Sweden",
+         "tla" : "SWE",
+         "venue" : "Friends Arena",
+         "website" : "http://www.svenskfotboll.se"
+      },
+      {
+         "address" : "Bitwy Warszawskiej 1920 r., 7 Warszawa 02366",
+         "area" : {
+            "id" : 2186,
+            "name" : "Poland"
+         },
+         "clubColors" : "White / Red",
+         "crestUrl" : "https://crests.football-data.org/794.svg",
+         "email" : "pzpn@pzpn.pl",
+         "founded" : 1919,
+         "id" : 794,
+         "lastUpdated" : "2021-05-26T09:49:02Z",
          "name" : "Poland",
-         "crestUrl" : "https://upload.wikimedia.org/wikipedia/en/1/12/Flag_of_Poland.svg",
-         "shortName" : null,
-         "id" : 794
+         "phone" : "+48 (22) 5512300",
+         "shortName" : "Poland",
+         "tla" : "POL",
+         "venue" : "Stadion Energa GdaÅsk",
+         "website" : "http://www.pzpn.pl"
       },
       {
-         "name" : "Senegal",
-         "squadMarketValue" : null,
-         "crestUrl" : null,
-         "id" : 804,
-         "shortName" : null
+         "address" : "DiskaÅskÃ¡ 2431/4 Praha 16017",
+         "area" : {
+            "id" : 2062,
+            "name" : "Czech Republic"
+         },
+         "clubColors" : "Red / White / Blue",
+         "crestUrl" : "https://crests.football-data.org/798.svg",
+         "email" : "facr@fotbal.cz",
+         "founded" : 1901,
+         "id" : 798,
+         "lastUpdated" : "2021-05-26T10:28:33Z",
+         "name" : "Czech Republic",
+         "phone" : "+420 (23) 3029111",
+         "shortName" : "Czech Republic",
+         "tla" : "CZE",
+         "venue" : "Sinobo Stadium",
+         "website" : "http://www.fotbal.cz"
       },
       {
-         "shortName" : null,
-         "id" : 818,
-         "crestUrl" : null,
-         "squadMarketValue" : null,
-         "name" : "Colombia"
+         "address" : "Ulica grada Vukovara, 269 A Zagreb 10000",
+         "area" : {
+            "id" : 2058,
+            "name" : "Croatia"
+         },
+         "clubColors" : "Red / White / Blue",
+         "crestUrl" : "https://crests.football-data.org/799.svg",
+         "email" : "info@hns-cff.hr",
+         "founded" : 1912,
+         "id" : 799,
+         "lastUpdated" : "2021-05-26T10:28:24Z",
+         "name" : "Croatia",
+         "phone" : "+385 (1) 2361555",
+         "shortName" : "Croatia",
+         "tla" : "CRO",
+         "venue" : "Stadion Maksimir",
+         "website" : "http://www.hns-cff.hr"
       },
       {
-         "crestUrl" : null,
-         "id" : 766,
-         "shortName" : null,
-         "name" : "Japan",
-         "squadMarketValue" : null
+         "address" : "Istinye Mahallesi, DarÃ¼ÅÅafaka Caddesi, 45 Ä°stanbul 34330",
+         "area" : {
+            "id" : 2247,
+            "name" : "Turkey"
+         },
+         "clubColors" : "Red / White",
+         "crestUrl" : "https://crests.football-data.org/803.svg",
+         "email" : "intdept@tff.org",
+         "founded" : 1923,
+         "id" : 803,
+         "lastUpdated" : "2021-05-26T10:28:10Z",
+         "name" : "Turkey",
+         "phone" : "+90 (212) 3622222",
+         "shortName" : "Turkey",
+         "tla" : "TUR",
+         "venue" : "Ali Sami Yen Stadyumu",
+         "website" : "http://www.tff.org"
+      },
+      {
+         "address" : "145, avenue Houba de Strooper Brussels 1020",
+         "area" : {
+            "id" : 2023,
+            "name" : "Belgium"
+         },
+         "clubColors" : "Red / Black / Yellow",
+         "crestUrl" : "https://crests.football-data.org/805.svg",
+         "email" : "urbsfa.kbvb@footbel.com",
+         "founded" : 1895,
+         "id" : 805,
+         "lastUpdated" : "2021-05-26T10:28:44Z",
+         "name" : "Belgium",
+         "phone" : "+32 (2) 4771211",
+         "shortName" : "Belgium",
+         "tla" : "BEL",
+         "venue" : "King Power at Den Dreef Stadion",
+         "website" : "https://www.rbfa.be"
+      },
+      {
+         "address" : "Ulitsa Narodnaya, 7 Moskva 115172",
+         "area" : {
+            "id" : 2195,
+            "name" : "Russia"
+         },
+         "clubColors" : "Red / White / Blue",
+         "crestUrl" : "https://crests.football-data.org/808.svg",
+         "email" : "info@rfs.ru",
+         "founded" : 1912,
+         "id" : 808,
+         "lastUpdated" : "2021-05-29T10:09:02Z",
+         "name" : "Russia",
+         "phone" : "+7 (495) 9261300",
+         "shortName" : "Russia",
+         "tla" : "RUS",
+         "venue" : "VTB Arena",
+         "website" : "http://www.rfs.ru"
+      },
+      {
+         "address" : "Ernst-Happel-Stadion, Sektor A/F, MeiereistraÃe 7 Wien 1020",
+         "area" : {
+            "id" : 2016,
+            "name" : "Austria"
+         },
+         "clubColors" : "Red / White / Black",
+         "crestUrl" : "https://crests.football-data.org/816.svg",
+         "email" : "office@oefb.at",
+         "founded" : 1904,
+         "id" : 816,
+         "lastUpdated" : "2021-05-28T19:09:15Z",
+         "name" : "Austria",
+         "phone" : "+43 (1) 727180",
+         "shortName" : "Austria",
+         "tla" : "AUT",
+         "venue" : "Ernst-Happel-Stadion",
+         "website" : "http://www.oefb.at"
+      },
+      {
+         "address" : "KÃ¡nai Ãºt 2/d Budapest 1112",
+         "area" : {
+            "id" : 2106,
+            "name" : "Hungary"
+         },
+         "clubColors" : "Red / White / Green",
+         "crestUrl" : "https://crests.football-data.org/827.svg",
+         "email" : "mlsz@mlsz.hu",
+         "founded" : 1901,
+         "id" : 827,
+         "lastUpdated" : "2021-05-28T19:08:20Z",
+         "name" : "Hungary",
+         "phone" : "+36 (15) 779500",
+         "shortName" : "Hungary",
+         "tla" : "HUN",
+         "venue" : "PuskÃ¡s ArÃ©na",
+         "website" : "http://www.mlsz.hu"
+      },
+      {
+         "address" : "11/12 Neptune Court, Vanguard Way Cardiff CF24 5PJ",
+         "area" : {
+            "id" : 2264,
+            "name" : "Wales"
+         },
+         "clubColors" : "Red / White",
+         "crestUrl" : "https://crests.football-data.org/833.svg",
+         "email" : "info@faw.org.uk",
+         "founded" : 1876,
+         "id" : 833,
+         "lastUpdated" : "2021-05-28T19:08:03Z",
+         "name" : "Wales",
+         "phone" : "+44 (2920) 435830",
+         "shortName" : "Wales",
+         "tla" : "WAL",
+         "venue" : "Cardiff City Stadium",
+         "website" : "http://www.faw.org.uk"
+      },
+      {
+         "address" : "Urheilukatu, 5 / PO Box 191 Helsinki 00251",
+         "area" : {
+            "id" : 2080,
+            "name" : "Finland"
+         },
+         "clubColors" : "Blue / White",
+         "crestUrl" : "https://crests.football-data.org/1976.svg",
+         "email" : "sami.terava@palloliitto.fi",
+         "founded" : 1907,
+         "id" : 1976,
+         "lastUpdated" : "2021-05-28T19:07:47Z",
+         "name" : "Finland",
+         "phone" : "+358 (9) 742151",
+         "shortName" : "Finland",
+         "tla" : "FIN",
+         "venue" : "Helsingin olympiastadion",
+         "website" : "http://www.palloliitto.fi"
+      },
+      {
+         "address" : "bul. ASNOM bb Skopje 1000",
+         "area" : {
+            "id" : 2083,
+            "name" : "FYR Macedonia"
+         },
+         "clubColors" : "Red / Yellow",
+         "crestUrl" : "https://crests.football-data.org/1977.svg",
+         "email" : "ffm@ffm.com.mk",
+         "founded" : 1948,
+         "id" : 1977,
+         "lastUpdated" : "2021-05-28T19:01:58Z",
+         "name" : "North Macedonia",
+         "phone" : "+389 (23) 129291",
+         "shortName" : "Macedonia",
+         "tla" : "MKD",
+         "venue" : "Nationala Arena ToÅ¡e Proeski",
+         "website" : "http://ffm.mk"
+      },
+      {
+         "address" : "Woudenbergseweg 56-58 / Postbus 515 Zeist 3700 AM",
+         "area" : {
+            "id" : 2163,
+            "name" : "Netherlands"
+         },
+         "clubColors" : "Orange / White / Blue",
+         "crestUrl" : "https://crests.football-data.org/8601.svg",
+         "email" : "concern@knvb.nl",
+         "founded" : 1889,
+         "id" : 8601,
+         "lastUpdated" : "2021-05-28T18:49:20Z",
+         "name" : "Netherlands",
+         "phone" : "+31 (343) 499201",
+         "shortName" : "Netherlands",
+         "tla" : "NED",
+         "venue" : "Johan Cruyff ArenA",
+         "website" : "http://www.knvb.nl"
+      },
+      {
+         "address" : "Hampden Park Glasgow G42 9AY",
+         "area" : {
+            "id" : 2204,
+            "name" : "Scotland"
+         },
+         "clubColors" : "Navy Blue / White",
+         "crestUrl" : "https://crests.football-data.org/814.svg",
+         "email" : "info@scottishfa.co.uk",
+         "founded" : 1873,
+         "id" : 8873,
+         "lastUpdated" : "2021-05-28T18:49:42Z",
+         "name" : "Scotland",
+         "phone" : "+44 (1416) 166000",
+         "shortName" : "Scotland",
+         "tla" : "SCO",
+         "venue" : "Hampden Park",
+         "website" : "http://www.scottishfa.co.uk"
       }
    ]
 }
