@@ -158,7 +158,7 @@ class FootballDataScheduledTasksServiceTest {
         val teamsOfCurrentCompetition = listOf(
                 Team(1, "Schokoladenbärenland", currentCompetition),
                 Team(2, "Team2", currentCompetition),
-                Team(3, "Team3", currentCompetition))
+                Team(3, "Team3_neu", currentCompetition))
 
         val footballDataTeams = listOf(
                 Team(2, "Team2", currentCompetition),
