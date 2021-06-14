@@ -57,36 +57,6 @@
                     <trimStackTrace>false</trimStackTrace>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.1.0</version>
-                <configuration>
-                    <nonFilteredFileExtensions>
-                        <nonFilteredFileExtension>ttf</nonFilteredFileExtension>
-                        <nonFilteredFileExtension>woff</nonFilteredFileExtension>
-                        <nonFilteredFileExtension>woff2</nonFilteredFileExtension>
-                    </nonFilteredFileExtensions>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>copy-resources</id>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.basedir}/tippspiel2-spring/src/main/resources/static</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${project.basedir}/tippspiel2-ember/src/main/webapp/dist</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 </project>
