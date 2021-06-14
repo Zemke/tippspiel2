@@ -5,11 +5,10 @@ import {decamelize} from '@ember/string';
 import {pluralize} from 'ember-inflector';
 import config from '../config/environment';
 
-const host = config.environment === "development" ? "http://localhost:8080" : null;
+// const host = config.environment === "development" ? "http://localhost:8080" : null; TODO GH-91
 
 export default RESTAdapter.extend({
   auth: inject(),
-  //host, TODO GH-91
   namespace: 'api',
   pathForType(modelName) {
     return decamelize(pluralize(modelName));
