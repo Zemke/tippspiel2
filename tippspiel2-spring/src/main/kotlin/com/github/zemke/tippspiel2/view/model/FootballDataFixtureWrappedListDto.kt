@@ -76,7 +76,7 @@ data class FootballDataFixtureFullTimeResultDto(
 
 @DataTransferObject
 data class FootballDataFixtureTeamDto(
-    @JsonProperty("id") var id: Long,
+    @JsonProperty("id") var id: Long?,
     @JsonProperty("name") var name: String?,
 )
 
