@@ -16,7 +16,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
     "spring.datasource.hikari.driver-class-name=org.h2.Driver",
     "spring.datasource.hikari.jdbc-url=jdbc:h2:mem:db;DB_CLOSE_DELAY=-1",
     "spring.datasource.hikari.username=sa",
-    "spring.datasource.hikari.password=sa"
+    "spring.datasource.hikari.password=sa",
+    "spring.jpa.hibernate.ddl-auto=create-drop",
 ])
 @DirtiesContext
 annotation class IntegrationTest
