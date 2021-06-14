@@ -31,7 +31,7 @@ data class CompetitionDto(
                 numberOfAvailableSeasons = competition.numberOfAvailableSeasons,
                 current = competition.current,
                 championBetAllowed = competition.championBetAllowed,
-                champion = competition.champion?.let { ChampionTeamDto.toDto(it) } ?: null,
+                champion = competition.champion?.let { ChampionTeamDto.toDto(it) },
         )
 
         fun fromDto(dto: CompetitionDto): Competition = Competition(
@@ -43,7 +43,7 @@ data class CompetitionDto(
                 numberOfAvailableSeasons = dto.numberOfAvailableSeasons,
                 lastUpdated = dto.lastUpdated,
                 current = dto.current,
-                champion = dto.champion?.let { ChampionTeamDto.fromDto(it, dto) } ?: null,
+                champion = dto.champion?.let { ChampionTeamDto.fromDto(it, dto) },
                 championBetAllowed = dto.championBetAllowed,
         )
     }
