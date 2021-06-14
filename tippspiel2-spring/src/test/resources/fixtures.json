@@ -1,36 +1,46 @@
 {
-   "fixtures": [
+   "matches": [
       {
-         "homeTeamId": 808,
-         "result": {
-            "goalsAwayTeam": null,
-            "goalsHomeTeam": null
+         "homeTeam": {
+            "id": 801,
+            "name": "Russia"
          },
-         "date": "2018-06-14T15:00:00Z",
+         "awayTeam": {
+            "id": 808,
+            "name": "Saudi Arabia"
+         },
+         "score": {
+            "fullTime": {
+                "home": null,
+                "away": null
+            }
+         },
+         "utcDate": "2018-06-14T15:00:00Z",
          "matchday": 1,
          "competitionId": 467,
-         "status": "TIMED",
-         "odds": null,
-         "id": 165069,
-         "homeTeamName": "Russia",
-         "awayTeamName": "Saudi Arabia",
-         "awayTeamId": 801
+         "status": "SCHEDULED",
+         "id": 165069
       },
       {
-         "homeTeamId": 825,
-         "date": "2018-06-15T12:00:00Z",
-         "result": {
-            "goalsHomeTeam": null,
-            "goalsAwayTeam": null
+         "homeTeam": {
+            "id": 758,
+            "name": "Egypt"
+         },
+         "awayTeam": {
+            "id": 825,
+            "name": "Uruguay"
+         },
+         "utcDate": "2018-06-15T12:00:00Z",
+         "score": {
+            "fullTime": {
+                "home": null,
+                "away": null
+            }
          },
          "matchday": 1,
          "competitionId": 467,
          "id": 165084,
-         "odds": null,
-         "status": "TIMED",
-         "homeTeamName": "Egypt",
-         "awayTeamName": "Uruguay",
-         "awayTeamId": 758
+         "status": "SCHEDULED"
       }
    ],
    "count": 2

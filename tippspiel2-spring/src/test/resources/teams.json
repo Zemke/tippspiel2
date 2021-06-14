@@ -3,7 +3,6 @@
    "teams": [
       {
          "name": "Russia",
-         "squadMarketValue": null,
          "id": 808,
          "crestUrl": "https://upload.wikimedia.org/wikipedia/en/f/f3/Flag_of_Russia.svg",
          "shortName": null
@@ -12,11 +11,9 @@
          "crestUrl": null,
          "shortName": null,
          "id": 801,
-         "squadMarketValue": null,
          "name": "Saudi Arabia"
       },
       {
-         "squadMarketValue" : null,
          "name" : "Egypt",
          "crestUrl" : null,
          "shortName" : null,
@@ -26,7 +23,6 @@
          "crestUrl" : null,
          "id" : 758,
          "shortName" : null,
-         "squadMarketValue" : null,
          "name" : "Uruguay"
       }
    ]
