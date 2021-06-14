@@ -5,11 +5,11 @@ import com.github.zemke.tippspiel2.persistence.model.User
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
-import java.util.*
+import java.time.Instant
 
 class AuthenticatedUser(
         val id: Long, val firstName: String, val lastName: String,
-        val email: String, val plainPassword: String, val lastPasswordResetDate: Date?,
+        val email: String, val plainPassword: String, val lastPasswordResetDate: Instant?,
         val roles: List<Role>) : UserDetails {
 
     companion object {

@@ -1,15 +1,14 @@
 package com.github.zemke.tippspiel2.view.model
 
 import com.github.zemke.tippspiel2.persistence.model.BettingGame
-import java.sql.Timestamp
-import java.util.*
+import java.time.Instant
 
 data class BettingGameDto(
         val id: Long,
         val name: String,
         val competition: CompetitionDto,
         val invitationToken: String,
-        val created: Date
+        val created: Instant,
 ) {
 
     companion object {
@@ -26,7 +25,7 @@ data class BettingGameDto(
                 id = dto.id,
                 competition = CompetitionDto.fromDto(dto.competition),
                 invitationToken = dto.invitationToken,
-                created = Timestamp(dto.created.time),
+                created = dto.created,
                 name = dto.name
         )
     }

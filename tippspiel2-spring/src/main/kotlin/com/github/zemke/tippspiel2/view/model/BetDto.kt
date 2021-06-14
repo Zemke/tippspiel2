@@ -2,7 +2,7 @@ package com.github.zemke.tippspiel2.view.model
 
 import com.github.zemke.tippspiel2.persistence.model.Bet
 import com.github.zemke.tippspiel2.view.util.DataTransferObject
-import java.util.*
+import java.time.Instant
 
 @DataTransferObject
 data class BetDto(
@@ -12,7 +12,7 @@ data class BetDto(
         val fixture: FixtureDto,
         val user: UserDto,
         val bettingGame: BettingGameDto,
-        val modified: Date
+        val modified: Instant,
 ) {
 
     companion object {

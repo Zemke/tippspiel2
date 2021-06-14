@@ -1,8 +1,6 @@
 package com.github.zemke.tippspiel2.persistence.model
 
 import org.hibernate.annotations.CreationTimestamp
-import java.sql.Timestamp
-import java.util.*
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -10,6 +8,8 @@ import javax.persistence.Id
 import javax.persistence.ManyToOne
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
+import java.time.Instant
+import java.util.UUID
 
 @Entity
 data class BettingGame(
@@ -18,5 +18,5 @@ data class BettingGame(
         @Column(unique = true) @NotBlank val name: String,
         @Column(unique = true) @NotBlank val invitationToken: String = UUID.randomUUID().toString(),
         @ManyToOne(optional = false) val competition: Competition,
-        @CreationTimestamp @NotNull val created: Timestamp = Timestamp.from(Date().toInstant())
+        @CreationTimestamp @NotNull val created: Instant = Instant.now(),
 )

@@ -9,9 +9,10 @@ import io.jsonwebtoken.impl.DefaultClock
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.stereotype.Component
-import java.util.*
 import java.util.function.Function
 import javax.servlet.http.HttpServletRequest
+import java.time.Instant
+import java.util.Date
 
 @Component
 class JsonWebTokenService(
@@ -44,7 +45,7 @@ class JsonWebTokenService(
         return doGenerateToken(claims, authenticatedUser.username)
     }
 
-    fun canTokenBeRefreshed(token: String, lastPasswordReset: Date?): Boolean {
+    fun canTokenBeRefreshed(token: String, lastPasswordReset: Instant?): Boolean {
         val created = getIssuedAtDateFromToken(token)
         return !isCreatedBeforeLastPasswordReset(created, lastPasswordReset) && !isTokenExpired(token)
     }
@@ -96,8 +97,8 @@ class JsonWebTokenService(
         return expiration.before(clock.now())
     }
 
-    private fun isCreatedBeforeLastPasswordReset(created: Date, lastPasswordReset: Date?): Boolean {
-        return lastPasswordReset != null && created.before(lastPasswordReset)
+    private fun isCreatedBeforeLastPasswordReset(created: Date, lastPasswordReset: Instant?): Boolean {
+        return lastPasswordReset != null && created.before(Date.from(lastPasswordReset))
     }
 
     private fun doGenerateToken(claims: Map<String, Any>, subject: String): String {

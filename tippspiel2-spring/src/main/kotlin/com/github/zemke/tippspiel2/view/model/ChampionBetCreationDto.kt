@@ -5,8 +5,7 @@ import com.github.zemke.tippspiel2.persistence.model.ChampionBet
 import com.github.zemke.tippspiel2.persistence.model.Team
 import com.github.zemke.tippspiel2.persistence.model.User
 import com.github.zemke.tippspiel2.view.util.DataTransferObject
-import java.sql.Timestamp
-import java.util.*
+import java.time.Instant
 
 @DataTransferObject
 data class ChampionBetCreationDto(
@@ -20,7 +19,7 @@ data class ChampionBetCreationDto(
         fun fromDto(bettingGame: BettingGame, team: Team, user: User): ChampionBet =
                 ChampionBet(
                         id = null,
-                        modified = Timestamp(Date().time),
+                        modified = Instant.now(),
                         bettingGame = bettingGame,
                         team = team,
                         user = user

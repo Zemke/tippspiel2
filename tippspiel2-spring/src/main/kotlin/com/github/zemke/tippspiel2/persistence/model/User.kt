@@ -2,8 +2,8 @@ package com.github.zemke.tippspiel2.persistence.model
 
 import com.github.zemke.tippspiel2.persistence.model.embeddable.FullName
 import org.hibernate.annotations.CreationTimestamp
-import java.sql.Timestamp
 import javax.persistence.Column
+import java.time.Instant
 import javax.persistence.Embedded
 import javax.persistence.Entity
 import javax.persistence.FetchType
@@ -23,7 +23,7 @@ data class User(
         @Embedded val fullName: FullName,
         @Column(unique = true) @NotNull @Email val email: String,
         @Size(min = 60, max = 60) val password: String,
-        @NotNull val lastPasswordReset: Timestamp?,
+        @NotNull val lastPasswordReset: Instant?,
         @ManyToMany var bettingGames: List<BettingGame> = emptyList(),
         @ManyToMany(fetch = FetchType.EAGER) val roles: List<Role>
 ) {
