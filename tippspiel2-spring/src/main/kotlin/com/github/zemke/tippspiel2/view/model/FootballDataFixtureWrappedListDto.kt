@@ -23,7 +23,6 @@ data class FootballDataFixtureDto(
         @JsonProperty("matchday") var matchday: Int,
         @JsonProperty("status") var status: FixtureStatus,
         @JsonProperty("utcDate") var utcDate: Instant,
-        @JsonProperty("competitionId") var competitionId: Long
 ) {
 
     companion object {
@@ -50,7 +49,6 @@ data class FootballDataFixtureDto(
                 matchday = fixture.matchday,
                 status = fixture.status,
                 utcDate = fixture.date,
-                competitionId = fixture.competition.id,
         )
     }
 }

@@ -64,7 +64,6 @@ class FootballDataServiceImplTest {
                 FootballDataFixtureWrappedListDto(2, listOf(FootballDataFixtureDto(
                         utcDate = LocalDateTime.of(2018, 6, 14, 15, 0).toInstant(ZoneOffset.UTC),
                         matchday = 1,
-                        competitionId = 467,
                         status = FixtureStatus.SCHEDULED,
                         id = 165069,
                         homeTeam = FootballDataFixtureTeamDto(id = 801, name = "Russia"),
@@ -73,7 +72,6 @@ class FootballDataServiceImplTest {
                 ), FootballDataFixtureDto(
                         utcDate = LocalDateTime.of(2018, 6, 15, 12, 0).toInstant(ZoneOffset.UTC),
                         matchday = 1,
-                        competitionId = 467,
                         id = 165084,
                         status = FixtureStatus.SCHEDULED,
                         homeTeam = FootballDataFixtureTeamDto(id = 758, name = "Egypt"),
