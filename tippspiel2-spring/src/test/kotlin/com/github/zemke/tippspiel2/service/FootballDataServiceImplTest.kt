@@ -2,13 +2,18 @@ package com.github.zemke.tippspiel2.service
 
 import com.github.zemke.tippspiel2.core.properties.FootballDataProperties
 import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
+import com.github.zemke.tippspiel2.view.model.FootbalDataCompetitionCurrentSeasonDto
 import com.github.zemke.tippspiel2.view.model.FootballDataCompetitionDto
 import com.github.zemke.tippspiel2.view.model.FootballDataFixtureDto
 import com.github.zemke.tippspiel2.view.model.FootballDataFixtureResultDto
+import com.github.zemke.tippspiel2.view.model.FootballDataFixtureTeamDto
 import com.github.zemke.tippspiel2.view.model.FootballDataFixtureWrappedListDto
 import com.github.zemke.tippspiel2.view.model.FootballDataTeamDto
 import com.github.zemke.tippspiel2.view.model.FootballDataTeamWrappedListDto
 import com.github.zemke.tippspiel2.view.util.JacksonUtils
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.ZoneOffset
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -35,10 +40,18 @@ class FootballDataServiceImplTest {
     @Test
     fun testRequestCompetition() {
         mockRequestResponse<FootballDataCompetitionDto>("competition.json")
+        val dto = FootballDataCompetitionDto(
+            id = 467,
+            name = "World Cup 2018 Russia",
+            code = "WC",
+            numberOfAvailableSeasons = 8,
+            currentSeason = FootbalDataCompetitionCurrentSeasonDto(
+                currentMatchday = 1,
+                startDate = LocalDate.of(2018, 1, 8)),
+            lastUpdated = LocalDateTime.of(2018, 1, 10, 14, 10).toInstant(ZoneOffset.UTC),
+        )
+        Assert.assertEquals(footballDataServiceImpl.requestCompetition(1), dto)
 
-        Assert.assertEquals(
-                footballDataServiceImpl.requestCompetition(1),
-                FootballDataCompetitionDto(467, "World Cup 2018 Russia", "WC", "2018", 1, 8, 32, 64, JacksonUtils.toDate("2018-01-10T14:10:08Z")))
     }
 
     @Test
@@ -48,29 +61,23 @@ class FootballDataServiceImplTest {
         Assert.assertEquals(
                 footballDataServiceImpl.requestFixtures(1),
                 FootballDataFixtureWrappedListDto(2, listOf(FootballDataFixtureDto(
-                        date = JacksonUtils.toDate("2018-06-14T15:00:00Z"),
+                        utcDate = LocalDateTime.of(2018, 6, 14, 15, 0).toInstant(ZoneOffset.UTC),
                         matchday = 1,
                         competitionId = 467,
-                        status = FixtureStatus.TIMED,
-                        odds = null,
+                        status = FixtureStatus.SCHEDULED,
                         id = 165069,
-                        homeTeamName = "Russia",
-                        awayTeamName = "Saudi Arabia",
-                        awayTeamId = 801,
-                        homeTeamId = 808,
-                        result = FootballDataFixtureResultDto(null, null)
+                        homeTeam = FootballDataFixtureTeamDto(id = 801, name = "Russia"),
+                        awayTeam = FootballDataFixtureTeamDto(id = 808, name = "Saudi Arabia"),
+                        score = null,
                 ), FootballDataFixtureDto(
-                        homeTeamId = 825,
-                        date = JacksonUtils.toDate("2018-06-15T12:00:00Z"),
+                        utcDate = LocalDateTime.of(2018, 6, 15, 12, 0).toInstant(ZoneOffset.UTC),
                         matchday = 1,
                         competitionId = 467,
                         id = 165084,
-                        odds = null,
-                        status = FixtureStatus.TIMED,
-                        homeTeamName = "Egypt",
-                        awayTeamName = "Uruguay",
-                        awayTeamId = 758,
-                        result = FootballDataFixtureResultDto(null, null)
+                        status = FixtureStatus.SCHEDULED,
+                        homeTeam = FootballDataFixtureTeamDto(id = 758, name = "Egypt"),
+                        awayTeam = FootballDataFixtureTeamDto(id = 825, name = "Uruguay"),
+                        score = null,
                 ))))
     }
 
@@ -84,7 +91,6 @@ class FootballDataServiceImplTest {
                 footballDataServiceImpl.requestTeams(1),
                 FootballDataTeamWrappedListDto(2, listOf(FootballDataTeamDto(
                         name = "Russia",
-                        squadMarketValue = null,
                         id = 808,
                         crestUrl = "https://upload.wikimedia.org/wikipedia/en/f/f3/Flag_of_Russia.svg",
                         shortName = null
@@ -92,19 +98,16 @@ class FootballDataServiceImplTest {
                         crestUrl = null,
                         shortName = null,
                         id = 801,
-                        squadMarketValue = null,
                         name = "Saudi Arabia"
                 ), FootballDataTeamDto(
                         crestUrl = null,
                         shortName = null,
                         id = 825,
-                        squadMarketValue = null,
                         name = "Egypt"
                 ), FootballDataTeamDto(
                         crestUrl = null,
                         shortName = null,
                         id = 758,
-                        squadMarketValue = null,
                         name = "Uruguay"
                 ))))
     }
