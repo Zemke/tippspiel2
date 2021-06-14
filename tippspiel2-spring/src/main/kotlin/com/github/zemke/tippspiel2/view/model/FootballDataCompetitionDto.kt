@@ -47,7 +47,7 @@ data class FootballDataCompetitionDto(
                 currentSeason = FootbalDataCompetitionCurrentSeasonDto(
                     currentMatchday = competition.currentMatchday,
                     // TODO Persist whole startDate to map back completely.
-                    startDate = LocalDate.of(competition.year, 0, 0)),
+                    startDate = LocalDate.of(competition.year, 1, 1)),
         )
     }
 }
