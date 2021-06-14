@@ -9,6 +9,7 @@ import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager
 import org.springframework.test.context.junit4.SpringRunner
+import java.time.Instant
 
 @RunWith(SpringRunner::class)
 @DataJpaTest
@@ -33,7 +34,7 @@ class BetRepositoryTest {
                 fixture = fixture,
                 goalsAwayTeamBet = 2,
                 goalsHomeTeamBet = 3,
-                modified = PersistenceUtils.now(),
+                modified = Instant.now(),
                 user = user,
                 bettingGame = bettingGame
         )

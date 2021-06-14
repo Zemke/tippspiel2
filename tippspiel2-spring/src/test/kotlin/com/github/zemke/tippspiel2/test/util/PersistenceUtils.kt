@@ -10,9 +10,8 @@ import com.github.zemke.tippspiel2.persistence.model.User
 import com.github.zemke.tippspiel2.persistence.model.embeddable.FullName
 import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager
-import java.sql.Timestamp
-import java.util.*
-
+import java.time.Instant
+import java.util.Random
 
 object PersistenceUtils {
 
@@ -38,13 +37,11 @@ object PersistenceUtils {
                     id = 1,
                     caption = "1",
                     currentMatchday = 1,
-                    lastUpdated = now(),
+                    lastUpdated = Instant.now(),
                     league = "ZC",
-                    numberOfGames = 1,
-                    numberOfMatchdays = 1,
-                    numberOfTeams = 1,
-                    year = "2018",
+                    year = 2018,
                     current = true,
+                    numberOfAvailableSeasons = 8,
                     championBetAllowed = true,
                     champion = null
             )
@@ -54,35 +51,33 @@ object PersistenceUtils {
                     id = (100..999).random(),
                     competition = competition,
                     name = "1",
-                    squadMarketValue = null
             )
 
     fun instantiateFixture(competition: Competition = instantiateCompetition()): Fixture =
             Fixture(
                     id = (100..999).random(),
-                    date = now(),
-                    status = FixtureStatus.TIMED,
+                    date = Instant.now(),
+                    status = FixtureStatus.SCHEDULED,
                     awayTeam = instantiateTeam(competition),
                     homeTeam = instantiateTeam(competition).copy(id = 2),
                     competition = competition,
                     goalsAwayTeam = 2,
                     goalsHomeTeam = 3,
                     matchday = 1,
-                    odds = null
             )
 
     fun instantiateBettingGame(): BettingGame =
             BettingGame(
                     name = "Zemke Tipprunde",
                     competition = instantiateCompetition(),
-                    created = now()
+                    created = Instant.now()
             )
 
     fun instantiateBet(): Bet =
             Bet(
                     id = null,
                     user = instantiateUser(),
-                    modified = now(),
+                    modified = Instant.now(),
                     bettingGame = instantiateBettingGame(),
                     goalsHomeTeamBet = 1,
                     goalsAwayTeamBet = 1,
@@ -95,11 +90,9 @@ object PersistenceUtils {
                     id = null,
                     bettingGame = bettingGame,
                     user = user,
-                    modified = now(),
+                    modified = Instant.now(),
                     team = team
             )
-
-    fun now() = Timestamp(Date().time)
 
     private fun ClosedRange<Int>.random() =
             (Random().nextInt(endInclusive - start) + start).toLong()

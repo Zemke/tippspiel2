@@ -9,6 +9,7 @@ import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager
 import org.springframework.test.context.junit4.SpringRunner
+import java.time.Instant
 
 @RunWith(SpringRunner::class)
 @DataJpaTest
@@ -32,7 +33,7 @@ class ChampionBetRepositoryTest {
         val unmanagedEntity = ChampionBet(
                 id = null,
                 bettingGame = bettingGame,
-                modified = PersistenceUtils.now(),
+                modified = Instant.now(),
                 team = team,
                 user = user
         )
