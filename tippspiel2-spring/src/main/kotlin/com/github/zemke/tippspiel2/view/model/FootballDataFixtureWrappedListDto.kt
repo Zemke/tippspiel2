@@ -39,13 +39,35 @@ data class FootballDataFixtureDto(
                 awayTeam = dto.awayTeam?.let { team -> teams.find { it.id == team.id } },
                 competition = competition
         )
+
+        fun toDto(fixture: Fixture) = FootballDataFixtureDto(
+                id = fixture.id!!,
+                homeTeam = fixture.homeTeam?.let { FootballDataFixtureTeamDto(fixture.homeTeam?.id!!, fixture.homeTeam?.name) },
+                awayTeam = fixture.awayTeam?.let { FootballDataFixtureTeamDto(fixture.awayTeam?.id!!, fixture.awayTeam?.name) },
+                score = FootballDataFixtureResultDto.toDto(
+                    goalsHomeTeam = fixture.goalsHomeTeam,
+                    goalsAwayTeam = fixture.goalsAwayTeam),
+                matchday = fixture.matchday,
+                status = fixture.status,
+                utcDate = fixture.date,
+                competitionId = fixture.competition.id,
+        )
     }
 }
 
 @DataTransferObject
 data class FootballDataFixtureResultDto(
         @JsonProperty("fullTime") var fullTime: FootballDataFixtureFullTimeResultDto,
-)
+) {
+
+    companion object {
+
+        fun toDto(goalsHomeTeam: Int?, goalsAwayTeam: Int?): FootballDataFixtureResultDto? =
+            if (goalsHomeTeam == null || goalsAwayTeam == null) null
+            else FootballDataFixtureResultDto(FootballDataFixtureFullTimeResultDto(
+                                                    homeTeam = goalsHomeTeam, awayTeam = goalsAwayTeam))
+    }
+}
 
 @DataTransferObject
 data class FootballDataFixtureFullTimeResultDto(
@@ -58,3 +80,4 @@ data class FootballDataFixtureTeamDto(
     @JsonProperty("id") var id: Long,
     @JsonProperty("name") var name: String?,
 )
+

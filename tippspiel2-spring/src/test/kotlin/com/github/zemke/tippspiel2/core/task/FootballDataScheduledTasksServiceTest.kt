@@ -156,14 +156,14 @@ class FootballDataScheduledTasksServiceTest {
                 .`when`(footballDataService).requestCompetition(currentCompetition.id)
 
         val teamsOfCurrentCompetition = listOf(
-                Team(1, "Schokoladenbärenland", "2.50", currentCompetition),
-                Team(2, "Team2", null, currentCompetition),
-                Team(3, "Team3", null, currentCompetition))
+                Team(1, "Schokoladenbärenland", currentCompetition),
+                Team(2, "Team2", currentCompetition),
+                Team(3, "Team3", currentCompetition))
 
         val footballDataTeams = listOf(
-                Team(2, "Team2", null, currentCompetition),
-                Team(1, "Schokoladenbärenland", "2.50", currentCompetition),
-                Team(3, "Team3", "10000000", currentCompetition))
+                Team(2, "Team2", currentCompetition),
+                Team(1, "Schokoladenbärenland", currentCompetition),
+                Team(3, "Team3", currentCompetition))
 
         Mockito
                 .doReturn(teamsOfCurrentCompetition)

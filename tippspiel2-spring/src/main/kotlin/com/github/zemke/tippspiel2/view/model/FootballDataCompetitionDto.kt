@@ -15,12 +15,9 @@ data class FootballDataCompetitionDto(
         @JsonProperty("id") var id: Long,
         @JsonProperty("name") var name: String,
         @JsonProperty("code") var code: String,
-        @JsonProperty("emblemUrl") var emblemUrl: String?,
-        @JsonProperty("plan") var plan: String,
         @JsonProperty("numberOfAvailableSeasons") var numberOfAvailableSeasons: Int,
         @JsonProperty("lastUpdated") var lastUpdated: Instant,
         @JsonProperty("currentSeason") var currentSeason: FootbalDataCompetitionCurrentSeasonDto,
-        @JsonProperty("area") var area: FootbalDataCompetitionAreaDto,
 ) {
 
     companion object {
@@ -40,16 +37,31 @@ data class FootballDataCompetitionDto(
                 championBetAllowed = championBetAllowed,
                 champion = champion,
         )
+
+        fun toDto(competition: Competition) = FootballDataCompetitionDto(
+                id = competition.id,
+                name = competition.caption,
+                code = competition.league,
+                numberOfAvailableSeasons = competition.numberOfAvailableSeasons,
+                lastUpdated = competition.lastUpdated,
+                currentSeason = FootbalDataCompetitionCurrentSeasonDto(
+                    currentMatchday = competition.currentMatchday,
+                    // TODO Persist whole startDate to map back completely.
+                    startDate = LocalDate.of(competition.year, 0, 0)),
+        )
     }
 }
 
 @DataTransferObject
 data class FootbalDataCompetitionCurrentSeasonDto(
-        @JsonProperty("id") var id: Long,
-        @JsonProperty("startDate") var startDate: LocalDate,
-        @JsonProperty("endDate") var endDate: LocalDate,
         @JsonProperty("currentMatchday") var currentMatchday: Int,
-        @JsonProperty("winner") var winner: FootballDataTeamDto?,
+        @JsonProperty("startDate") var startDate: LocalDate,
+
+        // TODO Should probably also be persisted.
+        // @JsonProperty("id") var id: Long,
+
+        // TODO GH-84 DTO has winner within season and busines model has champion.
+        // @JsonProperty("winner") var winner: FootballDataTeamDto?,
 )
 
 @DataTransferObject
