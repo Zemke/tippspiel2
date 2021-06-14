@@ -101,7 +101,7 @@ class StandingServiceTest {
 
         val teams = createTeams(bettingGame.competition, "Russia", "Norway", "England", "Italy", "Ireland", "Iceland", "Poland", "Spain")
         val fixtures = createFixtures(bettingGame, teams)
-        val competitionChampion = fixtures[0].homeTeam
+        val competitionChampion = fixtures[0].homeTeam!!
         val championBet = PersistenceUtils.instantiateChampionBet(
                 user = user1, bettingGame = bettingGame, team = competitionChampion)
 
@@ -121,10 +121,7 @@ class StandingServiceTest {
                 .`when`(standingRepository.saveAll(Mockito.anyList<Standing>()))
                 .thenAnswer { it.getArgument(0) }
 
-        Mockito
-                .`when`(championBetService.getCompetitionChampionFromFixtures(
-                        Mockito.anyList<Fixture>(), Mockito.eq(bettingGame.competition.numberOfMatchdays)))
-                .thenAnswer { competitionChampion }
+        // TODO GH-84 Test champion bet.
 
         Mockito
                 .`when`(championBetService.findByTeam(competitionChampion))
