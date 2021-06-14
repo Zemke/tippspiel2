@@ -41,7 +41,6 @@ object PersistenceUtils {
                     league = "ZC",
                     year = 2018,
                     current = true,
-                    numberOfAvailableSeasons = 8,
                     championBetAllowed = true,
                     champion = null
             )

@@ -44,7 +44,6 @@ class FootballDataServiceImplTest {
             id = 467,
             name = "World Cup 2018 Russia",
             code = "WC",
-            numberOfAvailableSeasons = 8,
             currentSeason = FootbalDataCompetitionCurrentSeasonDto(
                 currentMatchday = 1,
                 startDate = LocalDate.of(2018, 1, 8)),

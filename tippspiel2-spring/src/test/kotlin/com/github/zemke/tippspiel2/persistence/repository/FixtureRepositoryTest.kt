@@ -27,7 +27,6 @@ class FixtureRepositoryTest {
                 id = 1,
                 caption = "World Cup 2018 Russia",
                 league = "WC",
-                numberOfAvailableSeasons = 8,
                 year = 2018,
                 currentMatchday = 1,
                 lastUpdated = LocalDateTime.of(2018, 1, 10, 14, 10).toInstant(ZoneOffset.UTC),

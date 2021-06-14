@@ -6,7 +6,6 @@ export default DS.Model.extend({
   year: DS.attr('number'),
   currentMatchday: DS.attr('number'),
   lastUpdated: DS.attr('Date'),
-  numberOfAvailableSeasons: DS.attr('number'),
   current: DS.attr('boolean'),
   championBetAllowed: DS.attr('boolean'),
   champion: DS.belongsTo('team'),

@@ -15,7 +15,6 @@ data class FootballDataCompetitionDto(
         @JsonProperty("id") var id: Long,
         @JsonProperty("name") var name: String,
         @JsonProperty("code") var code: String,
-        @JsonProperty("numberOfAvailableSeasons") var numberOfAvailableSeasons: Int,
         @JsonProperty("lastUpdated") var lastUpdated: Instant,
         @JsonProperty("currentSeason") var currentSeason: FootbalDataCompetitionCurrentSeasonDto,
 ) {
@@ -31,7 +30,6 @@ data class FootballDataCompetitionDto(
                 league = dto.code,
                 year = dto.currentSeason.startDate.year,
                 currentMatchday = dto.currentSeason.currentMatchday,
-                numberOfAvailableSeasons = dto.numberOfAvailableSeasons,
                 lastUpdated = dto.lastUpdated,
                 current = current,
                 championBetAllowed = championBetAllowed,
@@ -42,7 +40,6 @@ data class FootballDataCompetitionDto(
                 id = competition.id,
                 name = competition.caption,
                 code = competition.league,
-                numberOfAvailableSeasons = competition.numberOfAvailableSeasons,
                 lastUpdated = competition.lastUpdated,
                 currentSeason = FootbalDataCompetitionCurrentSeasonDto(
                     currentMatchday = competition.currentMatchday,

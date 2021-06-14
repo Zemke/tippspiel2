@@ -13,7 +13,6 @@ data class CompetitionDto(
         val year: Int,
         val currentMatchday: Int,
         val lastUpdated: Instant,
-        val numberOfAvailableSeasons: Int,
         val current: Boolean,
         val championBetAllowed: Boolean,
         val champion: ChampionTeamDto?
@@ -28,7 +27,6 @@ data class CompetitionDto(
                 year = competition.year,
                 currentMatchday = competition.currentMatchday,
                 lastUpdated =  competition.lastUpdated,
-                numberOfAvailableSeasons = competition.numberOfAvailableSeasons,
                 current = competition.current,
                 championBetAllowed = competition.championBetAllowed,
                 champion = competition.champion?.let { ChampionTeamDto.toDto(it) },
@@ -40,7 +38,6 @@ data class CompetitionDto(
                 league = dto.league,
                 year = dto.year,
                 currentMatchday = dto.currentMatchday,
-                numberOfAvailableSeasons = dto.numberOfAvailableSeasons,
                 lastUpdated = dto.lastUpdated,
                 current = dto.current,
                 champion = dto.champion?.let { ChampionTeamDto.fromDto(it, dto) },
