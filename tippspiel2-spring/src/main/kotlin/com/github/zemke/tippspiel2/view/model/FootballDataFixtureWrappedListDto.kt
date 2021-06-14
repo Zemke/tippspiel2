@@ -62,18 +62,19 @@ data class FootballDataFixtureResultDto(
 
     companion object {
 
-        fun toDto(goalsHomeTeam: Int?, goalsAwayTeam: Int?): FootballDataFixtureResultDto? =
-            if (goalsHomeTeam == null || goalsAwayTeam == null) null
-            else FootballDataFixtureResultDto(FootballDataFixtureFullTimeResultDto(
-                                                    homeTeam = goalsHomeTeam, awayTeam = goalsAwayTeam))
+        fun toDto(goalsHomeTeam: Int?, goalsAwayTeam: Int?) =
+            FootballDataFixtureResultDto(FootballDataFixtureFullTimeResultDto(homeTeam = goalsHomeTeam, awayTeam = goalsAwayTeam))
     }
 }
 
 @DataTransferObject
 data class FootballDataFixtureFullTimeResultDto(
-        @JsonProperty("homeTeam") var homeTeam: Int,
-        @JsonProperty("awayTeam") var awayTeam: Int,
-)
+        @JsonProperty("homeTeam") var homeTeam: Int?,
+        @JsonProperty("awayTeam") var awayTeam: Int?,
+) {
+
+    constructor(): this(null, null)
+}
 
 @DataTransferObject
 data class FootballDataFixtureTeamDto(

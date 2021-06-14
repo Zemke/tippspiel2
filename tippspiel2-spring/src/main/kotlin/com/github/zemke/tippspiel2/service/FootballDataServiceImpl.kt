@@ -45,6 +45,7 @@ class FootballDataServiceImpl : FootballDataService {
                             objectMapper = with(ObjectMapper()) {
                                 disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
                                 disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
+                                enable(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES)
                                 registerModule(JavaTimeModule())
                             }
                             this
