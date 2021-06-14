@@ -9,7 +9,7 @@ const host = config.environment === "development" ? "http://localhost:8080" : nu
 
 export default RESTAdapter.extend({
   auth: inject(),
-  host,
+  //host, TODO GH-91
   namespace: 'api',
   pathForType(modelName) {
     return decamelize(pluralize(modelName));
