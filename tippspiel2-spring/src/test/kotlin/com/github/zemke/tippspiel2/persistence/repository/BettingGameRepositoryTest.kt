@@ -1,17 +1,15 @@
 package com.github.zemke.tippspiel2.persistence.repository
 
 import com.github.zemke.tippspiel2.persistence.model.BettingGame
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import com.github.zemke.tippspiel2.test.util.PersistenceUtils
 import org.junit.Assert
 import org.junit.jupiter.api.Test
-import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager
 import org.springframework.test.context.junit4.SpringRunner
+import com.github.zemke.tippspiel2.test.util.JpaTest
 
-@RunWith(SpringRunner::class)
-@DataJpaTest
+@JpaTest
 class BettingGameRepositoryTest {
 
     @Autowired
