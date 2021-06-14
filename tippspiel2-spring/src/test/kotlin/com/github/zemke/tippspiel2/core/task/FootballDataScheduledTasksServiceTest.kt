@@ -19,14 +19,14 @@ import com.github.zemke.tippspiel2.view.model.FootballDataTeamDto
 import com.github.zemke.tippspiel2.view.model.FootballDataTeamWrappedListDto
 import org.junit.Assert
 import org.junit.jupiter.api.Test
-import org.junit.runner.RunWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
+import org.junit.jupiter.api.extension.ExtendWith
+import org.mockito.junit.jupiter.MockitoExtension
 
-
-@RunWith(MockitoJUnitRunner.Strict::class)
+@ExtendWith(MockitoExtension::class)
 class FootballDataScheduledTasksServiceTest {
 
     @InjectMocks

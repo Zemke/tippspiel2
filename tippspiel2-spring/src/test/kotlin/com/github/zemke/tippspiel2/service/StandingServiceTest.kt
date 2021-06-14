@@ -15,13 +15,13 @@ import com.github.zemke.tippspiel2.persistence.repository.StandingRepository
 import com.github.zemke.tippspiel2.test.util.PersistenceUtils
 import org.junit.Assert
 import org.junit.jupiter.api.Test
-import org.junit.runner.RunWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito
-import org.mockito.junit.MockitoJUnitRunner
+import org.junit.jupiter.api.extension.ExtendWith
+import org.mockito.junit.jupiter.MockitoExtension
 
-@RunWith(MockitoJUnitRunner.StrictStubs::class)
+@ExtendWith(MockitoExtension::class)
 class StandingServiceTest {
 
     @InjectMocks

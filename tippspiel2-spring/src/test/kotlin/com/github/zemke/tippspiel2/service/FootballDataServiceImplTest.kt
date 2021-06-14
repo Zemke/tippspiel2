@@ -16,15 +16,16 @@ import java.time.LocalDateTime
 import java.time.ZoneOffset
 import org.junit.Assert
 import org.junit.jupiter.api.Test
-import org.junit.runner.RunWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.Spy
 import org.mockito.junit.MockitoJUnitRunner
 import org.springframework.web.client.RestTemplate
+import org.junit.jupiter.api.extension.ExtendWith
+import org.mockito.junit.jupiter.MockitoExtension
 
-@RunWith(MockitoJUnitRunner.StrictStubs::class)
+@ExtendWith(MockitoExtension::class)
 class FootballDataServiceImplTest {
 
     @Mock
