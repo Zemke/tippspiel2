@@ -14,7 +14,7 @@ import com.github.zemke.tippspiel2.persistence.repository.FixtureRepository
 import com.github.zemke.tippspiel2.persistence.repository.StandingRepository
 import com.github.zemke.tippspiel2.test.util.PersistenceUtils
 import org.junit.Assert
-import org.junit.Test
+import org.junit.jupiter.api.Test
 import org.junit.runner.RunWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
