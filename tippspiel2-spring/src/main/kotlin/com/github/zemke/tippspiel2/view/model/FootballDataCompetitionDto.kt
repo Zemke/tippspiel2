@@ -64,11 +64,3 @@ data class FootbalDataCompetitionCurrentSeasonDto(
         // @JsonProperty("winner") var winner: FootballDataTeamDto?,
 )
 
-@DataTransferObject
-data class FootbalDataCompetitionAreaDto(
-        @JsonProperty("id") var id: Long,
-        @JsonProperty("name") var name: String,
-        @JsonProperty("countryCode") var countryCode: String?,
-        @JsonProperty("ensignUrl") var ensignUrl: String?,
-)
-
