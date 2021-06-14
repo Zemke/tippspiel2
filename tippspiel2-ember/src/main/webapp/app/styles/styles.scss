@@ -92,3 +92,10 @@
     display: none !important;
   }
 }
+
+::-moz-selection,
+::selection {
+  background: $primary;
+  color: #fff;
+}
+
