@@ -1,5 +1,5 @@
 import EmberRouter from '@ember/routing/router';
-import config from 'tippspiel2/config/environment';
+import config from './config/environment';
 
 export default class Router extends EmberRouter {
   location = config.locationType;
@@ -35,6 +35,4 @@ Router.map(function() {
 
   this.route('404', {path: '/*'});
 });
-
-export default Router;
 
