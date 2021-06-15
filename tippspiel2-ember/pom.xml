@@ -23,7 +23,7 @@
                     <execution>
                         <id>install node and yarn</id>
                         <goals>
-                            <goal>install-node-and-npm</goal>
+                            <goal>install-node-and-yarn</goal>
                         </goals>
                         <phase>generate-resources</phase>
                     </execution>
@@ -32,6 +32,16 @@
                         <goals>
                             <goal>yarn</goal>
                         </goals>
+                    </execution>
+                    <execution>
+                        <id>ember test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>yarn</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>run test:ember</arguments>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>yarn run build</id>
@@ -46,7 +56,8 @@
                 <configuration>
                     <workingDirectory>src/main/webapp</workingDirectory>
                     <installDirectory>target</installDirectory>
-                    <nodeVersion>v10.16.3</nodeVersion>
+                    <nodeVersion>v10.24.1</nodeVersion>
+                    <yarnVersion>v1.22.4</yarnVersion>
                 </configuration>
             </plugin>
         </plugins>
