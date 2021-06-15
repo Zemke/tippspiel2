@@ -5004,7 +5004,7 @@ ember-cli-babel-plugin-helpers@^1.0.0, ember-cli-babel-plugin-helpers@^1.1.1:
   resolved "https://registry.yarnpkg.com/ember-cli-babel-plugin-helpers/-/ember-cli-babel-plugin-helpers-1.1.1.tgz#5016b80cdef37036c4282eef2d863e1d73576879"
   integrity sha512-sKvOiPNHr5F/60NLd7SFzMpYPte/nnGkq/tMIfXejfKHIhaiIkYFqX8Z9UFTKWLLn+V7NOaby6niNPZUdvKCRw==
 
-ember-cli-babel@^6.0.0-beta.4, ember-cli-babel@^6.11.0, ember-cli-babel@^6.6.0, ember-cli-babel@^6.7.1, ember-cli-babel@^6.8.2, ember-cli-babel@^6.9.2:
+ember-cli-babel@^6.0.0-beta.4, ember-cli-babel@^6.11.0, ember-cli-babel@^6.7.1, ember-cli-babel@^6.8.2, ember-cli-babel@^6.9.2:
   version "6.12.0"
   resolved "https://registry.yarnpkg.com/ember-cli-babel/-/ember-cli-babel-6.12.0.tgz#3adcdbe1278da1fcd0b9038f1360cb4ac5d4414c"
   dependencies:
@@ -5022,7 +5022,7 @@ ember-cli-babel@^6.0.0-beta.4, ember-cli-babel@^6.11.0, ember-cli-babel@^6.6.0, 
     ember-cli-version-checker "^2.1.0"
     semver "^5.4.1"
 
-ember-cli-babel@^7.0.0, ember-cli-babel@^7.13.0, ember-cli-babel@^7.13.2, ember-cli-babel@^7.22.1, ember-cli-babel@^7.23.0, ember-cli-babel@^7.23.1, ember-cli-babel@^7.26.2, ember-cli-babel@^7.26.3, ember-cli-babel@^7.26.4, ember-cli-babel@^7.26.5, ember-cli-babel@^7.26.6, ember-cli-babel@^7.4.0, ember-cli-babel@^7.7.3:
+ember-cli-babel@^7.0.0, ember-cli-babel@^7.1.2, ember-cli-babel@^7.13.0, ember-cli-babel@^7.13.2, ember-cli-babel@^7.22.1, ember-cli-babel@^7.23.0, ember-cli-babel@^7.23.1, ember-cli-babel@^7.26.2, ember-cli-babel@^7.26.3, ember-cli-babel@^7.26.4, ember-cli-babel@^7.26.5, ember-cli-babel@^7.26.6, ember-cli-babel@^7.4.0, ember-cli-babel@^7.7.3:
   version "7.26.6"
   resolved "https://registry.yarnpkg.com/ember-cli-babel/-/ember-cli-babel-7.26.6.tgz#322fbbd3baad9dd99e3276ff05bc6faef5e54b39"
   integrity sha512-040svtfj2RC35j/WMwdWJFusZaXmNoytLAMyBDGLMSlRvznudTxZjGlPV6UupmtTBApy58cEF8Fq4a+COWoEmQ==
@@ -5375,14 +5375,14 @@ ember-compatibility-helpers@^1.1.1, ember-compatibility-helpers@^1.1.2, ember-co
     fs-extra "^9.1.0"
     semver "^5.4.1"
 
-ember-cp-validations@^4.0.0-beta.0:
-  version "4.0.0-beta.0"
-  resolved "https://registry.yarnpkg.com/ember-cp-validations/-/ember-cp-validations-4.0.0-beta.0.tgz#4f2b5f8174f2af0a0b19bed341030b3729cb4c35"
+ember-cp-validations@^4.0.0-beta.12:
+  version "4.0.0-beta.12"
+  resolved "https://registry.yarnpkg.com/ember-cp-validations/-/ember-cp-validations-4.0.0-beta.12.tgz#27c7e79e36194b8bb55c5c97421b2671f0abf58c"
+  integrity sha512-GHOJm2pjan4gOOBFecs7PdEf86vnWgTPCtfqwyqf3wlN0CihYf+mHZhjnnN6R1fnPDn+qLwByl6gJq7il115dw==
   dependencies:
-    ember-cli-babel "^6.6.0"
-    ember-cli-version-checker "^2.0.0"
-    ember-require-module "^0.2.0"
-    ember-validators "^1.1.1"
+    ember-cli-babel "^7.1.2"
+    ember-require-module "^0.3.0"
+    ember-validators "^3.0.1"
 
 ember-data@^3.26.0:
   version "3.27.1"
@@ -5568,9 +5568,10 @@ ember-qunit@^5.1.4:
     silent-error "^1.1.1"
     validate-peer-dependencies "^1.1.0"
 
-ember-require-module@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/ember-require-module/-/ember-require-module-0.2.0.tgz#eafe436737ead4762220a9166b78364abf754274"
+ember-require-module@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/ember-require-module/-/ember-require-module-0.3.0.tgz#65aff7908b5b846467e4526594d33cfe0c23456b"
+  integrity sha512-rYN4YoWbR9VlJISSmx0ZcYZOgMcXZLGR7kdvp3zDerjIvYmHm/3p+K56fEAYmJILA6W4F+cBe41Tq2HuQAZizA==
   dependencies:
     ember-cli-babel "^6.9.2"
 
@@ -5678,12 +5679,13 @@ ember-template-recast@^5.0.1:
     tmp "^0.2.1"
     workerpool "^6.1.4"
 
-ember-validators@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/ember-validators/-/ember-validators-1.1.1.tgz#34b06f7c4bde4e57c30cb9dfc6566647c1c140c1"
+ember-validators@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/ember-validators/-/ember-validators-3.0.1.tgz#9e0f7ed4ce6817aa05f7d46e95a0267c03f1f043"
+  integrity sha512-GbvvECDG9N7U+4LXxPWNgiSnGbOzgvGBIxtS4kw2uyEIy7kymtgszhpSnm8lGMKYnhCKBqFingh8qnVKlCi0lg==
   dependencies:
     ember-cli-babel "^6.9.2"
-    ember-require-module "^0.2.0"
+    ember-require-module "^0.3.0"
 
 emoji-regex@^8.0.0:
   version "8.0.0"
