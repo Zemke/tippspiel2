@@ -12,7 +12,7 @@ export default Component.extend({
     } else if (evaluation === 1) {
       return 'angle-up';
     } else if (evaluation === 0) {
-      return 'circle-o';
+      return 'dot-circle';
     } else if (evaluation === 10) {
       return 'trophy';
     } else {
