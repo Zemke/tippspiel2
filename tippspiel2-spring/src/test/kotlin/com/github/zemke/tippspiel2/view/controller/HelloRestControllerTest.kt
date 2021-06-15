@@ -2,16 +2,12 @@ package com.github.zemke.tippspiel2.view.controller
 
 import com.github.zemke.tippspiel2.persistence.model.enumeration.UserRole
 import com.github.zemke.tippspiel2.test.util.IntegrationTest
-import com.github.zemke.tippspiel2.view.controller.HelloRestController
-
 import org.junit.jupiter.api.Test
-
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
-
 
 @IntegrationTest
 class HelloRestControllerTest {
@@ -21,16 +17,18 @@ class HelloRestControllerTest {
 
     @Test
     fun testRoleRestrictions() {
-        this.mockMvc.perform(MockMvcRequestBuilders
+        this.mockMvc.perform(
+            MockMvcRequestBuilders
                 .get("/api/hellos")
-                .with(user("admin").roles(UserRole.ROLE_ADMIN.unPrefixed())))
-                .andExpect(status().isOk)
+                .with(user("admin").roles(UserRole.ROLE_ADMIN.unPrefixed()))
+        )
+            .andExpect(status().isOk)
 
-        this.mockMvc.perform(MockMvcRequestBuilders
+        this.mockMvc.perform(
+            MockMvcRequestBuilders
                 .get("/api/hellos")
-                .with(user("user").roles(UserRole.ROLE_USER.unPrefixed())))
-                .andExpect(status().isForbidden)
+                .with(user("user").roles(UserRole.ROLE_USER.unPrefixed()))
+        )
+            .andExpect(status().isForbidden)
     }
-
 }
-

@@ -27,58 +27,59 @@ import javax.servlet.http.HttpServletRequest
 @RestController
 @RequestMapping("/api/champion-bets")
 class ChampionBetRestController(
-        @Autowired private val jsonWebTokenService: JsonWebTokenService,
-        @Autowired private val userService: UserService,
-        @Autowired private val bettingGameService: BettingGameService,
-        @Autowired private val teamService: TeamService,
-        @Autowired private val championBetService: ChampionBetService
+    @Autowired private val jsonWebTokenService: JsonWebTokenService,
+    @Autowired private val userService: UserService,
+    @Autowired private val bettingGameService: BettingGameService,
+    @Autowired private val teamService: TeamService,
+    @Autowired private val championBetService: ChampionBetService
 ) {
 
     @PostMapping("")
     fun createChampionBet(
-            @RequestBody championBetCreationDto: ChampionBetCreationDto,
-            request: HttpServletRequest): ResponseEntity<ChampionBetDto> {
+        @RequestBody championBetCreationDto: ChampionBetCreationDto,
+        request: HttpServletRequest
+    ): ResponseEntity<ChampionBetDto> {
         val token = jsonWebTokenService.assertToken(request) ?: throw UnauthorizedException()
         val user = userService.findUserByEmailIgnoreCase(jsonWebTokenService.getSubjectFromToken(token))
 
         val bettingGame = bettingGameService.find(championBetCreationDto.bettingGame)
-                .orElseThrow { throw BadRequestException("There is no such betting game.", "err.bettingGameNotFound") }
+            .orElseThrow { throw BadRequestException("There is no such betting game.", "err.bettingGameNotFound") }
 
         if (!bettingGame.competition.championBetAllowed)
             throw BadRequestException("Champion bet deadline has exceeded.", "err.championBetDeadlineExceeded")
 
         val championBet = ChampionBetCreationDto.fromDto(
-                bettingGame,
-                teamService.find(championBetCreationDto.team)
-                        .orElseThrow { throw BadRequestException("There is no such team.", "err.teamNotFound") },
-                user!!
+            bettingGame,
+            teamService.find(championBetCreationDto.team)
+                .orElseThrow { throw BadRequestException("There is no such team.", "err.teamNotFound") },
+            user!!
         )
 
         return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(ChampionBetDto.toDto(championBetService.saveChampionBet(championBet)));
+            .status(HttpStatus.CREATED)
+            .body(ChampionBetDto.toDto(championBetService.saveChampionBet(championBet)))
     }
 
     @PutMapping("/{championBetId}")
     fun editChampionBet(
-            @PathVariable championBetId: Long,
-            @RequestBody championBetCreationDto: ChampionBetCreationDto,
-            request: HttpServletRequest): ResponseEntity<ChampionBetDto> {
+        @PathVariable championBetId: Long,
+        @RequestBody championBetCreationDto: ChampionBetCreationDto,
+        request: HttpServletRequest
+    ): ResponseEntity<ChampionBetDto> {
         val token = jsonWebTokenService.assertToken(request) ?: throw UnauthorizedException()
         val authenticatedUserId = jsonWebTokenService.getIdFromToken(token)
 
         val championBet = championBetService.find(championBetId)
-                .orElseThrow { throw NotFoundException("Champion bet not found.", "err.championBetNotFound") }
+            .orElseThrow { throw NotFoundException("Champion bet not found.", "err.championBetNotFound") }
 
         if (!championBet.bettingGame.competition.championBetAllowed)
             throw BadRequestException("Champion bet deadline has exceeded.", "err.championBetDeadlineExceeded")
-
 
         if (authenticatedUserId != championBet.user.id)
             throw ForbiddenException("This champion bet is not yours.", "err.editSomebodyElsesBet")
 
         championBet.team = teamService.find(championBetCreationDto.team)
-                .orElseThrow { throw BadRequestException("There is no such betting game.", "err.bettingGameNotFound") }
+            .orElseThrow { throw BadRequestException("There is no such betting game.", "err.bettingGameNotFound") }
 
         return ResponseEntity.ok(ChampionBetDto.toDto(championBetService.saveChampionBet(championBet)))
     }
@@ -86,11 +87,15 @@ class ChampionBetRestController(
     @GetMapping("")
     fun getChampionBets(@RequestParam bettingGame: Long?, @RequestParam user: Long?): ResponseEntity<List<ChampionBetDto>> {
         val championBets =
-                (if (bettingGame != null)
-                    championBetService.findByBettingGame(bettingGameService.find(bettingGame)
-                            .orElseThrow { throw BadRequestException("Invalid betting game.", "err.bettingGameNotFound") })
-                else championBetService.findAll())
-                        .filter { user == null || user == it.user.id }
+            (
+                if (bettingGame != null)
+                    championBetService.findByBettingGame(
+                        bettingGameService.find(bettingGame)
+                            .orElseThrow { throw BadRequestException("Invalid betting game.", "err.bettingGameNotFound") }
+                    )
+                else championBetService.findAll()
+                )
+                .filter { user == null || user == it.user.id }
 
         return ResponseEntity.ok(championBets.map { ChampionBetDto.toDto(it) })
     }

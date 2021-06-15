@@ -6,6 +6,6 @@ import javax.validation.constraints.NotBlank
 @Embeddable
 data class FullName(
 
-        @NotBlank val firstName: String,
-        @NotBlank val lastName: String
+    @NotBlank val firstName: String,
+    @NotBlank val lastName: String
 )

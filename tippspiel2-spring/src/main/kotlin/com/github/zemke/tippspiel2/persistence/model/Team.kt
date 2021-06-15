@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank
 @Entity
 data class Team(
 
-        @Id val id: Long,
-        @NotBlank val name: String,
-        @ManyToOne(optional = false, cascade = [CascadeType.MERGE]) val competition: Competition
+    @Id val id: Long,
+    @NotBlank val name: String,
+    @ManyToOne(optional = false, cascade = [CascadeType.MERGE]) val competition: Competition
 )

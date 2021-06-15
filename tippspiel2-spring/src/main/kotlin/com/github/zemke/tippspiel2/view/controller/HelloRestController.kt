@@ -13,6 +13,6 @@ class HelloRestController() {
 
     @GetMapping("")
     fun helloKotlinJson(): ResponseEntity<List<HelloDto>> {
-        return ResponseEntity.ok(Collections.singletonList(HelloDto("world")));
+        return ResponseEntity.ok(Collections.singletonList(HelloDto("world")))
     }
 }

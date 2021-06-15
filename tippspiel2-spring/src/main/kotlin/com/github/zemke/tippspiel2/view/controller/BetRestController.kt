@@ -46,22 +46,31 @@ class BetRestController {
     private lateinit var userService: UserService
 
     @GetMapping("")
-    fun getBets(@RequestParam user: Long?, @RequestParam bettingGame: Long?, @RequestParam fixture: Long?,
-                request: HttpServletRequest): ResponseEntity<List<BetDto>> {
+    fun getBets(
+        @RequestParam user: Long?,
+        @RequestParam bettingGame: Long?,
+        @RequestParam fixture: Long?,
+        request: HttpServletRequest
+    ): ResponseEntity<List<BetDto>> {
         val token = jsonWebTokenService.assertToken(request)
         val authenticatedUserId = if (token != null) jsonWebTokenService.getIdFromToken(token) else null
 
-        return ResponseEntity.ok(betService.findAll()
+        return ResponseEntity.ok(
+            betService.findAll()
                 .filter { user == null || user == it.user.id }
                 .filter { bettingGame == null || bettingGame == it.bettingGame.id }
                 .filter { fixture == null || fixture == it.fixture.id }
                 .filter { it.user.id == authenticatedUserId || !isBettingStillAllowed(it.fixture.date) }
-                .map { BetDto.toDto(it) })
+                .map { BetDto.toDto(it) }
+        )
     }
 
     @PutMapping("/{betId}")
-    fun updateBet(@PathVariable("betId") betId: Long, @RequestBody betCreationDto: BetCreationDto,
-                  request: HttpServletRequest): ResponseEntity<BetDto> {
+    fun updateBet(
+        @PathVariable("betId") betId: Long,
+        @RequestBody betCreationDto: BetCreationDto,
+        request: HttpServletRequest
+    ): ResponseEntity<BetDto> {
         val bet = betService.find(betId).orElseThrow({ throw NotFoundException("Bet not found", "err.betNotFound") })
         if (!isBettingStillAllowed(bet.fixture.date)) throw BadRequestException("Too late to bet.", "err.tooLateToBet")
         val token = jsonWebTokenService.assertToken(request) ?: throw UnauthorizedException()
@@ -80,16 +89,16 @@ class BetRestController {
         }
 
         val fixture = fixtureService.getById(betCreationDto.fixture)
-                .orElseThrow { throw BadRequestException("There is no such fixture.", "err.fixtureNotFound") }
+            .orElseThrow { throw BadRequestException("There is no such fixture.", "err.fixtureNotFound") }
         if (!isBettingStillAllowed(fixture.date)) throw BadRequestException("Too late to bet.", "err.tooLateToBet")
 
         val bet = BetCreationDto.fromDto(
-                dto = betCreationDto,
-                fixture = fixture,
-                bettingGame = bettingGameService.find(betCreationDto.bettingGame)
-                        .orElseThrow { throw BadRequestException("There is no such betting game.", "err.bettingGameNotFound") },
-                user = userService.findUser(betCreationDto.user)
-                        .orElseThrow { throw BadRequestException("There is no such user.", "err.userNotFound") }
+            dto = betCreationDto,
+            fixture = fixture,
+            bettingGame = bettingGameService.find(betCreationDto.bettingGame)
+                .orElseThrow { throw BadRequestException("There is no such betting game.", "err.bettingGameNotFound") },
+            user = userService.findUser(betCreationDto.user)
+                .orElseThrow { throw BadRequestException("There is no such user.", "err.userNotFound") }
         )
         return ResponseEntity.status(HttpStatus.CREATED).body(BetDto.toDto(betService.save(bet)))
     }

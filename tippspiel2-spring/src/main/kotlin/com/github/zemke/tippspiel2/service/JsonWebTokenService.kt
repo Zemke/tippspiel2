@@ -9,39 +9,42 @@ import io.jsonwebtoken.impl.DefaultClock
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.stereotype.Component
-import java.util.function.Function
-import javax.servlet.http.HttpServletRequest
 import java.time.Instant
 import java.util.Date
+import java.util.function.Function
+import javax.servlet.http.HttpServletRequest
 
 @Component
 class JsonWebTokenService(
-        @Autowired() private val authenticationProperties: AuthenticationProperties
+    @Autowired() private val authenticationProperties: AuthenticationProperties
 ) {
 
     private val clock = DefaultClock.INSTANCE
 
     fun assertToken(request: HttpServletRequest): String? =
-            request.getHeader(authenticationProperties.jwt.header)?.substring(7)
+        request.getHeader(authenticationProperties.jwt.header)?.substring(7)
 
     fun validateToken(token: String, userDetails: UserDetails): Boolean {
         val user = userDetails as AuthenticatedUser
         val email = getSubjectFromToken(token)
         val created = getIssuedAtDateFromToken(token)
         // TODO Why is this commented out?
-        //final Date expiration = getExpirationDateFromToken(token);
-        return (email == user.username
-                && !isTokenExpired(token)
-                && !isCreatedBeforeLastPasswordReset(created, user.lastPasswordResetDate))
+        // final Date expiration = getExpirationDateFromToken(token);
+        return (
+            email == user.username &&
+                !isTokenExpired(token) &&
+                !isCreatedBeforeLastPasswordReset(created, user.lastPasswordResetDate)
+            )
     }
 
     fun generateToken(authenticatedUser: AuthenticatedUser): String {
         val claims = mapOf(
-                Pair("id", authenticatedUser.id),
-                Pair("firstName", authenticatedUser.firstName),
-                Pair("lastName", authenticatedUser.lastName),
-                Pair("email", authenticatedUser.email),
-                Pair("roles", authenticatedUser.roles.map { it.name.unPrefixed() }))
+            Pair("id", authenticatedUser.id),
+            Pair("firstName", authenticatedUser.firstName),
+            Pair("lastName", authenticatedUser.lastName),
+            Pair("email", authenticatedUser.email),
+            Pair("roles", authenticatedUser.roles.map { it.name.unPrefixed() })
+        )
         return doGenerateToken(claims, authenticatedUser.username)
     }
 
@@ -59,9 +62,9 @@ class JsonWebTokenService(
         claims.expiration = expirationDate
 
         return Jwts.builder()
-                .setClaims(claims)
-                .signWith(SignatureAlgorithm.HS512, authenticationProperties.jwt.secret)
-                .compact()
+            .setClaims(claims)
+            .signWith(SignatureAlgorithm.HS512, authenticationProperties.jwt.secret)
+            .compact()
     }
 
     fun getSubjectFromToken(token: String): String {
@@ -87,9 +90,9 @@ class JsonWebTokenService(
 
     private fun getAllClaimsFromToken(token: String): Claims {
         return Jwts.parser()
-                .setSigningKey(authenticationProperties.jwt.secret)
-                .parseClaimsJws(token)
-                .body
+            .setSigningKey(authenticationProperties.jwt.secret)
+            .parseClaimsJws(token)
+            .body
     }
 
     private fun isTokenExpired(token: String): Boolean {
@@ -106,13 +109,13 @@ class JsonWebTokenService(
         val expirationDate = calculateExpirationDate(createdDate)
 
         return Jwts.builder()
-                .setClaims(claims)
-                .setSubject(subject)
-                .setIssuedAt(createdDate)
-                .setExpiration(expirationDate)
-                .setHeaderParam("typ", "JWT")
-                .signWith(SignatureAlgorithm.HS512, authenticationProperties.jwt.secret)
-                .compact()
+            .setClaims(claims)
+            .setSubject(subject)
+            .setIssuedAt(createdDate)
+            .setExpiration(expirationDate)
+            .setHeaderParam("typ", "JWT")
+            .signWith(SignatureAlgorithm.HS512, authenticationProperties.jwt.secret)
+            .compact()
     }
 
     private fun calculateExpirationDate(createdDate: Date): Date {

@@ -9,8 +9,8 @@ import java.util.*
 
 @Service
 class BettingGameService(
-        @Autowired private var bettingGameRepository: BettingGameRepository,
-        @Autowired private var standingRepository: StandingRepository
+    @Autowired private var bettingGameRepository: BettingGameRepository,
+    @Autowired private var standingRepository: StandingRepository
 ) {
 
     fun find(bettingGameId: Long): Optional<BettingGame> = bettingGameRepository.findById(bettingGameId)

@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Component
 import javax.transaction.Transactional
-import com.github.zemke.tippspiel2.service.NULL_TEAM_ID
 
 @Component
 class FootballDataScheduledTasksService {
@@ -47,10 +46,10 @@ class FootballDataScheduledTasksService {
             .filterNotNull()
         val footballDataFixturesOfCompetition = footballDataService.requestFixtures(competition.id).matches
         val fixturesNewOrChanged = footballDataFixturesOfCompetition
-                .filter { it.homeTeam != null && it.awayTeam != null }
-                .filter { it.homeTeam?.id != NULL_TEAM_ID && it.awayTeam?.id != NULL_TEAM_ID }
-                .map { FootballDataFixtureDto.fromDto(it, teamsToBeAffectedByUpdate, competition) }
-                .filter { !currentFixtures.contains(it) }
+            .filter { it.homeTeam != null && it.awayTeam != null }
+            .filter { it.homeTeam?.id != NULL_TEAM_ID && it.awayTeam?.id != NULL_TEAM_ID }
+            .map { FootballDataFixtureDto.fromDto(it, teamsToBeAffectedByUpdate, competition) }
+            .filter { !currentFixtures.contains(it) }
 
         if (fixturesNewOrChanged.isNotEmpty()) {
             fixtureService.saveMany(fixturesNewOrChanged)
@@ -65,15 +64,16 @@ class FootballDataScheduledTasksService {
     fun updateCurrentCompetitionWithItsTeams() {
         val currentCompetition = competitionRepository.findByCurrentTrue() ?: return
         val footballDataCompetition = FootballDataCompetitionDto.fromDto(
-                footballDataService.requestCompetition(currentCompetition.id),
-                true, currentCompetition.championBetAllowed, currentCompetition.champion)
+            footballDataService.requestCompetition(currentCompetition.id),
+            true, currentCompetition.championBetAllowed, currentCompetition.champion
+        )
 
         if (currentCompetition != footballDataCompetition) competitionRepository.save(footballDataCompetition)
 
         val teamsOfCurrentCompetition = teamRepository.findByCompetition(currentCompetition)
 
         val footballDataTeams = footballDataService.requestTeams(currentCompetition.id).teams
-                .map { FootballDataTeamDto.fromDto(it, footballDataCompetition) }
+            .map { FootballDataTeamDto.fromDto(it, footballDataCompetition) }
 
         teamRepository.saveAll(footballDataTeams.filter { !teamsOfCurrentCompetition.contains(it) })
     }

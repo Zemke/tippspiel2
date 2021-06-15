@@ -5,9 +5,9 @@ import com.github.zemke.tippspiel2.view.util.DataTransferObject
 @DataTransferObject
 data class UserCreationDto(
 
-        val firstName: String,
-        val lastName: String,
-        val email: String,
-        val password: String,
-        val bettingGames: List<Long>
+    val firstName: String,
+    val lastName: String,
+    val email: String,
+    val password: String,
+    val bettingGames: List<Long>
 )

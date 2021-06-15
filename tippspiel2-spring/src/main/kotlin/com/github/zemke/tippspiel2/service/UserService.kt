@@ -23,22 +23,31 @@ import java.util.*
 
 @Service
 class UserService(
-        @Autowired private var userRepository: UserRepository,
-        @Autowired private var roleRepository: RoleRepository,
-        @Autowired private var standingRepository: StandingRepository,
-        @Autowired private val authenticationProperties: AuthenticationProperties,
-        @Autowired private val authenticationManager: AuthenticationManager,
-        @Autowired private val jsonWebTokenService: JsonWebTokenService,
-        @Autowired private val userDetailsService: UserDetailsService
+    @Autowired private var userRepository: UserRepository,
+    @Autowired private var roleRepository: RoleRepository,
+    @Autowired private var standingRepository: StandingRepository,
+    @Autowired private val authenticationProperties: AuthenticationProperties,
+    @Autowired private val authenticationManager: AuthenticationManager,
+    @Autowired private val jsonWebTokenService: JsonWebTokenService,
+    @Autowired private val userDetailsService: UserDetailsService
 ) {
 
     @Transactional
-    fun addUser(firstName: String, lastName: String, email: String, plainPassword: String,
-                bettingGame: BettingGame, roles: List<UserRole> = listOf(UserRole.ROLE_USER)): User {
-        val persistedUser = userRepository.save(User(
+    fun addUser(
+        firstName: String,
+        lastName: String,
+        email: String,
+        plainPassword: String,
+        bettingGame: BettingGame,
+        roles: List<UserRole> = listOf(UserRole.ROLE_USER)
+    ): User {
+        val persistedUser = userRepository.save(
+            User(
                 FullName(firstName, lastName), email,
                 BCrypt.hashpw(plainPassword, authenticationProperties.bcryptSalt),
-                roleRepository.findByNameIn(roles), listOf(bettingGame)))
+                roleRepository.findByNameIn(roles), listOf(bettingGame)
+            )
+        )
         persistInitialStanding(persistedUser, bettingGame)
         return persistedUser
     }
@@ -56,9 +65,10 @@ class UserService(
     @Throws(AuthenticationException::class)
     fun authenticate(email: String, password: String): String {
         SecurityContextHolder.getContext().authentication =
-                authenticationManager.authenticate(UsernamePasswordAuthenticationToken(email, password))
+            authenticationManager.authenticate(UsernamePasswordAuthenticationToken(email, password))
         return jsonWebTokenService.generateToken(
-                userDetailsService.loadUserByUsername(email) as AuthenticatedUser)
+            userDetailsService.loadUserByUsername(email) as AuthenticatedUser
+        )
     }
 
     fun findAllUsers(): List<User> {
@@ -70,7 +80,7 @@ class UserService(
         if (!bettingGame.competition.current) throw IllegalArgumentException("You may only join current competitions.")
         if (bettingGame.competition.champion != null) throw IllegalArgumentException("The betting game has probably already ended.")
 
-        user.bettingGames = with(user.bettingGames.toMutableList()){
+        user.bettingGames = with(user.bettingGames.toMutableList()) {
             add(bettingGame)
             this
         }
@@ -81,7 +91,8 @@ class UserService(
     }
 
     private fun persistInitialStanding(persistedUser: User, bettingGame: BettingGame) {
-        standingRepository.save(Standing(
+        standingRepository.save(
+            Standing(
                 id = null,
                 points = 0,
                 exactBets = 0,
@@ -91,9 +102,10 @@ class UserService(
                 missedBets = 0,
                 user = persistedUser,
                 bettingGame = bettingGame
-        ))
+            )
+        )
     }
 
     fun findByBettingGames(bettingGame: List<BettingGame>): List<User> =
-            userRepository.findByBettingGamesIn(bettingGame)
+        userRepository.findByBettingGamesIn(bettingGame)
 }

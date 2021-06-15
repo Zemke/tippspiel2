@@ -1,14 +1,13 @@
 package com.github.zemke.tippspiel2.persistence.repository
 
 import com.github.zemke.tippspiel2.persistence.model.ChampionBet
+import com.github.zemke.tippspiel2.test.util.JpaTest
 import com.github.zemke.tippspiel2.test.util.PersistenceUtils
 import org.junit.Assert
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager
-import org.springframework.test.context.junit4.SpringRunner
 import java.time.Instant
-import com.github.zemke.tippspiel2.test.util.JpaTest
 
 @JpaTest
 class ChampionBetRepositoryTest {
@@ -22,18 +21,22 @@ class ChampionBetRepositoryTest {
     @Test
     fun testSave() {
         val competition = testEntityManager.persistAndFlush(PersistenceUtils.instantiateCompetition())
-        val team = testEntityManager.persistAndFlush(PersistenceUtils.instantiateTeam()
-                .copy(competition = competition))
-        val bettingGame = testEntityManager.persistAndFlush(PersistenceUtils.instantiateBettingGame()
-                .copy(competition = competition))
+        val team = testEntityManager.persistAndFlush(
+            PersistenceUtils.instantiateTeam()
+                .copy(competition = competition)
+        )
+        val bettingGame = testEntityManager.persistAndFlush(
+            PersistenceUtils.instantiateBettingGame()
+                .copy(competition = competition)
+        )
         val user = PersistenceUtils.createUser(testEntityManager, listOf(bettingGame))
 
         val unmanagedEntity = ChampionBet(
-                id = null,
-                bettingGame = bettingGame,
-                modified = Instant.now(),
-                team = team,
-                user = user
+            id = null,
+            bettingGame = bettingGame,
+            modified = Instant.now(),
+            team = team,
+            user = user
         )
 
         val actualEntity = championBetRepository.save(unmanagedEntity.copy())
@@ -44,14 +47,22 @@ class ChampionBetRepositoryTest {
 
     @Test
     fun testFindByBettingGameAndTeam() {
-        val competition = testEntityManager.persist(PersistenceUtils.instantiateCompetition()
-                .copy(id = 99))
-        val team1 = testEntityManager.persist(PersistenceUtils.instantiateTeam()
-                .copy(competition = competition))
-        val team2 = testEntityManager.persist(PersistenceUtils.instantiateTeam()
-                .copy(competition = competition))
-        val bettingGame = testEntityManager.persist(PersistenceUtils.instantiateBettingGame()
-                .copy(competition = competition))
+        val competition = testEntityManager.persist(
+            PersistenceUtils.instantiateCompetition()
+                .copy(id = 99)
+        )
+        val team1 = testEntityManager.persist(
+            PersistenceUtils.instantiateTeam()
+                .copy(competition = competition)
+        )
+        val team2 = testEntityManager.persist(
+            PersistenceUtils.instantiateTeam()
+                .copy(competition = competition)
+        )
+        val bettingGame = testEntityManager.persist(
+            PersistenceUtils.instantiateBettingGame()
+                .copy(competition = competition)
+        )
 
         val user1 = PersistenceUtils.createUser(testEntityManager, listOf(bettingGame))
         val user2 = PersistenceUtils.createUser(testEntityManager, listOf(bettingGame), "2")
@@ -64,8 +75,8 @@ class ChampionBetRepositoryTest {
         testEntityManager.flush()
 
         Assert.assertEquals(
-                listOf(championBet1, championBet2),
-                championBetRepository.findByBettingGameAndTeam(bettingGame, team1))
+            listOf(championBet1, championBet2),
+            championBetRepository.findByBettingGameAndTeam(bettingGame, team1)
+        )
     }
 }
-

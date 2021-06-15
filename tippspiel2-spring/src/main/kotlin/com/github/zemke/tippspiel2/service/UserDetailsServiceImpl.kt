@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service
 
 @Service
 @Primary
-class  UserDetailsServiceImpl(@Autowired private val userRepository: UserRepository) : UserDetailsService {
+class UserDetailsServiceImpl(@Autowired private val userRepository: UserRepository) : UserDetailsService {
 
     @Throws(UsernameNotFoundException::class)
     override fun loadUserByUsername(username: String): AuthenticatedUser {

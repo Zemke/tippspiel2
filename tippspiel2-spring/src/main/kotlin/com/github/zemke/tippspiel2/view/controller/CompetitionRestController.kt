@@ -1,6 +1,5 @@
 package com.github.zemke.tippspiel2.view.controller
 
-import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
 import com.github.zemke.tippspiel2.service.CompetitionService
 import com.github.zemke.tippspiel2.service.FixtureService
 import com.github.zemke.tippspiel2.service.FootballDataScheduledTasksService
@@ -30,18 +29,18 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/competitions")
 class CompetitionRestController(
-        @Autowired private val footballDataService: FootballDataService,
-        @Autowired private val competitionService: CompetitionService,
-        @Autowired private val fixtureService: FixtureService,
-        @Autowired private val teamService: TeamService,
-        @Autowired private val footballDataScheduledTasksService: FootballDataScheduledTasksService
+    @Autowired private val footballDataService: FootballDataService,
+    @Autowired private val competitionService: CompetitionService,
+    @Autowired private val fixtureService: FixtureService,
+    @Autowired private val teamService: TeamService,
+    @Autowired private val footballDataScheduledTasksService: FootballDataScheduledTasksService
 ) {
-
 
     @GetMapping("")
     fun queryCompetitions(@RequestParam("current", defaultValue = "false") current: Boolean): ResponseEntity<List<CompetitionDto>> {
         val competitions = if (current) {
-            listOf(competitionService.findByCurrentTrue()
+            listOf(
+                competitionService.findByCurrentTrue()
                     ?: throw NotFoundException("There is currently no competition.", "err.noCurrentCompetition")
             )
         } else {
@@ -60,9 +59,9 @@ class CompetitionRestController(
         val competition = FootballDataCompetitionDto.fromDto(competitionDto, false, true, null)
         val teams = teamWrappedListDto.teams.map { FootballDataTeamDto.fromDto(it, competition) }
         val fixtures = fixtureWrappedListDto.matches
-                .filter { it.homeTeam != null && it.awayTeam != null }
-                .filter { it.homeTeam?.id != NULL_TEAM_ID && it.awayTeam?.id != NULL_TEAM_ID }
-                .map { FootballDataFixtureDto.fromDto(it, teams, competition) }
+            .filter { it.homeTeam != null && it.awayTeam != null }
+            .filter { it.homeTeam?.id != NULL_TEAM_ID && it.awayTeam?.id != NULL_TEAM_ID }
+            .map { FootballDataFixtureDto.fromDto(it, teams, competition) }
 
         fixtureService.saveMany(fixtures)
 
@@ -71,20 +70,23 @@ class CompetitionRestController(
 
     @PutMapping("/{competitionId}")
     @Transactional
-    fun updateCompetition(@PathVariable competitionId: Long,
-                          @RequestBody competitionCreationDto: CompetitionCreationDto): ResponseEntity<CompetitionDto> {
+    fun updateCompetition(
+        @PathVariable competitionId: Long,
+        @RequestBody competitionCreationDto: CompetitionCreationDto
+    ): ResponseEntity<CompetitionDto> {
         val competitionToUpdate = competitionService.find(competitionId)
-                .orElseThrow { throw NotFoundException("No such competition.", "err.competitionNotFound") }
+            .orElseThrow { throw NotFoundException("No such competition.", "err.competitionNotFound") }
 
         if (competitionCreationDto.current != competitionToUpdate.current)
             competitionService.setCurrentCompetition(competitionToUpdate)
 
         if (competitionCreationDto.champion != null && competitionCreationDto.champion != competitionToUpdate.champion?.id)
             competitionService.saveChampion(
-                    competitionToUpdate,
-                    teamService.find(competitionCreationDto.champion)
-                            .orElseThrow { throw BadRequestException("No such team.", "err.teamNotFound") },
-                    true)
+                competitionToUpdate,
+                teamService.find(competitionCreationDto.champion)
+                    .orElseThrow { throw BadRequestException("No such team.", "err.teamNotFound") },
+                true
+            )
 
         val currentCompetition = competitionService.findByCurrentTrue()
 

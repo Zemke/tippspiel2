@@ -16,10 +16,10 @@ import javax.servlet.http.HttpServletResponse
 class AuthenticationFilter : OncePerRequestFilter() {
 
     @Autowired
-    private lateinit var jsonWebTokenService: JsonWebTokenService;
+    private lateinit var jsonWebTokenService: JsonWebTokenService
 
     @Autowired
-    private lateinit var userDetailsService: UserDetailsService;
+    private lateinit var userDetailsService: UserDetailsService
 
     @Throws(ServletException::class, IOException::class)
     override fun doFilterInternal(request: HttpServletRequest, response: HttpServletResponse, chain: FilterChain) {
@@ -32,7 +32,8 @@ class AuthenticationFilter : OncePerRequestFilter() {
 
                 if (jsonWebTokenService.validateToken(authToken, userDetails)) {
                     val authentication = UsernamePasswordAuthenticationToken(
-                            userDetails, null, userDetails.authorities)
+                        userDetails, null, userDetails.authorities
+                    )
                     authentication.details = WebAuthenticationDetailsSource().buildDetails(request)
                     SecurityContextHolder.getContext().authentication = authentication
                 }

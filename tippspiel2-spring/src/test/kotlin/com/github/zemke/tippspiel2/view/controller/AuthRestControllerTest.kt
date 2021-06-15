@@ -44,21 +44,23 @@ class AuthRestControllerTest {
         val requestPayload = JacksonUtils.toJson(AuthenticationRequestDto(email, plainPassword))
         val user = userService.addUser("Florian", "Zemke", email, plainPassword, createBettingGame())
 
-        this.mockMvc.perform(post("/api/auth")
+        this.mockMvc.perform(
+            post("/api/auth")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(requestPayload))
-                .andExpect(status().isCreated)
-                .andDo {
-                    val token = JacksonUtils.fromJson<JsonWebTokenDto>(it.response.contentAsString).token
-                    Assert.isTrue(jsonWebTokenService.validateToken(token, AuthenticatedUser.create(user)))
-                    Assert.isTrue(jsonWebTokenService.getSubjectFromToken(token) == user.email)
-                }
+                .content(requestPayload)
+        )
+            .andExpect(status().isCreated)
+            .andDo {
+                val token = JacksonUtils.fromJson<JsonWebTokenDto>(it.response.contentAsString).token
+                Assert.isTrue(jsonWebTokenService.validateToken(token, AuthenticatedUser.create(user)))
+                Assert.isTrue(jsonWebTokenService.getSubjectFromToken(token) == user.email)
+            }
     }
 
     private fun createBettingGame(): BettingGame {
         val bettingGame = PersistenceUtils.instantiateBettingGame()
         return bettingGameRepository.save(
-                bettingGame.copy(competition = competitionRepository.save(bettingGame.competition)))
+            bettingGame.copy(competition = competitionRepository.save(bettingGame.competition))
+        )
     }
-
 }

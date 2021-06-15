@@ -9,18 +9,18 @@ import java.util.*
 
 @Service
 class TeamService(
-        @Autowired private var teamRepository: TeamRepository
+    @Autowired private var teamRepository: TeamRepository
 ) {
 
     fun find(teamId: Long): Optional<Team> =
-            teamRepository.findById(teamId)
+        teamRepository.findById(teamId)
 
     fun createTeam(team: Team): Team =
-            teamRepository.save(team)
+        teamRepository.save(team)
 
     fun findByCompetition(competition: Competition) =
-            teamRepository.findByCompetition(competition)
+        teamRepository.findByCompetition(competition)
 
     fun findAll(): List<Team> =
-            teamRepository.findAll()
+        teamRepository.findAll()
 }

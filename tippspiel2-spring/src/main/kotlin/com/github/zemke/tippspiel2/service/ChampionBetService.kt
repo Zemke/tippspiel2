@@ -2,9 +2,7 @@ package com.github.zemke.tippspiel2.service
 
 import com.github.zemke.tippspiel2.persistence.model.BettingGame
 import com.github.zemke.tippspiel2.persistence.model.ChampionBet
-import com.github.zemke.tippspiel2.persistence.model.Fixture
 import com.github.zemke.tippspiel2.persistence.model.Team
-import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
 import com.github.zemke.tippspiel2.persistence.repository.ChampionBetRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -12,24 +10,24 @@ import java.util.*
 
 @Service
 class ChampionBetService(
-        @Autowired private var championBetRepository: ChampionBetRepository
+    @Autowired private var championBetRepository: ChampionBetRepository
 ) {
 
     fun find(championBetId: Long): Optional<ChampionBet> =
-            championBetRepository.findById(championBetId)
+        championBetRepository.findById(championBetId)
 
     fun saveChampionBet(championBet: ChampionBet): ChampionBet =
-            championBetRepository.save(championBet)
+        championBetRepository.save(championBet)
 
     fun findAll(): List<ChampionBet> =
-            championBetRepository.findAll()
+        championBetRepository.findAll()
 
     fun findByBettingGame(bettingGame: BettingGame): List<ChampionBet> =
-            championBetRepository.findByBettingGame(bettingGame)
+        championBetRepository.findByBettingGame(bettingGame)
 
     fun findByBettingGameAndTeam(bettingGame: BettingGame, competitionChampion: Team) =
-            championBetRepository.findByBettingGameAndTeam(bettingGame, competitionChampion)
+        championBetRepository.findByBettingGameAndTeam(bettingGame, competitionChampion)
 
     fun findByTeam(team: Team): List<ChampionBet> =
-            championBetRepository.findByTeam(team)
+        championBetRepository.findByTeam(team)
 }

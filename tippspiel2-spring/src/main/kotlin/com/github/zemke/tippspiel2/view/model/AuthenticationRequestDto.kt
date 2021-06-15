@@ -5,6 +5,6 @@ import com.github.zemke.tippspiel2.view.util.DataTransferObject
 @DataTransferObject
 data class AuthenticationRequestDto(
 
-        val email: String,
-        val password: String
+    val email: String,
+    val password: String
 )

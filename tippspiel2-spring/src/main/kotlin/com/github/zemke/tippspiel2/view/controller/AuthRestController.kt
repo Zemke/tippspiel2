@@ -21,14 +21,16 @@ import javax.servlet.http.HttpServletRequest
 
 @RestController
 @RequestMapping("/api/auth")
-class AuthRestController(@Autowired private val jsonWebTokenService: JsonWebTokenService,
-                         @Autowired private val userService: UserService,
-                         @Autowired private val userDetailsService: UserDetailsService) {
+class AuthRestController(
+    @Autowired private val jsonWebTokenService: JsonWebTokenService,
+    @Autowired private val userService: UserService,
+    @Autowired private val userDetailsService: UserDetailsService
+) {
 
     @GetMapping("")
     fun getAuthenticatedUser(request: HttpServletRequest): AuthenticatedUser {
         val token = jsonWebTokenService.assertToken(request)
-                ?: throw UnauthorizedException()
+            ?: throw UnauthorizedException()
         val email = jsonWebTokenService.getSubjectFromToken(token)
         return (userDetailsService.loadUserByUsername(email) as AuthenticatedUser)
     }
@@ -36,11 +38,17 @@ class AuthRestController(@Autowired private val jsonWebTokenService: JsonWebToke
     @PostMapping("")
     @Throws(AuthenticationException::class)
     fun createAuthenticationToken(
-            @RequestBody authenticationRequestDto: AuthenticationRequestDto): ResponseEntity<JsonWebTokenDto> {
+        @RequestBody authenticationRequestDto: AuthenticationRequestDto
+    ): ResponseEntity<JsonWebTokenDto> {
         return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(JsonWebTokenDto(userService.authenticate(
-                        authenticationRequestDto.email, authenticationRequestDto.password)))
+            .status(HttpStatus.CREATED)
+            .body(
+                JsonWebTokenDto(
+                    userService.authenticate(
+                        authenticationRequestDto.email, authenticationRequestDto.password
+                    )
+                )
+            )
     }
 
     @GetMapping("/{token}")

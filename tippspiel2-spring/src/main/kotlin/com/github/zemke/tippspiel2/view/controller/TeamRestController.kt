@@ -14,17 +14,19 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/teams")
 class TeamRestController(
-        @Autowired private val competitionService: CompetitionService,
-        @Autowired private val teamService: TeamService
+    @Autowired private val competitionService: CompetitionService,
+    @Autowired private val teamService: TeamService
 ) {
 
     @GetMapping("")
     fun getTeams(@RequestParam competition: Long?): ResponseEntity<List<TeamDto>> {
         val teams =
-                if (competition != null)
-                    teamService.findByCompetition(competitionService.find(competition)
-                            .orElseThrow { throw BadRequestException("Invalid competition.", "err.competitionNotFound") })
-                else teamService.findAll()
+            if (competition != null)
+                teamService.findByCompetition(
+                    competitionService.find(competition)
+                        .orElseThrow { throw BadRequestException("Invalid competition.", "err.competitionNotFound") }
+                )
+            else teamService.findAll()
 
         return ResponseEntity.ok(teams.map { TeamDto.toDto(it) })
     }

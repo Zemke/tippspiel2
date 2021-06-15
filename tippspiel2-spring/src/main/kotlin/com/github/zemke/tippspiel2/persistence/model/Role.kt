@@ -10,8 +10,8 @@ import javax.persistence.Id
 @Entity
 data class Role(
 
-        @Id @GeneratedValue val id: Long?,
-        @Enumerated(EnumType.STRING) val name: UserRole
+    @Id @GeneratedValue val id: Long?,
+    @Enumerated(EnumType.STRING) val name: UserRole
 ) {
     constructor(name: UserRole) : this(null, name)
 }

@@ -11,13 +11,16 @@ import javax.persistence.UniqueConstraint
 import javax.validation.constraints.NotNull
 
 @Entity
-@Table(uniqueConstraints = [
-    (UniqueConstraint(name = "champion_bet_multiple_bets", columnNames = ["user_id", "betting_game_id"]))])
+@Table(
+    uniqueConstraints = [
+        (UniqueConstraint(name = "champion_bet_multiple_bets", columnNames = ["user_id", "betting_game_id"]))
+    ]
+)
 data class ChampionBet(
 
-        @Id @GeneratedValue val id: Long?,
-        @ManyToOne(optional = false) val user: User,
-        @ManyToOne(optional = false) var team: Team,
-        @ManyToOne(optional = false) val bettingGame: BettingGame,
-        @UpdateTimestamp @NotNull val modified: Instant
+    @Id @GeneratedValue val id: Long?,
+    @ManyToOne(optional = false) val user: User,
+    @ManyToOne(optional = false) var team: Team,
+    @ManyToOne(optional = false) val bettingGame: BettingGame,
+    @UpdateTimestamp @NotNull val modified: Instant
 )

@@ -9,7 +9,7 @@ import java.util.*
 
 @Service
 class FixtureService(
-        @Autowired private var fixtureRepository: FixtureRepository
+    @Autowired private var fixtureRepository: FixtureRepository
 ) {
 
     fun saveMany(fixtures: List<Fixture>): List<Fixture> = fixtureRepository.saveAll(fixtures)
@@ -17,11 +17,11 @@ class FixtureService(
     fun getById(fixtureId: Long): Optional<Fixture> = fixtureRepository.findById(fixtureId)
 
     fun findFixturesByCompetitionAndManualFalse(competition: Competition): List<Fixture> =
-            fixtureRepository.findFixturesByCompetitionAndManualFalse(competition)
+        fixtureRepository.findFixturesByCompetitionAndManualFalse(competition)
 
     fun findFixturesByCompetition(competition: Competition) =
-            fixtureRepository.findFixturesByCompetition(competition)
+        fixtureRepository.findFixturesByCompetition(competition)
 
     fun findAll() =
-            fixtureRepository.findAll()
+        fixtureRepository.findAll()
 }

@@ -25,16 +25,16 @@ import org.springframework.web.filter.CommonsRequestLoggingFilter
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 class WebSecurityConfig(
-        @Autowired private val http401JwtAuthenticationEntryPoint: Http401JwtAuthenticationEntryPoint,
-        @Autowired private val userDetailsService: UserDetailsService
+    @Autowired private val http401JwtAuthenticationEntryPoint: Http401JwtAuthenticationEntryPoint,
+    @Autowired private val userDetailsService: UserDetailsService
 ) : WebSecurityConfigurerAdapter() {
 
     @Autowired
     @Throws(Exception::class)
     fun configureAuthentication(authenticationManagerBuilder: AuthenticationManagerBuilder) {
         authenticationManagerBuilder
-                .userDetailsService<UserDetailsService>(this.userDetailsService)
-                .passwordEncoder(passwordEncoder())
+            .userDetailsService<UserDetailsService>(this.userDetailsService)
+            .passwordEncoder(passwordEncoder())
     }
 
     @Bean
@@ -55,47 +55,47 @@ class WebSecurityConfig(
 
     @Bean
     fun requestLoggingFilter(): CommonsRequestLoggingFilter =
-            CommonsRequestLoggingFilterImpl().apply {
-                setIncludeClientInfo(true)
-                setIncludeQueryString(true)
-                setIncludePayload(true)
-                setAfterMessagePrefix("")
-                setAfterMessageSuffix("")
-            }
+        CommonsRequestLoggingFilterImpl().apply {
+            setIncludeClientInfo(true)
+            setIncludeQueryString(true)
+            setIncludePayload(true)
+            setAfterMessagePrefix("")
+            setAfterMessageSuffix("")
+        }
 
     @Throws(Exception::class)
     override fun configure(httpSecurity: HttpSecurity) {
         httpSecurity
-                .csrf().disable()
-                .cors().configurationSource {
-                    with(CorsConfiguration()) {
-                        applyPermitDefaultValues()
-                        addAllowedMethod(HttpMethod.PUT)
-                        this
-                    }
-                }.and()
-                .exceptionHandling().authenticationEntryPoint(http401JwtAuthenticationEntryPoint).and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeRequests()
-                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/").permitAll()
-                .antMatchers(HttpMethod.GET, "/{path:^(?!api).+}/**").permitAll()
-                .antMatchers("/api/hellos/**").hasRole(UserRole.ROLE_ADMIN.unPrefixed())
-                .antMatchers(HttpMethod.POST, "/api/auth").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/betting-games").hasRole(UserRole.ROLE_ADMIN.unPrefixed())
-                .antMatchers(HttpMethod.GET, "/api/betting-games").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/competitions").hasRole(UserRole.ROLE_ADMIN.unPrefixed())
-                .antMatchers(HttpMethod.PUT, "/api/competitions").hasRole(UserRole.ROLE_ADMIN.unPrefixed())
-                .antMatchers(HttpMethod.POST, "/api/users").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/teams").permitAll()
-                .anyRequest().authenticated()
+            .csrf().disable()
+            .cors().configurationSource {
+                with(CorsConfiguration()) {
+                    applyPermitDefaultValues()
+                    addAllowedMethod(HttpMethod.PUT)
+                    this
+                }
+            }.and()
+            .exceptionHandling().authenticationEntryPoint(http401JwtAuthenticationEntryPoint).and()
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+            .authorizeRequests()
+            .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+            .antMatchers(HttpMethod.GET, "/").permitAll()
+            .antMatchers(HttpMethod.GET, "/{path:^(?!api).+}/**").permitAll()
+            .antMatchers("/api/hellos/**").hasRole(UserRole.ROLE_ADMIN.unPrefixed())
+            .antMatchers(HttpMethod.POST, "/api/auth").permitAll()
+            .antMatchers(HttpMethod.POST, "/api/betting-games").hasRole(UserRole.ROLE_ADMIN.unPrefixed())
+            .antMatchers(HttpMethod.GET, "/api/betting-games").permitAll()
+            .antMatchers(HttpMethod.POST, "/api/competitions").hasRole(UserRole.ROLE_ADMIN.unPrefixed())
+            .antMatchers(HttpMethod.PUT, "/api/competitions").hasRole(UserRole.ROLE_ADMIN.unPrefixed())
+            .antMatchers(HttpMethod.POST, "/api/users").permitAll()
+            .antMatchers(HttpMethod.GET, "/api/teams").permitAll()
+            .anyRequest().authenticated()
 
         httpSecurity
-                .addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter::class.java)
+            .addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter::class.java)
 
         httpSecurity
-                .headers()
-                .frameOptions().sameOrigin()
-                .cacheControl()
+            .headers()
+            .frameOptions().sameOrigin()
+            .cacheControl()
     }
 }

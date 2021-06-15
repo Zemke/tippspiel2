@@ -22,51 +22,55 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/users")
 class UserRestController(
-        @Autowired private val userService: UserService,
-        @Autowired private val bettingGameService: BettingGameService
+    @Autowired private val userService: UserService,
+    @Autowired private val bettingGameService: BettingGameService
 ) {
 
     @PostMapping("")
     fun createUser(@RequestBody userCreationDto: UserCreationDto): ResponseEntity<UserDto> {
         val plainPassword = userCreationDto.password
         val bettingGame = bettingGameService.find(userCreationDto.bettingGames[0])
-                .orElseThrow { throw BadRequestException("Invalid betting game.", "err.bettingGameNotFound") }
+            .orElseThrow { throw BadRequestException("Invalid betting game.", "err.bettingGameNotFound") }
         val persistedUser = userService.addUser(
-                userCreationDto.firstName, userCreationDto.lastName,
-                userCreationDto.email, userCreationDto.password,
-                bettingGame)
+            userCreationDto.firstName, userCreationDto.lastName,
+            userCreationDto.email, userCreationDto.password,
+            bettingGame
+        )
         val token = userService.authenticate(persistedUser.email, plainPassword)
 
         return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(UserDto.toDto(persistedUser, token))
+            .status(HttpStatus.CREATED)
+            .body(UserDto.toDto(persistedUser, token))
     }
 
     @GetMapping("/{id}")
     fun readUser(@PathVariable("id") id: Long): ResponseEntity<UserDto> {
-        return ResponseEntity.ok(UserDto.toDto(userService.findUser(id)
-                .orElseThrow { throw NotFoundException("User not found.", "err.userNotFound") }))
+        return ResponseEntity.ok(
+            UserDto.toDto(
+                userService.findUser(id)
+                    .orElseThrow { throw NotFoundException("User not found.", "err.userNotFound") }
+            )
+        )
     }
 
     @PutMapping("/{id}")
     @Transactional
     fun updateUser(@PathVariable("id") id: Long, @RequestBody userCreationDto: UserCreationDto): ResponseEntity<UserDto> {
         val user = userService.findUser(id)
-                .orElseThrow { throw NotFoundException("User not found", "err.userNotFound") }
+            .orElseThrow { throw NotFoundException("User not found", "err.userNotFound") }
 
         val bettingGamesToJoin = userCreationDto.bettingGames
-                .map {
-                    bettingGameService.find(it)
-                            .orElseThrow { throw BadRequestException("Betting game ${it} not found", "err.bettingGameNotFound") }
-                }
-                .filter { !user.bettingGames.contains(it) }
-
+            .map {
+                bettingGameService.find(it)
+                    .orElseThrow { throw BadRequestException("Betting game $it not found", "err.bettingGameNotFound") }
+            }
+            .filter { !user.bettingGames.contains(it) }
 
         if (bettingGamesToJoin.isEmpty()) return ResponseEntity.status(HttpStatus.NOT_MODIFIED).body(UserDto.toDto(user))
         bettingGamesToJoin.find { it.competition.current }
-                ?: throw BadRequestException("You may only join betting games with a current competition.", "err.joinNonCurrent")
+            ?: throw BadRequestException("You may only join betting games with a current competition.", "err.joinNonCurrent")
         bettingGamesToJoin.find { it.competition.champion == null }
-                ?: throw BadRequestException("Betting game has apparently already ended.", "err.joinEndedBettingGame")
+            ?: throw BadRequestException("Betting game has apparently already ended.", "err.joinEndedBettingGame")
         bettingGamesToJoin.forEach { userService.joinBettingGame(user, it) }
 
         return ResponseEntity.ok(UserDto.toDto(user))
@@ -75,8 +79,8 @@ class UserRestController(
     @GetMapping("")
     fun queryUser(@RequestParam bettingGame: List<Long>?): ResponseEntity<List<UserDto>> {
         val users =
-                if (bettingGame != null) userService.findByBettingGames(bettingGameService.findMany(bettingGame))
-                else userService.findAllUsers()
+            if (bettingGame != null) userService.findByBettingGames(bettingGameService.findMany(bettingGame))
+            else userService.findAllUsers()
         return ResponseEntity.ok(users.map { UserDto.toDto(it) })
     }
 }

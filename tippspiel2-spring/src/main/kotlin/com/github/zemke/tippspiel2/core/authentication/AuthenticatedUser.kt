@@ -8,15 +8,22 @@ import org.springframework.security.core.userdetails.UserDetails
 import java.time.Instant
 
 class AuthenticatedUser(
-        val id: Long, val firstName: String, val lastName: String,
-        val email: String, val plainPassword: String, val lastPasswordResetDate: Instant?,
-        val roles: List<Role>) : UserDetails {
+    val id: Long,
+    val firstName: String,
+    val lastName: String,
+    val email: String,
+    val plainPassword: String,
+    val lastPasswordResetDate: Instant?,
+    val roles: List<Role>
+) : UserDetails {
 
     companion object {
 
         fun create(user: User): AuthenticatedUser {
-            return AuthenticatedUser(user.id!!, user.fullName.firstName, user.fullName.lastName, user.email,
-                    user.password, user.lastPasswordReset, user.roles)
+            return AuthenticatedUser(
+                user.id!!, user.fullName.firstName, user.fullName.lastName, user.email,
+                user.password, user.lastPasswordReset, user.roles
+            )
         }
     }
 

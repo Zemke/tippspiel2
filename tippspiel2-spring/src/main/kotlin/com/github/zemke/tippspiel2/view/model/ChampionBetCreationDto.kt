@@ -9,20 +9,20 @@ import java.time.Instant
 
 @DataTransferObject
 data class ChampionBetCreationDto(
-        val user: Long,
-        val team: Long,
-        val bettingGame: Long
+    val user: Long,
+    val team: Long,
+    val bettingGame: Long
 ) {
 
     companion object {
 
         fun fromDto(bettingGame: BettingGame, team: Team, user: User): ChampionBet =
-                ChampionBet(
-                        id = null,
-                        modified = Instant.now(),
-                        bettingGame = bettingGame,
-                        team = team,
-                        user = user
-                )
+            ChampionBet(
+                id = null,
+                modified = Instant.now(),
+                bettingGame = bettingGame,
+                team = team,
+                user = user
+            )
     }
 }

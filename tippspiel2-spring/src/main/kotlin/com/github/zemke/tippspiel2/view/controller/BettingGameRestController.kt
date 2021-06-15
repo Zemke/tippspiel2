@@ -30,26 +30,26 @@ class BettingGameRestController {
     @PostMapping("")
     fun createBettingGame(@RequestBody bettingGameCreationDto: BettingGameCreationDto): ResponseEntity<BettingGameDto> {
         val competition = competitionService.find(bettingGameCreationDto.competition)
-                .orElseThrow { throw BadRequestException("There is no such betting game", "err.bettingGameNotFound") }
+            .orElseThrow { throw BadRequestException("There is no such betting game", "err.bettingGameNotFound") }
 
         val bettingGame = BettingGameCreationDto.fromDto(bettingGameCreationDto, competition)
 
         return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(BettingGameDto.toDto(bettingGameService.saveBettingGame(bettingGame)))
+            .status(HttpStatus.CREATED)
+            .body(BettingGameDto.toDto(bettingGameService.saveBettingGame(bettingGame)))
     }
 
     @GetMapping("{bettingGameId}")
     fun readBettingGame(@PathVariable bettingGameId: Long): ResponseEntity<BettingGameDto> {
         val bettingGame = bettingGameService.find(bettingGameId)
-                .orElseThrow { throw NotFoundException("No such betting game.", "err.bettingGameNotFound") }
+            .orElseThrow { throw NotFoundException("No such betting game.", "err.bettingGameNotFound") }
         return ResponseEntity.ok(BettingGameDto.toDto(bettingGame))
     }
 
     @GetMapping("")
     fun queryBettingGames(@RequestParam("invitation-token") invitationToken: String?): ResponseEntity<List<BettingGameDto>> {
         val bettingGames = bettingGameService.findAll()
-                .filter { invitationToken == null || it.invitationToken == invitationToken }
+            .filter { invitationToken == null || it.invitationToken == invitationToken }
         return ResponseEntity.ok(bettingGames.map { BettingGameDto.toDto(it) })
     }
 }

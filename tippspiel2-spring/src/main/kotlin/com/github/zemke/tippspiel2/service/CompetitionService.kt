@@ -11,19 +11,19 @@ import java.util.*
 
 @Service
 class CompetitionService(
-        @Autowired private var competitionRepository: CompetitionRepository,
-        @Autowired private var standingService: StandingService,
-        @Autowired private var bettingGameRepository: BettingGameRepository
+    @Autowired private var competitionRepository: CompetitionRepository,
+    @Autowired private var standingService: StandingService,
+    @Autowired private var bettingGameRepository: BettingGameRepository
 ) {
 
     fun find(competitionId: Long): Optional<Competition> =
-            competitionRepository.findById(competitionId)
+        competitionRepository.findById(competitionId)
 
     fun findByCurrentTrue(): Competition? =
-            competitionRepository.findByCurrentTrue()
+        competitionRepository.findByCurrentTrue()
 
     fun findAll(): List<Competition> =
-            competitionRepository.findAll()
+        competitionRepository.findAll()
 
     @Transactional
     fun setCurrentCompetition(newCurrentCompetition: Competition): Competition {
@@ -45,6 +45,6 @@ class CompetitionService(
 
         if (reCalcStandings)
             bettingGameRepository.findByCompetition(competition)
-                    .forEach { standingService.updateStandings(it) }
+                .forEach { standingService.updateStandings(it) }
     }
 }

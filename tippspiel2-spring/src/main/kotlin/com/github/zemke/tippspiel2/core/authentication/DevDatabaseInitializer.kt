@@ -27,12 +27,14 @@ class DevDatabaseInitializer : ApplicationListener<ContextRefreshedEvent> {
 
     override fun onApplicationEvent(event: ContextRefreshedEvent?) {
         userRepository.findByEmailIgnoreCase("florian@zemke.io") ?: run {
-            userRepository.save(User(
+            userRepository.save(
+                User(
                     fullName = FullName("Florian", "Zemke"),
                     password = BCrypt.hashpw("admin", authenticationProperties.bcryptSalt),
                     email = "florian@zemke.io",
                     roles = roleService.initRoles()
-            ))
+                )
+            )
         }
     }
 }
