@@ -2,9 +2,13 @@ import Component from '@ember/component';
 
 export default Component.extend({
   dataTarget: 'navMenu',
-  attributeBindings: ["data-target"],
+  attributeBindings: ['data-target'],
   didRender() {
-    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+    this._super(...arguments);
+    const $navbarBurgers = Array.prototype.slice.call(
+      document.querySelectorAll('.navbar-burger'),
+      0
+    );
 
     if ($navbarBurgers.length < 1) {
       return;
@@ -26,5 +30,5 @@ export default Component.extend({
         toggle($el, $target);
       });
     });
-  }
+  },
 });

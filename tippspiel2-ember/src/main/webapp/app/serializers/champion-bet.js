@@ -4,13 +4,13 @@ import ApplicationJSONSerializer from './application';
 export default ApplicationJSONSerializer.extend(DS.EmbeddedRecordsMixin, {
   attrs: {
     team: {
-      deserialize: 'records'
+      deserialize: 'records',
     },
     user: {
-      deserialize: 'records'
+      deserialize: 'records',
     },
     bettingGame: {
-      deserialize: 'records'
-    }
-  }
+      deserialize: 'records',
+    },
+  },
 });

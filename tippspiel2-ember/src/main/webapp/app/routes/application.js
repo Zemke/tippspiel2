@@ -1,8 +1,8 @@
 import Route from '@ember/routing/route';
-import {computed} from '@ember/object';
-import {inject} from '@ember/service';
+import { computed } from '@ember/object';
+import { inject } from '@ember/service';
 import RSVP from 'rsvp';
-import DS from "ember-data";
+import DS from 'ember-data';
 
 export default Route.extend({
   intl: inject(),
@@ -11,28 +11,43 @@ export default Route.extend({
   bettingGame: inject(),
   model() {
     const currentBettingGame = this.get('bettingGame.currentBettingGame');
-    const bettingGames = currentBettingGame.then(currentBettingGame => {
-      const promise = this.get('auth.user').then(authenticatedUser => this.get('store').peekAll('betting-game'));
-      return DS.PromiseArray.create({promise: promise})
+    const bettingGames = currentBettingGame.then((currentBettingGame) => {
+      const promise = this.get('auth.user').then((authenticatedUser) =>
+        this.store.peekAll('betting-game')
+      );
+      return DS.PromiseArray.create({ promise: promise });
     });
     return RSVP.hash({
       currentBettingGame: currentBettingGame,
       bettingGames: bettingGames,
-      isOnlyOneBettingGame: DS.PromiseObject.create({promise: bettingGames.then(bettingGames => bettingGames.get('length') === 1)})
-    }).catch($.noop);
+      isOnlyOneBettingGame: DS.PromiseObject.create({
+        promise: bettingGames.then(
+          (bettingGames) => bettingGames.get('length') === 1
+        ),
+      }),
+    }).catch(() => {});
   },
   beforeModel() {
-    iziToast.settings({position: 'topRight'});
+    iziToast.settings({ position: 'topRight' });
 
     let locale;
     try {
-      const browserLocale = ((navigator.languages && navigator.languages.length) ? navigator.languages[0] : navigator.language).toLowerCase();
+      const browserLocale = (
+        navigator.languages && navigator.languages.length
+          ? navigator.languages[0]
+          : navigator.language
+      ).toLowerCase();
       const rememberedLocale = localStorage.getItem('locale');
-      locale = (rememberedLocale != null ? rememberedLocale : browserLocale).startsWith('de') ? 'de' : 'en-us';
+      locale = (rememberedLocale != null
+        ? rememberedLocale
+        : browserLocale
+      ).startsWith('de')
+        ? 'de'
+        : 'en-us';
     } catch (e) {
       locale = 'en-us';
     }
-    this.get('intl').setLocale(locale);
+    this.intl.setLocale(locale);
     localStorage.setItem('locale', locale);
   },
   actions: {
@@ -50,8 +65,11 @@ export default Route.extend({
         locKey = 'err.unknown';
       }
 
-      this.get('resHandler').handleWithRouting(
-        transition, this.transitionTo.bind(this), locKey);
-    }
-  }
+      this.resHandler.handleWithRouting(
+        transition,
+        this.transitionTo.bind(this),
+        locKey
+      );
+    },
+  },
 });

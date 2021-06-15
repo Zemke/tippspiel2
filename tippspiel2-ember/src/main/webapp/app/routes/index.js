@@ -1,15 +1,14 @@
 import Route from '@ember/routing/route';
-import {inject} from '@ember/service';
-import $ from 'jquery';
+import { inject } from '@ember/service';
 
 export default Route.extend({
   bettingGame: inject(),
   model() {
-    return this.get('store').findAll('team');
+    return this.store.findAll('team');
   },
   redirect() {
     this.get('bettingGame.currentBettingGame')
       .then(() => this.transitionTo('standings'))
-      .catch($.noop)
-  }
+      .catch(() => {});
+  },
 });

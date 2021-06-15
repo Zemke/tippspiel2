@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import {inject} from '@ember/service';
+import { inject } from '@ember/service';
 
 export default Controller.extend({
   resHandler: inject(),
@@ -7,15 +7,17 @@ export default Controller.extend({
     selectTeam(teamId) {
       this.set(
         'model.championBet.team',
-        this.get('model.teams').find(t => t.id === teamId));
+        this.get('model.teams').find((t) => t.id === teamId)
+      );
     },
     submit() {
-      this.get('model.championBet').save()
-        .then(res => {
-          this.get('resHandler').handleSuccess('success.betSaved');
+      this.get('model.championBet')
+        .save()
+        .then((res) => {
+          this.resHandler.handleSuccess('success.betSaved');
           this.transitionToRoute('standings');
         })
-        .catch(err => this.get('resHandler').handleError(err));
-    }
-  }
+        .catch((err) => this.resHandler.handleError(err));
+    },
+  },
 });

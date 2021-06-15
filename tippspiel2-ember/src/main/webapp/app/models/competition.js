@@ -10,4 +10,3 @@ export default DS.Model.extend({
   championBetAllowed: DS.attr('boolean'),
   champion: DS.belongsTo('team'),
 });
-

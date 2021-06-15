@@ -1,6 +1,6 @@
-import Model from 'ember-data/model';
-import attr from 'ember-data/attr';
+import Model from '@ember-data/model';
+import { attr } from '@ember-data/model';
 
 export default Model.extend({
-  hello: attr('string')
+  hello: attr('string'),
 });
