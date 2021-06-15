@@ -68,9 +68,6 @@
     "qunit": "^2.14.1",
     "qunit-dom": "^1.6.0"
   },
-  "engines": {
-    "node": "10.* || >= 12"
-  },
   "ember": {
     "edition": "octane"
   },
