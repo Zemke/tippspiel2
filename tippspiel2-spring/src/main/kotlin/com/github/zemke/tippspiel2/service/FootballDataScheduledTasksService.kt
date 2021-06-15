@@ -2,6 +2,7 @@ package com.github.zemke.tippspiel2.service
 
 import com.github.zemke.tippspiel2.persistence.model.Fixture
 import com.github.zemke.tippspiel2.persistence.model.Team
+import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
 import com.github.zemke.tippspiel2.persistence.repository.BettingGameRepository
 import com.github.zemke.tippspiel2.persistence.repository.CompetitionRepository
 import com.github.zemke.tippspiel2.persistence.repository.TeamRepository
@@ -56,6 +57,13 @@ class FootballDataScheduledTasksService {
             bettingGameRepository.findByCompetition(competition).forEach {
                 standingService.updateStandings(it)
             }
+        }
+
+        if (competition.championBetAllowed &&
+            fixturesNewOrChanged.any { FixtureStatus.NO_BETTING.contains(it.status) }
+        ) {
+            competition.championBetAllowed = false
+            competitionRepository.save(competition)
         }
     }
 
