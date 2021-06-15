@@ -19,7 +19,7 @@ export default Route.extend({
       currentBettingGame: currentBettingGame,
       bettingGames: bettingGames,
       isOnlyOneBettingGame: DS.PromiseObject.create({promise: bettingGames.then(bettingGames => bettingGames.get('length') === 1)})
-    }).catch($.noop);
+    }).catch(() => {});
   },
   beforeModel() {
     iziToast.settings({position: 'topRight'});

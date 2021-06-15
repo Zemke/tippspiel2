@@ -1,6 +1,5 @@
 import Route from '@ember/routing/route';
 import {inject} from "@ember/service"
-import $ from "jquery"
 
 export default Route.extend({
   auth: inject(),
@@ -21,6 +20,7 @@ export default Route.extend({
 
     this.get('auth.user')
       .then(() => this.transitionTo('join', {queryParams: transition.queryParams}))
-      .catch($.noop);
+      .catch(() => {});
   }
 });
+
