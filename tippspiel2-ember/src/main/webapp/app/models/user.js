@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
-import {buildValidations, validator} from 'ember-cp-validations';
+import { buildValidations, validator } from 'ember-cp-validations';
 
 const Validations = buildValidations({
   firstName: validator('presence', true),
@@ -9,12 +9,9 @@ const Validations = buildValidations({
   password: validator('presence', true),
   passwordConfirmation: [
     validator('presence', true),
-    validator('confirmation', {on: 'password'})
+    validator('confirmation', { on: 'password' }),
   ],
-  email: [
-    validator('presence', true),
-    validator('format', {type: 'email'})
-  ]
+  email: [validator('presence', true), validator('format', { type: 'email' })],
 });
 
 export default Model.extend(Validations, {

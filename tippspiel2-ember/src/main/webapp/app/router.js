@@ -6,7 +6,7 @@ export default class Router extends EmberRouter {
   rootURL = config.rootURL;
 }
 
-Router.map(function() {
+Router.map(function () {
   this.route('standings');
   this.route('bets');
   this.route('sign-up');
@@ -15,24 +15,23 @@ Router.map(function() {
   this.route('champion-bet');
   this.route('join');
 
-  this.route('competitions', function() {
+  this.route('competitions', function () {
     this.route('new');
   });
 
-  this.route('betting-games', function() {
+  this.route('betting-games', function () {
     this.route('new');
     this.route('list');
-    this.route('details', {path: '/:betting-game_id'});
+    this.route('details', { path: '/:betting-game_id' });
   });
 
-  this.route('users', function() {
-    this.route('bets', {path: '/:user_id/bets'});
+  this.route('users', function () {
+    this.route('bets', { path: '/:user_id/bets' });
   });
 
-  this.route('fixtures', function() {
-    this.route('bets', {path: '/:fixture_id/bets'});
+  this.route('fixtures', function () {
+    this.route('bets', { path: '/:fixture_id/bets' });
   });
 
-  this.route('404', {path: '/*'});
+  this.route('404', { path: '/*' });
 });
-

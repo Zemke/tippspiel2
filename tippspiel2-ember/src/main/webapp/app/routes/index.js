@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import {inject} from '@ember/service';
+import { inject } from '@ember/service';
 
 export default Route.extend({
   bettingGame: inject(),
@@ -9,7 +9,6 @@ export default Route.extend({
   redirect() {
     this.get('bettingGame.currentBettingGame')
       .then(() => this.transitionTo('standings'))
-      .catch(() => {})
-  }
+      .catch(() => {});
+  },
 });
-

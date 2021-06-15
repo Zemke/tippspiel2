@@ -4,10 +4,10 @@ import ApplicationJSONSerializer from './application';
 export default ApplicationJSONSerializer.extend(DS.EmbeddedRecordsMixin, {
   attrs: {
     homeTeam: {
-      deserialize: 'records'
+      deserialize: 'records',
     },
     awayTeam: {
-      deserialize: 'records'
-    }
-  }
+      deserialize: 'records',
+    },
+  },
 });

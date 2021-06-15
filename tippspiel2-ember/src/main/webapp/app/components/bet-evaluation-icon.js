@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import {computed} from '@ember/object';
+import { computed } from '@ember/object';
 
 export default Component.extend({
   evaluationIconClass: computed('evaluation', function () {
@@ -13,7 +13,7 @@ export default Component.extend({
       return 'angle-up';
     } else if (evaluation === 0) {
       return 'circle-o';
-    }  else if (evaluation === 10) {
+    } else if (evaluation === 10) {
       return 'trophy';
     } else {
       return 'times';
@@ -30,10 +30,10 @@ export default Component.extend({
       return '1';
     } else if (evaluation === 0) {
       return '0';
-    }  else if (evaluation === 10) {
+    } else if (evaluation === 10) {
       return '10';
     } else {
       return 'void';
     }
-  })
+  }),
 });
