@@ -9,7 +9,7 @@
                     class=(concat 'input ' (if (v-get model 'firstName' 'isInvalid') 'is-danger'))
                     value=(mut (get model 'firstName'))}}
             <span class="icon is-left">
-              <i class="fa fa-user-o"></i>
+              {{fa-icon "user-o"}}
             </span>
           </div>
         </div>
@@ -19,7 +19,7 @@
                     class=(concat 'input ' (if (v-get model 'lastName' 'isInvalid') 'is-danger'))
                     value=(mut (get model 'lastName'))}}
             <span class="icon is-left">
-              <i class="fa fa-user"></i>
+              {{fa-icon "user"}}
             </span>
           </div>
         </div>
@@ -30,7 +30,7 @@
                   class=(concat 'input ' (if (v-get model 'email' 'isInvalid') 'is-danger'))
                   value=(mut (get model 'email'))}}
           <span class="icon is-left">
-              <i class="fa fa-envelope"></i>
+              {{fa-icon "envelope"}}
             </span>
         </div>
       </div>
@@ -40,7 +40,7 @@
                   class=(concat 'input ' (if (v-get model 'password' 'isInvalid') 'is-danger'))
                   value=(mut (get model 'password'))}}
           <span class="icon is-left">
-              <i class="fa fa-unlock"></i>
+              {{fa-icon "unlock"}}
             </span>
         </div>
       </div>
@@ -50,7 +50,7 @@
                   class=(concat 'input ' (if (v-get model 'passwordConfirmation' 'isInvalid') 'is-danger'))
                   value=(mut (get model 'passwordConfirmation'))}}
           <span class="icon is-left">
-              <i class="fa fa-lock"></i>
+              {{fa-icon "lock"}}
             </span>
         </div>
       </div>

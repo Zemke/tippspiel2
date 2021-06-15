@@ -8,7 +8,7 @@
                   class=(concat 'input ' (if (v-get model 'email' 'isInvalid') 'is-danger'))
                   value=(mut (get model 'email'))}}
           <span class="icon is-left">
-            <i class="fa fa-envelope"></i>
+            {{fa-icon "envelope"}}
           </span>
         </div>
       </div>
@@ -18,7 +18,7 @@
                   class=(concat 'input ' (if (v-get model 'password' 'isInvalid') 'is-danger'))
                   value=(mut (get model 'password'))}}
           <span class="icon is-left">
-            <i class="fa fa-unlock"></i>
+            {{fa-icon "unlock"}}
           </span>
         </div>
       </div>
