@@ -69,6 +69,9 @@
   "ember": {
     "edition": "octane"
   },
+  "engine": {
+    "node": "10.24.1"
+  },
   "dependencies": {
     "@babel/core": "^7.14.5",
     "izitoast": "^1.2.0"
