@@ -8,12 +8,10 @@ export default Component.extend({
   isLoading: false,
   actions: {
     select(value) {
-      const newSelected = this.get('options').find(
-        (o) => o.get(this.get('value')) === value
-      );
+      const newSelected = this.options.find((o) => o.get(this.value) === value);
       const performChange = () => this.set('selected', newSelected);
 
-      const onChange = this.get('onChange');
+      const onChange = this.onChange;
 
       if (onChange == null) return performChange();
 
@@ -30,11 +28,11 @@ export default Component.extend({
         });
     },
   },
-  alternatives: computed('options', 'selected', function () {
-    const selected = this.get('selected');
-    if (selected == null) return this.get('options');
-    return this.get('options').filter(
-      (o) => o.get(this.get('value')) !== selected.get(this.get('value'))
+  alternatives: computed('options', 'selected', 'value', function () {
+    const selected = this.selected;
+    if (selected == null) return this.options;
+    return this.options.filter(
+      (o) => o.get(this.value) !== selected.get(this.value)
     );
   }),
 });

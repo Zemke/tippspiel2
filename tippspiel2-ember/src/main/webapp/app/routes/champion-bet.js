@@ -12,30 +12,32 @@ export default Route.extend({
       authenticatedUser: this.get('auth.user'),
     }).then((hash) =>
       RSVP.hash({
-        teams: this.get('store')
+        teams: this.store
           .query('team', {
             competition: hash.currentBettingGame.get('competition.id'),
           })
           .then((teams) =>
-            teams.toArray().sort((a, b) =>
-              this.get('intl')
-                .t(`team.name.${a.id}`)
-                .localeCompare(this.get('intl').t(`team.name.${b.id}`))
-            )
+            teams
+              .toArray()
+              .sort((a, b) =>
+                this.intl
+                  .t(`team.name.${a.id}`)
+                  .localeCompare(this.intl.t(`team.name.${b.id}`))
+              )
           ),
-        championBet: this.get('store')
+        championBet: this.store
           .query('champion-bet', {
             bettingGame: hash.currentBettingGame.get('id'),
             user: hash.authenticatedUser.id,
           })
           .then((championBets) => {
             return !championBets.get('length')
-              ? this.get('store').createRecord('champion-bet', {
-                  user: this.get('store').peekRecord(
+              ? this.store.createRecord('champion-bet', {
+                  user: this.store.peekRecord(
                     'user',
                     hash.authenticatedUser.id
                   ),
-                  bettingGame: this.get('store').peekRecord(
+                  bettingGame: this.store.peekRecord(
                     'betting-game',
                     hash.currentBettingGame.get('id')
                   ),

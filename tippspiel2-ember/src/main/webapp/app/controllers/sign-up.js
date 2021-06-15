@@ -7,18 +7,16 @@ export default Controller.extend({
   resHandler: inject(),
   queryParams: { invitationToken: 'invitation-token' },
   invitationToken: null,
-  invitationTokenPreSet: computed('invitationToken', function () {
-    return this.get('invitationToken');
-  }),
+  invitationTokenPreSet: computed.reads('invitationToken'),
   actions: {
     submit() {
       this.model
         .save()
         .then((res) => {
-          this.get('auth').storeToken(res.get('token'));
+          this.auth.storeToken(res.get('token'));
           window.location.href = '/';
         })
-        .catch((err) => this.get('resHandler').handleError(err));
+        .catch((err) => this.resHandler.handleError(err));
     },
   },
 });

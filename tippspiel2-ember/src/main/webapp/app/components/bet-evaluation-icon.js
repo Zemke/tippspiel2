@@ -3,7 +3,7 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   evaluationIconClass: computed('evaluation', function () {
-    const evaluation = this.get('evaluation');
+    const evaluation = this.evaluation;
 
     if (evaluation === 5) {
       return 'star';
@@ -20,7 +20,7 @@ export default Component.extend({
     }
   }),
   tooltip: computed('evaluation', function () {
-    const evaluation = this.get('evaluation');
+    const evaluation = this.evaluation;
 
     if (evaluation === 5) {
       return '5';

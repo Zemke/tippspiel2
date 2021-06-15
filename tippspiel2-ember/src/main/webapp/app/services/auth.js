@@ -11,7 +11,7 @@ export default Service.extend({
         if (token == null)
           return reject({ status: 401, message: 'Access denied.' });
 
-        this.get('store')
+        this.store
           .findRecord('auth', token)
           .then((res) => {
             this.storeToken(res.id);
@@ -25,7 +25,7 @@ export default Service.extend({
     });
   }),
   isAdmin: computed('user', function () {
-    const promise = this.get('user').then(
+    const promise = this.user.then(
       (authenticatedUser) => authenticatedUser.roles.indexOf('ADMIN') !== -1
     );
     return DS.PromiseObject.create({ promise: promise });

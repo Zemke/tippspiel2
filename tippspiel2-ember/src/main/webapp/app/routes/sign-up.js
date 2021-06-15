@@ -5,11 +5,11 @@ export default Route.extend({
   auth: inject(),
   resHandler: inject(),
   model(model, transition) {
-    return this.get('store')
+    return this.store
       .query('betting-game', { 'invitation-token': model.invitationToken })
       .then((bettingGames) => {
         if (!bettingGames.get('length')) {
-          this.get('resHandler').handleWithRouting(
+          this.resHandler.handleWithRouting(
             transition,
             this.transitionTo.bind(this),
             'catchError.accessDenied'
@@ -25,7 +25,7 @@ export default Route.extend({
       transition.queryParams == null ||
       transition.queryParams['invitation-token'] == null
     ) {
-      this.get('resHandler').handleWithRouting(
+      this.resHandler.handleWithRouting(
         transition,
         this.transitionTo.bind(this),
         'catchError.accessDenied'

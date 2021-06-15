@@ -1,11 +1,11 @@
-import {module, test} from 'qunit';
-import {setupTest} from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-module('Unit | Controller | betting-games/new', function(hooks) {
+module('Unit | Controller | betting-games/new', function (hooks) {
   setupTest(hooks);
 
   // Replace this with your real tests.
-  test('it exists', function(assert) {
+  test('it exists', function (assert) {
     let controller = this.owner.lookup('controller:betting-games/new');
     assert.ok(controller);
   });

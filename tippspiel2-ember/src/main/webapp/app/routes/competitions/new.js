@@ -10,7 +10,7 @@ export default Route.extend({
     return this.get('auth.isAdmin').then(
       (isAdmin) =>
         !isAdmin &&
-        this.get('resHandler').handleWithRouting(
+        this.resHandler.handleWithRouting(
           transition,
           this.transitionTo.bind(this),
           'catchError.accessDenied'

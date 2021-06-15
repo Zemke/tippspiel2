@@ -9,11 +9,11 @@ export default Component.extend({
     submit(bet) {
       bet
         .save()
-        .then((res) => this.get('resHandler').handleSuccess('success.betSaved'))
-        .catch((err) => this.get('resHandler').handleError(err));
+        .then((res) => this.resHandler.handleSuccess('success.betSaved'))
+        .catch((err) => this.resHandler.handleError(err));
     },
   },
-  disabled: computed(function () {
+  disabled: computed('bet.fixture.date', function () {
     later(
       () => this.set('disabled', true),
       this.get('bet.fixture.date') - Date.now()
@@ -21,12 +21,10 @@ export default Component.extend({
   }).volatile(),
   live: computed('disabled', 'bet.fixture.status', function () {
     return (
-      this.get('disabled') &&
+      this.disabled &&
       (this.get('bet.fixture.status') === 'IN_PLAY' ||
         this.get('bet.fixture.status') === 'PAUSED')
     );
   }),
-  evaluatable: computed('bet.fixture.status', function () {
-    return this.get('bet.fixture.status') === 'FINISHED';
-  }),
+  evaluatable: computed.equal('bet.fixture.status', 'FINISHED'),
 });

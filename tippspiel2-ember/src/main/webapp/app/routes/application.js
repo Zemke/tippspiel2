@@ -13,7 +13,7 @@ export default Route.extend({
     const currentBettingGame = this.get('bettingGame.currentBettingGame');
     const bettingGames = currentBettingGame.then((currentBettingGame) => {
       const promise = this.get('auth.user').then((authenticatedUser) =>
-        this.get('store').peekAll('betting-game')
+        this.store.peekAll('betting-game')
       );
       return DS.PromiseArray.create({ promise: promise });
     });
@@ -47,7 +47,7 @@ export default Route.extend({
     } catch (e) {
       locale = 'en-us';
     }
-    this.get('intl').setLocale(locale);
+    this.intl.setLocale(locale);
     localStorage.setItem('locale', locale);
   },
   actions: {
@@ -65,7 +65,7 @@ export default Route.extend({
         locKey = 'err.unknown';
       }
 
-      this.get('resHandler').handleWithRouting(
+      this.resHandler.handleWithRouting(
         transition,
         this.transitionTo.bind(this),
         locKey

@@ -12,11 +12,11 @@ export default Route.extend({
       currentBettingGame: this.get('bettingGame.currentBettingGame'),
     }).then((hash) =>
       RSVP.hash({
-        fixtures: this.get('store').query('fixture', {
+        fixtures: this.store.query('fixture', {
           competition: hash.currentBettingGame.get('competition.id'),
           complete: true,
         }),
-        bets: this.get('store').query('bet', {
+        bets: this.store.query('bet', {
           user: hash.user.id,
           bettingGame: hash.currentBettingGame.get('id'),
         }),
@@ -25,10 +25,10 @@ export default Route.extend({
           .map(
             (f) =>
               hash1.bets.find((b) => b.get('fixture.id') === f.id) ||
-              this.get('store').createRecord('bet', {
+              this.store.createRecord('bet', {
                 fixture: f,
-                user: this.get('store').peekRecord('user', hash.user.id),
-                bettingGame: this.get('store').peekRecord(
+                user: this.store.peekRecord('user', hash.user.id),
+                bettingGame: this.store.peekRecord(
                   'betting-game',
                   hash.currentBettingGame.get('id')
                 ),

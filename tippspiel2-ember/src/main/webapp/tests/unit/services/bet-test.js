@@ -1,13 +1,12 @@
-import {module, test} from 'qunit';
-import {setupTest} from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-module('Unit | Service | bet', function(hooks) {
+module('Unit | Service | bet', function (hooks) {
   setupTest(hooks);
 
   // Replace this with your real tests.
-  test('it exists', function(assert) {
+  test('it exists', function (assert) {
     let service = this.owner.lookup('service:bet');
     assert.ok(service);
   });
 });
-

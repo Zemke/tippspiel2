@@ -14,10 +14,10 @@ export default Controller.extend({
       this.get('model.championBet')
         .save()
         .then((res) => {
-          this.get('resHandler').handleSuccess('success.betSaved');
+          this.resHandler.handleSuccess('success.betSaved');
           this.transitionToRoute('standings');
         })
-        .catch((err) => this.get('resHandler').handleError(err));
+        .catch((err) => this.resHandler.handleError(err));
     },
   },
 });

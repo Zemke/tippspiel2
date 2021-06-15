@@ -8,10 +8,10 @@ export default Controller.extend({
       this.model
         .save()
         .then((res) => {
-          this.get('resHandler').handleSuccess('success.competitionCreated');
+          this.resHandler.handleSuccess('success.competitionCreated');
           this.transitionToRoute('me');
         })
-        .catch((err) => this.get('resHandler').handleError(err));
+        .catch((err) => this.resHandler.handleError(err));
     },
   },
 });

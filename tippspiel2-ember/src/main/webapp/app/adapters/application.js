@@ -1,4 +1,4 @@
-import RESTAdapter from 'ember-data/adapters/rest';
+import RESTAdapter from '@ember-data/adapter/rest';
 import { computed } from '@ember/object';
 import { inject } from '@ember/service';
 import { decamelize } from '@ember/string';
@@ -27,7 +27,7 @@ export default RESTAdapter.extend({
     }
   },
   headers: computed(function () {
-    const token = this.get('auth').getToken();
+    const token = this.auth.getToken();
     return token != null ? { Authorization: 'Bearer ' + token } : {};
   }).volatile(),
 });

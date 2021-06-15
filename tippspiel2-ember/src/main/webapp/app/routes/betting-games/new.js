@@ -12,7 +12,7 @@ export default Route.extend({
         .query('competition', { current: true })
         .then((currentCompetitions) => currentCompetitions.get('firstObject'))
         .catch((err) => {
-          this.get('resHandler').handleError(err);
+          this.resHandler.handleError(err);
           transition.abort();
         }),
     }).then((res) => {
@@ -24,7 +24,7 @@ export default Route.extend({
     return this.get('auth.isAdmin').then(
       (isAdmin) =>
         !isAdmin &&
-        this.get('resHandler').handleWithRouting(
+        this.resHandler.handleWithRouting(
           transition,
           this.transitionTo.bind(this),
           'catchError.accessDenied'

@@ -6,9 +6,10 @@ export default Component.extend({
   classNames: ['nowrap'],
   classNameBindings: ['responsiveLetterSpacing'],
   didInsertElement() {
+    this._super(...arguments);
     this.set(
       'responsiveLetterSpacing',
-      this.get('element').offsetWidth > this.get('boundary')
+      this.element.offsetWidth > this.boundary
     );
   },
 });

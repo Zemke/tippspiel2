@@ -4,12 +4,18 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   bet: inject('bet'),
-  evaluation: computed(function () {
-    return this.get('bet').evaluate(
-      this.get('goalsHomeTeam'),
-      this.get('goalsAwayTeam'),
-      this.get('goalsHomeTeamBet'),
-      this.get('goalsAwayTeamBet')
-    );
-  }),
+  evaluation: computed(
+    'goalsAwayTeam',
+    'goalsAwayTeamBet',
+    'goalsHomeTeam',
+    'goalsHomeTeamBet',
+    function () {
+      return this.bet.evaluate(
+        this.goalsHomeTeam,
+        this.goalsAwayTeam,
+        this.goalsHomeTeamBet,
+        this.goalsAwayTeamBet
+      );
+    }
+  ),
 });

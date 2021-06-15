@@ -4,7 +4,7 @@ import { inject } from '@ember/service';
 export default Route.extend({
   bettingGame: inject(),
   model() {
-    return this.get('store').findAll('team');
+    return this.store.findAll('team');
   },
   redirect() {
     this.get('bettingGame.currentBettingGame')

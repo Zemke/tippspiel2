@@ -4,6 +4,7 @@ export default Component.extend({
   dataTarget: 'navMenu',
   attributeBindings: ['data-target'],
   didRender() {
+    this._super(...arguments);
     const $navbarBurgers = Array.prototype.slice.call(
       document.querySelectorAll('.navbar-burger'),
       0

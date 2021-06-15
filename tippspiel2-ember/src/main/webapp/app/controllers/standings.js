@@ -13,9 +13,10 @@ export default Controller.extend({
     );
   },
   standingsAsTable: computed(
-    'model.standings',
-    'model.championBets',
-    'model.competition',
+    'model.authenticatedUser.id',
+    'model.competition.champion.id',
+    'model.competition.championBetAllowed',
+    'model.{championBets,standings}',
     function () {
       return this.get('model.standings')
         .toArray()
@@ -61,7 +62,7 @@ export default Controller.extend({
     }
   ),
   championBetOfAuthenticatedUser: computed(
-    'model.authenticatedUser',
+    'model.authenticatedUser.id',
     'model.championBets',
     function () {
       return this.get('model.championBets').find(

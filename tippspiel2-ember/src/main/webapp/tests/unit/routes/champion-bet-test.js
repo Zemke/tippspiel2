@@ -1,10 +1,10 @@
-import {module, test} from 'qunit';
-import {setupTest} from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-module('Unit | Route | champion-bet', function(hooks) {
+module('Unit | Route | champion-bet', function (hooks) {
   setupTest(hooks);
 
-  test('it exists', function(assert) {
+  test('it exists', function (assert) {
     let route = this.owner.lookup('route:champion-bet');
     assert.ok(route);
   });

@@ -8,9 +8,9 @@ export default Controller.extend({
   invitationToken: null,
   actions: {
     submitInvitationToken() {
-      this.get('store')
+      this.store
         .query('betting-game', {
-          'invitation-token': this.get('invitationToken'),
+          'invitation-token': this.invitationToken,
         })
         .then((bettingGames) =>
           this.set('model.bettingGameToJoin', bettingGames.objectAt(0))
@@ -24,12 +24,12 @@ export default Controller.extend({
       this.get('model.user')
         .save()
         .then(() => {
-          this.get('bettingGame').rememberCurrentBettingGame(
+          this.bettingGame.rememberCurrentBettingGame(
             this.get('model.bettingGameToJoin.id')
           );
           window.location.href = '/';
         })
-        .catch((err) => this.get('resHandler').handleError(err));
+        .catch((err) => this.resHandler.handleError(err));
     },
   },
 });

@@ -6,7 +6,7 @@ export default Route.extend({
   bettingGame: inject(),
   intl: inject(),
   model() {
-    const competitions = this.get('store').findAll('competition');
+    const competitions = this.store.findAll('competition');
     const currentCompetition = competitions.then((competitions) =>
       competitions.findBy('current', true)
     );
@@ -15,14 +15,16 @@ export default Route.extend({
         return null;
       }
 
-      return this.get('store')
+      return this.store
         .query('team', { competition: currentCompetition.get('id') })
         .then((teams) =>
-          teams.toArray().sort((a, b) =>
-            this.get('intl')
-              .t(`team.name.${a.id}`)
-              .localeCompare(this.get('intl').t(`team.name.${b.id}`))
-          )
+          teams
+            .toArray()
+            .sort((a, b) =>
+              this.intl
+                .t(`team.name.${a.id}`)
+                .localeCompare(this.intl.t(`team.name.${b.id}`))
+            )
         );
     });
 

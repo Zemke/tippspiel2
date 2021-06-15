@@ -8,10 +8,10 @@ export default Controller.extend({
       this.model.bettingGame
         .save()
         .then((res) => {
-          this.get('resHandler').handleSuccess('success.bettingGameCreated');
+          this.resHandler.handleSuccess('success.bettingGameCreated');
           this.transitionToRoute('betting-games.details', res);
         })
-        .catch((err) => this.get('resHandler').handleError(err));
+        .catch((err) => this.resHandler.handleError(err));
     },
   },
 });

@@ -7,12 +7,12 @@ export default Route.extend({
   model(model) {
     const hash = {
       user: this.get('auth.user').then((authenticatedUser) =>
-        this.get('store').findRecord('user', authenticatedUser.id)
+        this.store.findRecord('user', authenticatedUser.id)
       ),
     };
 
     if (model != null && model.invitationToken != null) {
-      hash.bettingGameToJoin = this.get('store')
+      hash.bettingGameToJoin = this.store
         .query('betting-game', { 'invitation-token': model.invitationToken })
         .then((bettingGames) => bettingGames.objectAt(0));
     }

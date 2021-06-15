@@ -9,10 +9,10 @@ export default Controller.extend({
       this.model
         .save()
         .then((res) => {
-          this.get('auth').storeToken(res.get('id'));
+          this.auth.storeToken(res.get('id'));
           window.location.href = '/';
         })
-        .catch((err) => this.get('resHandler').handleError(err));
+        .catch((err) => this.resHandler.handleError(err));
     },
   },
 });
