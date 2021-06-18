@@ -76,6 +76,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.14.5",
+    "bulma-prefers-dark": "^0.1.0-beta.0",
     "izitoast": "^1.2.0"
   }
 }
