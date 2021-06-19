@@ -15,7 +15,7 @@ export default Route.extend({
           }),
           fixtures: this.store.query('fixture', {
             competition: currentBettingGame.get('competition.id'),
-            status: 'FINISHED,IN_PLAY',
+            status: 'FINISHED,IN_PLAY,PAUSED,AWARDED',
           }),
         }).then((hash) => {
           hash.bets = hash.fixtures
