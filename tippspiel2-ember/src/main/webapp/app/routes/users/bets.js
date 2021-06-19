@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
 import RSVP from 'rsvp';
 import { inject } from '@ember/service';
+import NO_BETTING_STATES from '../../constants/no-betting-states';
 
 export default Route.extend({
   bettingGame: inject(),
@@ -15,7 +16,7 @@ export default Route.extend({
           }),
           fixtures: this.store.query('fixture', {
             competition: currentBettingGame.get('competition.id'),
-            status: 'FINISHED,IN_PLAY,PAUSED,AWARDED',
+            status: NO_BETTING_STATES.join(','),
           }),
         }).then((hash) => {
           hash.bets = hash.fixtures

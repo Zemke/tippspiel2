@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
 import RSVP from 'rsvp';
 import { inject } from '@ember/service';
+import NO_BETTING_STATES from '../constants/no-betting-states';
 
 export default Route.extend({
   auth: inject(),
@@ -39,10 +40,10 @@ export default Route.extend({
 
         return {
           betsForFinishedFixtures: bets.filter(
-            (b) => b.get('fixture.status') === 'FINISHED'
+            (b) => NO_BETTING_STATES.includes(b.get('fixture.status'))
           ),
           betsForUnfinishedFixtures: bets.filter(
-            (b) => b.get('fixture.status') !== 'FINISHED'
+            (b) => !NO_BETTING_STATES.includes(b.get('fixture.status'))
           ),
         };
       })
