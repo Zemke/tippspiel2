@@ -52,11 +52,13 @@ class FootballDataScheduledTasksService {
             .map { FootballDataFixtureDto.fromDto(it, teamsToBeAffectedByUpdate, competition) }
             .filter { !currentFixtures.contains(it) }
 
-        if (fixturesNewOrChanged.isNotEmpty()) {
-            fixtureService.saveMany(fixturesNewOrChanged)
-            bettingGameRepository.findByCompetition(competition).forEach {
-                standingService.updateStandings(it)
-            }
+        if (fixturesNewOrChanged.isEmpty()) {
+            return
+        }
+
+        fixtureService.saveMany(fixturesNewOrChanged)
+        bettingGameRepository.findByCompetition(competition).forEach {
+            standingService.updateStandings(it)
         }
 
         if (competition.championBetAllowed &&
