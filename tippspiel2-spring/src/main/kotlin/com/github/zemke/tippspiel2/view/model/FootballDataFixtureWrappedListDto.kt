@@ -54,8 +54,8 @@ data class FootballDataFixtureDto(
             matchday = fixture.matchday,
             status = fixture.status,
             utcDate = fixture.date,
-            stage = dto.stage,
-            group = dto.group,
+            stage = fixture.stage,
+            group = fixture.group,
         )
     }
 }

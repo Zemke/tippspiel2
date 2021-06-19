@@ -56,6 +56,11 @@ class FootballDataScheduledTasksService {
             return
         }
 
+        if (competition.champion == null && fixturesNewOrChanged.any { it.stage == "FINAL" }) {
+            // update competition to get the winner for upcoming standings calc
+            updateCurrentCompetitionWithItsTeams()
+        }
+
         fixtureService.saveMany(fixturesNewOrChanged)
         bettingGameRepository.findByCompetition(competition).forEach {
             standingService.updateStandings(it)
@@ -75,7 +80,7 @@ class FootballDataScheduledTasksService {
         val currentCompetition = competitionRepository.findByCurrentTrue() ?: return
         val footballDataCompetition = FootballDataCompetitionDto.fromDto(
             footballDataService.requestCompetition(currentCompetition.id),
-            true, currentCompetition.championBetAllowed, currentCompetition.champion
+            true, currentCompetition.championBetAllowed
         )
 
         if (currentCompetition != footballDataCompetition) competitionRepository.save(footballDataCompetition)

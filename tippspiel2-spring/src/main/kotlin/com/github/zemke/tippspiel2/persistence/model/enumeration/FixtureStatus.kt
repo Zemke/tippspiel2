@@ -15,7 +15,11 @@ enum class FixtureStatus {
 
     companion object {
 
+        // TODO make function to distinguish from enums
         /** Betting is not permitted anymore. */
         val NO_BETTING = listOf(FixtureStatus.IN_PLAY, FixtureStatus.FINISHED, FixtureStatus.AWARDED, FixtureStatus.PAUSED)
+
+        /** Result cannot change anymore. */
+        fun done() = arrayOf(FixtureStatus.FINISHED, FixtureStatus.AWARDED)
     }
 }

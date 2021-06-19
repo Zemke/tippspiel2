@@ -67,6 +67,8 @@ object PersistenceUtils {
             goalsAwayTeam = 2,
             goalsHomeTeam = 3,
             matchday = 1,
+            stage = "GROUP_STAGE",
+            group = "Group A",
         )
 
     fun instantiateBettingGame(): BettingGame =

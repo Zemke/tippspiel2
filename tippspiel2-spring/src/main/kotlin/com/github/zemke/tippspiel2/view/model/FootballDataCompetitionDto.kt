@@ -2,7 +2,6 @@ package com.github.zemke.tippspiel2.view.model
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.github.zemke.tippspiel2.persistence.model.Competition
-import com.github.zemke.tippspiel2.persistence.model.Team
 import com.github.zemke.tippspiel2.view.util.DataTransferObject
 import java.time.Instant
 import java.time.LocalDate
@@ -22,7 +21,6 @@ data class FootballDataCompetitionDto(
             dto: FootballDataCompetitionDto,
             current: Boolean,
             championBetAllowed: Boolean,
-            champion: Team?
         ): Competition = Competition(
             id = dto.id,
             caption = dto.name,
@@ -32,8 +30,9 @@ data class FootballDataCompetitionDto(
             lastUpdated = dto.lastUpdated,
             current = current,
             championBetAllowed = championBetAllowed,
-            champion = champion,
-        )
+        ).apply {
+            champion = dto.currentSeason.winner?.let { FootballDataTeamDto.fromDto(it, this) }
+        }
 
         fun toDto(competition: Competition) = FootballDataCompetitionDto(
             id = competition.id,
@@ -43,7 +42,8 @@ data class FootballDataCompetitionDto(
             currentSeason = FootbalDataCompetitionCurrentSeasonDto(
                 currentMatchday = competition.currentMatchday,
                 // TODO Persist whole startDate to map back completely.
-                startDate = LocalDate.of(competition.year, 1, 1)
+                startDate = LocalDate.of(competition.year, 1, 1),
+                winner = competition.champion?.let { FootballDataTeamDto.toDto(it) },
             ),
         )
     }
@@ -53,10 +53,8 @@ data class FootballDataCompetitionDto(
 data class FootbalDataCompetitionCurrentSeasonDto(
     @JsonProperty("currentMatchday") var currentMatchday: Int,
     @JsonProperty("startDate") var startDate: LocalDate,
+    @JsonProperty("winner") var winner: FootballDataTeamDto?,
 
     // TODO Should probably also be persisted.
     // @JsonProperty("id") var id: Long,
-
-    // TODO GH-84 DTO has winner within season and busines model has champion.
-    // @JsonProperty("winner") var winner: FootballDataTeamDto?,
 )

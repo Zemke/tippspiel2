@@ -36,7 +36,7 @@ class StandingService(
     @Transactional
     fun updateStandings(bettingGame: BettingGame): List<Standing> {
         val bets = betRepository.findByBettingGame(bettingGame)
-            .filter { it.fixture.status == FixtureStatus.FINISHED }
+            .filter { it.fixture.status in FixtureStatus.done() }
         val allStandings = standingRepository.findByBettingGame(bettingGame)
         val standingsWithBets = allStandings
             .filter { bets.map { it.user }.distinct().contains(it.user) }
@@ -56,7 +56,6 @@ class StandingService(
 
         val usersWithRightChampionBet =
             bettingGame.competition.champion?.let { champion ->
-                // TODO Champion could not be up-to-date in competition at this time. Champion of the competition could possibibly be derived from the fixture as well.
                 championBetService.findByTeam(champion)
                     .filter { it.bettingGame.competition == bettingGame.competition }
                     .map { it.user.id }

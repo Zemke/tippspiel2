@@ -4,6 +4,7 @@ import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
 import com.github.zemke.tippspiel2.service.NULL_TEAM_ID
 import java.time.Instant
 import javax.persistence.CascadeType
+import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.EnumType
 import javax.persistence.Enumerated
@@ -20,7 +21,7 @@ data class Fixture(
     val goalsHomeTeam: Int?,
     val goalsAwayTeam: Int?,
     val stage: String?,
-    val group: String?,
+    @Column("\"group\"") val group: String?,
     @ManyToOne(cascade = [CascadeType.MERGE]) var homeTeam: Team?,
     @ManyToOne(cascade = [CascadeType.MERGE]) var awayTeam: Team?,
     @ManyToOne(cascade = [CascadeType.MERGE]) var competition: Competition,
