@@ -19,6 +19,8 @@ data class Fixture(
     var matchday: Int,
     val goalsHomeTeam: Int?,
     val goalsAwayTeam: Int?,
+    val stage: String?,
+    val group: String?,
     @ManyToOne(cascade = [CascadeType.MERGE]) var homeTeam: Team?,
     @ManyToOne(cascade = [CascadeType.MERGE]) var awayTeam: Team?,
     @ManyToOne(cascade = [CascadeType.MERGE]) var competition: Competition,
