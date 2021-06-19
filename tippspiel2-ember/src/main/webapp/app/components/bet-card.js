@@ -26,5 +26,4 @@ export default Component.extend({
         this.get('bet.fixture.status') === 'PAUSED')
     );
   }),
-  evaluatable: computed.equal('bet.fixture.status', 'FINISHED'),
 });
