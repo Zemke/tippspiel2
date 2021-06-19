@@ -104,6 +104,10 @@ class StandingServiceTest {
         val teams = createTeams(bettingGame.competition, "Russia", "Norway", "England", "Italy", "Ireland", "Iceland", "Poland", "Spain")
         val fixtures = createFixtures(bettingGame, teams)
         val competitionChampion = fixtures[0].homeTeam!!
+        bettingGame.competition.champion = competitionChampion
+        val championBet = PersistenceUtils.instantiateChampionBet(
+            user = user1, bettingGame = bettingGame, team = competitionChampion
+        )
 
         Mockito
             .`when`(betRepository.findByBettingGame(bettingGame))
@@ -121,7 +125,17 @@ class StandingServiceTest {
             .`when`(standingRepository.saveAll(Mockito.anyList<Standing>()))
             .thenAnswer { it.getArgument(0) }
 
-        // TODO GH-84 Test champion bet.
+        Mockito
+            .`when`(championBetService.findByTeam(competitionChampion))
+            .thenAnswer { listOf(championBet) }
+
+        Mockito
+            .doAnswer {
+                val competition = it.getArgument<Competition>(0)
+                Assert.assertEquals(competition.champion, competitionChampion)
+                competition
+            }
+            .`when`(competitionRepository).save(Mockito.any(Competition::class.java))
 
         val standingsActual = standingService.updateStandings(bettingGame)
 
@@ -133,7 +147,7 @@ class StandingServiceTest {
                     winnerBets = 0,
                     wrongBets = 0,
                     missedBets = 0,
-                    points = 13 // TODO GH-84 + 10 for champion bet
+                    points = 23 // 13 + 10 for champion bet
                 ),
                 createStandings(user1, bettingGame, user2)[1].copy(
                     exactBets = 0,

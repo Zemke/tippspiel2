@@ -36,7 +36,7 @@ object PersistenceUtils {
             roles = emptyList()
         )
 
-    fun instantiateCompetition(): Competition =
+    fun instantiateCompetition(champion: Team? = null): Competition =
         Competition(
             id = 1,
             caption = "1",
@@ -46,7 +46,7 @@ object PersistenceUtils {
             year = 2018,
             current = true,
             championBetAllowed = true,
-            champion = null
+            champion = champion,
         )
 
     fun instantiateTeam(competition: Competition = instantiateCompetition()): Team =
