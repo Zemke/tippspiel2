@@ -129,14 +129,6 @@ class StandingServiceTest {
             .`when`(championBetService.findByTeam(competitionChampion))
             .thenAnswer { listOf(championBet) }
 
-        Mockito
-            .doAnswer {
-                val competition = it.getArgument<Competition>(0)
-                Assert.assertEquals(competition.champion, competitionChampion)
-                competition
-            }
-            .`when`(competitionRepository).save(Mockito.any(Competition::class.java))
-
         val standingsActual = standingService.updateStandings(bettingGame)
 
         Assert.assertEquals(
