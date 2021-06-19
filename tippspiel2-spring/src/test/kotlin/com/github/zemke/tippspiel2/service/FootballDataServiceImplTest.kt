@@ -47,7 +47,8 @@ class FootballDataServiceImplTest {
             code = "WC",
             currentSeason = FootbalDataCompetitionCurrentSeasonDto(
                 currentMatchday = 1,
-                startDate = LocalDate.of(2018, 8, 1)
+                startDate = LocalDate.of(2018, 8, 1),
+                winner = null,
             ),
             lastUpdated = LocalDateTime.of(2018, 1, 10, 14, 10, 8).toInstant(ZoneOffset.UTC),
         )
@@ -71,6 +72,8 @@ class FootballDataServiceImplTest {
                         homeTeam = FootballDataFixtureTeamDto(id = 801, name = "Russia"),
                         awayTeam = FootballDataFixtureTeamDto(id = 808, name = "Saudi Arabia"),
                         score = FootballDataFixtureResultDto(fullTime = FootballDataFixtureFullTimeResultDto()),
+                        stage = "GROUP_STAGE",
+                        group = "Group A",
                     ),
                     FootballDataFixtureDto(
                         utcDate = LocalDateTime.of(2018, 6, 15, 12, 0).toInstant(ZoneOffset.UTC),
@@ -80,6 +83,8 @@ class FootballDataServiceImplTest {
                         homeTeam = FootballDataFixtureTeamDto(id = 758, name = "Egypt"),
                         awayTeam = FootballDataFixtureTeamDto(id = 825, name = "Uruguay"),
                         score = FootballDataFixtureResultDto(fullTime = FootballDataFixtureFullTimeResultDto()),
+                        stage = "GROUP_STAGE",
+                        group = "Group A",
                     )
                 )
             )

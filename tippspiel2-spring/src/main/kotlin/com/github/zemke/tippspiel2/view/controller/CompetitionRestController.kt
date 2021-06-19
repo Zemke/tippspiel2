@@ -56,7 +56,7 @@ class CompetitionRestController(
         val fixtureWrappedListDto = footballDataService.requestFixtures(competitionCreationDto.id)
         val teamWrappedListDto = footballDataService.requestTeams(competitionCreationDto.id)
 
-        val competition = FootballDataCompetitionDto.fromDto(competitionDto, false, true, null)
+        val competition = FootballDataCompetitionDto.fromDto(competitionDto, false, true)
         val teams = teamWrappedListDto.teams.map { FootballDataTeamDto.fromDto(it, competition) }
         val fixtures = fixtureWrappedListDto.matches
             .filter { it.homeTeam != null && it.awayTeam != null }

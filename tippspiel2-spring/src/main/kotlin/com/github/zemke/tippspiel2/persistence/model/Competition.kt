@@ -1,6 +1,7 @@
 package com.github.zemke.tippspiel2.persistence.model
 
 import org.hibernate.validator.constraints.Range
+import java.util.Objects
 import java.time.Instant
 import javax.persistence.Entity
 import javax.persistence.Id
@@ -26,6 +27,11 @@ data class Competition(
     @NotNull val lastUpdated: Instant,
     /** Currently only one competition can be played at a time. */
     var current: Boolean,
-    @ManyToOne var champion: Team?,
+    @ManyToOne var champion: Team? = null,
     var championBetAllowed: Boolean
-)
+) {
+
+    override fun hashCode(): Int =
+        Objects.hash(id, caption, league, year, currentMatchday, lastUpdated, current, championBetAllowed, champion?.id)
+}
+

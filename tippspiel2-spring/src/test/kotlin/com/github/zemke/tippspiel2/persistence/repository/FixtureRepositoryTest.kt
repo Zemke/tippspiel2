@@ -50,7 +50,9 @@ class FixtureRepositoryTest {
                     name = "Saudi Arabia",
                     competition = competition
                 ),
-                competition = competition
+                competition = competition,
+                stage = "GROUP_STAGE",
+                group = "Group A",
             ),
             Fixture(
                 id = 2,
@@ -69,7 +71,9 @@ class FixtureRepositoryTest {
                     name = "United States",
                     competition = competition
                 ),
-                competition = competition
+                competition = competition,
+                stage = "GROUP_STAGE",
+                group = "Group A",
             )
         )
 

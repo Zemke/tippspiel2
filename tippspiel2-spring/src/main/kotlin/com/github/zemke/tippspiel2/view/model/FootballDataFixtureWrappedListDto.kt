@@ -21,6 +21,8 @@ data class FootballDataFixtureDto(
     @JsonProperty("awayTeam") var awayTeam: FootballDataFixtureTeamDto?,
     @JsonProperty("score") var score: FootballDataFixtureResultDto?,
     @JsonProperty("matchday") var matchday: Int,
+    @JsonProperty("stage") var stage: String?,
+    @JsonProperty("group") var group: String?,
     @JsonProperty("status") var status: FixtureStatus,
     @JsonProperty("utcDate") var utcDate: Instant,
 ) {
@@ -36,7 +38,9 @@ data class FootballDataFixtureDto(
             goalsAwayTeam = dto.score?.fullTime?.awayTeam,
             homeTeam = dto.homeTeam?.let { team -> teams.find { it.id == team.id } },
             awayTeam = dto.awayTeam?.let { team -> teams.find { it.id == team.id } },
-            competition = competition
+            stage = dto.stage,
+            group = dto.group,
+            competition = competition,
         )
 
         fun toDto(fixture: Fixture) = FootballDataFixtureDto(
@@ -50,6 +54,8 @@ data class FootballDataFixtureDto(
             matchday = fixture.matchday,
             status = fixture.status,
             utcDate = fixture.date,
+            stage = fixture.stage,
+            group = fixture.group,
         )
     }
 }

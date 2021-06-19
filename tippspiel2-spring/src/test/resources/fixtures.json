@@ -19,7 +19,9 @@
          "matchday": 1,
          "competitionId": 467,
          "status": "SCHEDULED",
-         "id": 165069
+         "id": 165069,
+         "stage": "GROUP_STAGE",
+         "group": "Group A"
       },
       {
          "homeTeam": {
@@ -40,7 +42,9 @@
          "matchday": 1,
          "competitionId": 467,
          "id": 165084,
-         "status": "SCHEDULED"
+         "status": "SCHEDULED",
+         "stage": "GROUP_STAGE",
+         "group": "Group A"
       }
    ],
    "count": 2
