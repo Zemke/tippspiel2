@@ -24,7 +24,7 @@
   </thead>
   <tbody>
   {{#each standingsAsTable as |standing|}}
-    <tr class={{concat 'standings' (if standing.isAuthenticatedUser ' has-background-black-bis')}}>
+    <tr class={{concat 'standings' (if standing.isAuthenticatedUser ' highlight-user-standings')}}>
       <td class="has-text-centered">
         {{standing.position}}
       </td>

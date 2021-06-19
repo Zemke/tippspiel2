@@ -99,3 +99,13 @@
   color: #fff;
 }
 
+tr.highlight-user-standings {
+    background-color: #fafafa !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  tr.highlight-user-standings {
+    background-color: #121212 !important;
+  }
+}
+
