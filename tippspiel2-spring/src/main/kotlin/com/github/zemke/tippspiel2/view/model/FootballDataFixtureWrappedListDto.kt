@@ -29,13 +29,13 @@ data class FootballDataFixtureDto(
 
     companion object {
 
-        fun fromDto(dto: FootballDataFixtureDto, teams: List<Team>, competition: Competition): Fixture = Fixture(
+        fun fromDto(dto: FootballDataFixtureDto, teams: List<Team>, competition: Competition) = Fixture(
             id = dto.id,
             date = dto.utcDate,
             status = dto.status,
             matchday = dto.matchday,
-            goalsHomeTeam = dto.score?.fullTime?.homeTeam,
-            goalsAwayTeam = dto.score?.fullTime?.awayTeam,
+            goalsHomeTeam = dto.score?.regularTime?.homeTeam,
+            goalsAwayTeam = dto.score?.regularTime?.awayTeam,
             homeTeam = dto.homeTeam?.let { team -> teams.find { it.id == team.id } },
             awayTeam = dto.awayTeam?.let { team -> teams.find { it.id == team.id } },
             stage = dto.stage,
@@ -47,9 +47,9 @@ data class FootballDataFixtureDto(
             id = fixture.id!!,
             homeTeam = fixture.homeTeam?.let { FootballDataFixtureTeamDto(fixture.homeTeam?.id!!, fixture.homeTeam?.name) },
             awayTeam = fixture.awayTeam?.let { FootballDataFixtureTeamDto(fixture.awayTeam?.id!!, fixture.awayTeam?.name) },
-            score = FootballDataFixtureResultDto.toDto(
-                goalsHomeTeam = fixture.goalsHomeTeam,
-                goalsAwayTeam = fixture.goalsAwayTeam
+            score = FootballDataFixtureResultDto.ofRegularTime(
+                homeTeam = fixture.goalsHomeTeam,
+                awayTeam = fixture.goalsAwayTeam
             ),
             matchday = fixture.matchday,
             status = fixture.status,
@@ -62,18 +62,41 @@ data class FootballDataFixtureDto(
 
 @DataTransferObject
 data class FootballDataFixtureResultDto(
-    @JsonProperty("fullTime") var fullTime: FootballDataFixtureFullTimeResultDto,
+    @JsonProperty("fullTime") var fullTime: FootballDataFixtureScoreDto?,
+    @JsonProperty("extraTime") var extraTime: FootballDataFixtureScoreDto?,
+    @JsonProperty("halfTime") var halfTime: FootballDataFixtureScoreDto?,
+    @JsonProperty("penalties") var penalties: FootballDataFixtureScoreDto?,
 ) {
+    lateinit var regularTime: FootballDataFixtureScoreDto
+
+    init {
+        regularTime = if (penalties == null && extraTime == null) {
+            FootballDataFixtureScoreDto(homeTeam = fullTime?.homeTeam, awayTeam = fullTime?.awayTeam)
+        } else if (fullTime == null && extraTime == null && halfTime == null && penalties == null) {
+            FootballDataFixtureScoreDto()
+        } else {
+            FootballDataFixtureScoreDto(
+                homeTeam = (fullTime?.homeTeam ?: 0) - (penalties?.homeTeam ?: 0) - (extraTime?.homeTeam ?: 0),
+                awayTeam = (fullTime?.awayTeam ?: 0) - (penalties?.awayTeam ?: 0) - (extraTime?.awayTeam ?: 0),
+            )
+        }
+    }
+
+    constructor(regularTime: FootballDataFixtureScoreDto) : this(null, null, null, null) {
+        this.regularTime = regularTime
+    }
 
     companion object {
 
-        fun toDto(goalsHomeTeam: Int?, goalsAwayTeam: Int?) =
-            FootballDataFixtureResultDto(FootballDataFixtureFullTimeResultDto(homeTeam = goalsHomeTeam, awayTeam = goalsAwayTeam))
+        fun ofRegularTime(homeTeam: Int?, awayTeam: Int?) =
+            FootballDataFixtureResultDto(
+                regularTime = FootballDataFixtureScoreDto(homeTeam = homeTeam, awayTeam = awayTeam)
+            )
     }
 }
 
 @DataTransferObject
-data class FootballDataFixtureFullTimeResultDto(
+data class FootballDataFixtureScoreDto(
     @JsonProperty("homeTeam") var homeTeam: Int?,
     @JsonProperty("awayTeam") var awayTeam: Int?,
 ) {

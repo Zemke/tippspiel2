@@ -5,8 +5,8 @@ import com.github.zemke.tippspiel2.persistence.model.enumeration.FixtureStatus
 import com.github.zemke.tippspiel2.view.model.FootbalDataCompetitionCurrentSeasonDto
 import com.github.zemke.tippspiel2.view.model.FootballDataCompetitionDto
 import com.github.zemke.tippspiel2.view.model.FootballDataFixtureDto
-import com.github.zemke.tippspiel2.view.model.FootballDataFixtureFullTimeResultDto
 import com.github.zemke.tippspiel2.view.model.FootballDataFixtureResultDto
+import com.github.zemke.tippspiel2.view.model.FootballDataFixtureScoreDto
 import com.github.zemke.tippspiel2.view.model.FootballDataFixtureTeamDto
 import com.github.zemke.tippspiel2.view.model.FootballDataFixtureWrappedListDto
 import com.github.zemke.tippspiel2.view.model.FootballDataTeamDto
@@ -71,7 +71,12 @@ class FootballDataServiceImplTest {
                         id = 165069,
                         homeTeam = FootballDataFixtureTeamDto(id = 801, name = "Russia"),
                         awayTeam = FootballDataFixtureTeamDto(id = 808, name = "Saudi Arabia"),
-                        score = FootballDataFixtureResultDto(fullTime = FootballDataFixtureFullTimeResultDto()),
+                        score = FootballDataFixtureResultDto(
+                            halfTime = FootballDataFixtureScoreDto(),
+                            fullTime = FootballDataFixtureScoreDto(),
+                            extraTime = FootballDataFixtureScoreDto(),
+                            penalties = FootballDataFixtureScoreDto(),
+                        ),
                         stage = "GROUP_STAGE",
                         group = "Group A",
                     ),
@@ -82,7 +87,12 @@ class FootballDataServiceImplTest {
                         status = FixtureStatus.SCHEDULED,
                         homeTeam = FootballDataFixtureTeamDto(id = 758, name = "Egypt"),
                         awayTeam = FootballDataFixtureTeamDto(id = 825, name = "Uruguay"),
-                        score = FootballDataFixtureResultDto(fullTime = FootballDataFixtureFullTimeResultDto()),
+                        score = FootballDataFixtureResultDto(
+                            halfTime = FootballDataFixtureScoreDto(),
+                            fullTime = FootballDataFixtureScoreDto(),
+                            extraTime = FootballDataFixtureScoreDto(),
+                            penalties = FootballDataFixtureScoreDto(),
+                        ),
                         stage = "GROUP_STAGE",
                         group = "Group A",
                     )

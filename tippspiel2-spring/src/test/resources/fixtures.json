@@ -10,7 +10,19 @@
             "name": "Saudi Arabia"
          },
          "score": {
+            "halfTime": {
+                "home": null,
+                "away": null
+            },
             "fullTime": {
+                "home": null,
+                "away": null
+            },
+            "extraTime": {
+                "home": null,
+                "away": null
+            },
+            "penalties": {
                 "home": null,
                 "away": null
             }
@@ -34,7 +46,19 @@
          },
          "utcDate": "2018-06-15T12:00:00Z",
          "score": {
+            "halfTime": {
+                "home": null,
+                "away": null
+            },
             "fullTime": {
+                "home": null,
+                "away": null
+            },
+            "extraTime": {
+                "home": null,
+                "away": null
+            },
+            "penalties": {
                 "home": null,
                 "away": null
             }
