@@ -62,27 +62,27 @@ data class FootballDataFixtureDto(
 
 @DataTransferObject
 data class FootballDataFixtureResultDto(
-    @JsonProperty("fullTime") var fullTime: FootballDataFixtureScoreDto?,
-    @JsonProperty("extraTime") var extraTime: FootballDataFixtureScoreDto?,
-    @JsonProperty("halfTime") var halfTime: FootballDataFixtureScoreDto?,
-    @JsonProperty("penalties") var penalties: FootballDataFixtureScoreDto?,
+    @JsonProperty("fullTime") var fullTime: FootballDataFixtureScoreDto,
+    @JsonProperty("extraTime") var extraTime: FootballDataFixtureScoreDto,
+    @JsonProperty("halfTime") var halfTime: FootballDataFixtureScoreDto,
+    @JsonProperty("penalties") var penalties: FootballDataFixtureScoreDto,
 ) {
     lateinit var regularTime: FootballDataFixtureScoreDto
 
     init {
-        regularTime = if (penalties == null && extraTime == null) {
-            FootballDataFixtureScoreDto(homeTeam = fullTime?.homeTeam, awayTeam = fullTime?.awayTeam)
-        } else if (fullTime == null && extraTime == null && halfTime == null && penalties == null) {
+        regularTime = if (penalties.nothing() && extraTime.nothing()) {
+            FootballDataFixtureScoreDto(homeTeam = fullTime.homeTeam, awayTeam = fullTime.awayTeam)
+        } else if (fullTime.nothing() && extraTime.nothing() && halfTime.nothing() && penalties.nothing()) {
             FootballDataFixtureScoreDto()
         } else {
             FootballDataFixtureScoreDto(
-                homeTeam = (fullTime?.homeTeam ?: 0) - (penalties?.homeTeam ?: 0) - (extraTime?.homeTeam ?: 0),
-                awayTeam = (fullTime?.awayTeam ?: 0) - (penalties?.awayTeam ?: 0) - (extraTime?.awayTeam ?: 0),
+                homeTeam = (fullTime.homeTeam ?: 0) - (penalties.homeTeam ?: 0) - (extraTime.homeTeam ?: 0),
+                awayTeam = (fullTime.awayTeam ?: 0) - (penalties.awayTeam ?: 0) - (extraTime.awayTeam ?: 0),
             )
         }
     }
 
-    constructor(regularTime: FootballDataFixtureScoreDto) : this(null, null, null, null) {
+    constructor(regularTime: FootballDataFixtureScoreDto) : this(FootballDataFixtureScoreDto(), FootballDataFixtureScoreDto(), FootballDataFixtureScoreDto(), FootballDataFixtureScoreDto()) {
         this.regularTime = regularTime
     }
 
@@ -102,6 +102,8 @@ data class FootballDataFixtureScoreDto(
 ) {
 
     constructor() : this(null, null)
+
+    fun nothing() = homeTeam == null || awayTeam == null
 }
 
 @DataTransferObject
