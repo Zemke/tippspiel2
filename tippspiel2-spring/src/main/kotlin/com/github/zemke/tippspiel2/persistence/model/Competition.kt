@@ -1,8 +1,8 @@
 package com.github.zemke.tippspiel2.persistence.model
 
 import org.hibernate.validator.constraints.Range
-import java.util.Objects
 import java.time.Instant
+import java.util.Objects
 import javax.persistence.Entity
 import javax.persistence.Id
 import javax.persistence.ManyToOne
@@ -34,4 +34,3 @@ data class Competition(
     override fun hashCode(): Int =
         Objects.hash(id, caption, league, year, currentMatchday, lastUpdated, current, championBetAllowed, champion?.id)
 }
-
