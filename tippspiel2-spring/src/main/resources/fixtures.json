@@ -24,7 +24,7 @@
             "name" : "Turkey"
          },
          "id" : 285418,
-         "lastUpdated" : "2021-06-13T08:20:26Z",
+         "lastUpdated" : "2021-06-30T00:20:24Z",
          "matchday" : 1,
          "odds" : {
             "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
@@ -88,7 +88,7 @@
             "winner" : "AWAY_TEAM"
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
@@ -108,7 +108,7 @@
             "name" : "Wales"
          },
          "id" : 285419,
-         "lastUpdated" : "2021-06-13T08:20:26Z",
+         "lastUpdated" : "2021-06-30T00:20:24Z",
          "matchday" : 1,
          "odds" : {
             "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
@@ -172,7 +172,7 @@
             "winner" : "DRAW"
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
@@ -192,7 +192,7 @@
             "name" : "Denmark"
          },
          "id" : 285424,
-         "lastUpdated" : "2021-06-13T08:20:26Z",
+         "lastUpdated" : "2021-06-30T00:20:24Z",
          "matchday" : 1,
          "odds" : {
             "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
@@ -256,7 +256,7 @@
             "winner" : "AWAY_TEAM"
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
@@ -276,7 +276,7 @@
             "name" : "Belgium"
          },
          "id" : 285425,
-         "lastUpdated" : "2021-06-13T08:20:26Z",
+         "lastUpdated" : "2021-06-30T00:20:24Z",
          "matchday" : 1,
          "odds" : {
             "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
@@ -340,7 +340,7 @@
             "winner" : "HOME_TEAM"
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
@@ -360,8 +360,1604 @@
             "name" : "England"
          },
          "id" : 285436,
-         "lastUpdated" : "2021-05-22T16:20:18Z",
+         "lastUpdated" : "2021-06-30T00:20:24Z",
          "matchday" : 1,
+         "odds" : {
+            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
+         },
+         "referees" : [
+            {
+               "id" : 11076,
+               "name" : "Alessandro Giallatini",
+               "nationality" : "Italy",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 11069,
+               "name" : "Fabiano Preti",
+               "nationality" : "Italy",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 9558,
+               "name" : "BjÃ¶rn Kuipers",
+               "nationality" : "Netherlands",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 11116,
+               "name" : "Daniele Orsato",
+               "nationality" : "Italy",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 11054,
+               "name" : "Massimiliano Irrati",
+               "nationality" : "Italy",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 38806,
+               "name" : "JoÃ£o Pinheiro",
+               "nationality" : "Portugal",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
+         "score" : {
+            "duration" : "REGULAR",
+            "extraTime" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "fullTime" : {
+               "awayTeam" : 0,
+               "homeTeam" : 1
+            },
+            "halfTime" : {
+               "awayTeam" : 0,
+               "homeTeam" : 0
+            },
+            "penalties" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "winner" : "HOME_TEAM"
+         },
+         "season" : {
+            "currentMatchday" : 4,
+            "endDate" : "2021-07-11",
+            "id" : 507,
+            "startDate" : "2021-06-11"
+         },
+         "stage" : "GROUP_STAGE",
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-13T13:00:00Z"
+      },
+      {
+         "awayTeam" : {
+            "id" : 1977,
+            "name" : "North Macedonia"
+         },
+         "group" : "Group C",
+         "homeTeam" : {
+            "id" : 816,
+            "name" : "Austria"
+         },
+         "id" : 285430,
+         "lastUpdated" : "2021-06-30T00:20:24Z",
+         "matchday" : 1,
+         "odds" : {
+            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
+         },
+         "referees" : [
+            {
+               "id" : 15333,
+               "name" : "Mehmet-Mohammed Culum",
+               "nationality" : "Sweden",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 15334,
+               "name" : "Stefan Hallberg",
+               "nationality" : "Sweden",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 43938,
+               "name" : "Sergey Karasev",
+               "nationality" : "Russia",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 15332,
+               "name" : "Andreas Ekberg",
+               "nationality" : "Sweden",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 15746,
+               "name" : "Bastian Dankert",
+               "nationality" : "Germany",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 11443,
+               "name" : "Chris Kavanagh",
+               "nationality" : "England",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
+         "score" : {
+            "duration" : "REGULAR",
+            "extraTime" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "fullTime" : {
+               "awayTeam" : 1,
+               "homeTeam" : 3
+            },
+            "halfTime" : {
+               "awayTeam" : 1,
+               "homeTeam" : 1
+            },
+            "penalties" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "winner" : "HOME_TEAM"
+         },
+         "season" : {
+            "currentMatchday" : 4,
+            "endDate" : "2021-07-11",
+            "id" : 507,
+            "startDate" : "2021-06-11"
+         },
+         "stage" : "GROUP_STAGE",
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-13T16:00:00Z"
+      },
+      {
+         "awayTeam" : {
+            "id" : 790,
+            "name" : "Ukraine"
+         },
+         "group" : "Group C",
+         "homeTeam" : {
+            "id" : 8601,
+            "name" : "Netherlands"
+         },
+         "id" : 285431,
+         "lastUpdated" : "2021-06-30T00:20:24Z",
+         "matchday" : 1,
+         "odds" : {
+            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
+         },
+         "referees" : [
+            {
+               "id" : 43876,
+               "name" : "Mark Borsch",
+               "nationality" : "Germany",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 43877,
+               "name" : "Stefan Lupp",
+               "nationality" : "Germany",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 43857,
+               "name" : "Bartosz Frankowski",
+               "nationality" : "Poland",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 43875,
+               "name" : "Felix Brych",
+               "nationality" : "Germany",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 15821,
+               "name" : "Marco Fritz",
+               "nationality" : "Germany",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 57526,
+               "name" : "Christian Dingert",
+               "nationality" : "Germany",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
+         "score" : {
+            "duration" : "REGULAR",
+            "extraTime" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "fullTime" : {
+               "awayTeam" : 2,
+               "homeTeam" : 3
+            },
+            "halfTime" : {
+               "awayTeam" : 0,
+               "homeTeam" : 0
+            },
+            "penalties" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "winner" : "HOME_TEAM"
+         },
+         "season" : {
+            "currentMatchday" : 4,
+            "endDate" : "2021-07-11",
+            "id" : 507,
+            "startDate" : "2021-06-11"
+         },
+         "stage" : "GROUP_STAGE",
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-13T19:00:00Z"
+      },
+      {
+         "awayTeam" : {
+            "id" : 798,
+            "name" : "Czech Republic"
+         },
+         "group" : "Group D",
+         "homeTeam" : {
+            "id" : 8873,
+            "name" : "Scotland"
+         },
+         "id" : 285437,
+         "lastUpdated" : "2021-06-30T00:20:24Z",
+         "matchday" : 1,
+         "odds" : {
+            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
+         },
+         "referees" : [
+            {
+               "id" : 15408,
+               "name" : "Daniel Siebert",
+               "nationality" : "Germany",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 15409,
+               "name" : "Jan Seidel",
+               "nationality" : "Germany",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 43880,
+               "name" : "Rafael Foltyn",
+               "nationality" : "Germany",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 15654,
+               "name" : "Georgi Kabakov",
+               "nationality" : "Bulgaria",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 15821,
+               "name" : "Marco Fritz",
+               "nationality" : "Germany",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 57526,
+               "name" : "Christian Dingert",
+               "nationality" : "Germany",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
+         "score" : {
+            "duration" : "REGULAR",
+            "extraTime" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "fullTime" : {
+               "awayTeam" : 2,
+               "homeTeam" : 0
+            },
+            "halfTime" : {
+               "awayTeam" : 1,
+               "homeTeam" : 0
+            },
+            "penalties" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "winner" : "AWAY_TEAM"
+         },
+         "season" : {
+            "currentMatchday" : 4,
+            "endDate" : "2021-07-11",
+            "id" : 507,
+            "startDate" : "2021-06-11"
+         },
+         "stage" : "GROUP_STAGE",
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-14T13:00:00Z"
+      },
+      {
+         "awayTeam" : {
+            "id" : 768,
+            "name" : "Slovakia"
+         },
+         "group" : "Group E",
+         "homeTeam" : {
+            "id" : 794,
+            "name" : "Poland"
+         },
+         "id" : 285442,
+         "lastUpdated" : "2021-06-30T00:20:24Z",
+         "matchday" : 1,
+         "odds" : {
+            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
+         },
+         "referees" : [
+            {
+               "id" : 36314,
+               "name" : "Ovidiu HaÈegan",
+               "nationality" : "Romania",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 111975,
+               "name" : "Radu Ghinguleac",
+               "nationality" : "Romania",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 36837,
+               "name" : "Sebastian Gheorghe",
+               "nationality" : "Romania",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 37278,
+               "name" : "IstvÃ¡n KovÃ¡cs",
+               "nationality" : "Romania",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 11060,
+               "name" : "Marco Di Bello",
+               "nationality" : "Italy",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 15548,
+               "name" : "JÃ©rÃ´me Brisard",
+               "nationality" : "France",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
+         "score" : {
+            "duration" : "REGULAR",
+            "extraTime" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "fullTime" : {
+               "awayTeam" : 2,
+               "homeTeam" : 1
+            },
+            "halfTime" : {
+               "awayTeam" : 1,
+               "homeTeam" : 0
+            },
+            "penalties" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "winner" : "AWAY_TEAM"
+         },
+         "season" : {
+            "currentMatchday" : 4,
+            "endDate" : "2021-07-11",
+            "id" : 507,
+            "startDate" : "2021-06-11"
+         },
+         "stage" : "GROUP_STAGE",
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-14T16:00:00Z"
+      },
+      {
+         "awayTeam" : {
+            "id" : 792,
+            "name" : "Sweden"
+         },
+         "group" : "Group E",
+         "homeTeam" : {
+            "id" : 760,
+            "name" : "Spain"
+         },
+         "id" : 285443,
+         "lastUpdated" : "2021-06-30T00:20:24Z",
+         "matchday" : 1,
+         "odds" : {
+            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
+         },
+         "referees" : [
+            {
+               "id" : 9351,
+               "name" : "Slavko VinÄiÄ",
+               "nationality" : "Slovenia",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 9349,
+               "name" : "TomaÅ¾ KlanÄnik",
+               "nationality" : "Slovenia",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 43934,
+               "name" : "AndraÅ¾ KovaÄiÄ",
+               "nationality" : "Slovenia",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 11029,
+               "name" : "Davide Massa",
+               "nationality" : "Italy",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 15746,
+               "name" : "Bastian Dankert",
+               "nationality" : "Germany",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 11443,
+               "name" : "Chris Kavanagh",
+               "nationality" : "England",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
+         "score" : {
+            "duration" : "REGULAR",
+            "extraTime" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "fullTime" : {
+               "awayTeam" : 0,
+               "homeTeam" : 0
+            },
+            "halfTime" : {
+               "awayTeam" : 0,
+               "homeTeam" : 0
+            },
+            "penalties" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "winner" : "DRAW"
+         },
+         "season" : {
+            "currentMatchday" : 4,
+            "endDate" : "2021-07-11",
+            "id" : 507,
+            "startDate" : "2021-06-11"
+         },
+         "stage" : "GROUP_STAGE",
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-14T19:00:00Z"
+      },
+      {
+         "awayTeam" : {
+            "id" : 765,
+            "name" : "Portugal"
+         },
+         "group" : "Group F",
+         "homeTeam" : {
+            "id" : 827,
+            "name" : "Hungary"
+         },
+         "id" : 285448,
+         "lastUpdated" : "2021-06-30T00:20:24Z",
+         "matchday" : 1,
+         "odds" : {
+            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
+         },
+         "referees" : [
+            {
+               "id" : 30688,
+               "name" : "Bahattin Duran",
+               "nationality" : "Turkey",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 30689,
+               "name" : "TarÄ±k Ongun",
+               "nationality" : "Turkey",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 31823,
+               "name" : "Sandro SchÃ¤rer",
+               "nationality" : "Switzerland",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 161460,
+               "name" : "Cuneyt Cakir",
+               "nationality" : null,
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 11054,
+               "name" : "Massimiliano Irrati",
+               "nationality" : "Italy",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 11075,
+               "name" : "Paolo Valeri",
+               "nationality" : "Italy",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
+         "score" : {
+            "duration" : "REGULAR",
+            "extraTime" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "fullTime" : {
+               "awayTeam" : 3,
+               "homeTeam" : 0
+            },
+            "halfTime" : {
+               "awayTeam" : 0,
+               "homeTeam" : 0
+            },
+            "penalties" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "winner" : "AWAY_TEAM"
+         },
+         "season" : {
+            "currentMatchday" : 4,
+            "endDate" : "2021-07-11",
+            "id" : 507,
+            "startDate" : "2021-06-11"
+         },
+         "stage" : "GROUP_STAGE",
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-15T16:00:00Z"
+      },
+      {
+         "awayTeam" : {
+            "id" : 759,
+            "name" : "Germany"
+         },
+         "group" : "Group F",
+         "homeTeam" : {
+            "id" : 773,
+            "name" : "France"
+         },
+         "id" : 285449,
+         "lastUpdated" : "2021-06-30T00:20:24Z",
+         "matchday" : 1,
+         "odds" : {
+            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
+         },
+         "referees" : [
+            {
+               "id" : 43844,
+               "name" : "Juan Carlos Yuste",
+               "nationality" : "Spain",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 43872,
+               "name" : "Roberto Alonso",
+               "nationality" : "Spain",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 169612,
+               "name" : "Srdjan Jovanovic",
+               "nationality" : null,
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 43843,
+               "name" : "Carlos del Cerro",
+               "nationality" : "Spain",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 81,
+               "name" : "Juan MartÃ­nez",
+               "nationality" : "Spain",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 106,
+               "name" : "JosÃ© SÃ¡nchez",
+               "nationality" : "Spain",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
+         "score" : {
+            "duration" : "REGULAR",
+            "extraTime" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "fullTime" : {
+               "awayTeam" : 0,
+               "homeTeam" : 1
+            },
+            "halfTime" : {
+               "awayTeam" : 0,
+               "homeTeam" : 1
+            },
+            "penalties" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "winner" : "HOME_TEAM"
+         },
+         "season" : {
+            "currentMatchday" : 4,
+            "endDate" : "2021-07-11",
+            "id" : 507,
+            "startDate" : "2021-06-11"
+         },
+         "stage" : "GROUP_STAGE",
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-15T19:00:00Z"
+      },
+      {
+         "awayTeam" : {
+            "id" : 808,
+            "name" : "Russia"
+         },
+         "group" : "Group B",
+         "homeTeam" : {
+            "id" : 1976,
+            "name" : "Finland"
+         },
+         "id" : 285426,
+         "lastUpdated" : "2021-06-30T00:20:24Z",
+         "matchday" : 2,
+         "odds" : {
+            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
+         },
+         "referees" : [
+            {
+               "id" : 43899,
+               "name" : "Danny Makkelie",
+               "nationality" : "Netherlands",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 43900,
+               "name" : "Hessel Steegstra",
+               "nationality" : "Netherlands",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 15154,
+               "name" : "Jan de Vries",
+               "nationality" : "Netherlands",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 37278,
+               "name" : "IstvÃ¡n KovÃ¡cs",
+               "nationality" : "Romania",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 15152,
+               "name" : "Pol van Boekel",
+               "nationality" : "Netherlands",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 43902,
+               "name" : "Kevin Blom",
+               "nationality" : "Netherlands",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
+         "score" : {
+            "duration" : "REGULAR",
+            "extraTime" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "fullTime" : {
+               "awayTeam" : 1,
+               "homeTeam" : 0
+            },
+            "halfTime" : {
+               "awayTeam" : 1,
+               "homeTeam" : 0
+            },
+            "penalties" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "winner" : "AWAY_TEAM"
+         },
+         "season" : {
+            "currentMatchday" : 4,
+            "endDate" : "2021-07-11",
+            "id" : 507,
+            "startDate" : "2021-06-11"
+         },
+         "stage" : "GROUP_STAGE",
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-16T13:00:00Z"
+      },
+      {
+         "awayTeam" : {
+            "id" : 833,
+            "name" : "Wales"
+         },
+         "group" : "Group A",
+         "homeTeam" : {
+            "id" : 803,
+            "name" : "Turkey"
+         },
+         "id" : 285420,
+         "lastUpdated" : "2021-06-30T00:20:24Z",
+         "matchday" : 2,
+         "odds" : {
+            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
+         },
+         "referees" : [
+            {
+               "id" : 82279,
+               "name" : "Artur Dias",
+               "nationality" : null,
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 37626,
+               "name" : "Rui Tavares",
+               "nationality" : "Portugal",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 37714,
+               "name" : "Paulo Soares",
+               "nationality" : "Portugal",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 43857,
+               "name" : "Bartosz Frankowski",
+               "nationality" : "Poland",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 38806,
+               "name" : "JoÃ£o Pinheiro",
+               "nationality" : "Portugal",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 43918,
+               "name" : "FranÃ§ois Letexier",
+               "nationality" : "France",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
+         "score" : {
+            "duration" : "REGULAR",
+            "extraTime" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "fullTime" : {
+               "awayTeam" : 2,
+               "homeTeam" : 0
+            },
+            "halfTime" : {
+               "awayTeam" : 1,
+               "homeTeam" : 0
+            },
+            "penalties" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "winner" : "AWAY_TEAM"
+         },
+         "season" : {
+            "currentMatchday" : 4,
+            "endDate" : "2021-07-11",
+            "id" : 507,
+            "startDate" : "2021-06-11"
+         },
+         "stage" : "GROUP_STAGE",
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-16T16:00:00Z"
+      },
+      {
+         "awayTeam" : {
+            "id" : 788,
+            "name" : "Switzerland"
+         },
+         "group" : "Group A",
+         "homeTeam" : {
+            "id" : 784,
+            "name" : "Italy"
+         },
+         "id" : 285421,
+         "lastUpdated" : "2021-06-30T00:20:24Z",
+         "matchday" : 2,
+         "odds" : {
+            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
+         },
+         "referees" : [
+            {
+               "id" : 43850,
+               "name" : "Igor Demeshko",
+               "nationality" : "Russia",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 36197,
+               "name" : "Maksim Gavrilin",
+               "nationality" : "Russia",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 11605,
+               "name" : "Michael Oliver",
+               "nationality" : "England",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 15746,
+               "name" : "Bastian Dankert",
+               "nationality" : "Germany",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 15821,
+               "name" : "Marco Fritz",
+               "nationality" : "Germany",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            },
+            {
+               "id" : 43938,
+               "name" : "Sergey Karasev",
+               "nationality" : "Russia",
+               "role" : "REFEREE"
+            }
+         ],
+         "score" : {
+            "duration" : "REGULAR",
+            "extraTime" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "fullTime" : {
+               "awayTeam" : 0,
+               "homeTeam" : 3
+            },
+            "halfTime" : {
+               "awayTeam" : 0,
+               "homeTeam" : 1
+            },
+            "penalties" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "winner" : "HOME_TEAM"
+         },
+         "season" : {
+            "currentMatchday" : 4,
+            "endDate" : "2021-07-11",
+            "id" : 507,
+            "startDate" : "2021-06-11"
+         },
+         "stage" : "GROUP_STAGE",
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-16T19:00:00Z"
+      },
+      {
+         "awayTeam" : {
+            "id" : 1977,
+            "name" : "North Macedonia"
+         },
+         "group" : "Group C",
+         "homeTeam" : {
+            "id" : 790,
+            "name" : "Ukraine"
+         },
+         "id" : 285432,
+         "lastUpdated" : "2021-06-30T00:20:24Z",
+         "matchday" : 2,
+         "odds" : {
+            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
+         },
+         "referees" : [
+            {
+               "id" : 11686,
+               "name" : "Fernando Rapallini",
+               "nationality" : "Argentina",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 49486,
+               "name" : "Juan Pablo Belatti",
+               "nationality" : "Argentina",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 11684,
+               "name" : "Diego BonfÃ¡",
+               "nationality" : "Argentina",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 9351,
+               "name" : "Slavko VinÄiÄ",
+               "nationality" : "Slovenia",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 15625,
+               "name" : "Alejandro HernÃ¡ndez",
+               "nationality" : "Spain",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 106,
+               "name" : "JosÃ© SÃ¡nchez",
+               "nationality" : "Spain",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
+         "score" : {
+            "duration" : "REGULAR",
+            "extraTime" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "fullTime" : {
+               "awayTeam" : 1,
+               "homeTeam" : 2
+            },
+            "halfTime" : {
+               "awayTeam" : 0,
+               "homeTeam" : 2
+            },
+            "penalties" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "winner" : "HOME_TEAM"
+         },
+         "season" : {
+            "currentMatchday" : 4,
+            "endDate" : "2021-07-11",
+            "id" : 507,
+            "startDate" : "2021-06-11"
+         },
+         "stage" : "GROUP_STAGE",
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-17T13:00:00Z"
+      },
+      {
+         "awayTeam" : {
+            "id" : 805,
+            "name" : "Belgium"
+         },
+         "group" : "Group B",
+         "homeTeam" : {
+            "id" : 782,
+            "name" : "Denmark"
+         },
+         "id" : 285427,
+         "lastUpdated" : "2021-06-30T00:20:24Z",
+         "matchday" : 2,
+         "odds" : {
+            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
+         },
+         "referees" : [
+            {
+               "id" : 9558,
+               "name" : "BjÃ¶rn Kuipers",
+               "nationality" : "Netherlands",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 9559,
+               "name" : "Sander van Roekel",
+               "nationality" : "Netherlands",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 9560,
+               "name" : "Erwin Zeinstra",
+               "nationality" : "Netherlands",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 15332,
+               "name" : "Andreas Ekberg",
+               "nationality" : "Sweden",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 15152,
+               "name" : "Pol van Boekel",
+               "nationality" : "Netherlands",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 43902,
+               "name" : "Kevin Blom",
+               "nationality" : "Netherlands",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
+         "score" : {
+            "duration" : "REGULAR",
+            "extraTime" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "fullTime" : {
+               "awayTeam" : 2,
+               "homeTeam" : 1
+            },
+            "halfTime" : {
+               "awayTeam" : 0,
+               "homeTeam" : 1
+            },
+            "penalties" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "winner" : "AWAY_TEAM"
+         },
+         "season" : {
+            "currentMatchday" : 4,
+            "endDate" : "2021-07-11",
+            "id" : 507,
+            "startDate" : "2021-06-11"
+         },
+         "stage" : "GROUP_STAGE",
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-17T16:00:00Z"
+      },
+      {
+         "awayTeam" : {
+            "id" : 816,
+            "name" : "Austria"
+         },
+         "group" : "Group C",
+         "homeTeam" : {
+            "id" : 8601,
+            "name" : "Netherlands"
+         },
+         "id" : 285433,
+         "lastUpdated" : "2021-06-30T00:20:24Z",
+         "matchday" : 2,
+         "odds" : {
+            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
+         },
+         "referees" : [
+            {
+               "id" : 167782,
+               "name" : "Orel Grinfeld",
+               "nationality" : null,
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 64594,
+               "name" : "Roy Hassan",
+               "nationality" : "Israel",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 41353,
+               "name" : "Idan Yarkoni",
+               "nationality" : "Israel",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 11029,
+               "name" : "Davide Massa",
+               "nationality" : "Italy",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 131857,
+               "name" : "Pawel Gil",
+               "nationality" : "Poland",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 11075,
+               "name" : "Paolo Valeri",
+               "nationality" : "Italy",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
+         "score" : {
+            "duration" : "REGULAR",
+            "extraTime" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "fullTime" : {
+               "awayTeam" : 0,
+               "homeTeam" : 2
+            },
+            "halfTime" : {
+               "awayTeam" : 0,
+               "homeTeam" : 1
+            },
+            "penalties" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "winner" : "HOME_TEAM"
+         },
+         "season" : {
+            "currentMatchday" : 4,
+            "endDate" : "2021-07-11",
+            "id" : 507,
+            "startDate" : "2021-06-11"
+         },
+         "stage" : "GROUP_STAGE",
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-17T19:00:00Z"
+      },
+      {
+         "awayTeam" : {
+            "id" : 768,
+            "name" : "Slovakia"
+         },
+         "group" : "Group E",
+         "homeTeam" : {
+            "id" : 792,
+            "name" : "Sweden"
+         },
+         "id" : 285444,
+         "lastUpdated" : "2021-06-30T00:20:24Z",
+         "matchday" : 2,
+         "odds" : {
+            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
+         },
+         "referees" : [
+            {
+               "id" : 15408,
+               "name" : "Daniel Siebert",
+               "nationality" : "Germany",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 15409,
+               "name" : "Jan Seidel",
+               "nationality" : "Germany",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 43880,
+               "name" : "Rafael Foltyn",
+               "nationality" : "Germany",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 15654,
+               "name" : "Georgi Kabakov",
+               "nationality" : "Bulgaria",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 15821,
+               "name" : "Marco Fritz",
+               "nationality" : "Germany",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 57526,
+               "name" : "Christian Dingert",
+               "nationality" : "Germany",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
+         "score" : {
+            "duration" : "REGULAR",
+            "extraTime" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "fullTime" : {
+               "awayTeam" : 0,
+               "homeTeam" : 1
+            },
+            "halfTime" : {
+               "awayTeam" : 0,
+               "homeTeam" : 0
+            },
+            "penalties" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "winner" : "HOME_TEAM"
+         },
+         "season" : {
+            "currentMatchday" : 4,
+            "endDate" : "2021-07-11",
+            "id" : 507,
+            "startDate" : "2021-06-11"
+         },
+         "stage" : "GROUP_STAGE",
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-18T13:00:00Z"
+      },
+      {
+         "awayTeam" : {
+            "id" : 798,
+            "name" : "Czech Republic"
+         },
+         "group" : "Group D",
+         "homeTeam" : {
+            "id" : 799,
+            "name" : "Croatia"
+         },
+         "id" : 285438,
+         "lastUpdated" : "2021-06-30T00:20:24Z",
+         "matchday" : 2,
+         "odds" : {
+            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
+         },
+         "referees" : [
+            {
+               "id" : 43843,
+               "name" : "Carlos del Cerro",
+               "nationality" : "Spain",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 43844,
+               "name" : "Juan Carlos Yuste",
+               "nationality" : "Spain",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 43872,
+               "name" : "Roberto Alonso",
+               "nationality" : "Spain",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 31823,
+               "name" : "Sandro SchÃ¤rer",
+               "nationality" : "Switzerland",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 81,
+               "name" : "Juan MartÃ­nez",
+               "nationality" : "Spain",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 11060,
+               "name" : "Marco Di Bello",
+               "nationality" : "Italy",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
+         "score" : {
+            "duration" : "REGULAR",
+            "extraTime" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "fullTime" : {
+               "awayTeam" : 1,
+               "homeTeam" : 1
+            },
+            "halfTime" : {
+               "awayTeam" : 1,
+               "homeTeam" : 0
+            },
+            "penalties" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "winner" : "DRAW"
+         },
+         "season" : {
+            "currentMatchday" : 4,
+            "endDate" : "2021-07-11",
+            "id" : 507,
+            "startDate" : "2021-06-11"
+         },
+         "stage" : "GROUP_STAGE",
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-18T16:00:00Z"
+      },
+      {
+         "awayTeam" : {
+            "id" : 8873,
+            "name" : "Scotland"
+         },
+         "group" : "Group D",
+         "homeTeam" : {
+            "id" : 770,
+            "name" : "England"
+         },
+         "id" : 285439,
+         "lastUpdated" : "2021-06-30T00:20:24Z",
+         "matchday" : 2,
+         "odds" : {
+            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
+         },
+         "referees" : [
+            {
+               "id" : 43869,
+               "name" : "Antonio MatÃ©u Lahoz",
+               "nationality" : "Spain",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 134,
+               "name" : "Pau CebriÃ¡n Devis",
+               "nationality" : "Spain",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 82,
+               "name" : "Roberto DÃ­az PÃ©rez",
+               "nationality" : "Spain",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 161460,
+               "name" : "Cuneyt Cakir",
+               "nationality" : null,
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 15625,
+               "name" : "Alejandro HernÃ¡ndez",
+               "nationality" : "Spain",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 106,
+               "name" : "JosÃ© SÃ¡nchez",
+               "nationality" : "Spain",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
+         "score" : {
+            "duration" : "REGULAR",
+            "extraTime" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "fullTime" : {
+               "awayTeam" : 0,
+               "homeTeam" : 0
+            },
+            "halfTime" : {
+               "awayTeam" : 0,
+               "homeTeam" : 0
+            },
+            "penalties" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "winner" : "DRAW"
+         },
+         "season" : {
+            "currentMatchday" : 4,
+            "endDate" : "2021-07-11",
+            "id" : 507,
+            "startDate" : "2021-06-11"
+         },
+         "stage" : "GROUP_STAGE",
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-18T19:00:00Z"
+      },
+      {
+         "awayTeam" : {
+            "id" : 773,
+            "name" : "France"
+         },
+         "group" : "Group F",
+         "homeTeam" : {
+            "id" : 827,
+            "name" : "Hungary"
+         },
+         "id" : 285450,
+         "lastUpdated" : "2021-06-30T00:20:24Z",
+         "matchday" : 2,
+         "odds" : {
+            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
+         },
+         "referees" : [
+            {
+               "id" : 11605,
+               "name" : "Michael Oliver",
+               "nationality" : "England",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 11564,
+               "name" : "Stuart Burt",
+               "nationality" : "England",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 11488,
+               "name" : "Simon Bennett",
+               "nationality" : "England",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 43857,
+               "name" : "Bartosz Frankowski",
+               "nationality" : "Poland",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 11443,
+               "name" : "Chris Kavanagh",
+               "nationality" : "England",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 43902,
+               "name" : "Kevin Blom",
+               "nationality" : "Netherlands",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
+         "score" : {
+            "duration" : "REGULAR",
+            "extraTime" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "fullTime" : {
+               "awayTeam" : 1,
+               "homeTeam" : 1
+            },
+            "halfTime" : {
+               "awayTeam" : 0,
+               "homeTeam" : 1
+            },
+            "penalties" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "winner" : "DRAW"
+         },
+         "season" : {
+            "currentMatchday" : 4,
+            "endDate" : "2021-07-11",
+            "id" : 507,
+            "startDate" : "2021-06-11"
+         },
+         "stage" : "GROUP_STAGE",
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-19T13:00:00Z"
+      },
+      {
+         "awayTeam" : {
+            "id" : 759,
+            "name" : "Germany"
+         },
+         "group" : "Group F",
+         "homeTeam" : {
+            "id" : 765,
+            "name" : "Portugal"
+         },
+         "id" : 285451,
+         "lastUpdated" : "2021-06-30T00:20:24Z",
+         "matchday" : 2,
+         "odds" : {
+            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
+         },
+         "referees" : [
+            {
+               "id" : 11580,
+               "name" : "Anthony Taylor",
+               "nationality" : "England",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 11581,
+               "name" : "Gary Beswick",
+               "nationality" : "England",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 11615,
+               "name" : "Adam Nunn",
+               "nationality" : "England",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 169612,
+               "name" : "Srdjan Jovanovic",
+               "nationality" : null,
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 11494,
+               "name" : "Stuart Attwell",
+               "nationality" : "England",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 81,
+               "name" : "Juan MartÃ­nez",
+               "nationality" : "Spain",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
+         "score" : {
+            "duration" : "REGULAR",
+            "extraTime" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "fullTime" : {
+               "awayTeam" : 4,
+               "homeTeam" : 2
+            },
+            "halfTime" : {
+               "awayTeam" : 2,
+               "homeTeam" : 1
+            },
+            "penalties" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "winner" : "AWAY_TEAM"
+         },
+         "season" : {
+            "currentMatchday" : 4,
+            "endDate" : "2021-07-11",
+            "id" : 507,
+            "startDate" : "2021-06-11"
+         },
+         "stage" : "GROUP_STAGE",
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-19T16:00:00Z"
+      },
+      {
+         "awayTeam" : {
+            "id" : 794,
+            "name" : "Poland"
+         },
+         "group" : "Group E",
+         "homeTeam" : {
+            "id" : 760,
+            "name" : "Spain"
+         },
+         "id" : 285445,
+         "lastUpdated" : "2021-06-30T00:20:24Z",
+         "matchday" : 2,
          "odds" : {
             "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
          },
@@ -385,9 +1981,9 @@
                "role" : "ASSISTANT_REFEREE_N2"
             },
             {
-               "id" : 9558,
-               "name" : "BjÃ¶rn Kuipers",
-               "nationality" : "Netherlands",
+               "id" : 25786,
+               "name" : "StÃ©phanie Frappart",
+               "nationality" : "France",
                "role" : "FOURTH_OFFICIAL"
             },
             {
@@ -397,9 +1993,9 @@
                "role" : "VIDEO_ASSISANT_REFEREE_N1"
             },
             {
-               "id" : 38806,
-               "name" : "JoÃ£o Pinheiro",
-               "nationality" : "Portugal",
+               "id" : 11060,
+               "name" : "Marco Di Bello",
+               "nationality" : "Italy",
                "role" : "VIDEO_ASSISANT_REFEREE_N2"
             }
          ],
@@ -410,68 +2006,152 @@
                "homeTeam" : null
             },
             "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 1,
+               "homeTeam" : 1
             },
             "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 0,
+               "homeTeam" : 1
             },
             "penalties" : {
                "awayTeam" : null,
                "homeTeam" : null
             },
-            "winner" : null
+            "winner" : "DRAW"
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
          },
          "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-13T13:00:00Z"
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-19T19:00:00Z"
       },
       {
          "awayTeam" : {
-            "id" : 1977,
-            "name" : "North Macedonia"
+            "id" : 833,
+            "name" : "Wales"
          },
-         "group" : "Group C",
+         "group" : "Group A",
          "homeTeam" : {
-            "id" : 816,
-            "name" : "Austria"
+            "id" : 784,
+            "name" : "Italy"
          },
-         "id" : 285430,
-         "lastUpdated" : "2021-05-22T16:20:18Z",
-         "matchday" : 1,
+         "id" : 285422,
+         "lastUpdated" : "2021-06-30T00:20:24Z",
+         "matchday" : 3,
          "odds" : {
             "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
          },
          "referees" : [
             {
-               "id" : 15332,
-               "name" : "Andreas Ekberg",
-               "nationality" : "Sweden",
+               "id" : 36314,
+               "name" : "Ovidiu HaÈegan",
+               "nationality" : "Romania",
                "role" : "REFEREE"
             },
             {
-               "id" : 15333,
-               "name" : "Mehmet-Mohammed Culum",
-               "nationality" : "Sweden",
+               "id" : 111975,
+               "name" : "Radu Ghinguleac",
+               "nationality" : "Romania",
                "role" : "ASSISTANT_REFEREE_N1"
             },
             {
-               "id" : 15334,
-               "name" : "Stefan Hallberg",
-               "nationality" : "Sweden",
+               "id" : 36837,
+               "name" : "Sebastian Gheorghe",
+               "nationality" : "Romania",
                "role" : "ASSISTANT_REFEREE_N2"
             },
             {
-               "id" : 43938,
-               "name" : "Sergey Karasev",
-               "nationality" : "Russia",
+               "id" : 167782,
+               "name" : "Orel Grinfeld",
+               "nationality" : null,
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 131857,
+               "name" : "Pawel Gil",
+               "nationality" : "Poland",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 43918,
+               "name" : "FranÃ§ois Letexier",
+               "nationality" : "France",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
+         "score" : {
+            "duration" : "REGULAR",
+            "extraTime" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "fullTime" : {
+               "awayTeam" : 0,
+               "homeTeam" : 1
+            },
+            "halfTime" : {
+               "awayTeam" : 0,
+               "homeTeam" : 1
+            },
+            "penalties" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "winner" : "HOME_TEAM"
+         },
+         "season" : {
+            "currentMatchday" : 4,
+            "endDate" : "2021-07-11",
+            "id" : 507,
+            "startDate" : "2021-06-11"
+         },
+         "stage" : "GROUP_STAGE",
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-20T16:00:00Z"
+      },
+      {
+         "awayTeam" : {
+            "id" : 803,
+            "name" : "Turkey"
+         },
+         "group" : "Group A",
+         "homeTeam" : {
+            "id" : 788,
+            "name" : "Switzerland"
+         },
+         "id" : 285423,
+         "lastUpdated" : "2021-06-30T00:20:24Z",
+         "matchday" : 3,
+         "odds" : {
+            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
+         },
+         "referees" : [
+            {
+               "id" : 9351,
+               "name" : "Slavko VinÄiÄ",
+               "nationality" : "Slovenia",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 9349,
+               "name" : "TomaÅ¾ KlanÄnik",
+               "nationality" : "Slovenia",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 43934,
+               "name" : "AndraÅ¾ KovaÄiÄ",
+               "nationality" : "Slovenia",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 15332,
+               "name" : "Andreas Ekberg",
+               "nationality" : "Sweden",
                "role" : "FOURTH_OFFICIAL"
             },
             {
@@ -481,9 +2161,9 @@
                "role" : "VIDEO_ASSISANT_REFEREE_N1"
             },
             {
-               "id" : 11443,
-               "name" : "Chris Kavanagh",
-               "nationality" : "England",
+               "id" : 57526,
+               "name" : "Christian Dingert",
+               "nationality" : "Germany",
                "role" : "VIDEO_ASSISANT_REFEREE_N2"
             }
          ],
@@ -494,42 +2174,294 @@
                "homeTeam" : null
             },
             "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 1,
+               "homeTeam" : 3
             },
             "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 0,
+               "homeTeam" : 2
             },
             "penalties" : {
                "awayTeam" : null,
                "homeTeam" : null
             },
-            "winner" : null
+            "winner" : "HOME_TEAM"
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
          },
          "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-13T16:00:00Z"
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-20T16:00:00Z"
       },
       {
          "awayTeam" : {
-            "id" : 790,
-            "name" : "Ukraine"
-         },
-         "group" : "Group C",
-         "homeTeam" : {
             "id" : 8601,
             "name" : "Netherlands"
          },
-         "id" : 285431,
-         "lastUpdated" : "2021-05-22T16:20:18Z",
-         "matchday" : 1,
+         "group" : "Group C",
+         "homeTeam" : {
+            "id" : 1977,
+            "name" : "North Macedonia"
+         },
+         "id" : 285434,
+         "lastUpdated" : "2021-06-30T00:20:24Z",
+         "matchday" : 3,
+         "odds" : {
+            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
+         },
+         "referees" : [
+            {
+               "id" : 36700,
+               "name" : "Vasile Marinescu",
+               "nationality" : "Romania",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 36546,
+               "name" : "Mihai Artene",
+               "nationality" : "Romania",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 15654,
+               "name" : "Georgi Kabakov",
+               "nationality" : "Bulgaria",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 11060,
+               "name" : "Marco Di Bello",
+               "nationality" : "Italy",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 11075,
+               "name" : "Paolo Valeri",
+               "nationality" : "Italy",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            },
+            {
+               "id" : 37278,
+               "name" : "IstvÃ¡n KovÃ¡cs",
+               "nationality" : "Romania",
+               "role" : "REFEREE"
+            }
+         ],
+         "score" : {
+            "duration" : "REGULAR",
+            "extraTime" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "fullTime" : {
+               "awayTeam" : 3,
+               "homeTeam" : 0
+            },
+            "halfTime" : {
+               "awayTeam" : 1,
+               "homeTeam" : 0
+            },
+            "penalties" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "winner" : "AWAY_TEAM"
+         },
+         "season" : {
+            "currentMatchday" : 4,
+            "endDate" : "2021-07-11",
+            "id" : 507,
+            "startDate" : "2021-06-11"
+         },
+         "stage" : "GROUP_STAGE",
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-21T16:00:00Z"
+      },
+      {
+         "awayTeam" : {
+            "id" : 816,
+            "name" : "Austria"
+         },
+         "group" : "Group C",
+         "homeTeam" : {
+            "id" : 790,
+            "name" : "Ukraine"
+         },
+         "id" : 285435,
+         "lastUpdated" : "2021-06-30T00:20:24Z",
+         "matchday" : 3,
+         "odds" : {
+            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
+         },
+         "referees" : [
+            {
+               "id" : 161460,
+               "name" : "Cuneyt Cakir",
+               "nationality" : null,
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 30688,
+               "name" : "Bahattin Duran",
+               "nationality" : "Turkey",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 30689,
+               "name" : "TarÄ±k Ongun",
+               "nationality" : "Turkey",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 15408,
+               "name" : "Daniel Siebert",
+               "nationality" : "Germany",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 11054,
+               "name" : "Massimiliano Irrati",
+               "nationality" : "Italy",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 106,
+               "name" : "JosÃ© SÃ¡nchez",
+               "nationality" : "Spain",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
+         "score" : {
+            "duration" : "REGULAR",
+            "extraTime" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "fullTime" : {
+               "awayTeam" : 1,
+               "homeTeam" : 0
+            },
+            "halfTime" : {
+               "awayTeam" : 1,
+               "homeTeam" : 0
+            },
+            "penalties" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "winner" : "AWAY_TEAM"
+         },
+         "season" : {
+            "currentMatchday" : 4,
+            "endDate" : "2021-07-11",
+            "id" : 507,
+            "startDate" : "2021-06-11"
+         },
+         "stage" : "GROUP_STAGE",
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-21T16:00:00Z"
+      },
+      {
+         "awayTeam" : {
+            "id" : 782,
+            "name" : "Denmark"
+         },
+         "group" : "Group B",
+         "homeTeam" : {
+            "id" : 808,
+            "name" : "Russia"
+         },
+         "id" : 285428,
+         "lastUpdated" : "2021-06-30T00:20:24Z",
+         "matchday" : 3,
+         "odds" : {
+            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
+         },
+         "referees" : [
+            {
+               "id" : 9374,
+               "name" : "ClÃ©ment Turpin",
+               "nationality" : "France",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 43883,
+               "name" : "Nicolas Danos",
+               "nationality" : "France",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 43884,
+               "name" : "Cyril Gringore",
+               "nationality" : "France",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 31823,
+               "name" : "Sandro SchÃ¤rer",
+               "nationality" : "Switzerland",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 43918,
+               "name" : "FranÃ§ois Letexier",
+               "nationality" : "France",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 15548,
+               "name" : "JÃ©rÃ´me Brisard",
+               "nationality" : "France",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
+         "score" : {
+            "duration" : "REGULAR",
+            "extraTime" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "fullTime" : {
+               "awayTeam" : 4,
+               "homeTeam" : 1
+            },
+            "halfTime" : {
+               "awayTeam" : 1,
+               "homeTeam" : 0
+            },
+            "penalties" : {
+               "awayTeam" : null,
+               "homeTeam" : null
+            },
+            "winner" : "AWAY_TEAM"
+         },
+         "season" : {
+            "currentMatchday" : 4,
+            "endDate" : "2021-07-11",
+            "id" : 507,
+            "startDate" : "2021-06-11"
+         },
+         "stage" : "GROUP_STAGE",
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-21T19:00:00Z"
+      },
+      {
+         "awayTeam" : {
+            "id" : 805,
+            "name" : "Belgium"
+         },
+         "group" : "Group B",
+         "homeTeam" : {
+            "id" : 1976,
+            "name" : "Finland"
+         },
+         "id" : 285429,
+         "lastUpdated" : "2021-06-30T00:20:24Z",
+         "matchday" : 3,
          "odds" : {
             "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
          },
@@ -553,9 +2485,9 @@
                "role" : "ASSISTANT_REFEREE_N2"
             },
             {
-               "id" : 43857,
-               "name" : "Bartosz Frankowski",
-               "nationality" : "Poland",
+               "id" : 11029,
+               "name" : "Davide Massa",
+               "nationality" : "Italy",
                "role" : "FOURTH_OFFICIAL"
             },
             {
@@ -578,1108 +2510,27 @@
                "homeTeam" : null
             },
             "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 2,
+               "homeTeam" : 0
             },
             "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 0,
+               "homeTeam" : 0
             },
             "penalties" : {
                "awayTeam" : null,
                "homeTeam" : null
             },
-            "winner" : null
+            "winner" : "AWAY_TEAM"
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
          },
          "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-13T19:00:00Z"
-      },
-      {
-         "awayTeam" : {
-            "id" : 798,
-            "name" : "Czech Republic"
-         },
-         "group" : "Group D",
-         "homeTeam" : {
-            "id" : 8873,
-            "name" : "Scotland"
-         },
-         "id" : 285437,
-         "lastUpdated" : "2020-11-13T12:34:49Z",
-         "matchday" : 1,
-         "odds" : {
-            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
-         },
-         "referees" : [],
-         "score" : {
-            "duration" : "REGULAR",
-            "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "penalties" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "winner" : null
-         },
-         "season" : {
-            "currentMatchday" : 1,
-            "endDate" : "2021-07-11",
-            "id" : 507,
-            "startDate" : "2021-06-11"
-         },
-         "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-14T13:00:00Z"
-      },
-      {
-         "awayTeam" : {
-            "id" : 768,
-            "name" : "Slovakia"
-         },
-         "group" : "Group E",
-         "homeTeam" : {
-            "id" : 794,
-            "name" : "Poland"
-         },
-         "id" : 285442,
-         "lastUpdated" : "2021-05-28T16:20:18Z",
-         "matchday" : 1,
-         "odds" : {
-            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
-         },
-         "referees" : [],
-         "score" : {
-            "duration" : "REGULAR",
-            "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "penalties" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "winner" : null
-         },
-         "season" : {
-            "currentMatchday" : 1,
-            "endDate" : "2021-07-11",
-            "id" : 507,
-            "startDate" : "2021-06-11"
-         },
-         "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-14T16:00:00Z"
-      },
-      {
-         "awayTeam" : {
-            "id" : 792,
-            "name" : "Sweden"
-         },
-         "group" : "Group E",
-         "homeTeam" : {
-            "id" : 760,
-            "name" : "Spain"
-         },
-         "id" : 285443,
-         "lastUpdated" : "2021-05-22T16:20:17Z",
-         "matchday" : 1,
-         "odds" : {
-            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
-         },
-         "referees" : [],
-         "score" : {
-            "duration" : "REGULAR",
-            "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "penalties" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "winner" : null
-         },
-         "season" : {
-            "currentMatchday" : 1,
-            "endDate" : "2021-07-11",
-            "id" : 507,
-            "startDate" : "2021-06-11"
-         },
-         "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-14T19:00:00Z"
-      },
-      {
-         "awayTeam" : {
-            "id" : 765,
-            "name" : "Portugal"
-         },
-         "group" : "Group F",
-         "homeTeam" : {
-            "id" : 827,
-            "name" : "Hungary"
-         },
-         "id" : 285448,
-         "lastUpdated" : "2021-05-22T16:20:17Z",
-         "matchday" : 1,
-         "odds" : {
-            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
-         },
-         "referees" : [],
-         "score" : {
-            "duration" : "REGULAR",
-            "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "penalties" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "winner" : null
-         },
-         "season" : {
-            "currentMatchday" : 1,
-            "endDate" : "2021-07-11",
-            "id" : 507,
-            "startDate" : "2021-06-11"
-         },
-         "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-15T16:00:00Z"
-      },
-      {
-         "awayTeam" : {
-            "id" : 759,
-            "name" : "Germany"
-         },
-         "group" : "Group F",
-         "homeTeam" : {
-            "id" : 773,
-            "name" : "France"
-         },
-         "id" : 285449,
-         "lastUpdated" : "2021-05-28T16:20:18Z",
-         "matchday" : 1,
-         "odds" : {
-            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
-         },
-         "referees" : [],
-         "score" : {
-            "duration" : "REGULAR",
-            "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "penalties" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "winner" : null
-         },
-         "season" : {
-            "currentMatchday" : 1,
-            "endDate" : "2021-07-11",
-            "id" : 507,
-            "startDate" : "2021-06-11"
-         },
-         "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-15T19:00:00Z"
-      },
-      {
-         "awayTeam" : {
-            "id" : 808,
-            "name" : "Russia"
-         },
-         "group" : "Group B",
-         "homeTeam" : {
-            "id" : 1976,
-            "name" : "Finland"
-         },
-         "id" : 285426,
-         "lastUpdated" : "2021-05-28T16:20:17Z",
-         "matchday" : 2,
-         "odds" : {
-            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
-         },
-         "referees" : [],
-         "score" : {
-            "duration" : "REGULAR",
-            "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "penalties" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "winner" : null
-         },
-         "season" : {
-            "currentMatchday" : 1,
-            "endDate" : "2021-07-11",
-            "id" : 507,
-            "startDate" : "2021-06-11"
-         },
-         "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-16T13:00:00Z"
-      },
-      {
-         "awayTeam" : {
-            "id" : 833,
-            "name" : "Wales"
-         },
-         "group" : "Group A",
-         "homeTeam" : {
-            "id" : 803,
-            "name" : "Turkey"
-         },
-         "id" : 285420,
-         "lastUpdated" : "2021-05-28T16:20:17Z",
-         "matchday" : 2,
-         "odds" : {
-            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
-         },
-         "referees" : [],
-         "score" : {
-            "duration" : "REGULAR",
-            "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "penalties" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "winner" : null
-         },
-         "season" : {
-            "currentMatchday" : 1,
-            "endDate" : "2021-07-11",
-            "id" : 507,
-            "startDate" : "2021-06-11"
-         },
-         "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-16T16:00:00Z"
-      },
-      {
-         "awayTeam" : {
-            "id" : 788,
-            "name" : "Switzerland"
-         },
-         "group" : "Group A",
-         "homeTeam" : {
-            "id" : 784,
-            "name" : "Italy"
-         },
-         "id" : 285421,
-         "lastUpdated" : "2021-05-22T16:20:17Z",
-         "matchday" : 2,
-         "odds" : {
-            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
-         },
-         "referees" : [],
-         "score" : {
-            "duration" : "REGULAR",
-            "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "penalties" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "winner" : null
-         },
-         "season" : {
-            "currentMatchday" : 1,
-            "endDate" : "2021-07-11",
-            "id" : 507,
-            "startDate" : "2021-06-11"
-         },
-         "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-16T19:00:00Z"
-      },
-      {
-         "awayTeam" : {
-            "id" : 1977,
-            "name" : "North Macedonia"
-         },
-         "group" : "Group C",
-         "homeTeam" : {
-            "id" : 790,
-            "name" : "Ukraine"
-         },
-         "id" : 285432,
-         "lastUpdated" : "2021-05-22T16:20:17Z",
-         "matchday" : 2,
-         "odds" : {
-            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
-         },
-         "referees" : [],
-         "score" : {
-            "duration" : "REGULAR",
-            "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "penalties" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "winner" : null
-         },
-         "season" : {
-            "currentMatchday" : 1,
-            "endDate" : "2021-07-11",
-            "id" : 507,
-            "startDate" : "2021-06-11"
-         },
-         "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-17T13:00:00Z"
-      },
-      {
-         "awayTeam" : {
-            "id" : 805,
-            "name" : "Belgium"
-         },
-         "group" : "Group B",
-         "homeTeam" : {
-            "id" : 782,
-            "name" : "Denmark"
-         },
-         "id" : 285427,
-         "lastUpdated" : "2021-05-22T16:20:17Z",
-         "matchday" : 2,
-         "odds" : {
-            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
-         },
-         "referees" : [],
-         "score" : {
-            "duration" : "REGULAR",
-            "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "penalties" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "winner" : null
-         },
-         "season" : {
-            "currentMatchday" : 1,
-            "endDate" : "2021-07-11",
-            "id" : 507,
-            "startDate" : "2021-06-11"
-         },
-         "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-17T16:00:00Z"
-      },
-      {
-         "awayTeam" : {
-            "id" : 816,
-            "name" : "Austria"
-         },
-         "group" : "Group C",
-         "homeTeam" : {
-            "id" : 8601,
-            "name" : "Netherlands"
-         },
-         "id" : 285433,
-         "lastUpdated" : "2021-05-22T16:20:17Z",
-         "matchday" : 2,
-         "odds" : {
-            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
-         },
-         "referees" : [],
-         "score" : {
-            "duration" : "REGULAR",
-            "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "penalties" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "winner" : null
-         },
-         "season" : {
-            "currentMatchday" : 1,
-            "endDate" : "2021-07-11",
-            "id" : 507,
-            "startDate" : "2021-06-11"
-         },
-         "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-17T19:00:00Z"
-      },
-      {
-         "awayTeam" : {
-            "id" : 768,
-            "name" : "Slovakia"
-         },
-         "group" : "Group E",
-         "homeTeam" : {
-            "id" : 792,
-            "name" : "Sweden"
-         },
-         "id" : 285444,
-         "lastUpdated" : "2021-05-28T16:20:17Z",
-         "matchday" : 2,
-         "odds" : {
-            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
-         },
-         "referees" : [],
-         "score" : {
-            "duration" : "REGULAR",
-            "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "penalties" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "winner" : null
-         },
-         "season" : {
-            "currentMatchday" : 1,
-            "endDate" : "2021-07-11",
-            "id" : 507,
-            "startDate" : "2021-06-11"
-         },
-         "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-18T13:00:00Z"
-      },
-      {
-         "awayTeam" : {
-            "id" : 798,
-            "name" : "Czech Republic"
-         },
-         "group" : "Group D",
-         "homeTeam" : {
-            "id" : 799,
-            "name" : "Croatia"
-         },
-         "id" : 285438,
-         "lastUpdated" : "2020-09-07T06:44:11Z",
-         "matchday" : 2,
-         "odds" : {
-            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
-         },
-         "referees" : [],
-         "score" : {
-            "duration" : "REGULAR",
-            "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "penalties" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "winner" : null
-         },
-         "season" : {
-            "currentMatchday" : 1,
-            "endDate" : "2021-07-11",
-            "id" : 507,
-            "startDate" : "2021-06-11"
-         },
-         "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-18T16:00:00Z"
-      },
-      {
-         "awayTeam" : {
-            "id" : 8873,
-            "name" : "Scotland"
-         },
-         "group" : "Group D",
-         "homeTeam" : {
-            "id" : 770,
-            "name" : "England"
-         },
-         "id" : 285439,
-         "lastUpdated" : "2021-05-22T16:20:17Z",
-         "matchday" : 2,
-         "odds" : {
-            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
-         },
-         "referees" : [],
-         "score" : {
-            "duration" : "REGULAR",
-            "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "penalties" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "winner" : null
-         },
-         "season" : {
-            "currentMatchday" : 1,
-            "endDate" : "2021-07-11",
-            "id" : 507,
-            "startDate" : "2021-06-11"
-         },
-         "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-18T19:00:00Z"
-      },
-      {
-         "awayTeam" : {
-            "id" : 773,
-            "name" : "France"
-         },
-         "group" : "Group F",
-         "homeTeam" : {
-            "id" : 827,
-            "name" : "Hungary"
-         },
-         "id" : 285450,
-         "lastUpdated" : "2021-05-22T16:20:17Z",
-         "matchday" : 2,
-         "odds" : {
-            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
-         },
-         "referees" : [],
-         "score" : {
-            "duration" : "REGULAR",
-            "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "penalties" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "winner" : null
-         },
-         "season" : {
-            "currentMatchday" : 1,
-            "endDate" : "2021-07-11",
-            "id" : 507,
-            "startDate" : "2021-06-11"
-         },
-         "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-19T13:00:00Z"
-      },
-      {
-         "awayTeam" : {
-            "id" : 759,
-            "name" : "Germany"
-         },
-         "group" : "Group F",
-         "homeTeam" : {
-            "id" : 765,
-            "name" : "Portugal"
-         },
-         "id" : 285451,
-         "lastUpdated" : "2021-05-28T16:20:17Z",
-         "matchday" : 2,
-         "odds" : {
-            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
-         },
-         "referees" : [],
-         "score" : {
-            "duration" : "REGULAR",
-            "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "penalties" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "winner" : null
-         },
-         "season" : {
-            "currentMatchday" : 1,
-            "endDate" : "2021-07-11",
-            "id" : 507,
-            "startDate" : "2021-06-11"
-         },
-         "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-19T16:00:00Z"
-      },
-      {
-         "awayTeam" : {
-            "id" : 794,
-            "name" : "Poland"
-         },
-         "group" : "Group E",
-         "homeTeam" : {
-            "id" : 760,
-            "name" : "Spain"
-         },
-         "id" : 285445,
-         "lastUpdated" : "2021-05-22T16:20:17Z",
-         "matchday" : 2,
-         "odds" : {
-            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
-         },
-         "referees" : [],
-         "score" : {
-            "duration" : "REGULAR",
-            "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "penalties" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "winner" : null
-         },
-         "season" : {
-            "currentMatchday" : 1,
-            "endDate" : "2021-07-11",
-            "id" : 507,
-            "startDate" : "2021-06-11"
-         },
-         "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-19T19:00:00Z"
-      },
-      {
-         "awayTeam" : {
-            "id" : 833,
-            "name" : "Wales"
-         },
-         "group" : "Group A",
-         "homeTeam" : {
-            "id" : 784,
-            "name" : "Italy"
-         },
-         "id" : 285422,
-         "lastUpdated" : "2021-05-22T16:20:16Z",
-         "matchday" : 3,
-         "odds" : {
-            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
-         },
-         "referees" : [],
-         "score" : {
-            "duration" : "REGULAR",
-            "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "penalties" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "winner" : null
-         },
-         "season" : {
-            "currentMatchday" : 1,
-            "endDate" : "2021-07-11",
-            "id" : 507,
-            "startDate" : "2021-06-11"
-         },
-         "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-20T16:00:00Z"
-      },
-      {
-         "awayTeam" : {
-            "id" : 803,
-            "name" : "Turkey"
-         },
-         "group" : "Group A",
-         "homeTeam" : {
-            "id" : 788,
-            "name" : "Switzerland"
-         },
-         "id" : 285423,
-         "lastUpdated" : "2021-05-28T16:20:17Z",
-         "matchday" : 3,
-         "odds" : {
-            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
-         },
-         "referees" : [],
-         "score" : {
-            "duration" : "REGULAR",
-            "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "penalties" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "winner" : null
-         },
-         "season" : {
-            "currentMatchday" : 1,
-            "endDate" : "2021-07-11",
-            "id" : 507,
-            "startDate" : "2021-06-11"
-         },
-         "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-20T16:00:00Z"
-      },
-      {
-         "awayTeam" : {
-            "id" : 8601,
-            "name" : "Netherlands"
-         },
-         "group" : "Group C",
-         "homeTeam" : {
-            "id" : 1977,
-            "name" : "North Macedonia"
-         },
-         "id" : 285434,
-         "lastUpdated" : "2021-05-22T16:20:16Z",
-         "matchday" : 3,
-         "odds" : {
-            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
-         },
-         "referees" : [],
-         "score" : {
-            "duration" : "REGULAR",
-            "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "penalties" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "winner" : null
-         },
-         "season" : {
-            "currentMatchday" : 1,
-            "endDate" : "2021-07-11",
-            "id" : 507,
-            "startDate" : "2021-06-11"
-         },
-         "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-21T16:00:00Z"
-      },
-      {
-         "awayTeam" : {
-            "id" : 816,
-            "name" : "Austria"
-         },
-         "group" : "Group C",
-         "homeTeam" : {
-            "id" : 790,
-            "name" : "Ukraine"
-         },
-         "id" : 285435,
-         "lastUpdated" : "2021-05-22T16:20:16Z",
-         "matchday" : 3,
-         "odds" : {
-            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
-         },
-         "referees" : [],
-         "score" : {
-            "duration" : "REGULAR",
-            "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "penalties" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "winner" : null
-         },
-         "season" : {
-            "currentMatchday" : 1,
-            "endDate" : "2021-07-11",
-            "id" : 507,
-            "startDate" : "2021-06-11"
-         },
-         "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-21T16:00:00Z"
-      },
-      {
-         "awayTeam" : {
-            "id" : 782,
-            "name" : "Denmark"
-         },
-         "group" : "Group B",
-         "homeTeam" : {
-            "id" : 808,
-            "name" : "Russia"
-         },
-         "id" : 285428,
-         "lastUpdated" : "2021-05-28T16:20:17Z",
-         "matchday" : 3,
-         "odds" : {
-            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
-         },
-         "referees" : [],
-         "score" : {
-            "duration" : "REGULAR",
-            "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "penalties" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "winner" : null
-         },
-         "season" : {
-            "currentMatchday" : 1,
-            "endDate" : "2021-07-11",
-            "id" : 507,
-            "startDate" : "2021-06-11"
-         },
-         "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-21T19:00:00Z"
-      },
-      {
-         "awayTeam" : {
-            "id" : 805,
-            "name" : "Belgium"
-         },
-         "group" : "Group B",
-         "homeTeam" : {
-            "id" : 1976,
-            "name" : "Finland"
-         },
-         "id" : 285429,
-         "lastUpdated" : "2021-05-28T16:20:17Z",
-         "matchday" : 3,
-         "odds" : {
-            "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
-         },
-         "referees" : [],
-         "score" : {
-            "duration" : "REGULAR",
-            "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "penalties" : {
-               "awayTeam" : null,
-               "homeTeam" : null
-            },
-            "winner" : null
-         },
-         "season" : {
-            "currentMatchday" : 1,
-            "endDate" : "2021-07-11",
-            "id" : 507,
-            "startDate" : "2021-06-11"
-         },
-         "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
+         "status" : "FINISHED",
          "utcDate" : "2021-06-21T19:00:00Z"
       },
       {
@@ -1693,12 +2544,49 @@
             "name" : "Croatia"
          },
          "id" : 285440,
-         "lastUpdated" : "2020-11-13T12:34:50Z",
+         "lastUpdated" : "2021-06-30T00:20:24Z",
          "matchday" : 3,
          "odds" : {
             "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
          },
-         "referees" : [],
+         "referees" : [
+            {
+               "id" : 11686,
+               "name" : "Fernando Rapallini",
+               "nationality" : "Argentina",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 49486,
+               "name" : "Juan Pablo Belatti",
+               "nationality" : "Argentina",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 11684,
+               "name" : "Diego BonfÃ¡",
+               "nationality" : "Argentina",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 43857,
+               "name" : "Bartosz Frankowski",
+               "nationality" : "Poland",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 15625,
+               "name" : "Alejandro HernÃ¡ndez",
+               "nationality" : "Spain",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 106,
+               "name" : "JosÃ© SÃ¡nchez",
+               "nationality" : "Spain",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
          "score" : {
             "duration" : "REGULAR",
             "extraTime" : {
@@ -1706,27 +2594,27 @@
                "homeTeam" : null
             },
             "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 1,
+               "homeTeam" : 3
             },
             "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 1,
+               "homeTeam" : 1
             },
             "penalties" : {
                "awayTeam" : null,
                "homeTeam" : null
             },
-            "winner" : null
+            "winner" : "HOME_TEAM"
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
          },
          "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
+         "status" : "FINISHED",
          "utcDate" : "2021-06-22T19:00:00Z"
       },
       {
@@ -1740,12 +2628,49 @@
             "name" : "Czech Republic"
          },
          "id" : 285441,
-         "lastUpdated" : "2021-05-22T16:20:16Z",
+         "lastUpdated" : "2021-06-30T00:20:24Z",
          "matchday" : 3,
          "odds" : {
             "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
          },
-         "referees" : [],
+         "referees" : [
+            {
+               "id" : 82279,
+               "name" : "Artur Dias",
+               "nationality" : null,
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 37626,
+               "name" : "Rui Tavares",
+               "nationality" : "Portugal",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 37714,
+               "name" : "Paulo Soares",
+               "nationality" : "Portugal",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 169612,
+               "name" : "Srdjan Jovanovic",
+               "nationality" : null,
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 38806,
+               "name" : "JoÃ£o Pinheiro",
+               "nationality" : "Portugal",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 11075,
+               "name" : "Paolo Valeri",
+               "nationality" : "Italy",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
          "score" : {
             "duration" : "REGULAR",
             "extraTime" : {
@@ -1753,27 +2678,27 @@
                "homeTeam" : null
             },
             "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 1,
+               "homeTeam" : 0
             },
             "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 1,
+               "homeTeam" : 0
             },
             "penalties" : {
                "awayTeam" : null,
                "homeTeam" : null
             },
-            "winner" : null
+            "winner" : "AWAY_TEAM"
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
          },
          "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
+         "status" : "FINISHED",
          "utcDate" : "2021-06-22T19:00:00Z"
       },
       {
@@ -1787,12 +2712,49 @@
             "name" : "Slovakia"
          },
          "id" : 285446,
-         "lastUpdated" : "2021-05-22T16:20:16Z",
+         "lastUpdated" : "2021-06-30T00:20:24Z",
          "matchday" : 3,
          "odds" : {
             "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
          },
-         "referees" : [],
+         "referees" : [
+            {
+               "id" : 9558,
+               "name" : "BjÃ¶rn Kuipers",
+               "nationality" : "Netherlands",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 9559,
+               "name" : "Sander van Roekel",
+               "nationality" : "Netherlands",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 9560,
+               "name" : "Erwin Zeinstra",
+               "nationality" : "Netherlands",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 25786,
+               "name" : "StÃ©phanie Frappart",
+               "nationality" : "France",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 15152,
+               "name" : "Pol van Boekel",
+               "nationality" : "Netherlands",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 43902,
+               "name" : "Kevin Blom",
+               "nationality" : "Netherlands",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
          "score" : {
             "duration" : "REGULAR",
             "extraTime" : {
@@ -1800,27 +2762,27 @@
                "homeTeam" : null
             },
             "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 5,
+               "homeTeam" : 0
             },
             "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 2,
+               "homeTeam" : 0
             },
             "penalties" : {
                "awayTeam" : null,
                "homeTeam" : null
             },
-            "winner" : null
+            "winner" : "AWAY_TEAM"
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
          },
          "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
+         "status" : "FINISHED",
          "utcDate" : "2021-06-23T16:00:00Z"
       },
       {
@@ -1834,12 +2796,49 @@
             "name" : "Sweden"
          },
          "id" : 285447,
-         "lastUpdated" : "2021-05-28T16:20:17Z",
+         "lastUpdated" : "2021-06-30T00:20:24Z",
          "matchday" : 3,
          "odds" : {
             "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
          },
-         "referees" : [],
+         "referees" : [
+            {
+               "id" : 11605,
+               "name" : "Michael Oliver",
+               "nationality" : "England",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 11564,
+               "name" : "Stuart Burt",
+               "nationality" : "England",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 11488,
+               "name" : "Simon Bennett",
+               "nationality" : "England",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 11580,
+               "name" : "Anthony Taylor",
+               "nationality" : "England",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 11443,
+               "name" : "Chris Kavanagh",
+               "nationality" : "England",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 57526,
+               "name" : "Christian Dingert",
+               "nationality" : "Germany",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
          "score" : {
             "duration" : "REGULAR",
             "extraTime" : {
@@ -1847,27 +2846,27 @@
                "homeTeam" : null
             },
             "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 2,
+               "homeTeam" : 3
             },
             "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 0,
+               "homeTeam" : 1
             },
             "penalties" : {
                "awayTeam" : null,
                "homeTeam" : null
             },
-            "winner" : null
+            "winner" : "HOME_TEAM"
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
          },
          "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
+         "status" : "FINISHED",
          "utcDate" : "2021-06-23T16:00:00Z"
       },
       {
@@ -1881,12 +2880,49 @@
             "name" : "Germany"
          },
          "id" : 285452,
-         "lastUpdated" : "2021-05-28T16:20:17Z",
+         "lastUpdated" : "2021-06-30T00:20:24Z",
          "matchday" : 3,
          "odds" : {
             "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
          },
-         "referees" : [],
+         "referees" : [
+            {
+               "id" : 43938,
+               "name" : "Sergey Karasev",
+               "nationality" : "Russia",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 43850,
+               "name" : "Igor Demeshko",
+               "nationality" : "Russia",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 36197,
+               "name" : "Maksim Gavrilin",
+               "nationality" : "Russia",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 43899,
+               "name" : "Danny Makkelie",
+               "nationality" : "Netherlands",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 11054,
+               "name" : "Massimiliano Irrati",
+               "nationality" : "Italy",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 11060,
+               "name" : "Marco Di Bello",
+               "nationality" : "Italy",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
          "score" : {
             "duration" : "REGULAR",
             "extraTime" : {
@@ -1894,27 +2930,27 @@
                "homeTeam" : null
             },
             "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 2,
+               "homeTeam" : 2
             },
             "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 1,
+               "homeTeam" : 0
             },
             "penalties" : {
                "awayTeam" : null,
                "homeTeam" : null
             },
-            "winner" : null
+            "winner" : "DRAW"
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
          },
          "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
+         "status" : "FINISHED",
          "utcDate" : "2021-06-23T19:00:00Z"
       },
       {
@@ -1928,12 +2964,49 @@
             "name" : "Portugal"
          },
          "id" : 285453,
-         "lastUpdated" : "2021-05-22T16:20:16Z",
+         "lastUpdated" : "2021-06-30T00:20:24Z",
          "matchday" : 3,
          "odds" : {
             "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
          },
-         "referees" : [],
+         "referees" : [
+            {
+               "id" : 43869,
+               "name" : "Antonio MatÃ©u Lahoz",
+               "nationality" : "Spain",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 134,
+               "name" : "Pau CebriÃ¡n Devis",
+               "nationality" : "Spain",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 82,
+               "name" : "Roberto DÃ­az PÃ©rez",
+               "nationality" : "Spain",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 36314,
+               "name" : "Ovidiu HaÈegan",
+               "nationality" : "Romania",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 15625,
+               "name" : "Alejandro HernÃ¡ndez",
+               "nationality" : "Spain",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 106,
+               "name" : "JosÃ© SÃ¡nchez",
+               "nationality" : "Spain",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
          "score" : {
             "duration" : "REGULAR",
             "extraTime" : {
@@ -1941,46 +3014,83 @@
                "homeTeam" : null
             },
             "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 2,
+               "homeTeam" : 2
             },
             "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 1,
+               "homeTeam" : 1
             },
             "penalties" : {
                "awayTeam" : null,
                "homeTeam" : null
             },
-            "winner" : null
+            "winner" : "DRAW"
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
          },
          "stage" : "GROUP_STAGE",
-         "status" : "SCHEDULED",
+         "status" : "FINISHED",
          "utcDate" : "2021-06-23T19:00:00Z"
       },
       {
          "awayTeam" : {
-            "id" : null,
-            "name" : null
+            "id" : 782,
+            "name" : "Denmark"
          },
          "group" : null,
          "homeTeam" : {
-            "id" : null,
-            "name" : null
+            "id" : 833,
+            "name" : "Wales"
          },
          "id" : 325091,
-         "lastUpdated" : "2021-05-16T12:52:13Z",
+         "lastUpdated" : "2021-06-30T00:20:24Z",
          "matchday" : 4,
          "odds" : {
             "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
          },
-         "referees" : [],
+         "referees" : [
+            {
+               "id" : 15408,
+               "name" : "Daniel Siebert",
+               "nationality" : "Germany",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 15409,
+               "name" : "Jan Seidel",
+               "nationality" : "Germany",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 43880,
+               "name" : "Rafael Foltyn",
+               "nationality" : "Germany",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 36314,
+               "name" : "Ovidiu HaÈegan",
+               "nationality" : "Romania",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 15746,
+               "name" : "Bastian Dankert",
+               "nationality" : "Germany",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 57526,
+               "name" : "Christian Dingert",
+               "nationality" : "Germany",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
          "score" : {
             "duration" : "REGULAR",
             "extraTime" : {
@@ -1988,93 +3098,167 @@
                "homeTeam" : null
             },
             "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 4,
+               "homeTeam" : 0
             },
             "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 1,
+               "homeTeam" : 0
             },
             "penalties" : {
                "awayTeam" : null,
                "homeTeam" : null
             },
-            "winner" : null
+            "winner" : "AWAY_TEAM"
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
          },
          "stage" : "LAST_16",
-         "status" : "SCHEDULED",
+         "status" : "FINISHED",
          "utcDate" : "2021-06-26T16:00:00Z"
       },
       {
          "awayTeam" : {
-            "id" : null,
-            "name" : null
+            "id" : 816,
+            "name" : "Austria"
          },
          "group" : null,
          "homeTeam" : {
-            "id" : null,
-            "name" : null
+            "id" : 784,
+            "name" : "Italy"
          },
          "id" : 325090,
-         "lastUpdated" : "2021-05-16T12:52:08Z",
+         "lastUpdated" : "2021-06-30T00:20:24Z",
          "matchday" : 4,
          "odds" : {
             "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
          },
-         "referees" : [],
+         "referees" : [
+            {
+               "id" : 11580,
+               "name" : "Anthony Taylor",
+               "nationality" : "England",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 11581,
+               "name" : "Gary Beswick",
+               "nationality" : "England",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 11615,
+               "name" : "Adam Nunn",
+               "nationality" : "England",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 31823,
+               "name" : "Sandro SchÃ¤rer",
+               "nationality" : "Switzerland",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 11494,
+               "name" : "Stuart Attwell",
+               "nationality" : "England",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 11443,
+               "name" : "Chris Kavanagh",
+               "nationality" : "England",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
          "score" : {
-            "duration" : "REGULAR",
+            "duration" : "EXTRA_TIME",
             "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 1,
+               "homeTeam" : 2
             },
             "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 1,
+               "homeTeam" : 2
             },
             "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 0,
+               "homeTeam" : 0
             },
             "penalties" : {
                "awayTeam" : null,
                "homeTeam" : null
             },
-            "winner" : null
+            "winner" : "HOME_TEAM"
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
          },
          "stage" : "LAST_16",
-         "status" : "SCHEDULED",
+         "status" : "FINISHED",
          "utcDate" : "2021-06-26T19:00:00Z"
       },
       {
          "awayTeam" : {
-            "id" : null,
-            "name" : null
+            "id" : 798,
+            "name" : "Czech Republic"
          },
          "group" : null,
          "homeTeam" : {
-            "id" : null,
-            "name" : null
+            "id" : 8601,
+            "name" : "Netherlands"
          },
          "id" : 325089,
-         "lastUpdated" : "2021-05-16T12:52:03Z",
+         "lastUpdated" : "2021-06-30T00:20:24Z",
          "matchday" : 4,
          "odds" : {
             "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
          },
-         "referees" : [],
+         "referees" : [
+            {
+               "id" : 43850,
+               "name" : "Igor Demeshko",
+               "nationality" : "Russia",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 36197,
+               "name" : "Maksim Gavrilin",
+               "nationality" : "Russia",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 25786,
+               "name" : "StÃ©phanie Frappart",
+               "nationality" : "France",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 43938,
+               "name" : "Sergey Karasev",
+               "nationality" : "Russia",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 11494,
+               "name" : "Stuart Attwell",
+               "nationality" : "England",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 11443,
+               "name" : "Chris Kavanagh",
+               "nationality" : "England",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
          "score" : {
             "duration" : "REGULAR",
             "extraTime" : {
@@ -2082,46 +3266,83 @@
                "homeTeam" : null
             },
             "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 2,
+               "homeTeam" : 0
             },
             "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 0,
+               "homeTeam" : 0
             },
             "penalties" : {
                "awayTeam" : null,
                "homeTeam" : null
             },
-            "winner" : null
+            "winner" : "AWAY_TEAM"
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
          },
          "stage" : "LAST_16",
-         "status" : "SCHEDULED",
+         "status" : "FINISHED",
          "utcDate" : "2021-06-27T16:00:00Z"
       },
       {
          "awayTeam" : {
-            "id" : null,
-            "name" : null
+            "id" : 765,
+            "name" : "Portugal"
          },
          "group" : null,
          "homeTeam" : {
-            "id" : null,
-            "name" : null
+            "id" : 805,
+            "name" : "Belgium"
          },
          "id" : 325088,
-         "lastUpdated" : "2021-05-16T12:51:58Z",
+         "lastUpdated" : "2021-06-30T00:20:24Z",
          "matchday" : 4,
          "odds" : {
             "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
          },
-         "referees" : [],
+         "referees" : [
+            {
+               "id" : 43876,
+               "name" : "Mark Borsch",
+               "nationality" : "Germany",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 43877,
+               "name" : "Stefan Lupp",
+               "nationality" : "Germany",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 15654,
+               "name" : "Georgi Kabakov",
+               "nationality" : "Bulgaria",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 43875,
+               "name" : "Felix Brych",
+               "nationality" : "Germany",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 15821,
+               "name" : "Marco Fritz",
+               "nationality" : "Germany",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 57526,
+               "name" : "Christian Dingert",
+               "nationality" : "Germany",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
          "score" : {
             "duration" : "REGULAR",
             "extraTime" : {
@@ -2129,140 +3350,251 @@
                "homeTeam" : null
             },
             "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 0,
+               "homeTeam" : 1
             },
             "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 0,
+               "homeTeam" : 1
             },
             "penalties" : {
                "awayTeam" : null,
                "homeTeam" : null
             },
-            "winner" : null
+            "winner" : "HOME_TEAM"
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
          },
          "stage" : "LAST_16",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-27T19:00:00Z"
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-27T19:00:01Z"
       },
       {
          "awayTeam" : {
-            "id" : null,
-            "name" : null
+            "id" : 760,
+            "name" : "Spain"
          },
          "group" : null,
          "homeTeam" : {
-            "id" : null,
-            "name" : null
+            "id" : 799,
+            "name" : "Croatia"
          },
          "id" : 325087,
-         "lastUpdated" : "2021-05-16T12:51:53Z",
+         "lastUpdated" : "2021-06-30T00:20:24Z",
          "matchday" : 4,
          "odds" : {
             "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
          },
-         "referees" : [],
+         "referees" : [
+            {
+               "id" : 161460,
+               "name" : "Cuneyt Cakir",
+               "nationality" : null,
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 30688,
+               "name" : "Bahattin Duran",
+               "nationality" : "Turkey",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 30689,
+               "name" : "TarÄ±k Ongun",
+               "nationality" : "Turkey",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 15332,
+               "name" : "Andreas Ekberg",
+               "nationality" : "Sweden",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 15746,
+               "name" : "Bastian Dankert",
+               "nationality" : "Germany",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 57526,
+               "name" : "Christian Dingert",
+               "nationality" : "Germany",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
          "score" : {
-            "duration" : "REGULAR",
+            "duration" : "EXTRA_TIME",
             "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 2,
+               "homeTeam" : 0
             },
             "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 5,
+               "homeTeam" : 3
             },
             "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 1,
+               "homeTeam" : 1
             },
             "penalties" : {
                "awayTeam" : null,
                "homeTeam" : null
             },
-            "winner" : null
+            "winner" : "AWAY_TEAM"
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
          },
          "stage" : "LAST_16",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-28T16:00:00Z"
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-28T16:00:01Z"
       },
       {
          "awayTeam" : {
-            "id" : null,
-            "name" : null
+            "id" : 788,
+            "name" : "Switzerland"
          },
          "group" : null,
          "homeTeam" : {
-            "id" : null,
-            "name" : null
+            "id" : 773,
+            "name" : "France"
          },
          "id" : 325086,
-         "lastUpdated" : "2021-05-16T12:51:48Z",
+         "lastUpdated" : "2021-06-30T00:20:24Z",
          "matchday" : 4,
          "odds" : {
             "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
          },
-         "referees" : [],
+         "referees" : [
+            {
+               "id" : 11686,
+               "name" : "Fernando Rapallini",
+               "nationality" : "Argentina",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 49486,
+               "name" : "Juan Pablo Belatti",
+               "nationality" : "Argentina",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 11684,
+               "name" : "Diego BonfÃ¡",
+               "nationality" : "Argentina",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 43857,
+               "name" : "Bartosz Frankowski",
+               "nationality" : "Poland",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 81,
+               "name" : "Juan MartÃ­nez",
+               "nationality" : "Spain",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 15625,
+               "name" : "Alejandro HernÃ¡ndez",
+               "nationality" : "Spain",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
          "score" : {
-            "duration" : "REGULAR",
+            "duration" : "PENALTY_SHOOTOUT",
             "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 0,
+               "homeTeam" : 0
             },
             "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 8,
+               "homeTeam" : 7
             },
             "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 1,
+               "homeTeam" : 0
             },
             "penalties" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 5,
+               "homeTeam" : 4
             },
-            "winner" : null
+            "winner" : "AWAY_TEAM"
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
          },
          "stage" : "LAST_16",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-28T19:00:00Z"
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-28T19:00:01Z"
       },
       {
          "awayTeam" : {
-            "id" : null,
-            "name" : null
+            "id" : 759,
+            "name" : "Germany"
          },
          "group" : null,
          "homeTeam" : {
-            "id" : null,
-            "name" : null
+            "id" : 770,
+            "name" : "England"
          },
          "id" : 325085,
-         "lastUpdated" : "2021-05-16T12:51:43Z",
+         "lastUpdated" : "2021-06-30T00:23:03Z",
          "matchday" : 4,
          "odds" : {
             "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
          },
-         "referees" : [],
+         "referees" : [
+            {
+               "id" : 43899,
+               "name" : "Danny Makkelie",
+               "nationality" : "Netherlands",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 43900,
+               "name" : "Hessel Steegstra",
+               "nationality" : "Netherlands",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 15154,
+               "name" : "Jan de Vries",
+               "nationality" : "Netherlands",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 169612,
+               "name" : "Srdjan Jovanovic",
+               "nationality" : null,
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 15152,
+               "name" : "Pol van Boekel",
+               "nationality" : "Netherlands",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 43902,
+               "name" : "Kevin Blom",
+               "nationality" : "Netherlands",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
          "score" : {
             "duration" : "REGULAR",
             "extraTime" : {
@@ -2270,88 +3602,125 @@
                "homeTeam" : null
             },
             "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 0,
+               "homeTeam" : 2
             },
             "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 0,
+               "homeTeam" : 0
             },
             "penalties" : {
                "awayTeam" : null,
                "homeTeam" : null
             },
-            "winner" : null
+            "winner" : "HOME_TEAM"
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
          },
          "stage" : "LAST_16",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-29T16:00:00Z"
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-29T16:00:01Z"
       },
       {
          "awayTeam" : {
-            "id" : null,
-            "name" : null
+            "id" : 790,
+            "name" : "Ukraine"
          },
          "group" : null,
          "homeTeam" : {
-            "id" : null,
-            "name" : null
+            "id" : 792,
+            "name" : "Sweden"
          },
          "id" : 325084,
-         "lastUpdated" : "2021-05-16T12:51:35Z",
+         "lastUpdated" : "2021-06-30T00:23:03Z",
          "matchday" : 4,
          "odds" : {
             "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
          },
-         "referees" : [],
+         "referees" : [
+            {
+               "id" : 11116,
+               "name" : "Daniele Orsato",
+               "nationality" : "Italy",
+               "role" : "REFEREE"
+            },
+            {
+               "id" : 11076,
+               "name" : "Alessandro Giallatini",
+               "nationality" : "Italy",
+               "role" : "ASSISTANT_REFEREE_N1"
+            },
+            {
+               "id" : 11069,
+               "name" : "Fabiano Preti",
+               "nationality" : "Italy",
+               "role" : "ASSISTANT_REFEREE_N2"
+            },
+            {
+               "id" : 11029,
+               "name" : "Davide Massa",
+               "nationality" : "Italy",
+               "role" : "FOURTH_OFFICIAL"
+            },
+            {
+               "id" : 11054,
+               "name" : "Massimiliano Irrati",
+               "nationality" : "Italy",
+               "role" : "VIDEO_ASSISANT_REFEREE_N1"
+            },
+            {
+               "id" : 11060,
+               "name" : "Marco Di Bello",
+               "nationality" : "Italy",
+               "role" : "VIDEO_ASSISANT_REFEREE_N2"
+            }
+         ],
          "score" : {
-            "duration" : "REGULAR",
+            "duration" : "EXTRA_TIME",
             "extraTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 1,
+               "homeTeam" : 0
             },
             "fullTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 2,
+               "homeTeam" : 1
             },
             "halfTime" : {
-               "awayTeam" : null,
-               "homeTeam" : null
+               "awayTeam" : 1,
+               "homeTeam" : 1
             },
             "penalties" : {
                "awayTeam" : null,
                "homeTeam" : null
             },
-            "winner" : null
+            "winner" : "AWAY_TEAM"
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
          },
          "stage" : "LAST_16",
-         "status" : "SCHEDULED",
-         "utcDate" : "2021-06-29T19:00:00Z"
+         "status" : "FINISHED",
+         "utcDate" : "2021-06-29T19:00:01Z"
       },
       {
          "awayTeam" : {
-            "id" : null,
-            "name" : null
+            "id" : 760,
+            "name" : "Spain"
          },
          "group" : null,
          "homeTeam" : {
-            "id" : null,
-            "name" : null
+            "id" : 788,
+            "name" : "Switzerland"
          },
          "id" : 325083,
-         "lastUpdated" : "2021-05-28T16:20:17Z",
+         "lastUpdated" : "2021-06-29T00:20:12Z",
          "matchday" : 5,
          "odds" : {
             "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
@@ -2378,7 +3747,7 @@
             "winner" : null
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
@@ -2389,16 +3758,16 @@
       },
       {
          "awayTeam" : {
-            "id" : null,
-            "name" : null
+            "id" : 784,
+            "name" : "Italy"
          },
          "group" : null,
          "homeTeam" : {
-            "id" : null,
-            "name" : null
+            "id" : 805,
+            "name" : "Belgium"
          },
          "id" : 325082,
-         "lastUpdated" : "2021-05-28T16:20:17Z",
+         "lastUpdated" : "2021-06-28T00:20:13Z",
          "matchday" : 5,
          "odds" : {
             "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
@@ -2425,7 +3794,7 @@
             "winner" : null
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
@@ -2436,16 +3805,16 @@
       },
       {
          "awayTeam" : {
-            "id" : null,
-            "name" : null
+            "id" : 782,
+            "name" : "Denmark"
          },
          "group" : null,
          "homeTeam" : {
-            "id" : null,
-            "name" : null
+            "id" : 798,
+            "name" : "Czech Republic"
          },
          "id" : 325081,
-         "lastUpdated" : "2021-05-16T12:53:00Z",
+         "lastUpdated" : "2021-06-27T20:04:23Z",
          "matchday" : 5,
          "odds" : {
             "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
@@ -2472,7 +3841,7 @@
             "winner" : null
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
@@ -2483,16 +3852,16 @@
       },
       {
          "awayTeam" : {
-            "id" : null,
-            "name" : null
+            "id" : 770,
+            "name" : "England"
          },
          "group" : null,
          "homeTeam" : {
-            "id" : null,
-            "name" : null
+            "id" : 790,
+            "name" : "Ukraine"
          },
          "id" : 325080,
-         "lastUpdated" : "2021-05-16T12:52:54Z",
+         "lastUpdated" : "2021-06-29T23:54:02Z",
          "matchday" : 5,
          "odds" : {
             "msg" : "Activate Odds-Package in User-Panel to retrieve odds."
@@ -2519,7 +3888,7 @@
             "winner" : null
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
@@ -2566,7 +3935,7 @@
             "winner" : null
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
@@ -2613,7 +3982,7 @@
             "winner" : null
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
@@ -2660,7 +4029,7 @@
             "winner" : null
          },
          "season" : {
-            "currentMatchday" : 1,
+            "currentMatchday" : 4,
             "endDate" : "2021-07-11",
             "id" : 507,
             "startDate" : "2021-06-11"
