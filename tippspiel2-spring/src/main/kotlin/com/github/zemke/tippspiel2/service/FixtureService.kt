@@ -9,7 +9,7 @@ import java.util.*
 
 @Service
 class FixtureService(
-    @Autowired private var fixtureRepository: FixtureRepository
+    @Autowired private val fixtureRepository: FixtureRepository
 ) {
 
     fun saveMany(fixtures: List<Fixture>): List<Fixture> = fixtureRepository.saveAll(fixtures)

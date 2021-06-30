@@ -22,5 +22,5 @@ data class ChampionBet(
     @ManyToOne(optional = false) val user: User,
     @ManyToOne(optional = false) var team: Team,
     @ManyToOne(optional = false) val bettingGame: BettingGame,
-    @UpdateTimestamp @NotNull val modified: Instant
+    @UpdateTimestamp @NotNull var modified: Instant
 )

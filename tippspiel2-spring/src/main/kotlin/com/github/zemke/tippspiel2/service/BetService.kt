@@ -8,7 +8,7 @@ import java.util.*
 
 @Service
 class BetService(
-    @Autowired private var betRepository: BetRepository
+    @Autowired private val betRepository: BetRepository
 ) {
 
     fun save(bet: Bet): Bet = betRepository.save(bet)

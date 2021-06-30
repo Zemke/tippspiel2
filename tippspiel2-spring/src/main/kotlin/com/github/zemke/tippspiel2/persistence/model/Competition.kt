@@ -23,8 +23,8 @@ data class Competition(
     @NotBlank val caption: String,
     @NotBlank val league: String,
     @Range(min = 1900, max = 3000) @NotBlank val year: Int,
-    @Range(min = 0) @NotNull val currentMatchday: Int,
-    @NotNull val lastUpdated: Instant,
+    @Range(min = 0) @NotNull var currentMatchday: Int,
+    @NotNull var lastUpdated: Instant,
     /** Currently only one competition can be played at a time. */
     var current: Boolean,
     @ManyToOne var champion: Team? = null,

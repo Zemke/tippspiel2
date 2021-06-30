@@ -23,9 +23,9 @@ import java.util.*
 
 @Service
 class UserService(
-    @Autowired private var userRepository: UserRepository,
-    @Autowired private var roleRepository: RoleRepository,
-    @Autowired private var standingRepository: StandingRepository,
+    @Autowired private val userRepository: UserRepository,
+    @Autowired private val roleRepository: RoleRepository,
+    @Autowired private val standingRepository: StandingRepository,
     @Autowired private val authenticationProperties: AuthenticationProperties,
     @Autowired private val authenticationManager: AuthenticationManager,
     @Autowired private val jsonWebTokenService: JsonWebTokenService,

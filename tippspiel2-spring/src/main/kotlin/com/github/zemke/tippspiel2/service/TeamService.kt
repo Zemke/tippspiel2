@@ -9,7 +9,7 @@ import java.util.*
 
 @Service
 class TeamService(
-    @Autowired private var teamRepository: TeamRepository
+    @Autowired private val teamRepository: TeamRepository
 ) {
 
     fun find(teamId: Long): Optional<Team> =

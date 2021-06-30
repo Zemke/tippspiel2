@@ -14,23 +14,23 @@ import javax.persistence.ManyToOne
 @Entity
 data class Fixture(
 
-    @Id var id: Long?,
-    var date: Instant,
-    @Enumerated(EnumType.STRING) var status: FixtureStatus,
-    var matchday: Int,
+    @Id val id: Long?,
+    val date: Instant,
+    @Enumerated(EnumType.STRING) val status: FixtureStatus,
+    val matchday: Int,
     val goalsHomeTeam: Int?,
     val goalsAwayTeam: Int?,
     val stage: String?,
     @Column("\"group\"") val group: String?,
-    @ManyToOne(cascade = [CascadeType.MERGE]) var homeTeam: Team?,
-    @ManyToOne(cascade = [CascadeType.MERGE]) var awayTeam: Team?,
-    @ManyToOne(cascade = [CascadeType.MERGE]) var competition: Competition,
+    @ManyToOne(cascade = [CascadeType.MERGE]) val homeTeam: Team?,
+    @ManyToOne(cascade = [CascadeType.MERGE]) val awayTeam: Team?,
+    @ManyToOne(cascade = [CascadeType.MERGE]) val competition: Competition,
     /**
      * If `true`, will not be updated by external API.
      *
      * @see [com.github.zemke.tippspiel2.integration.FootballDataIntegrationConfig]
      */
-    var manual: Boolean = false
+    val manual: Boolean = false
 ) {
 
     fun complete() = homeTeam != null && awayTeam != null && homeTeam?.id != NULL_TEAM_ID && awayTeam?.id != NULL_TEAM_ID

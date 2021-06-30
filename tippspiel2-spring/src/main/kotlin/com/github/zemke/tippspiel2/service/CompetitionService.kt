@@ -11,9 +11,9 @@ import java.util.*
 
 @Service
 class CompetitionService(
-    @Autowired private var competitionRepository: CompetitionRepository,
-    @Autowired private var standingService: StandingService,
-    @Autowired private var bettingGameRepository: BettingGameRepository
+    @Autowired private val competitionRepository: CompetitionRepository,
+    @Autowired private val standingService: StandingService,
+    @Autowired private val bettingGameRepository: BettingGameRepository
 ) {
 
     fun find(competitionId: Long): Optional<Competition> =

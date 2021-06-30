@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class RoleService(
-    @Autowired private var roleRepository: RoleRepository
+    @Autowired private val roleRepository: RoleRepository
 ) {
 
     fun initRoles(): List<Role> = roleRepository.saveAll(UserRole.values().map { Role(it) })

@@ -10,7 +10,7 @@ import java.util.*
 
 @Service
 class ChampionBetService(
-    @Autowired private var championBetRepository: ChampionBetRepository
+    @Autowired private val championBetRepository: ChampionBetRepository
 ) {
 
     fun find(championBetId: Long): Optional<ChampionBet> =
