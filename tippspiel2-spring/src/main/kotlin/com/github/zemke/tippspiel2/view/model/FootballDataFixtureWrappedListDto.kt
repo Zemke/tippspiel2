@@ -10,21 +10,21 @@ import java.time.Instant
 
 @DataTransferObject
 data class FootballDataFixtureWrappedListDto(
-    @JsonProperty("count") var count: Int,
-    @JsonProperty("matches") var matches: List<FootballDataFixtureDto>
+    @JsonProperty("count") val count: Int,
+    @JsonProperty("matches") val matches: List<FootballDataFixtureDto>
 )
 
 @DataTransferObject
 data class FootballDataFixtureDto(
-    @JsonProperty("id") var id: Long,
-    @JsonProperty("homeTeam") var homeTeam: FootballDataFixtureTeamDto?,
-    @JsonProperty("awayTeam") var awayTeam: FootballDataFixtureTeamDto?,
-    @JsonProperty("score") var score: FootballDataFixtureResultDto?,
-    @JsonProperty("matchday") var matchday: Int,
-    @JsonProperty("stage") var stage: String?,
-    @JsonProperty("group") var group: String?,
-    @JsonProperty("status") var status: FixtureStatus,
-    @JsonProperty("utcDate") var utcDate: Instant,
+    @JsonProperty("id") val id: Long,
+    @JsonProperty("homeTeam") val homeTeam: FootballDataFixtureTeamDto?,
+    @JsonProperty("awayTeam") val awayTeam: FootballDataFixtureTeamDto?,
+    @JsonProperty("score") val score: FootballDataFixtureResultDto?,
+    @JsonProperty("matchday") val matchday: Int,
+    @JsonProperty("stage") val stage: String?,
+    @JsonProperty("group") val group: String?,
+    @JsonProperty("status") val status: FixtureStatus,
+    @JsonProperty("utcDate") val utcDate: Instant,
 ) {
 
     companion object {
@@ -62,10 +62,10 @@ data class FootballDataFixtureDto(
 
 @DataTransferObject
 data class FootballDataFixtureResultDto(
-    @JsonProperty("fullTime") var fullTime: FootballDataFixtureScoreDto,
-    @JsonProperty("extraTime") var extraTime: FootballDataFixtureScoreDto,
-    @JsonProperty("halfTime") var halfTime: FootballDataFixtureScoreDto,
-    @JsonProperty("penalties") var penalties: FootballDataFixtureScoreDto,
+    @JsonProperty("fullTime") val fullTime: FootballDataFixtureScoreDto,
+    @JsonProperty("extraTime") val extraTime: FootballDataFixtureScoreDto,
+    @JsonProperty("halfTime") val halfTime: FootballDataFixtureScoreDto,
+    @JsonProperty("penalties") val penalties: FootballDataFixtureScoreDto,
 ) {
     lateinit var regularTime: FootballDataFixtureScoreDto
 
@@ -82,7 +82,7 @@ data class FootballDataFixtureResultDto(
         }
     }
 
-    constructor(regularTime: FootballDataFixtureScoreDto) : this(FootballDataFixtureScoreDto(), FootballDataFixtureScoreDto(), FootballDataFixtureScoreDto(), FootballDataFixtureScoreDto()) {
+    private constructor(regularTime: FootballDataFixtureScoreDto) : this(FootballDataFixtureScoreDto(), FootballDataFixtureScoreDto(), FootballDataFixtureScoreDto(), FootballDataFixtureScoreDto()) {
         this.regularTime = regularTime
     }
 
@@ -97,8 +97,8 @@ data class FootballDataFixtureResultDto(
 
 @DataTransferObject
 data class FootballDataFixtureScoreDto(
-    @JsonProperty("homeTeam") var homeTeam: Int?,
-    @JsonProperty("awayTeam") var awayTeam: Int?,
+    @JsonProperty("homeTeam") val homeTeam: Int?,
+    @JsonProperty("awayTeam") val awayTeam: Int?,
 ) {
 
     constructor() : this(null, null)
@@ -108,6 +108,6 @@ data class FootballDataFixtureScoreDto(
 
 @DataTransferObject
 data class FootballDataFixtureTeamDto(
-    @JsonProperty("id") var id: Long?,
-    @JsonProperty("name") var name: String?,
+    @JsonProperty("id") val id: Long?,
+    @JsonProperty("name") val name: String?,
 )
