@@ -33,5 +33,5 @@ data class Fixture(
     val manual: Boolean = false
 ) {
 
-    fun complete() = homeTeam != null && awayTeam != null && homeTeam?.id != NULL_TEAM_ID && awayTeam?.id != NULL_TEAM_ID
+    fun complete() = homeTeam != null && awayTeam != null && homeTeam.id != NULL_TEAM_ID && awayTeam.id != NULL_TEAM_ID
 }

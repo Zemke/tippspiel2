@@ -45,8 +45,8 @@ data class FootballDataFixtureDto(
 
         fun toDto(fixture: Fixture) = FootballDataFixtureDto(
             id = fixture.id!!,
-            homeTeam = fixture.homeTeam?.let { FootballDataFixtureTeamDto(fixture.homeTeam?.id!!, fixture.homeTeam?.name) },
-            awayTeam = fixture.awayTeam?.let { FootballDataFixtureTeamDto(fixture.awayTeam?.id!!, fixture.awayTeam?.name) },
+            homeTeam = fixture.homeTeam?.let { FootballDataFixtureTeamDto(it.id, it.name) },
+            awayTeam = fixture.awayTeam?.let { FootballDataFixtureTeamDto(it.id, it.name) },
             score = FootballDataFixtureResultDto.ofRegularTime(
                 homeTeam = fixture.goalsHomeTeam,
                 awayTeam = fixture.goalsAwayTeam
@@ -67,7 +67,7 @@ data class FootballDataFixtureResultDto(
     @JsonProperty("halfTime") val halfTime: FootballDataFixtureScoreDto,
     @JsonProperty("penalties") val penalties: FootballDataFixtureScoreDto,
 ) {
-    lateinit var regularTime: FootballDataFixtureScoreDto
+    var regularTime: FootballDataFixtureScoreDto
 
     init {
         regularTime = if (penalties.nothing() && extraTime.nothing()) {
