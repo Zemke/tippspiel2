@@ -7,16 +7,16 @@ import com.github.zemke.tippspiel2.view.util.DataTransferObject
 
 @DataTransferObject
 data class FootballDataTeamWrappedListDto(
-    @JsonProperty("count") var count: Int,
-    @JsonProperty("teams") var teams: List<FootballDataTeamDto>
+    @JsonProperty("count") val count: Int,
+    @JsonProperty("teams") val teams: List<FootballDataTeamDto>
 )
 
 @DataTransferObject
 data class FootballDataTeamDto(
-    @JsonProperty("id") var id: Long,
-    @JsonProperty("name") var name: String,
-    @JsonProperty("shortName") var shortName: String?,
-    @JsonProperty("crestUrl") var crestUrl: String?
+    @JsonProperty("id") val id: Long,
+    @JsonProperty("name") val name: String,
+    @JsonProperty("shortName") val shortName: String?,
+    @JsonProperty("crestUrl") val crestUrl: String?
 ) {
 
     companion object {

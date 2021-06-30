@@ -8,11 +8,11 @@ import java.time.LocalDate
 
 @DataTransferObject
 data class FootballDataCompetitionDto(
-    @JsonProperty("id") var id: Long,
-    @JsonProperty("name") var name: String,
-    @JsonProperty("code") var code: String,
-    @JsonProperty("lastUpdated") var lastUpdated: Instant,
-    @JsonProperty("currentSeason") var currentSeason: FootbalDataCompetitionCurrentSeasonDto,
+    @JsonProperty("id") val id: Long,
+    @JsonProperty("name") val name: String,
+    @JsonProperty("code") val code: String,
+    @JsonProperty("lastUpdated") val lastUpdated: Instant,
+    @JsonProperty("currentSeason") val currentSeason: FootbalDataCompetitionCurrentSeasonDto,
 ) {
 
     companion object {
@@ -51,10 +51,10 @@ data class FootballDataCompetitionDto(
 
 @DataTransferObject
 data class FootbalDataCompetitionCurrentSeasonDto(
-    @JsonProperty("currentMatchday") var currentMatchday: Int,
-    @JsonProperty("startDate") var startDate: LocalDate,
-    @JsonProperty("winner") var winner: FootballDataTeamDto?,
+    @JsonProperty("currentMatchday") val currentMatchday: Int,
+    @JsonProperty("startDate") val startDate: LocalDate,
+    @JsonProperty("winner") val winner: FootballDataTeamDto?,
 
     // TODO Should probably also be persisted.
-    // @JsonProperty("id") var id: Long,
+    // @JsonProperty("id") val id: Long,
 )
