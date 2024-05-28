@@ -164,6 +164,10 @@ team:
     833: 'Wales'
     8601: 'Netherlands'
     8873: 'Scotland'
+    1065: 'Albania'
+    777: 'Slovenia'
+    811: 'Romania'
+    1978: 'Georgia'
   short:
     808: 'RUS'
     801: 'SAU'
@@ -209,3 +213,7 @@ team:
     833: 'WAL'
     8601: 'NLD'
     8873: 'SCO'
+    1065: 'ALB'
+    777: 'SVN'
+    811: 'ROU'
+    1978: 'GEO'
