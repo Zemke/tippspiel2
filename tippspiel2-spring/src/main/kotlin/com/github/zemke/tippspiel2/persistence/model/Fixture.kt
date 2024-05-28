@@ -17,7 +17,7 @@ data class Fixture(
     @Id val id: Long?,
     val date: Instant,
     @Enumerated(EnumType.STRING) val status: FixtureStatus,
-    val matchday: Int,
+    val matchday: Int?,
     val goalsHomeTeam: Int?,
     val goalsAwayTeam: Int?,
     val stage: String?,

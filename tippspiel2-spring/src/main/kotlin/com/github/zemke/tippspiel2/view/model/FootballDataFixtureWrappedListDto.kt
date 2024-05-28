@@ -20,7 +20,7 @@ data class FootballDataFixtureDto(
     @JsonProperty("homeTeam") val homeTeam: FootballDataFixtureTeamDto?,
     @JsonProperty("awayTeam") val awayTeam: FootballDataFixtureTeamDto?,
     @JsonProperty("score") val score: FootballDataFixtureResultDto?,
-    @JsonProperty("matchday") val matchday: Int,
+    @JsonProperty("matchday") val matchday: Int?,
     @JsonProperty("stage") val stage: String?,
     @JsonProperty("group") val group: String?,
     @JsonProperty("status") val status: FixtureStatus,

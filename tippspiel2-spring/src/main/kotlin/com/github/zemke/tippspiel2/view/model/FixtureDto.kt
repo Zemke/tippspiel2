@@ -10,7 +10,7 @@ data class FixtureDto(
     val id: Long,
     val date: Instant,
     val status: FixtureStatus,
-    val matchday: Int,
+    val matchday: Int?,
     val goalsHomeTeam: Int?,
     val goalsAwayTeam: Int?,
     val homeTeam: TeamDto?,
