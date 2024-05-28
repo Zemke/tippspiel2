@@ -21,7 +21,7 @@ data class Fixture(
     val goalsHomeTeam: Int?,
     val goalsAwayTeam: Int?,
     val stage: String?,
-    @Column("\"group\"") val group: String?,
+    @Column(name = "\"group\"") val group: String?,
     @ManyToOne(cascade = [CascadeType.MERGE]) val homeTeam: Team?,
     @ManyToOne(cascade = [CascadeType.MERGE]) val awayTeam: Team?,
     @ManyToOne(cascade = [CascadeType.MERGE]) val competition: Competition,
