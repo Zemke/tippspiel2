@@ -14,6 +14,7 @@ export default Route.extend({
             'betting-game': bettingGame.get('id'),
           })
         );
+        bettingGame.set('invitationLink', window.location.protocol + '//' + window.location.host + '/sign-up?invitation-token=' + bettingGame.get('invitationToken'));
         return bettingGame;
       });
   },

@@ -116,6 +116,7 @@ bettingGame:
     name: 'Name'
     details: 'Details'
     invitationToken: 'Einladungs-Token'
+    invitationLink: 'Einladungs-Link'
     users: 'Benutzer'
 team:
   noCountry: 'Kein Land'
