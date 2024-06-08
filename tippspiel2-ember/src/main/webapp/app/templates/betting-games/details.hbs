@@ -20,6 +20,12 @@
 </div>
 <div class="columns">
   <div class="column">
+    <div class="has-text-weight-bold">{{t 'bettingGame.list.invitationLink'}}</div>
+    <a href="{{model.invitationLink}}">{{model.invitationLink}}</a>
+  </div>
+</div>
+<div class="columns">
+  <div class="column">
     <div class="has-text-weight-bold">{{t 'bettingGame.list.created'}}</div>
     {{format-date model.created weekday="long"}},
     {{format-date model.created month="short"}}.
