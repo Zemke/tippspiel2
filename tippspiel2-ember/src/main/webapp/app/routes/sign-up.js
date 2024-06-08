@@ -22,8 +22,8 @@ export default Route.extend({
   },
   beforeModel(transition) {
     if (
-      transition.queryParams == null ||
-      transition.queryParams['invitation-token'] == null
+      transition.to.queryParams == null ||
+      transition.to.queryParams['invitation-token'] == null
     ) {
       this.resHandler.handleWithRouting(
         transition,
@@ -34,7 +34,7 @@ export default Route.extend({
 
     this.get('auth.user')
       .then(() =>
-        this.transitionTo('join', { queryParams: transition.queryParams })
+        this.transitionTo('join', { queryParams: transition.to.queryParams })
       )
       .catch(() => {});
   },
